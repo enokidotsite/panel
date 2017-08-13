@@ -1,12 +1,11 @@
 # Enoki Starter Kit
 
-The Enoki starter kit is an example of common patterns used within a site. It includes [content](#content) and a [design](#site). This is **pre-alpha**, so features are missing, and the bugs are rampant.
+The Enoki starter kit is an example of common patterns used within a site. It includes [content](#content) and a [design](#site). It’s sort of like [Kirby](http://getkirby.com), but built entirely in javascript and using [Choo](https://github.com/choojs/choo) as a little front-end framework. This is **pre-alpha**, so features are missing, and the bugs are rampant.
 
-It’s sort of like [Kirby](http://getkirby.com), but built entirely in javascript and using [Choo](https://github.com/choojs/choo) as a little front-end framework.
 
 ## Features
 
-There are so many, and more to come, but here are the favorites:
+There are so many, and more to come, but here are the favorites right now:
 
 ### Static files means no database
 
@@ -56,7 +55,7 @@ npm run build  # build your static site
 
 - **`npm start`** to spin up an Enoki development server
 - **`npm run dev`** for a fully configurable setup using the [browserify transform](#browserify-transform)
-- **`npm run build`** to generate your static site and bundle the js
+- **`npm run build`** to [generate your static site](#building) and bundle the js
 
 ## Structure
 
@@ -556,3 +555,27 @@ The root of your `content` object is simply a [`page`](#page-object).
 
 This will be documented once the Panel has been published. *More soon…*
 
+## Building
+
+Great! By now hopefully you can navigate your way around using Enoki with the starter kit, and have an idea of how to start from scratch. Now to build your site.
+
+### Building generates a static site
+
+When you run the `build` command, a few things happen behind the scenes:
+
+- Copy the `content/` directory into `public/`
+- This copies all of your static files
+- Transform the `content/` into [JSON](#json-and-state)
+- Pre-render each [page](#pages) route into an `index.html` file
+
+### Bundle your javascript and serve it alongside your HTML
+
+In addition to creating a fully static HTML site, you can bundle your javascript and serve it alongside your HTML output. This makes your site fully hydrated / isomorphic, giving you all the benefits of server-side rendering (speed, accessibility, etc) with none of the complications.
+
+### Upload to any static host
+
+Because it’s static HTML and javascript, you can upload this to any host, such as an Amazon S3 Bucket. There is also zero server configuration needed!
+
+Much more interesting and exciting than this though is publishing to the distributed web. It’s suggested to take a look at [Beaker Browser](http://beakerbrowser.com) and [Hashbase](http://hashbase.io)! *More soon…*
+
+## Wrapping it up
