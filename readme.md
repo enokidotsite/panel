@@ -255,7 +255,7 @@ If you place an `index.html` file within `/assets`, you can define the structure
 testing
 
 <details>
-<summary>Blueprint structure</summary>
+<summary style="outline:0">Blueprint structure</summary>
 
 ```
 title: Page
