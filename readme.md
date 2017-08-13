@@ -81,7 +81,7 @@ Since this is built entirely in javascript, you can install any module you’d l
 
 **`config.defaults.yml`**
 
-To setup a custom configuration, the `config.defaults.yml` file and rename it `config.yml`. You can change the options to customize your build. *More on this soon*.
+To setup a custom configuration, the `config.defaults.yml` file and rename it `config.yml`. You can change the options to customize your build. *More soon…*
 
 
 ## Content
@@ -110,7 +110,6 @@ The folder name is the route. For example, the `projects` folder will have a rou
 
 <details>
 <summary>Folder names and how they map to routes and JSON</summary>
-
 
 | Folder name | URL path | JSON key |
 |-------------|----------|----------|
@@ -242,21 +241,7 @@ If you place an `index.html` file within `/assets`, you can define the structure
 
 ## Blueprints
 
-```
-/site
-  /blueprints
-    - about.yml
-    - blog.yml
-    - default.yml 
-    ...
-```
-
-### Structure
-
-testing
-
-<details>
-<summary>Blueprint structure</summary>
+▼ Blueprint formatting
 
 ```
 title: Page
@@ -271,20 +256,235 @@ fields:
     type:  textarea
 ```
 
+<details>
+<summary>Directory contents</summary>
+
+```
+/site
+  /blueprints
+    - about.yml
+    - blog.yml
+    - default.yml 
+    ...
+```
+
 </details>
 
-testing
+### Blueprints correspond with [views](#views)
 
-### Examples
+Blueprints define the [fields](#the-contents-of-a-txt-file-are-fields) of a view. They are used to generate the interface for your [Panel](#panel). *More soon…*
+
+### YAML Formatting
 
 
-### Examples
+
+### Filename matches that of the [view](#views)
+
+The name of a blueprint corresponds with a view. For example, to create a blueprint for the `about` view (`site/views/about.js`), create a blueprint named `about.yml` inside `site/blueprints/`.
+
+### Available fields
+
+| name | description | value |
+| - | - | - |
+| tags | a dynamic tag field | array |
+| text | is a single line text input | string |
+| textarea | is a multi-line textarea | string |
+
+This list will expand in the future to be (mostly) in parity with [Kirby](https://getkirby.com/docs/panel/blueprints/form-fields).
 
 ## Components
 
+```
+/site
+  /components
+  - format.js
+  - thumbnail.js
+  - wrapper.js
+```
+
+### Components are reusable snippets of code
+
+This is a convenience directory, as you can `require()` from any directory within your build.
+
+### `format.js` handles markdown and escaping `innerHTML`
+
+Format is used to parse [markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet). It uses [`nano-markdown`](https://github.com/Holixus/nano-markdown), but you can replace it with whatever markdown parser you prefer. It also lets you use escaped HTML within [bel](https://github.com/shama/bel) (Choo uses it to create DOM elements) on the server and in the browser.
+
+### `thumbnail.js` is an example of a re-usable component
+
+Instead of re-writing the same code in multiple views within your site, consider modularizing and passing options to a component. This is an example of a thumbnail component.
+
+### `wrapper.js` is an example of a global header/footer
+
+It can be annoying to require a global elements in each view. Instead, you can create a [composable function](http://blog.ricardofilipe.com/post/javascript-composition-for-dummies) which accepts a [`view`](#views), and wrap it around the `exports` of your view.
+
+### Examples
+
+<details>
+<summary>Usage from within a view</summary>
+
+```js
+var format = require('../components/format')
+var content = format('hello!')
+```
+
+</details>
+
+<details>
+<summary>Composable component (wrapper.js) within a view</summary>
+
+```js
+/**
+ * wrapper.js
+ */
+
+var html = require('choo/html')
+module.exports = wrapper
+
+// accept a view as the only arg
+function wrapper (view) {
+  // return our composition, accepting choo’s state and emit as args
+  return function (state, emit) {
+    // return our wrapper, calling the view and passing choo’s args
+    return html`
+      <main>
+        <header>Hello!</header>
+        ${view(state, emit)}
+        <footer>Bye!</footer>
+      </main>
+    `
+  }
+}
+
+/**
+ * view.js
+ */
+var html = require('choo/html')
+var wrapper = require('../components/wrapper')
+
+// wrap our view
+module.exports = wrapper(view)
+
+```
+
+</details>
+
 ## Plugins
 
+```
+/site
+  /plugins
+  - scroll.js
+```
+
+### Plugins extend Choo’s [state](#state) and events
+
+They hook onto [Choo’s `use()` method](https://github.com/choojs/choo#example), and can be called from within your `/site/index.js` file.
+
+### The example is to set scroll position on navigation
+
+We listen to Choo’s [`NAVIGATE` event](https://github.com/choojs/choo#pushstatestateeventspushstate), and scroll to the top of the page when it’s called.
+
+### Examples
+
+<details>
+<summary>Listening to an event</summary>
+
+```js
+module.exports = scroll
+
+function scroll (state, emitter) {
+  emitter.on(state.events.NAVIGATE, function () {
+    window.scrollTo(0, 0)
+  })
+}
+```
+
+</details>
+
+<details>
+<summary>Extending state</summary>
+
+```js
+module.exports = header
+
+function header (state, emitter) {
+  state.events.HEADER = 'header'
+  state.events.FOOTER = 'footer'
+
+  state.header = {
+    title: 'Hello!',
+    footer: 'Bye!'
+  }
+
+  emitter.on(state.events.HEADER, function (data) {
+    if (typeof data === 'string') {
+      state.header.title = data
+    }
+  })
+
+  emitter.on(state.events.FOOTER, function (data) {
+    if (typeof data === 'string') {
+      state.footer.title = data
+    }
+  })
+}
+```
+
+</details>
+
 ## Views
+
+```
+/site
+  /views
+  - about.js
+  - blog.js
+  - default.js
+  ...
+  - notfound.js
+  ...
+```
+
+### Views are bound to the router
+
+A view accepts Choo’s [`state`](https://github.com/choojs/choo#state) and [`emitter`](https://github.com/choojs/choo#events) as it’s only arguments. It then digests the state to be usable within [`components`](#components), or the view itself.
+
+### View filenames correspond with [pages](#pages) and [blueprints](#blueprints)
+
+For example, the view `/site/views/project.js` will be associated with `/content/projets/01-sculpture/project.txt`, and the `site/blueprints/project.yml` blueprint.
+
+### Examples
+
+<details>
+<summary>Default view (default.js)</summary>
+
+```js
+var html = require('choo/html')
+var wrapper = require('../components/wrapper')
+var format = require('../components/format')
+
+module.exports = wrapper(view)
+
+function view (state, emit) {
+  return html`
+    <div class="x xw xjc c12 p1">
+      <div class="p1 c8 sm-c12">
+        <div class="fs2 fwb">${state.page.title}</div>
+      </div>
+      <div class="c8 sm-c12 p1 copy">
+        ${format(state.page.text)} 
+      </div>
+    </div>
+  `
+}
+```
+
+</details>
+
+## Panel
+
+Coming soon, a panel fully generated from your [blueprints](#blueprints), just like Kirby. *More soon…*
 
 ## JSON and State
 
@@ -295,10 +495,55 @@ testing
 }
 ```
 
-## Markdown
+### At it’s core, Enoki transforms a directory into JSON
 
-- A note about being able to use whatever markdown library you’d like.
+You then use this JSON to populate the initial state of a javascript application. In this starter kit we are generating a static html website with that input, and bundling the javascript along side it to fully hydrate the site on load.
 
-## Panel
+### Enoki exposes a single object
 
-Coming soon, a panel fully generated from your [blueprints](#blueprints), just like Kirby.
+This object contains two sub-objects: `content` and `site`. These objects mirror the [directory structure](#directory-structure) above so you can generate your site.
+
+### Everything is an object, but use Array methods for looping
+
+Using array methods is a super easy way of looping over objects such as `children` and `files`. However, you first need to turn the objects into arrays using `Object.values()`, `Object.keys()`, or modules like [`object-values`](https://www.npmjs.com/package/object-values) and [`object-keys`](https://www.npmjs.com/package/object-keys), which are included in this starter kit.
+
+This way of thinking is aligned with [functional programming](http://cryto.net/~joepie91/blog/2015/05/04/functional-programming-in-javascript-map-filter-reduce/).
+
+### Content object
+
+The root of your `content` object is simply a [`page`](#page-object). 
+
+### Page object
+
+| Key | Description | Value |
+| - | - | - | 
+| children | the directory’s sub-directories | object | 
+| dirname | the name of the directory | string |
+| file | the filename of the page [`.txt`]((#https://github.com/jondashkyle/enoki-starterkit/tree/dev#the-contents-of-a-txt-file-are-fields)) | string |
+| files | files contained within the page | object |
+| path | the path of the directory relative to `/content` | string
+| view | the name of the [`view`](#views) | string |
+| url | the direct url to the page | string |
+
+- Each [field](#https://github.com/jondashkyle/enoki-starterkit/tree/dev#the-contents-of-a-txt-file-are-fields) of your page `.txt` file will be merged with page object.
+- Fields are defined with [blueprints](#blueprints)
+- In addition to this, these default fields are exposed.
+
+### File object
+
+| Key | Description | Value |
+| - | - | - | 
+| dirname | the parent directory name | string |
+| extension | the file extension | string |
+| filename | the filename | string |
+| name | the filename without extension | string |
+| path | the path relative to the `content` directory | string |
+| type | the [type](#file-types) of file | string |
+| url | the path relative to the `content` directory |
+
+- If you’ve created a meta `.txt` for a file, it’s fields will merged with the file object.
+
+### Site object
+
+This will be documented once the Panel has been published. *More soon…*
+
