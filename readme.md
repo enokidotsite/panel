@@ -198,7 +198,7 @@ This is where we setup our Choo application, and include any plugins and custom 
 ### Examples
 
 <details id="test">
-<summary>Mounting or exporting the app</summary>
+<summary>Mounting and exporting the app</summary>
 
 ```js
 // if we are in node
@@ -212,7 +212,6 @@ if (module.parent) {
 }
 ```
 
-what?
 </details>
 
 ## Assets
@@ -253,7 +252,20 @@ testing
 
 <details>
 <summary>Blueprint structure</summary>
-hi
+
+```
+title: Page
+
+fields:
+  title:
+    label: Title
+    type:  text
+
+  text:
+    label: Text
+    type:  textarea
+```
+
 </details>
 
 testing
