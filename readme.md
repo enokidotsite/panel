@@ -197,7 +197,7 @@ This is where we setup our Choo application, and include any plugins and custom 
 
 ### Examples
 
-<details>
+<details id="test">
 <summary>Mounting or exporting the app</summary>
 ```js
 // if we are in node
@@ -210,6 +210,8 @@ if (module.parent) {
   app.mount('main')
 }
 ```
+
+what?
 </details>
 
 ## Assets
