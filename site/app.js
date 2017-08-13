@@ -32,7 +32,7 @@ function setup (app) {
 
     // create route
     function route (page) {
-      var view = views[page.template] || views.default
+      var view = views[page.view] || views.default
       app.route(page.path, makePage(page, view))
 
       // if there are children, create them
