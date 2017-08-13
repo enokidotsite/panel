@@ -1,0 +1,17 @@
+# To use, duplicate and rename config.yml
+
+# site
+output: public/
+site: site/
+content: content/
+assets: assets/
+port: 8080
+live: true
+verbose: false
+
+# panel
+panel: panel/
+portpanel: 8081
+
+# api
+portapi: 8082

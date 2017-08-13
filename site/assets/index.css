@@ -1,0 +1,103 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { font-size: 16px }
+
+body, pre {
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  line-height: 1.5;
+  font-size: 1rem;
+  font-weight: 200;
+}
+
+a {
+  color: #000;
+  text-decoration: none;
+}
+
+a:not(.nbb) {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.25em;
+}
+
+.copy { display: block }
+.copy > * { margin-top: 1.5rem; margin-bottom: 1.5rem; }
+.copy > *:first-child { margin-top: 0 }
+.copy > *:last-child { margin-bottom: 0 }
+.copy img { max-width: 100% }
+
+.fwb { font-weight: 600 }
+
+.x { display: flex }
+.xw { flex-wrap: wrap }
+.xas { align-items: flex-start }
+.xje { justify-content: flex-end }
+.xjc { justify-content: center }
+.x1 { flex: 1 }
+.xx { flex: 1; width: 100% }
+.xjb { justify-content: space-between }
+.xjc { justify-content: center }
+.db { display: block }
+.psst { position: sticky; position: -webkit-sticky; }
+.t0 { top: 0 }
+
+.c4 { width: 33.3% }
+.c6 { width: 50% }
+.c8 { width: 66.6% }
+.c12 { width: 100% }
+
+.p0-5 { padding: 0.75rem }
+.p1 { padding: 1.5rem }
+.p2 { padding: 3rem }
+.px1 { padding-left: 1.5rem; padding-right: 1.5rem; }
+.pt1 { padding-top: 1.5rem }
+.m0 { margin: 0 }
+.my4 { margin: 3rem 0 }
+.mt4 { margin-top: 3rem }
+.mt8 { margin-top: 4rem }
+
+h1, .fs3 { font-size: 4rem }
+h2, .fs2 { font-size: 2rem }
+h3, .fs1-5 { font-size: 1.5rem; font-weight: 500 }
+.fs1 { font-size: 1rem }
+.lh1 { line-height: 1 }
+.lh1-25 { line-height: 1.25 }
+.tac { text-align: center }
+.ttu { text-transform: uppercase }
+
+.ffsans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif }
+.ffmono { font-family: "SFMono-Light", Consolas, "Liberation Mono", Menlo, Courier, monospace }
+
+.bt1 { border-top: 1px solid #ddd }
+
+a.button {
+  border-bottom: 0;
+  border-radius: 3px;
+  background: #000;
+  color: #fff;
+  display: inline-block;
+  padding: 0.75rem 4rem;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.tcgrey, .tcgrey a { color: #999 }
+
+@media (max-width: 900px) {
+  .sm-c12 { width: 100% }
+  .sm-mxp { max-width: 30em }
+  .sm-mt4 { margin-top: 3rem }
+
+  .p0-5 { padding: 0.25rem }
+  .p1 { padding: 0.5rem }
+  .p2 { padding: 1rem }
+  .pt1 { padding-top: 0.75rem }
+  .px1 { padding-left: 0.5rem; padding-right: 0.5rem; }
+  .m0 { margin: 0 }
+  .my4 { margin: 1.5rem 0 }
+  .mt4 { margin-top: 1.5rem }
+  .mt8 { margin-top: 2rem }
+}

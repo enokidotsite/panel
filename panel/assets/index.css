@@ -1,0 +1,170 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { font-size: 16px }
+
+body, pre, input, textarea {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  line-height: 1.5;
+  font-size: 1rem;
+  font-weight: 200;
+}
+
+a {
+  color: #000;
+  text-decoration: none;
+}
+
+a:not(.nbb) {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.2em;
+}
+
+ul li {
+  margin-left: 1.2rem;
+}
+
+.copy { display: block }
+.copy > * { margin-top: 1.5rem; margin-bottom: 1.5rem; }
+.copy > *:first-child { margin-top: 0 }
+.copy > *:last-child { margin-bottom: 0 }
+
+.fwb { font-weight: bold }
+
+.x { display: flex }
+.xw { flex-wrap: wrap }
+.xas { align-items: flex-start }
+.xje { justify-content: flex-end }
+.xjb { justify-content: space-between }
+.xjc { justify-content: center }
+.xac { align-items: center }
+.x1 { flex: 1 }
+.xx { flex: 1; width: 100% }
+
+.c4 { width: 33.3% }
+.c6 { width: 50% }
+.c8 { width: 66.6% }
+.c12 { width: 100% }
+
+.psst { position: sticky; position: -webkit-sticky; }
+.psf { position: fixed }
+.t0 { top: 0 }
+.l0 { left: 0 }
+.r0 { right: 0 }
+.b0 { bottom: 0 }
+.z2 { z-index: 2 }
+
+.p1 { padding: 0.75rem }
+.p2 { padding: 1.5rem }
+.px1 { padding-left: 0.75rem; padding-right: 0.75rem; }
+.m0 { margin: 0 }
+.mb1 { margin-bottom: 0.75rem }
+.mt2 { margin-top: 1.5rem }
+.my4 { margin: 3rem 0 }
+.mt4 { margin-top: 3rem }
+.mt8 { margin-top: 6rem }
+
+.usn { user-select: none }
+.curp { cursor: pointer }
+.curd { cursor: default }
+
+.fs1 { font-size: 2rem }
+.fs2 { font-size: 2rem }
+
+.ffsans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif }
+.ffmono { font-family: "SFMono-Light", Consolas, "Liberation Mono", Menlo, Courier, monospace }
+
+.bgwhite { background: #fff }
+.bggrey { background: #eee }
+.bgblack { background: #000 }
+
+.tcwhite { color: #fff }
+
+pre, input, textarea {
+  border: 1px solid #000;
+  padding: 0.5rem;
+  outline: 0;
+  border-radius: 3px;
+}
+
+textarea {
+  min-height: 10rem;
+}
+
+.br1 { border-radius: 3px }
+.pen { pointer-events: none }
+.op50 { opacity: 0.5 }
+.op25 { opacity: 0.25 }
+
+.breadcrumbs {
+  display: flex;
+}
+
+.breadcrumbs > a {
+  border-right: 1px solid rgba(127, 127, 127, 0.5);
+  display: block;
+}
+
+.breadcrumbs > a:first-child {
+  border-left: 1px solid rgba(127, 127, 127, 0.5);
+}
+
+
+
+/**
+ * Tag input
+ */
+.tags-input {
+    display: inline-block;
+    padding: 0.5rem;
+    background: #FFF;
+    border: 1px solid #000;
+    width: 100%;
+    border-radius: 3px;
+    cursor: text;
+}
+.tags-input .tag {
+    display: inline-block;
+    background: #eee;
+    color: #000;
+    padding: 0 4px;
+    margin: 2px;
+    border-radius: 2px;
+    font: inherit;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+}
+.tags-input .tag.selected {
+    background-color: #000;
+    border-color: #000;
+    color: #fff
+}
+.tags-input .tag.dupe {
+    -webkit-transform: scale3d(1.2, 1.2, 1.2);
+    transform: scale3d(1.2, 1.2, 1.2);
+    background-color: #FCC;
+    border-color: #700
+}
+.tags-input input {
+    -webkit-appearance: none!important;
+    -moz-appearance: none!important;
+    appearance: none!important;
+    display: inline-block!important;
+    padding: 3px;
+    margin: 0!important;
+    background: 0 0!important;
+    border: none!important;
+    box-shadow: none!important;
+    font: inherit!important;
+    font-size: 100%!important;
+    outline: 0!important
+}
+.tags-input .selected~input {
+    opacity: .3
+}

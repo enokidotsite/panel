@@ -1,0 +1,54 @@
+title: Page
+
+fields:
+  title:
+    label: Title
+    type:  text
+
+  text:
+    label: Text
+    type:  textarea
+
+  image:
+    label: Image
+    type:  text
+
+  caption:
+    label: Caption
+    type:  textarea
+
+  division:
+    label: Division
+    type: text
+    width: 1/2
+
+  class:
+    label: Class
+    type: text
+    width: 1/2
+    
+  order:
+    label: Order
+    type: text
+    width: 1/2
+    
+  family:
+    label: Family
+    type: text
+    width: 1/2
+    
+  genus:
+    label: Genus
+    type: text
+    width: 1/2
+    
+  species:
+    label: Species
+    type: text
+    width: 1/2
+    
+  kingdom:
+    label: Kingdom
+    type: text
+    width: 1/2
+    

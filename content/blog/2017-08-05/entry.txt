@@ -1,0 +1,17 @@
+title: Becoming user
+----
+date: 2017-08-05
+----
+excerpt: On the role of Media Theory at Universities of Applied Art, Technology and Art and Technology.
+----
+source: http://contemporary-home-computing.org/art-and-tech/not/
+----
+text:
+
+“Don’t fall for the word ‘technology’”, Ted Nelsons concludes in the last paragraph of Geeks bearing Gifts,[3] “It sounds determinate. It hides the fights and the alternatives. And mostly it is intended to make you submissive.” He appeals to not accept computer technology as WYSIHAM—his own acronym for What You See is Wonderfully, Happily, Absolutely Mandatory—but to see the tensions, the history and the alternatives. It is an important call, but only one third of the argument I have against the term technology.
+
+Submission is one issue, but sedation is even more important. “Technology” as a replacement for digital technology or computer technology, who are in turn already substitutes for “programmed system,” is a figure of speech known as synecdoche: in this particular case when the whole is referring for a part.
+
+It is a rhetorical trope that makes the computer dissolve in all other technologies, becoming an invisible part, just one of many technologies. It is in the interest of the industry, because it makes users unaware of the computer as a system that is programmed, that can be reprogrammed any moment, that could potentially be programmed or reprogrammed by their users.
+
+There are (re-)programmable technologies and many that are not programmable. But constant repetition of the word technology instead of computers sedates and makes forget that the system you hold in your hands is a programmable one.

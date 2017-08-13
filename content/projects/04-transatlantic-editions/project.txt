@@ -1,0 +1,10 @@
+title: Masterpieces of Photography
+----
+tags:
+  - book
+  - 1952
+  - photography
+  - ernst heiniger
+  - composition
+----
+text: New York City: Transatlantic Editions, 1952.
