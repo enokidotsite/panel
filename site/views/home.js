@@ -1,6 +1,5 @@
 var html = require('choo/html')
 var ov = require('object-values')
-
 var wrapper = require('../components/wrapper')
 var format = require('../components/format')
 var thumbnail = require('../components/thumbnail')
