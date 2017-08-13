@@ -2,25 +2,27 @@
 
 The [Enoki](https://github.com/jondashkyle/enoki) starter kit is an example of common patterns used within a site. It includes [content](#content) and a [design](#site). It’s sort of like [Kirby](http://getkirby.com), but built entirely in javascript and using [Choo](https://github.com/choojs/choo) as a little front-end framework. This is **pre-alpha**, so features are missing, and the bugs are rampant.
 
-## Features
+### Select features
 
-![](https://enoki.site/assets/starterkit-thumb.png)
-
-### Static files means no database
-
+<details>
+<summary>Static files means no database</summary>
 This also means no installation. Begin building your site by creating a simple directory structure. Each [page](#pages) is a folder. Place all the [assets](#files) for the pages in the related folders, and all of the text in a `.txt` file. You now are well on your way to having a 
+</details>
 
-### Javascript and JSON all the way through
-
+<details>
+<summary>Javascript and JSON all the way through</summary>
 [Choo](https://github.com/choojs/choo) is the default framework, which is appreciated both for it’s [simplicity](https://github.com/choojs/choo#example) and [philosophy](https://github.com/choojs/choo#philosophy). The API is lovely too. Browserify is used for it’s maturity and reliability to bundle things up. It’s worth considering what is [appropriate technology](https://en.wikipedia.org/wiki/Appropriate_technology) in relation to popular tooling and build processes.
+</details>
 
-### Modern features with none of the headache
-
+<details>
+<summary>Modern features with none of the headache</summary>
 Because we use javascript to create our static website, we can bundle that javascript and include it in our HTML output. This effectively gives you all of the benefits of server-side rendering (load-times, accessibility, deployable anywhere, etc) with none of the implementation nightmares. 
+</details>
 
-### Automatically generated admin Panel
-
+<details>
+<summary>Automatically generated admin Panel</summary>
 Great for client projects and creating your site without ever having to touch code. This is very far along, but not yet included in the starter kit. *More soon…*
+</details>
 
 ## Sections
 

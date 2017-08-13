@@ -1,7 +1,7 @@
 {
-  "name": "starter-kit",
+  "name": "enoki-starterkit",
   "version": "1.0.0",
-  "description": "",
+  "description": "A little javascript static site generator",
   "main": "site/index.js",
   "scripts": {
     "start": "enoki dev",
