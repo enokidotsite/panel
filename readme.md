@@ -110,11 +110,13 @@ The folder name is the route. For example, the `projects` folder will have a rou
 
 <details>
 <summary>Folder names and how they map to routes and JSON</summary>
+
 | Folder name | URL path | JSON key |
 |-------------|----------|----------|
 | / | / | content |
 | /about | /about | content.children.about |
 | /projects/01-sculpture | /projects/01-sculpture | content.children.projects.children[sculpture] |
+
 </details>
 
 
@@ -156,6 +158,7 @@ As a general rule of them, if you’d like for [file](#files) (image, mp3, etc) 
 
 <details>
 <summary>Contents of a .txt file, showing fields (keys and values)</summary>
+
 ```
 title: Enoki
 ----
@@ -166,6 +169,7 @@ tags:
 ----
 text: Enokitake, also Enokidake or Enoki, are cultivars of Flammulina velutipes, also known by the name golden needle mushroom or lily mushroom.
 ```
+
 </details>
 
 ## Site
