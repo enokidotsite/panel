@@ -2,6 +2,7 @@
 
 The Enoki starter kit is an example of common patterns used within a site. It includes [content](#content) and a [design](#site). This is **pre-alpha**, so features are missing, and the bugs are rampant.
 
+It’s sort of like [Kirby](http://getkirby.com), but built entirely in javascript and using [Choo](https://github.com/choojs/choo) as a little front-end framework.
 
 ## Features
 
@@ -18,6 +19,10 @@ This also means no installation. Begin building your site by creating a simple d
 ### Modern features with none of the headache
 
 Because we use javascript to create our static website, we can bundle that javascript and include it in our HTML output. This effectively gives you all of the benefits of server-side rendering (load-times, accessibility, deployable anywhere, etc) with none of the implementation nightmares. 
+
+### Automatically generated admin Panel
+
+Great for client projects and creating your site without ever having to touch code. This is very far along, but not yet included in the starter kit. *More soon…*
 
 ## Sections
 
@@ -148,7 +153,7 @@ A field contains a `key` (title) and a `value` (Enoki). Fields are separated by 
 
 ### Markdown and YAML are supported
 
-Markdown will remain unparsed until you [choose to do so](#markdown), while YAML will be converted into JSON.
+Markdown will remain unparsed until you [choose to do so](#markdown), while YAML will be converted into JSON. You can use the [`format.js`](#formatjs-handles-markdown-and-escaping-innerHTML) component within the starter kit for rendering.
 
 ### Assets for a page are contained alongside it’s `.txt` file
 
@@ -276,7 +281,7 @@ Blueprints define the [fields](#the-contents-of-a-txt-file-are-fields) of a view
 
 ### YAML Formatting
 
-
+*More soon…*
 
 ### Filename matches that of the [view](#views)
 
@@ -525,6 +530,8 @@ The root of your `content` object is simply a [`page`](#page-object).
 | view | the name of the [`view`](#views) | string |
 | url | the direct url to the page | string |
 
+#### Notes
+
 - Each [field](#https://github.com/jondashkyle/enoki-starterkit/tree/dev#the-contents-of-a-txt-file-are-fields) of your page `.txt` file will be merged with page object.
 - Fields are defined with [blueprints](#blueprints)
 - In addition to this, these default fields are exposed.
@@ -540,6 +547,8 @@ The root of your `content` object is simply a [`page`](#page-object).
 | path | the path relative to the `content` directory | string |
 | type | the [type](#file-types) of file | string |
 | url | the path relative to the `content` directory |
+
+#### Notes
 
 - If you’ve created a meta `.txt` for a file, it’s fields will merged with the file object.
 
