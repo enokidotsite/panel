@@ -1,11 +1,10 @@
 # Enoki Starter Kit
 
-The Enoki starter kit is an example of common patterns used within a site. It includes [content](#content) and a [design](#site). It’s sort of like [Kirby](http://getkirby.com), but built entirely in javascript and using [Choo](https://github.com/choojs/choo) as a little front-end framework. This is **pre-alpha**, so features are missing, and the bugs are rampant.
-
+The [Enoki](https://github.com/jondashkyle/enoki) starter kit is an example of common patterns used within a site. It includes [content](#content) and a [design](#site). It’s sort of like [Kirby](http://getkirby.com), but built entirely in javascript and using [Choo](https://github.com/choojs/choo) as a little front-end framework. This is **pre-alpha**, so features are missing, and the bugs are rampant.
 
 ## Features
 
-There are so many, and more to come, but here are the favorites right now:
+![](https://enoki.site/assets/starterkit-thumb.pntg)
 
 ### Static files means no database
 
@@ -579,3 +578,7 @@ Because it’s static HTML and javascript, you can upload this to any host, such
 Much more interesting and exciting than this though is publishing to the distributed web. It’s suggested to take a look at [Beaker Browser](http://beakerbrowser.com) and [Hashbase](http://hashbase.io)! *More soon…*
 
 ## Wrapping it up
+
+This is pre-alpha! When you come across a bug, or have feedback, please feel free to create an issue. It’d be great to start a conversation around what is needed, and what isn’t.
+
+For updates, visit [http://enoki.site](http://enoki.site)
