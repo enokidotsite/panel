@@ -10,7 +10,7 @@ There are so many, and more to come, but here are the favorites:
 
 Begin building your site by creating a simple directory structure. Each [page](#pages) is a folder. Place all the assets for the pages in the related folders, and all of the text in a `.txt` file. You now are well on your way to having a 
 
-### Javascript and JSON
+### Javascript and JSON all the way through
 
 [Choo](https://github.com/choojs/choo) is the default framework, which is appreciated both for it’s [simplicity](https://github.com/choojs/choo#example) and [philosophy](https://github.com/choojs/choo#philosophy). The API is lovely too. Browserify is used for it’s maturity and reliability to bundle things up. It’s worth considering what is [appropriate technology](https://en.wikipedia.org/wiki/Appropriate_technology) in relation to popular tooling and build processes.
 
