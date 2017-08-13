@@ -111,11 +111,12 @@ The folder name is the route. For example, the `projects` folder will have a rou
 <details>
 <summary>Folder names and how they map to routes and JSON</summary>
 
+
 | Folder name | URL path | JSON key |
 |-------------|----------|----------|
 | / | / | content |
 | /about | /about | content.children.about |
-| /projects/01-sculpture | /projects/01-sculpture | content.children.projects.children[sculpture] |
+| /projects/01-sculpture | /projects/01-sculpture | content.children.projects.children[01-sculpture] |
 
 </details>
 
@@ -255,7 +256,7 @@ If you place an `index.html` file within `/assets`, you can define the structure
 testing
 
 <details>
-<summary style="outline:0">Blueprint structure</summary>
+<summary>Blueprint structure</summary>
 
 ```
 title: Page
