@@ -2,7 +2,7 @@
 
 The [Enoki](https://github.com/jondashkyle/enoki) starter kit is an example of common patterns used within a site. It includes [content](#content) and a [design](#site). It’s sort of like [Kirby](http://getkirby.com), but built entirely in javascript and using [Choo](https://github.com/choojs/choo) as a little front-end framework.
 
-This is **pre-alpha**, so features are missing, and the bugs are rampant, but there are [some great things](#features) already in place.
+This is **pre-alpha**, so features are missing, and the bugs are rampant. This documentation is trying to accommodate those with an intermediate understanding of javascript and familiarity with similar projects, but there are [some great things](#features) already in place.
 
 ## Sections
 
