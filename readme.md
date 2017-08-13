@@ -252,18 +252,7 @@ testing
 
 <details>
 <summary>Blueprint structure</summary>
-```
-title: Page
-
-fields:
-  title:
-    label: Title
-    type:  text
-
-  text:
-    label: Text
-    type:  textarea
-```
+hi
 </details>
 
 testing
