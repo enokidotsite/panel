@@ -199,6 +199,7 @@ This is where we setup our Choo application, and include any plugins and custom 
 
 <details id="test">
 <summary>Mounting or exporting the app</summary>
+
 ```js
 // if we are in node
 if (module.parent) {
