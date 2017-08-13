@@ -4,7 +4,7 @@ The [Enoki](https://github.com/jondashkyle/enoki) starter kit is an example of c
 
 ## Features
 
-![](https://enoki.site/assets/starterkit-thumb.pntg)
+![](https://enoki.site/assets/starterkit-thumb.png)
 
 ### Static files means no database
 
