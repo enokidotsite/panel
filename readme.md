@@ -6,7 +6,7 @@ This (*pre-alpha*) starter-kit is an example of how you might structure an Enoki
 
 ## Example
 
-The starter-kit generates a static website. Take a [look at the output](https://enoki-starterkit-jkm.hashbase.io/).
+The starter-kit generates a [fully hydrated](#features) static website. Take a [look at the output](https://enoki-starterkit-jkm.hashbase.io/).
 
 ## Sections
 
