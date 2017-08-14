@@ -4,6 +4,10 @@
 
 This (*pre-alpha*) starter-kit is an example of how you might structure an Enoki site. It includes [content](#content) and a [design](#site). It's a bit like the [Kirby](https://github.com/getkirby/starterkit) starter-kit, but built entirely in javascript and uses [Choo](https://github.com/choojs/choo) for the front-end.
 
+## Example
+
+The starter-kit generates a static website. Take a [look at the output](https://enoki-starterkit-jkm.hashbase.io/).
+
 ## Sections
 
 - [Usage](#usage)
