@@ -15,7 +15,7 @@
   "license": "ISC",
   "dependencies": {
     "choo": "^6.0.0-4",
-    "enoki": "^1.0.0",
+    "enoki": "^1.0.1",
     "nano-markdown": "^1.2.0",
     "nanocomponent": "^6.0.0-1",
     "object-keys": "^1.0.11",
