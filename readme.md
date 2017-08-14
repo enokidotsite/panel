@@ -1,8 +1,8 @@
 # Enoki Starter Kit
 
-This starter-kit is an example of how you might structure an [Enoki](https://github.com/jondashkyle/enoki) site. It includes [content](#content) and a [design](#site). It's a bit like the [Kirby](https://github.com/getkirby/starterkit) starter-kit, but built entirely in javascript and uses [Choo](https://github.com/choojs/choo) for the front-end. 
+[Enoki](https://github.com/jondashkyle/enoki) is a tool for making full websites.
 
-This is **pre-alpha**, so features are missing, and bugs are around. This documentation is currently for those with an intermediate understanding of javascript, and familiarity with similar projects.
+This (*pre-alpha*) starter-kit is an example of how you might structure an Enoki site. It includes [content](#content) and a [design](#site). It's a bit like the [Kirby](https://github.com/getkirby/starterkit) starter-kit, but built entirely in javascript and uses [Choo](https://github.com/choojs/choo) for the front-end.
 
 ## Sections
 
