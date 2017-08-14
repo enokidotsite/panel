@@ -1,17 +1,16 @@
 # Enoki Starter Kit
 
-This starter-kit is an example of how you might structure an [Enoki](https://github.com/jondashkyle/enoki) site. It includes [content](#content) and a [design](#site). It's a bit like the [Kirby](https://github.com/getkirby/starterkit) starter-kit, but built entirely in javascript and uses [Choo](https://github.com/choojs/choo) for the front-end.
+This starter-kit is an example of how you might structure an [Enoki](https://github.com/jondashkyle/enoki) site. It includes [content](#content) and a [design](#site). It's a bit like the [Kirby](https://github.com/getkirby/starterkit) starter-kit, but built entirely in javascript and uses [Choo](https://github.com/choojs/choo) for the front-end. 
 
-This is **pre-alpha**, so features are missing, and bugs are rampant. This documentation is currently trying to accommodate those with an intermediate understanding of javascript and familiarity with similar projects, but there are [some great things](#features) already in place.
+This is **pre-alpha**, so features are missing, and bugs are around. This documentation is currently for those with an intermediate understanding of javascript, and familiarity with similar projects.
 
 ## Sections
 
 - [Usage](#usage)
 - [Structure](#structure)
 - [Content](#content)
-  - [Pages](#pages)
 - [Site](#site)
-  - [JSON and State](#json-and-state)
+- [Features](#features)
 
 ## Usage
 
@@ -153,8 +152,6 @@ As a general rule of them, if you’d like for [file](#files) (image, mp3, etc) 
 
 ## Site
 
-The site folder is really just an opinionated little [Choo](https://github.com/yoshuawuyts/choo) app!
-
 ```
 /site
   /assets
@@ -167,7 +164,7 @@ The site folder is really just an opinionated little [Choo](https://github.com/y
 
 ### **`app.js`** is the glue between Enoki and Choo
 
-Returns a function which sets up the routes for our site based on the structure of our content folder, and transforms the content folder into [JSON](#json-and-state) for use within our site!
+Returns a function which sets up the routes for our site based on the structure of our content folder, and transforms the content folder into [JSON](#json-and-state) for use within our site! You don’t need to touch this file—extending your site happens in `index.js`.
 
 ### **`index.js`** sets up the Choo app
 
@@ -175,7 +172,7 @@ You’ll see our app is wrapped in the function from `app.js`.
 
 ### **`/views`** contains the views of your site
 
-This folder must contain the views for your site. The names of the files correspond to the names of the `.txt` files in your content folder. 
+This folder must contain the views for your site. The names of the files correspond to the names of the `.txt` files in your content folder. A views is bound to directory the router, and accepts Choo’s [`state`](https://github.com/choojs/choo#state) and [`emitter`](https://github.com/choojs/choo#events) as it’s only arguments.
 
 ### **`/assets/index.html`** is your site wrapper template
 
