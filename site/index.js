@@ -1,4 +1,3 @@
-var html = require('choo/html')
 var choo = require('choo')
 var config = require('./app')
 
@@ -6,7 +5,6 @@ var config = require('./app')
 var app = config(choo())
 
 // create your app
-app.use(require('./plugins/counter'))
 app.use(require('./plugins/scroll'))
 
 // error route

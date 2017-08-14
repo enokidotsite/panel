@@ -1,6 +1,5 @@
-var html = require('bel')
+var html = require('choo/html')
 var path = require('path')
-var ov = require('object-values')
 var wrapper = require('../components/wrapper')
 var format = require('../components/format')
 
