@@ -1,8 +1,8 @@
 # Enoki Starter Kit
 
-The [Enoki](https://github.com/jondashkyle/enoki) starter kit is an example of common patterns used within a site. It includes [content](#content) and a [design](#site). It’s sort of like [Kirby](http://getkirby.com), but built entirely in javascript and using [Choo](https://github.com/choojs/choo) as a little front-end framework.
+This starter-kit is an example of how you might structure an [Enoki](https://github.com/jondashkyle/enoki) site. It includes [content](#content) and a [design](#site). It's a bit like the [Kirby](https://github.com/getkirby/starterkit) starter-kit, but built entirely in javascript and uses [Choo](https://github.com/choojs/choo) for the front-end.
 
-This is **pre-alpha**, so features are missing, and the bugs are rampant. This documentation is trying to accommodate those with an intermediate understanding of javascript and familiarity with similar projects, but there are [some great things](#features) already in place.
+This is **pre-alpha**, so features are missing, and bugs are rampant. This documentation is currently trying to accommodate those with an intermediate understanding of javascript and familiarity with similar projects, but there are [some great things](#features) already in place.
 
 ## Sections
 
@@ -10,13 +10,13 @@ This is **pre-alpha**, so features are missing, and the bugs are rampant. This d
 - [Structure](#structure)
 - [Content](#content)
   - [Pages](#pages)
-  - [Files](#files)
 - [Site](#site)
   - [Assets](#assets)
   - [Blueprints](#blueprints)
   - [Components](#components)
   - [Plugins](#plugins)
   - [Views](#views)
+  - [JSON and State](#json-and-state)
 
 ## Usage
 
@@ -48,13 +48,11 @@ npm run build  # build your static site
   - package.json
 ```
 
-Enoki expects your project to contain directories, [**content**](#content) and [**site**](#site).
+### [Content](#content) contains your site content
 
-### [Content](#content) sets your structure contains your static files
+This is where the text and files for your site live. This includes things like images and pdfs, but most importantly `.txt` files, which store your copy and data. The structure of your site is determined based on the structure of this folder.
 
-The structure of your site is determined based on the structure of folders, and the text files within them. Things like images and pdfs, but most importantly `.txt` files, which store your copy and data.
-
-### [Site](#site) contains your source files
+### [Site](#site) contains your site code
 
 This is where the code which creates your site lives. This is mostly javascript and css, and any global static assets like web fonts. The starter kit uses [Choo](https://github.com/choojs/choo)!
 
@@ -62,11 +60,11 @@ This is where the code which creates your site lives. This is mostly javascript 
 
 **`package.json`**
 
-Since this is built entirely in javascript, you can install any module you’d like off of [npm](http://npm.org). [NPM scripts](http://substack.net/task_automation_with_npm_run) are also a great sane alternative to complicated tooling like webpack. There are several scripts and modules used in the starter-kit, which we’ll get into below.
+Since this is built entirely in javascript, you can install any module you’d like off of [npm](http://npm.org). [NPM scripts](http://substack.net/task_automation_with_npm_run) are also a great sane alternative to complicated tooling like webpack. The starter-kit includes several scripts and modules already, which we’ll get into below.
 
 **`config.defaults.yml`**
 
-To setup a custom configuration, the `config.defaults.yml` file and rename it `config.yml`. You can change the options to customize your build. *More soon…*
+To setup a custom Enoki configuration, rename the `config.defaults.yml` file to `config.yml`. This is where you can change options to customize your build. *More soon…*
 
 
 ## Content
@@ -81,7 +79,7 @@ To setup a custom configuration, the `config.defaults.yml` file and rename it `c
 
 ### Each folder is a [page](#pages)
 
-Creating a page on your site requires creating a folder and placing a [`.txt`](#pages) file within it. To create a home [page](#pages), we simply place a `.txt` file in the root of our `/content`. 
+Create a page on your site by creating a folder and placing a [`.txt`](#pages) file within it. To create a home [page](#pages), we place a `.txt` file in the root of `/content`. 
 
 ### The folder name is the pathname
 
@@ -125,11 +123,11 @@ The folder name is the route. For example, the `projects` folder will have a rou
 
 ### Each page has a `.txt` file
 
-The name of the `.txt` file determines the [view](#views). In the root of `/content` we named it `home.txt` because we want this [page](#pages) to use the home view. If there isn’t a matching view, it will use the `default` view.
+The name of the `.txt` file determines which [view](#views) will be used to render the page. If there isn’t a matching view, it will use the `default` view.
 
 ### The contents of a `.txt` file are fields
 
-A field contains a `key` (title) and a `value` (Enoki). Fields are separated by four dashes `----`. Each `key` is available in your JSON. For instance, `about.title` or `blog.text`. You can add as many fields as you’d like at any time.
+A field contains a `key` (title) and a `value` (Enoki). Fields are separated by newlines and four dashes `----`. Each `key` is available in your JSON. For instance, `about.title` or `blog.text`. You can add as many fields as you’d like at any time.
 
 ### Markdown and YAML are supported
 
@@ -159,10 +157,11 @@ text: Enokitake, also Enokidake or Enoki, are cultivars of Flammulina velutipes,
 
 ## Site
 
+The site folder is actually just an opinionated [Choo]() app!
+
 ```
 /site
   /assets
-  /blueprints
   /components
   /plugins
   /views
@@ -171,7 +170,6 @@ text: Enokitake, also Enokidake or Enoki, are cultivars of Flammulina velutipes,
 ```
 
 - [**Assets**](#assets) are static files like CSS, and your site’s wrapper template
-- [**Blueprints**](#blueprints) define the taxonomy of your [views](#views)
 - [**Components**](#components) are re-usable snippets of code
 - [**Plugins**](#plugins) set your site’s [state](#state), and extend it’s functionality
 - [**Views**](#views) are linked to your [routes](#routes), and digest state for [components](#components)
@@ -223,59 +221,6 @@ If you place an `index.html` file within `/assets`, you can define the structure
 - Overrides default template
 - Great for defining custom `head` tags
 - Must include `<main></main>`
-
-## Blueprints
-
-▼ Blueprint formatting
-
-```
-title: Page
-
-fields:
-  title:
-    label: Title
-    type:  text
-
-  text:
-    label: Text
-    type:  textarea
-```
-
-<details>
-<summary>Directory contents</summary>
-
-```
-/site
-  /blueprints
-    - about.yml
-    - blog.yml
-    - default.yml 
-    ...
-```
-
-</details>
-
-### Blueprints correspond with [views](#views)
-
-Blueprints define the [fields](#the-contents-of-a-txt-file-are-fields) of a view. They are used to generate the interface for your [Panel](#panel). *More soon…*
-
-### YAML Formatting
-
-*More soon…*
-
-### Filename matches that of the [view](#views)
-
-The name of a blueprint corresponds with a view. For example, to create a blueprint for the `about` view (`site/views/about.js`), create a blueprint named `about.yml` inside `site/blueprints/`.
-
-### Available fields
-
-| name | description | value |
-| - | - | - |
-| tags | a dynamic tag field | array |
-| text | is a single line text input | string |
-| textarea | is a multi-line textarea | string |
-
-This list will expand in the future to be (mostly) in parity with [Kirby](https://getkirby.com/docs/panel/blueprints/form-fields).
 
 ## Components
 
@@ -466,10 +411,6 @@ function view (state, emit) {
 ```
 
 </details>
-
-## Panel
-
-Coming soon, a panel fully generated from your [blueprints](#blueprints), just like Kirby. *More soon…*
 
 ## JSON and State
 
