@@ -290,7 +290,7 @@ This also means no installation. Begin building your site by creating a simple d
 
 ### Modern features with none of the headache
 
-Because we use javascript to create our static website, we can bundle that javascript and include it in our HTML output. This effectively gives you all of the benefits of server-side rendering (load-times, accessibility, deployable anywhere, etc) with none of the implementation nightmares. 
+Because we use javascript to create our static website, we can bundle that javascript and include it in our HTML output. This effectively gives you all of the benefits of server-side rendering (load-times, accessibility, etc) with none of the implementation nightmares. 
 
 ### Automatically generated admin Panel
 
