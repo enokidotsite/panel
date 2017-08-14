@@ -104,7 +104,6 @@ The folder name is the route. For example, the `projects` folder will have a rou
 
 </details>
 
-
 ## Pages
 
 ```
@@ -135,10 +134,6 @@ A field contains a `key` (title) and a `value` (Enoki). Fields are separated by 
 
 Markdown will remain unparsed until you [choose to do so](#markdown), while YAML will be converted into JSON. You can use the [`format.js`](#formatjs-handles-markdown-and-escaping-innerHTML) component within the starter kit for rendering.
 
-### Assets for a page are contained alongside it’s `.txt` file
-
-As a general rule of them, if you’d like for [file](#files) (image, mp3, etc) to be associated with a [page](#pages), you should place that image within that page’s folder. This will make it accessible within `.files`.
-
 ### Examples
 
 <details>
@@ -156,6 +151,12 @@ text: Enokitake, also Enokidake or Enoki, are cultivars of Flammulina velutipes,
 ```
 
 </details>
+
+## Files
+
+### Assets for a page are contained alongside it’s `.txt` file
+
+As a general rule of them, if you’d like for [file](#files) (image, mp3, etc) to be associated with a [page](#pages), you should place that image within that page’s folder. This will make it accessible within `.files`.
 
 ## Site
 
