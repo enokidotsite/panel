@@ -1,8 +1,8 @@
 # Enoki Starter Kit
 
-The [Enoki](https://github.com/jondashkyle/enoki) starter kit is an example of common patterns used within a site. It includes [content](#content) and a [design](#site). It’s sort of like [Kirby](http://getkirby.com), but built entirely in javascript and using [Choo](https://github.com/choojs/choo) as a little front-end framework.
+This starter-kit is an example of how you might structure an [Enoki](https://github.com/jondashkyle/enoki) site. It includes [content](#content) and a [design](#site). It's a bit like the [Kirby](https://github.com/getkirby/starterkit) starter-kit, but built entirely in javascript and uses [Choo](https://github.com/choojs/choo) for the front-end.
 
-This is **pre-alpha**, so features are missing, and the bugs are rampant. This documentation is trying to accommodate those with an intermediate understanding of javascript and familiarity with similar projects, but there are [some great things](#features) already in place.
+This is **pre-alpha**, so features are missing, and bugs are rampant. This documentation is currently trying to accommodate those with an intermediate understanding of javascript and familiarity with similar projects, but there are [some great things](#features) already in place.
 
 ## Sections
 
@@ -10,13 +10,8 @@ This is **pre-alpha**, so features are missing, and the bugs are rampant. This d
 - [Structure](#structure)
 - [Content](#content)
   - [Pages](#pages)
-  - [Files](#files)
 - [Site](#site)
-  - [Assets](#assets)
-  - [Blueprints](#blueprints)
-  - [Components](#components)
-  - [Plugins](#plugins)
-  - [Views](#views)
+  - [JSON and State](#json-and-state)
 
 ## Usage
 
@@ -48,13 +43,11 @@ npm run build  # build your static site
   - package.json
 ```
 
-Enoki expects your project to contain directories, [**content**](#content) and [**site**](#site).
+### [Content](#content) contains your site content
 
-### [Content](#content) sets your structure contains your static files
+This is where the text and files for your site live. This includes things like images and pdfs, but most importantly `.txt` files, which store your copy and data. The structure of your site is determined based on the structure of this folder.
 
-The structure of your site is determined based on the structure of folders, and the text files within them. Things like images and pdfs, but most importantly `.txt` files, which store your copy and data.
-
-### [Site](#site) contains your source files
+### [Site](#site) contains your site code
 
 This is where the code which creates your site lives. This is mostly javascript and css, and any global static assets like web fonts. The starter kit uses [Choo](https://github.com/choojs/choo)!
 
@@ -62,11 +55,11 @@ This is where the code which creates your site lives. This is mostly javascript 
 
 **`package.json`**
 
-Since this is built entirely in javascript, you can install any module you’d like off of [npm](http://npm.org). [NPM scripts](http://substack.net/task_automation_with_npm_run) are also a great sane alternative to complicated tooling like webpack. There are several scripts and modules used in the starter-kit, which we’ll get into below.
+Since this is built entirely in javascript, you can install any module you’d like off of [npm](http://npm.org). [NPM scripts](http://substack.net/task_automation_with_npm_run) are also a great sane alternative to complicated tooling like webpack. The starter-kit includes several scripts and modules already, which we’ll get into below.
 
 **`config.defaults.yml`**
 
-To setup a custom configuration, the `config.defaults.yml` file and rename it `config.yml`. You can change the options to customize your build. *More soon…*
+To setup a custom Enoki configuration, rename the `config.defaults.yml` file to `config.yml`. This is where you can change options to customize your build. *More soon…*
 
 
 ## Content
@@ -81,7 +74,7 @@ To setup a custom configuration, the `config.defaults.yml` file and rename it `c
 
 ### Each folder is a [page](#pages)
 
-Creating a page on your site requires creating a folder and placing a [`.txt`](#pages) file within it. To create a home [page](#pages), we simply place a `.txt` file in the root of our `/content`. 
+Create a page on your site by creating a folder and placing a [`.txt`](#pages) file within it. To create a home [page](#pages), we place a `.txt` file in the root of `/content`. 
 
 ### The folder name is the pathname
 
@@ -124,11 +117,11 @@ The folder name is the route. For example, the `projects` folder will have a rou
 
 ### Each page has a `.txt` file
 
-The name of the `.txt` file determines the [view](#views). In the root of `/content` we named it `home.txt` because we want this [page](#pages) to use the home view. If there isn’t a matching view, it will use the `default` view.
+The name of the `.txt` file determines which [view](#views) will be used to render the page. If there isn’t a matching view, it will use the `default` view.
 
 ### The contents of a `.txt` file are fields
 
-A field contains a `key` (title) and a `value` (Enoki). Fields are separated by four dashes `----`. Each `key` is available in your JSON. For instance, `about.title` or `blog.text`. You can add as many fields as you’d like at any time.
+A field contains a `key` (title) and a `value` (Enoki). Fields are separated by newlines and four dashes `----`. Each `key` is available in your JSON. For instance, `about.title` or `blog.text`. You can add as many fields as you’d like at any time.
 
 ### Markdown and YAML are supported
 
@@ -160,10 +153,11 @@ As a general rule of them, if you’d like for [file](#files) (image, mp3, etc) 
 
 ## Site
 
+The site folder is really just an opinionated little [Choo](https://github.com/yoshuawuyts/choo) app!
+
 ```
 /site
   /assets
-  /blueprints
   /components
   /plugins
   /views
@@ -171,306 +165,29 @@ As a general rule of them, if you’d like for [file](#files) (image, mp3, etc) 
   - index.js
 ```
 
-- [**Assets**](#assets) are static files like CSS, and your site’s wrapper template
-- [**Blueprints**](#blueprints) define the taxonomy of your [views](#views)
-- [**Components**](#components) are re-usable snippets of code
-- [**Plugins**](#plugins) set your site’s [state](#state), and extend it’s functionality
-- [**Views**](#views) are linked to your [routes](#routes), and digest state for [components](#components)
+### **`app.js`** is the glue between Enoki and Choo
 
-### `app.js` connects your site with Enoki
+Returns a function which sets up the routes for our site based on the structure of our content folder, and transforms the content folder into [JSON](#json-and-state) for use within our site!
 
-You shouldn’t need to touch this, but feel free to extend and customize your installation here.
+### **`index.js`** sets up the Choo app
 
-### `index.js` is your primary entry point
+You’ll see our app is wrapped in the function from `app.js`.
 
-This is where we setup our Choo application, and include any plugins and custom routes. At the bottom of the file we either mount the app if in the browser (browserified), or export the app if being required within node (for static output).
+### **`/views`** contains the views of your site
 
-### Examples
+This folder must contain the views for your site. The names of the files correspond to the names of the `.txt` files in your content folder. 
 
-<details id="test">
-<summary>Mounting and exporting the app</summary>
+### **`/assets/index.html`** is your site wrapper template
 
-```js
-// if we are in node
-if (module.parent) {
-  // export the application to generate static output
-  module.exports = app
-// if in the browser
-} else {
-  // mount and initialize the application
-  app.mount('main')
-}
-```
+Feel free to modify this file, but don't forget the `<main></main>` tag. This is where we mount the Choo app, so forgetting to include that will result in a very blank website!
 
-</details>
+### The rest is just Choo!
 
-## Assets
+The remaining folders and files are our take on a good way to structure the rest of your site code:
 
-```
-/site
-  /assets
-    - index.css
-    - index.html
-```
-
-### Global static files
-
-These are static files like css, web fonts, and such that you will use across your site.
-
-### Custom `index.html` template
-
-If you place an `index.html` file within `/assets`, you can define the structure of the document your site mounts to. This lets you define custom `head` tags, like open-graph and viewport. Your site mounts to the `<main></main>` tag. Forgetting to include that will result in a very blank website!
-
-- Overrides default template
-- Great for defining custom `head` tags
-- Must include `<main></main>`
-
-## Blueprints
-
-▼ Blueprint formatting
-
-```
-title: Page
-
-fields:
-  title:
-    label: Title
-    type:  text
-
-  text:
-    label: Text
-    type:  textarea
-```
-
-<details>
-<summary>Directory contents</summary>
-
-```
-/site
-  /blueprints
-    - about.yml
-    - blog.yml
-    - default.yml 
-    ...
-```
-
-</details>
-
-### Blueprints correspond with [views](#views)
-
-Blueprints define the [fields](#the-contents-of-a-txt-file-are-fields) of a view. They are used to generate the interface for your [Panel](#panel). *More soon…*
-
-### YAML Formatting
-
-*More soon…*
-
-### Filename matches that of the [view](#views)
-
-The name of a blueprint corresponds with a view. For example, to create a blueprint for the `about` view (`site/views/about.js`), create a blueprint named `about.yml` inside `site/blueprints/`.
-
-### Available fields
-
-| name | description | value |
-| - | - | - |
-| tags | a dynamic tag field | array |
-| text | is a single line text input | string |
-| textarea | is a multi-line textarea | string |
-
-This list will expand in the future to be (mostly) in parity with [Kirby](https://getkirby.com/docs/panel/blueprints/form-fields).
-
-## Components
-
-```
-/site
-  /components
-  - format.js
-  - thumbnail.js
-  - wrapper.js
-```
-
-### Components are reusable snippets of code
-
-This is a convenience directory, as you can `require()` from any directory within your build.
-
-### `format.js` handles markdown and escaping `innerHTML`
-
-Format is used to parse [markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet). It uses [`nano-markdown`](https://github.com/Holixus/nano-markdown), but you can replace it with whatever markdown parser you prefer. It also lets you use escaped HTML within [bel](https://github.com/shama/bel) (Choo uses it to create DOM elements) on the server and in the browser.
-
-### `thumbnail.js` is an example of a re-usable component
-
-Instead of re-writing the same code in multiple views within your site, consider modularizing and passing options to a component. This is an example of a thumbnail component.
-
-### `wrapper.js` is an example of a global header/footer
-
-It can be annoying to require a global elements in each view. Instead, you can create a [composable function](http://blog.ricardofilipe.com/post/javascript-composition-for-dummies) which accepts a [`view`](#views), and wrap it around the `exports` of your view.
-
-### Examples
-
-<details>
-<summary>Usage from within a view</summary>
-
-```js
-var format = require('../components/format')
-var content = format('hello!')
-```
-
-</details>
-
-<details>
-<summary>Composable component (wrapper.js) within a view</summary>
-
-```js
-/**
- * wrapper.js
- */
-
-var html = require('choo/html')
-module.exports = wrapper
-
-// accept a view as the only arg
-function wrapper (view) {
-  // return our composition, accepting choo’s state and emit as args
-  return function (state, emit) {
-    // return our wrapper, calling the view and passing choo’s args
-    return html`
-      <main>
-        <header>Hello!</header>
-        ${view(state, emit)}
-        <footer>Bye!</footer>
-      </main>
-    `
-  }
-}
-
-/**
- * view.js
- */
-var html = require('choo/html')
-var wrapper = require('../components/wrapper')
-
-// wrap our view
-module.exports = wrapper(view)
-
-```
-
-</details>
-
-## Plugins
-
-```
-/site
-  /plugins
-  - scroll.js
-```
-
-### Plugins extend Choo’s [state](#state) and events
-
-They hook onto [Choo’s `use()` method](https://github.com/choojs/choo#example), and can be called from within your `/site/index.js` file.
-
-### The example is to set scroll position on navigation
-
-We listen to Choo’s [`NAVIGATE` event](https://github.com/choojs/choo#pushstatestateeventspushstate), and scroll to the top of the page when it’s called.
-
-### Examples
-
-<details>
-<summary>Listening to an event</summary>
-
-```js
-module.exports = scroll
-
-function scroll (state, emitter) {
-  emitter.on(state.events.NAVIGATE, function () {
-    window.scrollTo(0, 0)
-  })
-}
-```
-
-</details>
-
-<details>
-<summary>Extending state</summary>
-
-```js
-module.exports = header
-
-function header (state, emitter) {
-  state.events.HEADER = 'header'
-  state.events.FOOTER = 'footer'
-
-  state.header = {
-    title: 'Hello!',
-    footer: 'Bye!'
-  }
-
-  emitter.on(state.events.HEADER, function (data) {
-    if (typeof data === 'string') {
-      state.header.title = data
-    }
-  })
-
-  emitter.on(state.events.FOOTER, function (data) {
-    if (typeof data === 'string') {
-      state.footer.title = data
-    }
-  })
-}
-```
-
-</details>
-
-## Views
-
-```
-/site
-  /views
-  - about.js
-  - blog.js
-  - default.js
-  ...
-  - notfound.js
-  ...
-```
-
-### Views are bound to the router
-
-A view accepts Choo’s [`state`](https://github.com/choojs/choo#state) and [`emitter`](https://github.com/choojs/choo#events) as it’s only arguments. It then digests the state to be usable within [`components`](#components), or the view itself.
-
-### View filenames correspond with [pages](#pages) and [blueprints](#blueprints)
-
-For example, the view `/site/views/project.js` will be associated with `/content/projets/01-sculpture/project.txt`, and the `site/blueprints/project.yml` blueprint.
-
-### Examples
-
-<details>
-<summary>Default view (default.js)</summary>
-
-```js
-var html = require('choo/html')
-var wrapper = require('../components/wrapper')
-var format = require('../components/format')
-
-module.exports = wrapper(view)
-
-function view (state, emit) {
-  return html`
-    <div class="x xw xjc c12 p1">
-      <div class="p1 c8 sm-c12">
-        <div class="fs2 fwb">${state.page.title}</div>
-      </div>
-      <div class="c8 sm-c12 p1 copy">
-        ${format(state.page.text)} 
-      </div>
-    </div>
-  `
-}
-```
-
-</details>
-
-## Panel
-
-Coming soon, a panel fully generated from your [blueprints](#blueprints), just like Kirby. *More soon…*
+- **`/assets`** contains static files like CSS, and your site’s wrapper template
+- **`/components`** contains re-usable snippets of code. We've included a few for [site layout](), [markdown formatting](), and [image thumbnails]().
+- **`/plugins`** contains Choo plugins which modify your site's state and extends your site's functionality. We've included one which [resets scroll position]() when navigating to a new page.
 
 ## JSON and State
 
