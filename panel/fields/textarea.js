@@ -16,14 +16,13 @@ function wrapper (state, emit) {
 
 function Textarea () {
   if (!(this instanceof Textarea)) return new Textarea()
-  this.value = { }
   Nanocomponent.call(this)
 }
 
 Textarea.prototype = Object.create(Nanocomponent.prototype)
 
 Textarea.prototype.createElement = function (state, emit) {
-  this.value = state.value
+  this.value = state.value || ''
   this.key = state.key
 
   return html`
@@ -48,9 +47,8 @@ Textarea.prototype.update = function (state) {
   return false
 }
 
-Textarea.prototype.load = function (state) {
-  this.value = state.value || ''
-  this.element.querySelector('textarea').value = this.value
+Textarea.prototype.load = function (element) {
+  element.querySelector('textarea').value = this.value
 }
 
 function textarea (state, emit) {
