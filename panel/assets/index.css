@@ -90,6 +90,8 @@ pre, input, textarea {
   border-radius: 3px;
 }
 
+[tabindex] { outline: 0 }
+
 textarea {
   min-height: 10rem;
 }

@@ -6,10 +6,7 @@ var components = { }
 module.exports = wrapper
 
 function wrapper (state, emit) {
-  if (!components[state.id]) {
-    components[state.id] = Textarea()
-  }
-
+  if (!components[state.id]) components[state.id] = Textarea()
   return components[state.id].render(state, emit)
 }
 
@@ -22,8 +19,9 @@ Textarea.prototype = Object.create(Nanocomponent.prototype)
 
 Textarea.prototype.createElement = function (state, emit) {
   this.id = state.id
-  this.value = state.value || ''
   this.key = state.key
+  this.value = state.value || ''
+  this.valueStart = state.value || ''
   this.emit = emit
 
   return html`
@@ -46,21 +44,27 @@ Textarea.prototype.update = function (state) {
     this.value = state.value || ''
     this.element.querySelector('textarea').value = this.value
   }
+
+  // cancel
+  if (state.value === this.valueStart) {
+    this.simplemde.value(this.value)
+  }
+
   return false
 }
 
 Textarea.prototype.load = function (element) {
   var self = this
-  var simplemde = new SimpleMDE({
+  this.simplemde = new SimpleMDE({
     element: element.querySelector('textarea'),
     forceSync: true,
     spellChecker: false,
     status: false
   })
 
-  simplemde.value(this.value)
-  simplemde.codemirror.on('change', function() {
-    self.emit('input', simplemde.value())
+  this.simplemde.value(this.value)
+  this.simplemde.codemirror.on('change', function() {
+    self.emit('input', self.simplemde.value())
   })
 }
 
