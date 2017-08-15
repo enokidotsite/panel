@@ -40,7 +40,7 @@ function elChildren (state) {
     .map(function (child) {
       return html`
         <ul class="c12">
-          <li><a href="${child.path}">${child.title || child.dirname}</a></li>
+          <li><a href="${child.url}">${child.title || child.dirname}</a></li>
         </ul>
       `
     })

@@ -731,7 +731,7 @@ span.CodeMirror-selectedtext {
 }
 .editor-preview,
 .editor-preview-side {
-    padding: 0.5rem;
+    padding: 1rem;
     background: #fafafa;
     overflow: auto;
     display: none;

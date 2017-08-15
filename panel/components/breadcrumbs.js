@@ -8,7 +8,7 @@ function breadcrumbs (opts) {
     .split('/')
     .filter(str => str)
     .reduce(function (result, path) {
-      var href = result.map(crumb => crumb.path).join('/') + '/' + path
+      var href = result.map(crumb => crumb.path).join('/') + '/' + path + '/'
       result.push({
         path: path,
         el: html`<a href="${href}" class="db p1 tcwhite nbb">${path}</a>`
