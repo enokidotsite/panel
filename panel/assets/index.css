@@ -17,14 +17,9 @@ a {
   text-decoration: none;
 }
 
-a:not(.nbb) {
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 0.2em;
-}
 
-ul li {
-  margin-left: 1.2rem;
-}
+ul li { margin-left: 1.2rem }
+.lsn { list-style: none }
 
 .copy { display: block }
 .copy > * { margin-top: 1.5rem; margin-bottom: 1.5rem; }
@@ -46,6 +41,7 @@ ul li {
 .xac { align-items: center }
 .x1 { flex: 1 }
 .xx { flex: 1; width: 100% }
+.db { display: block }
 
 .c4 { width: 33.3% }
 .c6 { width: 50% }
@@ -63,6 +59,7 @@ ul li {
 
 .p1 { padding: 0.75rem }
 .p2 { padding: 1.5rem }
+.py0-5 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
 .px1 { padding-left: 0.75rem; padding-right: 0.75rem; }
 .m0 { margin: 0 }
 .mb1 { margin-bottom: 0.75rem }
@@ -86,6 +83,12 @@ ul li {
 .bgblack { background: #000 }
 
 .tcwhite { color: #fff }
+
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; 
+}
 
 input, textarea {
   padding: 0.5rem;
@@ -126,7 +129,8 @@ textarea {
   border-left: 1px solid rgba(127, 127, 127, 0.5);
 }
 
-
+.myc1 > * { border-top: 1px solid #ddd }
+.myc1 > *:last-child { border-bottom: 1px solid #ddd }
 
 /**
  * Tag input
