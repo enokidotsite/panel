@@ -6,11 +6,9 @@ var components = { }
 module.exports = wrapper
 
 function wrapper (state, emit) {
-  if (!components[state.key]) {
-    components[state.key] = Text()
-  }
-
-  return components[state.key].render(state, emit)
+  var id = state.id + ':' + state.key
+  if (!components[id]) components[id] = Text()
+  return components[id].render(state, emit)
 }
 
 function Text () {

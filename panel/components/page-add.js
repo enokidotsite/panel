@@ -49,7 +49,7 @@ PageAdd.prototype.createElement = function (state, emit) {
           Title
         </div>
         ${state.fields.text(
-          { key: 'title', value: self.value.title },
+          { id: 'pageAdd', key: 'title', value: self.value.title },
           handleTitle.bind(self)
         )}
       </div>
@@ -63,7 +63,7 @@ PageAdd.prototype.createElement = function (state, emit) {
           View
         </div>
         ${state.fields.dropdown(
-          { key: 'dropdown', value: self.value.views },
+          { id: 'pageAdd', key: 'dropdown', value: self.value.views },
           handleView.bind(self)
         )}
       </div>
@@ -77,7 +77,7 @@ PageAdd.prototype.createElement = function (state, emit) {
           Pathname
         </div>
         ${state.fields.text(
-          { key: 'uri', value: self.value.uri },
+          { id: 'pageAdd', key: 'uri', value: self.value.uri },
           handleUri.bind(self)
         )}
       </div>

@@ -7,11 +7,9 @@ var components = { }
 module.exports = wrapper
 
 function wrapper (state, emit) {
-  if (!components[state.key]) {
-    components[state.key] = Tags()
-  }
-
-  return components[state.key].render(state, emit)
+  var id = state.id + ':' + state.key
+  if (!components[id]) components[id] = Tags()
+  return components[id].render(state, emit)
 }
 
 function Tags () {
@@ -23,8 +21,9 @@ function Tags () {
 Tags.prototype = Object.create(Nanocomponent.prototype)
 
 Tags.prototype.createElement = function (state, emit) {
-  this.value = state.value
   this.key = state.key
+  this.value = state.value
+  this.valueStart = state.value
 
   return html`
     <div>
@@ -45,8 +44,15 @@ Tags.prototype.createElement = function (state, emit) {
 
 Tags.prototype.update = function (state) {
   if (state.value !== this.value) {
+    var el = this.element.querySelector('.tags-input')
     this.value = state.value
     this.element.querySelector('input').value = state.value
+
+    // reset
+    if (this.value === this.valueStart) {
+      this.element.removeChild(el)
+      tagsInput(this.element.querySelector('input'))
+    }
   }
   return false
 }

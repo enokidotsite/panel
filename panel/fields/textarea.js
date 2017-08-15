@@ -6,11 +6,12 @@ var components = { }
 module.exports = wrapper
 
 function wrapper (state, emit) {
-  if (!components[state.key]) {
-    components[state.key] = Textarea()
+  var id = state.id + ':' + state.key
+  if (!components[id]) {
+    components[id] = Textarea()
   }
 
-  return components[state.key].render(state, emit)
+  return components[id].render(state, emit)
 }
 
 function Textarea () {
@@ -41,10 +42,15 @@ Textarea.prototype.createElement = function (state, emit) {
 
 Textarea.prototype.update = function (state) {
   if (state.value !== this.value) {
-    this.value = state.value
-    this.element.querySelector('textarea').innerHTML = state.value
+    this.value = state.value || ''
+    this.element.querySelector('textarea').value = this.value
   }
   return false
+}
+
+Textarea.prototype.load = function (state) {
+  this.value = state.value || ''
+  this.element.querySelector('textarea').value = this.value
 }
 
 function textarea (state, emit) {

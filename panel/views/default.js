@@ -57,7 +57,7 @@ function view (state, emit) {
     if (search.file === 'new') return contentFileNew()
     if (search.file) return contentFile()
     if (search.files === 'all') return contentFilesAll()
-    if (search.page === 'new') return contentPageNew()
+    if (search.page === 'new') return [contentPageNew(), contentPage()]
     if (search.pages === 'all') return contentPagesAll()
 
     return contentPage()
@@ -65,7 +65,6 @@ function view (state, emit) {
 
   function getBlueprint () {
     return (
-      state.page &&
       state.site.blueprints[state.page.view] ||
       state.site.blueprints.default
     )
@@ -73,7 +72,7 @@ function view (state, emit) {
 
   function contentPagesAll () {
     return html`
-      <div class="p1 fwb">
+      <div id="content-pagesall" class="p1 fwb">
         All pages coming soon
       </div>
     `
@@ -144,7 +143,7 @@ function view (state, emit) {
 
   function contentPage () {
     return html`
-      <div class="x xw">
+      <div id="content-page" class="x xw">
         ${elFields()}
         ${actionbar()}
       </div>
@@ -184,6 +183,7 @@ function view (state, emit) {
     return ok(fields).map(function (key) {
       // merge page state and draft
       var active = xt({
+        id: state.page.path,
         key: key,
         value: (draft && draft[key] !== undefined)
           ? draft[key]
