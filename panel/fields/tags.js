@@ -3,13 +3,11 @@ var tagsInput = require('tags-input')
 var Nanocomponent = require('nanocomponent')
 
 var components = { }
-
 module.exports = wrapper
 
 function wrapper (state, emit) {
-  var id = state.id + ':' + state.key
-  if (!components[id]) components[id] = Tags()
-  return components[id].render(state, emit)
+  if (!components[state.id]) components[state.id] = Tags()
+  return components[state.id].render(state, emit)
 }
 
 function Tags () {
@@ -21,6 +19,7 @@ function Tags () {
 Tags.prototype = Object.create(Nanocomponent.prototype)
 
 Tags.prototype.createElement = function (state, emit) {
+  this.id = state.id
   this.key = state.key
   this.value = state.value
   this.valueStart = state.value
@@ -62,5 +61,5 @@ Tags.prototype.load = function (state) {
 }
 
 Tags.prototype.unload = function (state) {
-  delete components[this.key]
+  delete components[this.id]
 }

@@ -183,7 +183,7 @@ function view (state, emit) {
     return ok(fields).map(function (key) {
       // merge page state and draft
       var active = xt({
-        id: state.page.path,
+        id: state.page.path + ':' + key,
         key: key,
         value: (draft && draft[key] !== undefined)
           ? draft[key]

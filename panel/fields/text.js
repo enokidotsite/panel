@@ -2,13 +2,11 @@ var html = require('choo/html')
 var Nanocomponent = require('nanocomponent')
 
 var components = { }
-
 module.exports = wrapper
 
 function wrapper (state, emit) {
-  var id = state.id + ':' + state.key
-  if (!components[id]) components[id] = Text()
-  return components[id].render(state, emit)
+  if (!components[state.id]) components[state.id] = Text()
+  return components[state.id].render(state, emit)
 }
 
 function Text () {
@@ -20,6 +18,7 @@ function Text () {
 Text.prototype = Object.create(Nanocomponent.prototype)
 
 Text.prototype.createElement = function (state, emit) {
+  this.id = state.id
   this.value = state.value
   this.key = state.key
 
@@ -58,7 +57,7 @@ Text.prototype.load = function (state) {
 }
 
 Text.prototype.unload = function (state) {
-  
+  delete components[this.id]
 }
 
 function text (state, emit) {

@@ -7,11 +7,11 @@ var components = { }
 module.exports = wrapper
 
 function wrapper (state, emit) {
-  if (!components[state.key]) {
-    components[state.key] = Tags()
+  if (!components[state.id]) {
+    components[state.id] = Tags()
   }
 
-  return components[state.key].render(state, emit)
+  return components[state.id].render(state, emit)
 }
 
 function Tags () {

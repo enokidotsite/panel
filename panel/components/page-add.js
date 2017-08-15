@@ -1,8 +1,8 @@
 var html = require('choo/html')
 var Nanocomponent = require('nanocomponent')
 var mf = require('../methods/files')
-var components = { }
 
+var components = { }
 module.exports = wrapper
 
 function wrapper (state, emit) {
@@ -20,6 +20,7 @@ function wrapper (state, emit) {
 function PageAdd () {
   if (!(this instanceof PageAdd)) return new PageAdd()
   Nanocomponent.call(this)
+  this.id = 'pageAdd'
   this.key = undefined
   this.value = { }
   this.customUri = false

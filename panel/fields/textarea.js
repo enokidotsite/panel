@@ -2,16 +2,14 @@ var html = require('choo/html')
 var Nanocomponent = require('nanocomponent')
 
 var components = { }
-
 module.exports = wrapper
 
 function wrapper (state, emit) {
-  var id = state.id + ':' + state.key
-  if (!components[id]) {
-    components[id] = Textarea()
+  if (!components[state.id]) {
+    components[state.id] = Textarea()
   }
 
-  return components[id].render(state, emit)
+  return components[state.id].render(state, emit)
 }
 
 function Textarea () {
@@ -22,6 +20,7 @@ function Textarea () {
 Textarea.prototype = Object.create(Nanocomponent.prototype)
 
 Textarea.prototype.createElement = function (state, emit) {
+  this.id = state.id
   this.value = state.value || ''
   this.key = state.key
 
@@ -49,6 +48,10 @@ Textarea.prototype.update = function (state) {
 
 Textarea.prototype.load = function (element) {
   element.querySelector('textarea').value = this.value
+}
+
+Textarea.prototype.unload = function () {
+  delete components[this.id]
 }
 
 function textarea (state, emit) {
