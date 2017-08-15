@@ -8,6 +8,7 @@ var PageAdd = require('../components/page-add')
 var Breadcrumbs = require('../components/breadcrumbs')
 var Modal = require('../components/modal')
 var Sidebar = require('../components/sidebar')
+var Fields = require('../components/fields')
 
 var methodsPath = require('../methods/path')
 var methodsSite = require('../methods/site')
@@ -24,7 +25,7 @@ function view (state, emit) {
   return html`
     <main>
       <div class="c12">
-        <div class="x px1 bgblack tcwhite">
+        <div class="x usn px1 bgblack tcwhite">
           <div class="c4 p1">
             <a href="/" class="nbb tcwhite">Site</a>
             ${state.panel.loading ? 'Saving…' : ''}
@@ -147,9 +148,9 @@ function view (state, emit) {
           handleFieldUpdate: handleFieldUpdate
         })}
         ${ActionBar({
-          handleSave: handleSave,
-          handleCancel: handleCancel,
-          handleRemove: handleRemove
+          handleSave: handleSavePage,
+          handleCancel: handleCancelPage,
+          handleRemove: handleRemovePage
         })}
       </div>
     `
@@ -162,7 +163,7 @@ function view (state, emit) {
     })
   }
 
-  function handleSave () {
+  function handleSavePage () {
     emit(state.events.PANEL_SAVE, {
       file: state.page.file,
       path: state.page.path,
@@ -173,84 +174,22 @@ function view (state, emit) {
     })
   }
 
-  function handleCancel () {
+  function handleCancelPage () {
     emit(state.events.PANEL_CANCEL, {
       path: state.page.path
     })
   }
 
-  function handleRemove () {
+  function handleRemovePage () {
     emit(state.events.PANEL_PAGE_REMOVE, {
       path: state.page.path
     })
   }
-
 }
 
-/**
- * Field
- */
-function Field (props, emit) {
-  props = props || { }
-  props.field = props.field || { }
-  props.fields = props.fields || { }
-
-  var input = (typeof props.fields[props.field.type] === 'function')
-    ? props.fields[props.field.type]
-    : props.fields.text
-
-  var width = props.field.width === '1/2' ? 'c6' : 'c12'
-
-  return html`
-    <div class="${width} p1">
-      <div class="c12 fwb usn mb1">
-        ${props.field.label || props.field.key}
-      </div>
-      <div class="c12">
-        ${input(props.field, emit)}
-      </div>
-    </div>
-  `
-}
 
 function getSearch () {
   return (typeof window !== 'undefined' && window.location.search)
     ? methodsPath.queryStringToJSON(window.location.search)
     : false
-}
-
-/**
- * Fields
- */
-function Fields (props) {
-  props = props || { }
-  props.blueprint = props.blueprint || { }
-  props.draft = props.draft || { }
-  props.values = props.values || { }
-  props.fields = props.fields || { }
-
-  props.handleFieldUpdate = (props.handleFieldUpdate === undefined)
-    ? function () { }
-    : props.handleFieldUpdate
-
-  return ok(props.blueprint.fields).map(function (key) {
-    return Field({
-      fields: props.fields,
-      field: mergeDraftandState()
-    }, handleFieldUpdate)
-
-    function mergeDraftandState () {
-      return xtend({
-        id: props.values.path + ':' + key,
-        key: key,
-        value: (props.draft && props.draft[key] !== undefined)
-          ? props.draft[key]
-          : props.values[key]
-      }, props.blueprint.fields[key])
-    }
-
-    function handleFieldUpdate (event, data) {
-      props.handleFieldUpdate(key, data)
-    }
-  })
 }
