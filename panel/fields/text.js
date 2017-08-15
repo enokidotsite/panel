@@ -26,7 +26,7 @@ Text.prototype.createElement = function (state, emit) {
     <div>
       <input
         name="${state.key}"
-        class="c12"
+        class="input"
         type="text"
         value="${state.value || ''}"
         oninput=${emit ? onInput : ''}
