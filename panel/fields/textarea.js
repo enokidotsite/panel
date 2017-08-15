@@ -1,4 +1,5 @@
 var html = require('choo/html')
+var SimpleMDE = require('simplemde')
 var Nanocomponent = require('nanocomponent')
 
 var components = { }
@@ -23,6 +24,7 @@ Textarea.prototype.createElement = function (state, emit) {
   this.id = state.id
   this.value = state.value || ''
   this.key = state.key
+  this.emit = emit
 
   return html`
     <div>
@@ -30,6 +32,7 @@ Textarea.prototype.createElement = function (state, emit) {
         class="c12"
         oninput=${emit ? onInput : ''}
       ></textarea>
+      <div id="${this.key}"></div>
     </div>
   `
 
@@ -47,7 +50,18 @@ Textarea.prototype.update = function (state) {
 }
 
 Textarea.prototype.load = function (element) {
-  element.querySelector('textarea').value = this.value
+  var self = this
+  var simplemde = new SimpleMDE({
+    element: element.querySelector('textarea'),
+    forceSync: true,
+    spellChecker: false,
+    status: false
+  })
+
+  simplemde.value(this.value)
+  simplemde.codemirror.on('change', function() {
+    self.emit('input', simplemde.value())
+  })
 }
 
 Textarea.prototype.unload = function () {
