@@ -11,7 +11,7 @@ function sidebar (state, emit) {
     <div class="t0 psst p1">
       <div class="x xjb c12 mb1">
         <div class="fwb">
-          <a href="?pages=all">Pages</a>
+          <a href="?pages=all">Children</a>
         </div>
         <div>
           <a href="?page=new">Add</a>

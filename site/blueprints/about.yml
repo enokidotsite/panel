@@ -1,5 +1,15 @@
 title: Page
 
+files:
+  fields:
+    title: 
+      title: Title
+      type: text
+
+    text:
+      capiton: Text
+      type: textarea
+
 fields:
   title:
     label: Title

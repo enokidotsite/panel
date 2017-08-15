@@ -1,65 +1,56 @@
-var html = require('bel')
+var html = require('choo/html')
 var ok = require('object-keys')
-var ov = require('object-values')
-var xt = require('xtend')
-var xtm = require('xtend/mutable')
-var fs = require('fs')
+var xtend = require('xtend')
 var path = require('path')
 
-var mp = require('../methods/path')
-var files = require('../methods/files')
-var fieldsDefault = require('../fields')
-
-var breadcrumbs = require('../components/breadcrumbs')
-var modal = require('../components/modal')
-var sidebar = require('../components/sidebar')
-
+var ActionBar = require('../components/actionbar')
 var PageAdd = require('../components/page-add')
+var Breadcrumbs = require('../components/breadcrumbs')
+var Modal = require('../components/modal')
+var Sidebar = require('../components/sidebar')
+
+var methodsPath = require('../methods/path')
+var methodsSite = require('../methods/site')
+var files = require('../methods/files')
 
 module.exports = view
 
 function view (state, emit) {
-  var fieldsCustom = getFields()
-  var fieldsInputs = xt(fieldsDefault, fieldsCustom)
-
+  var fields = methodsSite.getFields()
   var blueprint = getBlueprint()
-  var fields = blueprint.fields
   var search = getSearch()
-  var draft = state.panel.changes[state.page.path]
+  var draftPage = state.panel.changes[state.page.path]
 
   return html`
     <main>
       <div class="c12">
-        <div class="x bgblack tcwhite">
+        <div class="x px1 bgblack tcwhite">
           <div class="c4 p1">
-            <div class="px1">
-              <a href="/" class="nbb tcwhite">Site</a>
-              ${state.panel.loading ? 'Saving…' : ''}
-            </div>
+            <a href="/" class="nbb tcwhite">Site</a>
+            ${state.panel.loading ? 'Saving…' : ''}
           </div>
-          <div class="c8 px1 breadcrumbs">
-            ${breadcrumbs({ path: state.page.path })}
+          <div class="c8 breadcrumbs">
+            ${Breadcrumbs({ path: state.page.path })}
           </div>
         </div>
       </div>
       <div class="x xw p1">
         <div class="c4">
-          ${sidebar({ page: state.page })}
+          ${Sidebar({ page: state.page })}
         </div>
         <div class="c8">
-          ${elContent()} 
+          ${Content()} 
         </div>
       </div>
     </main>
   `
 
-  function elContent () {
+  function Content () {
     if (search.file === 'new') return contentFileNew()
     if (search.file) return contentFile()
     if (search.files === 'all') return contentFilesAll()
     if (search.page === 'new') return [contentPageNew(), contentPage()]
     if (search.pages === 'all') return contentPagesAll()
-
     return contentPage()
   }
 
@@ -82,7 +73,7 @@ function view (state, emit) {
     var content = PageAdd({
       key: 'add',
       views: state.site.views,
-      fields: fieldsInputs
+      fields: fields
     },
     function (name, data) {
       switch (name) {
@@ -98,7 +89,7 @@ function view (state, emit) {
       }
     })
 
-    return modal(state, emit, content)
+    return Modal(state, emit, content)
   }
 
   function contentFileNew () {
@@ -129,10 +120,14 @@ function view (state, emit) {
         <div class="p1">
           ${activeFile.type === 'image' ? image() : ''}
         </div>
-        <div class="p1">
-          <pre>${JSON.stringify(activeFile, { } , 2)}</pre>
+        <div>
+          ${Fields({
+
+          })}
         </div>
-        ${actionbar()}
+        ${ActionBar({
+
+        })}
       </div>
     `
 
@@ -144,65 +139,26 @@ function view (state, emit) {
   function contentPage () {
     return html`
       <div id="content-page" class="x xw">
-        ${elFields()}
-        ${actionbar()}
+        ${Fields({
+          blueprint: blueprint,
+          draft: draftPage,
+          fields: fields,
+          values: state.page,
+          handleFieldUpdate: handleFieldUpdate
+        })}
+        ${ActionBar({
+          handleSave: handleSave,
+          handleCancel: handleCancel,
+          handleRemove: handleRemove
+        })}
       </div>
     `
   }
 
-  function actionbar () {
-    var disabledClass = (draft === undefined) ? 'pen op25' : ''
-    return html`
-      <div class="x xjb c12 lh1 usn">
-        <div class="x ${disabledClass}">
-          <div class="p1">
-            <div
-              class="bgblack tcwhite p1 curp fwb br1"
-              onclick=${handleSave}
-            >Save</div>
-          </div>
-          <div class="p1">
-            <div
-              class="bgblack tcwhite p1 curp br1"
-              onclick=${handleCancel}
-            >Cancel</div>
-          </div>
-        </div>
-        <div class="p1">
-          <div
-            class="bgblack tcwhite p1 curp br1"
-            onclick=${handleRemove}
-          >Remove</div>
-        </div>
-      </div>
-    `
-  }
-
-  // this could be cleaned up greatly.
-  function elFields () {
-    return ok(fields).map(function (key) {
-      // merge page state and draft
-      var active = xt({
-        id: state.page.path + ':' + key,
-        key: key,
-        value: (draft && draft[key] !== undefined)
-          ? draft[key]
-          : state.page[key]
-      }, fields[key])
-
-      // create the element
-      return field({
-        fields: fieldsInputs,
-        field: active
-      }, onFieldUpdate)
-
-      // handle updates
-      function onFieldUpdate (event, data) {
-        emit(state.events.PANEL_UPDATE, {
-          path: state.page.path,
-          data: { [key]: data }
-        })
-      }
+  function handleFieldUpdate (event, data) {
+    emit(state.events.PANEL_UPDATE, {
+      path: state.page.path,
+      data: { [event]: data }
     })
   }
 
@@ -210,8 +166,8 @@ function view (state, emit) {
     emit(state.events.PANEL_SAVE, {
       file: state.page.file,
       path: state.page.path,
-      page: ok(fields).reduce(function (result, field) {
-          result[field] = draft[field] === undefined ? state.page[field] : draft[field]
+      page: ok(blueprint.fields).reduce(function (result, field) {
+          result[field] = draftPage[field] === undefined ? state.page[field] : draftPage[field]
           return result
         }, { })
     })
@@ -229,48 +185,29 @@ function view (state, emit) {
     })
   }
 
-  // hacky way to get custom fields depending upon environment
-  function getFields () {
-    return module.parent
-      ? getNode()
-      : getBrowserify()
-
-    function getNode () {
-      var pathFields = path.join(__dirname, '../../site/fields')
-      return fs.readdirSync(pathFields).reduce(function (result, file) {
-        file = path.basename(file, path.extname(file))
-        result[file] = require(path.join(pathFields, file))
-        return result
-      }, { })
-    }
-
-    function getBrowserify () {
-      var fieldsSrc = require('../../site/fields/*.js', { mode: 'hash' })
-      return Object.keys(fieldsSrc).reduce(function (result, value) {
-        result[path.basename(value)] = fieldsSrc[value]
-        return result
-      }, { })
-    }
-  }
 }
 
-function field (state, emit) {
-  var fields = state.fields
-  var field = state.field
+/**
+ * Field
+ */
+function Field (props, emit) {
+  props = props || { }
+  props.field = props.field || { }
+  props.fields = props.fields || { }
 
-  var input = (typeof fields[field.type] === 'function')
-    ? fields[field.type]
-    : fields.text
+  var input = (typeof props.fields[props.field.type] === 'function')
+    ? props.fields[props.field.type]
+    : props.fields.text
 
-  var width = state.field.width === '1/2' ? 'c6' : 'c12'
+  var width = props.field.width === '1/2' ? 'c6' : 'c12'
 
   return html`
     <div class="${width} p1">
       <div class="c12 fwb usn mb1">
-        ${field.label || field.key}
+        ${props.field.label || props.field.key}
       </div>
       <div class="c12">
-        ${input(field, emit)}
+        ${input(props.field, emit)}
       </div>
     </div>
   `
@@ -278,6 +215,42 @@ function field (state, emit) {
 
 function getSearch () {
   return (typeof window !== 'undefined' && window.location.search)
-    ? mp.queryStringToJSON(window.location.search)
+    ? methodsPath.queryStringToJSON(window.location.search)
     : false
+}
+
+/**
+ * Fields
+ */
+function Fields (props) {
+  props = props || { }
+  props.blueprint = props.blueprint || { }
+  props.draft = props.draft || { }
+  props.values = props.values || { }
+  props.fields = props.fields || { }
+
+  props.handleFieldUpdate = (props.handleFieldUpdate === undefined)
+    ? function () { }
+    : props.handleFieldUpdate
+
+  return ok(props.blueprint.fields).map(function (key) {
+    return Field({
+      fields: props.fields,
+      field: mergeDraftandState()
+    }, handleFieldUpdate)
+
+    function mergeDraftandState () {
+      return xtend({
+        id: props.values.path + ':' + key,
+        key: key,
+        value: (props.draft && props.draft[key] !== undefined)
+          ? props.draft[key]
+          : props.values[key]
+      }, props.blueprint.fields[key])
+    }
+
+    function handleFieldUpdate (event, data) {
+      props.handleFieldUpdate(key, data)
+    }
+  })
 }

@@ -2,9 +2,11 @@ var html = require('choo/html')
 
 module.exports = breadcrumbs
 
-function breadcrumbs (opts) {
-  opts = opts || { }
-  return opts.path
+function breadcrumbs (props) {
+  props = props || { }
+  props.path = props.path === undefined ? '' : props.path
+  
+  return props.path
     .split('/')
     .filter(str => str)
     .reduce(function (result, path) {
