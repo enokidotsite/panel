@@ -1,12 +1,11 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+html { box-sizing: border-box }
+*, *:before, *:after { box-sizing: inherit }
+html, body, h1, h2, h3, h4, h5, h6, p, ol, ul, li, dl,
+dt, dd, blockquote, address { margin: 0; padding: 0 }
 
 html { font-size: 16px }
 
-body, pre, input, textarea {
+body, input, textarea {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   line-height: 1.5;
   font-size: 1rem;
@@ -31,6 +30,10 @@ ul li {
 .copy > * { margin-top: 1.5rem; margin-bottom: 1.5rem; }
 .copy > *:first-child { margin-top: 0 }
 .copy > *:last-child { margin-bottom: 0 }
+
+.editor-preview > * { margin-top: 1.5rem; margin-bottom: 1.5rem; }
+.editor-preview > *:first-child { margin-top: 0 }
+.editor-preview > *:last-child { margin-bottom: 0 }
 
 .fwb { font-weight: bold }
 
@@ -83,10 +86,15 @@ ul li {
 
 .tcwhite { color: #fff }
 
-pre, input, textarea {
+input, textarea {
   border: 1px solid #000;
   padding: 0.5rem;
   outline: 0;
+  border-radius: 3px;
+}
+
+.input {
+  border: 1px solid #000;
   border-radius: 3px;
 }
 
@@ -177,14 +185,17 @@ textarea {
  * @link https://github.com/NextStepWebs/simplemde-markdown-editor
  * @license MIT
  */
+.rich-editor {
+  position: relative;
+}
 .CodeMirror {
     color: #000
 }
 .CodeMirror-lines {
-    padding: 4px 0
+
 }
 .CodeMirror pre {
-    padding: 0 4px
+    padding: 0
 }
 .CodeMirror-gutter-filler,
 .CodeMirror-scrollbar-filler {
@@ -351,7 +362,6 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
 .CodeMirror {
     position: relative;
     overflow: hidden;
-    background: #fff
 }
 .CodeMirror-scroll {
     overflow: scroll!important;
@@ -541,10 +551,7 @@ span.CodeMirror-selectedtext {
 .CodeMirror {
     height: auto;
     min-height: 100px;
-    border: 1px solid #000;
-    border-bottom-left-radius: 3px;
-    border-bottom-right-radius: 3px;
-    padding: 10px;
+    padding: 1rem;
     font: inherit;
     z-index: 1
 }
@@ -565,16 +572,19 @@ span.CodeMirror-selectedtext {
     width: 50%!important
 }
 .editor-toolbar {
-    position: relative;
+    background: #fff;
+    border-bottom: 1px solid #000;
+    margin-bottom: -1px;
+    top: 0;
+    z-index: 2;
+    position: sticky;
+    position: -webkit-sticky;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     -o-user-select: none;
     user-select: none;
     padding: 0 10px;
-    border-top: 1px solid #000;
-    border-left: 1px solid #000;
-    border-right: 1px solid #000;
     border-top-left-radius: 3px;
     border-top-right-radius: 3px
 }
@@ -717,7 +727,7 @@ span.CodeMirror-selectedtext {
 }
 .editor-preview,
 .editor-preview-side {
-    padding: 10px;
+    padding: 0.5rem;
     background: #fafafa;
     overflow: auto;
     display: none;

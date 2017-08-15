@@ -25,12 +25,11 @@ Textarea.prototype.createElement = function (state, emit) {
   this.emit = emit
 
   return html`
-    <div>
+    <div class="input rich-editor">
       <textarea
         class="c12"
         oninput=${emit ? onInput : ''}
       ></textarea>
-      <div id="${this.key}"></div>
     </div>
   `
 
