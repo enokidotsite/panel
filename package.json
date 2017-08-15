@@ -15,9 +15,8 @@
   "author": "Jon-Kyle <contact@jon-kyle.com> (http://jon-kyle.com)",
   "license": "ISC",
   "dependencies": {
-    "bel": "^5.0.2",
     "brfs": "^1.4.3",
-    "choo": "^6.0.0-4",
+    "choo": "^6.0.0",
     "nano-markdown": "^1.2.0",
     "nanocomponent": "^6.0.0-1",
     "object-keys": "^1.0.11",

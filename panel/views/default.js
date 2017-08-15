@@ -25,8 +25,6 @@ function view (state, emit) {
   var blueprint = getBlueprint()
   var fields = blueprint.fields
   var search = getSearch()
-  var pathBread = getPathBread()
-
   var draft = state.panel.changes[state.page.path]
 
   return html`
@@ -40,7 +38,7 @@ function view (state, emit) {
             </div>
           </div>
           <div class="c8 px1 breadcrumbs">
-            ${breadcrumbs(pathBread)}
+            ${breadcrumbs({ path: state.page.path })}
           </div>
         </div>
       </div>
@@ -59,19 +57,15 @@ function view (state, emit) {
     if (search.file === 'new') return contentFileNew()
     if (search.file) return contentFile()
     if (search.files === 'all') return contentFilesAll()
-    if (search.page === 'new') return [contentPageNew(), contentPage()]
+    if (search.page === 'new') return contentPageNew()
     if (search.pages === 'all') return contentPagesAll()
 
     return contentPage()
   }
 
-  function getPathBread () {
-    // maybe add filename here
-    return state.page.path
-  }
-
   function getBlueprint () {
     return (
+      state.page &&
       state.site.blueprints[state.page.view] ||
       state.site.blueprints.default
     )
@@ -88,7 +82,7 @@ function view (state, emit) {
   function contentPageNew () {
     var content = PageAdd({
       key: 'add',
-      views: { },
+      views: state.site.views,
       fields: fieldsInputs
     },
     function (name, data) {
@@ -163,14 +157,23 @@ function view (state, emit) {
       <div class="x xjb c12 lh1 usn">
         <div class="x ${disabledClass}">
           <div class="p1">
-            <div class="bgblack tcwhite p1 curp fwb br1" onclick=${handleSave}>Save</div>
+            <div
+              class="bgblack tcwhite p1 curp fwb br1"
+              onclick=${handleSave}
+            >Save</div>
           </div>
           <div class="p1">
-            <div class="bgblack tcwhite p1 curp br1" onclick=${handleCancel}>Cancel</div>
+            <div
+              class="bgblack tcwhite p1 curp br1"
+              onclick=${handleCancel}
+            >Cancel</div>
           </div>
         </div>
         <div class="p1">
-          <div class="bgblack tcwhite p1 curp br1" onclick=${handleRemove}>Remove</div>
+          <div
+            class="bgblack tcwhite p1 curp br1"
+            onclick=${handleRemove}
+          >Remove</div>
         </div>
       </div>
     `
@@ -178,27 +181,29 @@ function view (state, emit) {
 
   // this could be cleaned up greatly.
   function elFields () {
-    return ok(fields)
-      .map(function (key) {
-        var active = xt({
-          key: key,
-          value: (draft && draft[key] !== undefined) ? draft[key] : state.page[key]
-        }, fields[key])
+    return ok(fields).map(function (key) {
+      // merge page state and draft
+      var active = xt({
+        key: key,
+        value: (draft && draft[key] !== undefined)
+          ? draft[key]
+          : state.page[key]
+      }, fields[key])
 
-        return field({
-          fields: fieldsInputs,
-          field: active
-        }, onFieldUpdate)
+      // create the element
+      return field({
+        fields: fieldsInputs,
+        field: active
+      }, onFieldUpdate)
 
-        function onFieldUpdate (event, data) {
-          emit(state.events.PANEL_UPDATE, {
-            path: state.page.path,
-            data: {
-              [key]: data
-            }
-          })
-        }
-      })
+      // handle updates
+      function onFieldUpdate (event, data) {
+        emit(state.events.PANEL_UPDATE, {
+          path: state.page.path,
+          data: { [key]: data }
+        })
+      }
+    })
   }
 
   function handleSave () {

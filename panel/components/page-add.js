@@ -10,7 +10,10 @@ function wrapper (state, emit) {
     return 'Please provide fields'
   }
 
-  if (!components[state.key]) components[state.key] = PageAdd()
+  if (!components[state.key]) {
+    components[state.key] = PageAdd()
+  }
+
   return components[state.key].render(state, emit)
 }
 
@@ -59,9 +62,9 @@ PageAdd.prototype.createElement = function (state, emit) {
         <div class="c12 fwb usn mb1">
           View
         </div>
-        ${state.fields.text(
-          { key: 'uri', value: self.value.uri },
-          handleUri.bind(self)
+        ${state.fields.dropdown(
+          { key: 'dropdown', value: self.value.views },
+          handleView.bind(self)
         )}
       </div>
     `
@@ -109,6 +112,10 @@ PageAdd.prototype.createElement = function (state, emit) {
       this.value.uri = data
       this.customUri = true
     }
+  }
+
+  function handleView (name, data) {
+    this.value.view = data
   }
 
   function handleSave () {
