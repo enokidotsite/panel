@@ -211,7 +211,7 @@ function view (state, emit) {
       file: state.page.file,
       path: state.page.path,
       page: ok(fields).reduce(function (result, field) {
-          result[field] = draft[field] || state.page[field]
+          result[field] = draft[field] === undefined ? state.page[field] : draft[field]
           return result
         }, { })
     })

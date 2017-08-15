@@ -17,7 +17,9 @@ function sidebar (state, emit) {
           <a href="?page=new">Add</a>
         </div>
       </div>
-      ${elChildren(state.page)}
+      <ul class="c12 myc1 lsn">
+        ${elChildren(state.page)}
+      </ul>
       <div style="height: 2rem"></div>
       <div class="x xjb mb1">
         <div class="fwb">
@@ -27,23 +29,23 @@ function sidebar (state, emit) {
           <a href="?file=new">Add</a>
         </div>
       </div>
-      ${elFiles(state.page)}
+      <ul class="c12 myc1 lsn">
+        ${elFiles(state.page)}
+      </div>
     </div>
   `
 }
 
 function elChildren (state) {
-  var children = (typeof state.children === 'object')
-    ? state.children : { }
+  var children = (typeof state.children === 'object') ? state.children : { }
 
-  return ov(children)
-    .map(function (child) {
-      return html`
-        <ul class="c12">
-          <li><a href="${child.url}">${child.title || child.dirname}</a></li>
-        </ul>
-      `
-    })
+  return ov(children).map(function (child) {
+    return html`
+      <li id="${child.url}" class="m0">
+        <a href="${child.url}" class="db py0-5 truncate">${child.title || child.dirname}</a>
+      </li>
+    `
+  })
 }
 
 function elFiles (state) {
@@ -53,9 +55,9 @@ function elFiles (state) {
   return ov(files).map(function (child) {
     var path = '?file=' + mf.encodeFilename(child.filename)
     return html`
-      <url class="c12">
-        <li><a href="${path}">${child.filename}</a></li>
-      </url>
+      <li id="${child.url}" class="m0">
+        <a href="${path}" class="db py0-5">${child.filename}</a>
+      </li>
     `
   })
 }

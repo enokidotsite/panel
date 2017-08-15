@@ -48,7 +48,6 @@ function panel (state, emitter) {
       emitter.emit(state.events.PANEL_LOADING, { loading: false })
       emitter.emit(state.events.RENDER)
     })    
-
   }
 
   function onCancel (data) {
