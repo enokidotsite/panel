@@ -20,14 +20,29 @@ a {
 ul li { margin-left: 1.2rem }
 .lsn { list-style: none }
 
-.copy { display: block }
-.copy > * { margin-top: 1.5rem; margin-bottom: 1.5rem; }
-.copy > *:first-child { margin-top: 0 }
-.copy > *:last-child { margin-bottom: 0 }
+.copy > *,
+.editor-preview-side > *,
+.editor-preview > * {
+  margin-top: 1.5rem; margin-bottom: 1.5rem;
+}
 
-.editor-preview-side > *, .editor-preview > * { margin-top: 1.5rem; margin-bottom: 1.5rem; }
-.editor-preview-side > *:first-child, .editor-preview > *:first-child { margin-top: 0 }
-.editor-preview-side > *:last-child, .editor-preview > *:last-child { margin-bottom: 0 }
+.copy > *:first-child,
+.editor-preview-side > *:first-child,
+.editor-preview > *:first-child {
+  margin-top: 0
+}
+
+.copy > *:last-child,
+.editor-preview-side > *:last-child,
+.editor-preview > *:last-child {
+  margin-bottom: 0
+}
+
+.copy img,
+.editor-preview-side img,
+.editor-preview img {
+  max-width: 100%;
+}
 
 .fwb { font-weight: 700 }
 
@@ -79,6 +94,7 @@ ul li { margin-left: 1.2rem }
 
 .bgwhite { background: #fff }
 .bggrey { background: #eee }
+.bggreydark { background: #999 }
 .bgblack { background: #000 }
 
 .tcwhite { color: #fff }

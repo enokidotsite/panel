@@ -32,7 +32,7 @@ function ActionBar (props) {
     return html`
       <div class="p1" id="cancel">
         <div
-          class="bgblack tcwhite p1 curp br1"
+          class="bggreydark tcwhite p1 curp br1"
           onclick=${props.handleCancel}
         >Cancel</div>
       </div>
@@ -43,7 +43,7 @@ function ActionBar (props) {
     return html`
       <div class="p1" id="remove">
         <div
-          class="bgblack tcwhite p1 curp br1"
+          class="bggreydark tcwhite p1 curp br1"
           onclick=${props.handleRemove}
         >Remove</div>
       </div>
