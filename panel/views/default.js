@@ -72,7 +72,7 @@ function view (state, emit) {
 
   function getBlueprint () {
     return (
-      state.site.blueprints[state.page.template] ||
+      state.site.blueprints[state.page.view] ||
       state.site.blueprints.default
     )
   }

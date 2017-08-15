@@ -1,4 +1,4 @@
-var html = require('bel')
+var html = require('choo/html')
 var tagsInput = require('tags-input')
 var Nanocomponent = require('nanocomponent')
 

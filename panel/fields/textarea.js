@@ -1,4 +1,4 @@
-var html = require('bel')
+var html = require('choo/html')
 
 module.exports = textarea
 

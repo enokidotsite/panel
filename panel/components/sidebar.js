@@ -1,6 +1,6 @@
 var ok = require('object-keys')
 var ov = require('object-values')
-var html = require('bel')
+var html = require('choo/html')
 
 var mf = require('../methods/files')
 

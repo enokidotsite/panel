@@ -1,8 +1,8 @@
 var html = require('choo/html')
 
-module.exports = text
+module.exports = dropdown
 
-function text (state, emit) {
+function dropdown (state, emit) {
   return html`
     <input
       name="${state.key}"

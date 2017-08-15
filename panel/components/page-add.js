@@ -34,6 +34,7 @@ PageAdd.prototype.createElement = function (state, emit) {
     <div class="bgwhite p1 br1">
       ${elTitle()}
       ${elUri()}
+      ${elView()}
       ${elActions()}
     </div>
   `
@@ -47,6 +48,20 @@ PageAdd.prototype.createElement = function (state, emit) {
         ${state.fields.text(
           { key: 'title', value: self.value.title },
           handleTitle.bind(self)
+        )}
+      </div>
+    `
+  }
+
+  function elView () {
+    return html`
+      <div class="p1">
+        <div class="c12 fwb usn mb1">
+          View
+        </div>
+        ${state.fields.text(
+          { key: 'uri', value: self.value.uri },
+          handleUri.bind(self)
         )}
       </div>
     `
