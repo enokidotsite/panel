@@ -632,7 +632,7 @@ span.CodeMirror-selectedtext {
     right: 0;
     bottom: 0;
     height: auto;
-    z-index: 9
+    z-index: 99;
 }
 .CodeMirror-sided {
     width: 50%!important
@@ -803,6 +803,9 @@ span.CodeMirror-selectedtext {
     top: 0;
     left: 0;
     z-index: 7
+}
+.CodeMirror-fullscreen  .editor-preview-side {
+  display: block
 }
 .editor-preview-side {
     position: fixed;

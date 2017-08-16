@@ -5,6 +5,20 @@ var Nanocomponent = require('nanocomponent')
 var components = { }
 module.exports = wrapper
 
+var toolbarDefaults = {
+  condensed: [
+    'bold', 'italic', 'heading', '|',
+    'quote', 'unordered-list','|',
+    'link', 'image'
+  ],
+  full: [
+    'bold', 'italic', 'heading', '|',
+    'quote', 'unordered-list', 'ordered-list', '|',
+    'link', 'image', '|',
+    'preview'
+  ]
+}
+
 function wrapper (state, emit) {
   if (!components[state.id]) components[state.id] = Textarea()
   return components[state.id].render(state, emit)
@@ -22,6 +36,7 @@ Textarea.prototype.createElement = function (state, emit) {
   this.key = state.key
   this.value = state.value || ''
   this.valueStart = state.value || ''
+  this.toolbar = getToolbar(state.toolbar)
   this.emit = emit
 
   return html`
@@ -58,11 +73,12 @@ Textarea.prototype.load = function (element) {
     element: element.querySelector('textarea'),
     forceSync: true,
     spellChecker: false,
-    status: false
+    status: false,
+    toolbar: self.toolbar
   })
 
   this.simplemde.value(this.value)
-  this.simplemde.codemirror.on('change', function() {
+  this.simplemde.codemirror.on('change', function () {
     self.emit('input', self.simplemde.value())
   })
 }
@@ -71,19 +87,18 @@ Textarea.prototype.unload = function () {
   delete components[this.id]
 }
 
-function textarea (state, emit) {
-  var el = html`
-    <textarea
-      class="c12"
-      oninput=${emit ? onInput : ''}
-    ></textarea>
-  `
+function getToolbar (option) {
+  var preset = toolbarDefaults[option]
 
-  el.innerHTML = state.value || ''
+  if (option === false) return false
+  if (preset) return preset
 
-  return el
-
-  function onInput (event) {
-    emit('update', event.target.value)
+  if (typeof option === 'object') {
+    return option.map(function (opt) {
+      if (opt === '') return '|'
+      return opt
+    })
   }
+
+  return toolbarDefaults.full
 }

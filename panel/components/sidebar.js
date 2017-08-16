@@ -12,9 +12,11 @@ function sidebar (props) {
   props.filesActive = (props.filesActive === undefined) ? false : props.filesActive
 
   return html`
-    <div id="sidebar" class="c12 t0 psst p1">
-      ${props.pagesActive ? elChildren() : ''}
-      ${props.filesActive ? elFiles() : ''}
+    <div id="sidebar" class="c12">
+      <div class="psst p1" style="top: 0.75rem">
+        ${props.pagesActive ? elChildren() : ''}
+        ${props.filesActive ? elFiles() : ''}
+      </div>
     </div>
   `
 

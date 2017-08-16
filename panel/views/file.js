@@ -1,5 +1,6 @@
 var html = require('choo/html')
 var path = require('path')
+var objectKeys = require('object-keys')
 var queryString = require('query-string')
 
 var methodsFile = require('../methods/file')
@@ -74,7 +75,6 @@ function File (state, emit) {
   }
 
   function handleFieldUpdate (event, data) {
-    // console.log(event, data)
     emit(state.events.PANEL_UPDATE, {
       path: file.path,
       data: { [event]: data }
@@ -82,15 +82,14 @@ function File (state, emit) {
   }
 
   function handleSave () {
-    console.log('save')
-    // emit(state.events.PANEL_SAVE, {
-    //   file: state.page.file,
-    //   path: state.page.path,
-    //   page: ok(blueprint.fields).reduce(function (result, field) {
-    //       result[field] = draftPage[field] === undefined ? state.page[field] : draftPage[field]
-    //       return result
-    //     }, { })
-    // })
+    emit(state.events.PANEL_SAVE, {
+      file: file.filename + '.txt',
+      path: state.page.path,
+      page: objectKeys(blueprint.fields).reduce(function (result, field) {
+          result[field] = draftFile[field] === undefined ? file[field] : draftFile[field]
+          return result
+        }, { })
+    })
   }
 
   function handleCancel () {

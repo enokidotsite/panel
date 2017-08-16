@@ -25,13 +25,13 @@ function Fields (props) {
     }, handleFieldUpdate)
 
     function mergeDraftandState () {
-      return xtend({
+      return xtend(props.blueprint.fields[key], {
         id: props.values.path + ':' + key,
         key: key,
         value: (props.draft && props.draft[key] !== undefined)
           ? props.draft[key]
           : props.values[key]
-      }, props.blueprint.fields[key])
+      })
     }
 
     function handleFieldUpdate (event, data) {
