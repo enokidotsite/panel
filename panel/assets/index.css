@@ -804,9 +804,6 @@ span.CodeMirror-selectedtext {
     left: 0;
     z-index: 7
 }
-.CodeMirror-fullscreen  .editor-preview-side {
-  display: block
-}
 .editor-preview-side {
     position: fixed;
     bottom: 0;

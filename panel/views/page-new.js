@@ -2,15 +2,17 @@ var html = require('choo/html')
 var path = require('path')
 
 var Modal = require('../components/modal')
-var PageAdd = require('../components/page-add')
+var PageNew = require('../containers/page-new')
 var methodsSite = require('../methods/site')
 
-module.exports = PageNew 
+var pageNew = PageNew()
 
-function PageNew (state, emit) {
+module.exports = PageNewView 
+
+function PageNewView (state, emit) {
   var fields = methodsSite.getFields()
 
-  var content = PageAdd({
+  var content = pageNew.render({
     key: 'add',
     views: state.site.views,
     fields: fields

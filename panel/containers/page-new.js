@@ -2,23 +2,10 @@ var html = require('choo/html')
 var Nanocomponent = require('nanocomponent')
 var methodsFile = require('../methods/file')
 
-var components = { }
-module.exports = wrapper
+module.exports = PageNew
 
-function wrapper (state, emit) {
-  if (!state || !state.fields) {
-    return 'Please provide fields'
-  }
-
-  if (!components[state.key]) {
-    components[state.key] = PageAdd()
-  }
-
-  return components[state.key].render(state, emit)
-}
-
-function PageAdd () {
-  if (!(this instanceof PageAdd)) return new PageAdd()
+function PageNew () {
+  if (!(this instanceof PageNew)) return new PageNew()
   Nanocomponent.call(this)
   this.id = 'pageAdd'
   this.key = undefined
@@ -26,9 +13,9 @@ function PageAdd () {
   this.customUri = false
 }
 
-PageAdd.prototype = Object.create(Nanocomponent.prototype)
+PageNew.prototype = Object.create(Nanocomponent.prototype)
 
-PageAdd.prototype.createElement = function (state, emit) {
+PageNew.prototype.createElement = function (state, emit) {
   var self = this
   this.key = state.key
   this.fields = state.fields || { }
@@ -128,10 +115,6 @@ PageAdd.prototype.createElement = function (state, emit) {
   }
 }
 
-PageAdd.prototype.update = function (state) {
+PageNew.prototype.update = function (state) {
   return false
-}
-
-PageAdd.prototype.unload = function (state) {
-  delete components[this.key]
 }
