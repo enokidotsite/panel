@@ -1,13 +1,15 @@
 title: Page
 
+pages: false
+
 files:
   fields:
     title: 
-      title: Title
+      label: Title
       type: text
 
     text:
-      capiton: Text
+      label: Text
       type: textarea
 
 fields:

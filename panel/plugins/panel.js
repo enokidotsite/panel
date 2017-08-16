@@ -1,6 +1,5 @@
 var xhr = require('xhr')
-var ok = require('object-keys')
-var xt = require('xtend')
+var xtend = require('xtend')
 var path = require('path')
 
 module.exports = panel
@@ -15,13 +14,13 @@ function panel (state, emitter) {
   emitter.on(state.events.PANEL_SAVE, onSave)
   emitter.on(state.events.PANEL_CANCEL, onCancel)
   emitter.on(state.events.PANEL_LOADING, onLoading)
+  emitter.on(state.events.PANEL_REMOVE, onRemove)
   emitter.on(state.events.PANEL_PAGE_ADD, onPageAdd)
-  emitter.on(state.events.PANEL_PAGE_REMOVE, onPageRemove)
 
   function onUpdate (data) {
     if (!data || !data.path) return
 
-    state.panel.changes[data.path] = xt(
+    state.panel.changes[data.path] = xtend(
       state.panel.changes[data.path],
       data.data
     )
@@ -41,7 +40,7 @@ function panel (state, emitter) {
 
     xhr.put({
       uri: 'http://localhost:8082/update',
-      body: xt(data),
+      body: xtend(data),
       json: true
     }, function (err, resp, body) {
       if (err) alert(err.message)
@@ -87,7 +86,7 @@ function panel (state, emitter) {
     })  
   }
 
-  function onPageRemove (data) {
+  function onRemove (data) {
     if (!data.path) {
       return alert('Missing data')
     }

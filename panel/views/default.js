@@ -3,141 +3,78 @@ var ok = require('object-keys')
 var xtend = require('xtend')
 var path = require('path')
 
+// Components
 var ActionBar = require('../components/actionbar')
-var PageAdd = require('../components/page-add')
 var Breadcrumbs = require('../components/breadcrumbs')
-var Modal = require('../components/modal')
-var Sidebar = require('../components/sidebar')
 var Fields = require('../components/fields')
+var Sidebar = require('../components/sidebar')
 
+// Views
+var File = require('../views/file')
+var FilesAll = require('../views/files-all')
+var FileNew = require('../views/file-new')
+var PagesAll = require('../views/pages-all')
+var PageNew = require('../views/page-new')
+
+// Methods
 var methodsPath = require('../methods/path')
 var methodsSite = require('../methods/site')
-var files = require('../methods/files')
+var methodsFile = require('../methods/file')
 
-module.exports = view
+module.exports = View
 
-function view (state, emit) {
+function View (state, emit) {
   var fields = methodsSite.getFields()
   var blueprint = getBlueprint()
-  var search = getSearch()
+  var search = methodsPath.getSearch()
   var draftPage = state.panel.changes[state.page.path]
 
+  // Page structure
   return html`
     <main>
       <div class="c12">
-        <div class="x usn px1 bgblack tcwhite">
-          <div class="c4 p1">
-            <a href="/" class="nbb tcwhite">Site</a>
-            ${state.panel.loading ? 'Saving…' : ''}
-          </div>
-          <div class="c8 breadcrumbs">
-            ${Breadcrumbs({ path: state.page.path })}
-          </div>
-        </div>
+        ${Header()}
       </div>
       <div class="x xw p1">
         <div class="c4">
-          ${Sidebar({ page: state.page })}
+          ${Sidebar({
+            page: state.page,
+            pagesActive: !(blueprint.pages === false),
+            filesActive: !(blueprint.files === false)
+          })}
         </div>
         <div class="c8">
-          ${Content()} 
+          ${content()} 
         </div>
       </div>
     </main>
   `
 
-  function Content () {
-    if (search.file === 'new') return contentFileNew()
-    if (search.file) return contentFile()
-    if (search.files === 'all') return contentFilesAll()
-    if (search.page === 'new') return [contentPageNew(), contentPage()]
-    if (search.pages === 'all') return contentPagesAll()
-    return contentPage()
-  }
-
-  function getBlueprint () {
-    return (
-      state.site.blueprints[state.page.view] ||
-      state.site.blueprints.default
-    )
-  }
-
-  function contentPagesAll () {
+  function Header () {
     return html`
-      <div id="content-pagesall" class="p1 fwb">
-        All pages coming soon
-      </div>
-    `
-  }
-
-  function contentPageNew () {
-    var content = PageAdd({
-      key: 'add',
-      views: state.site.views,
-      fields: fields
-    },
-    function (name, data) {
-      switch (name) {
-        case 'save':
-          if (!data.value.uri) return alert('Missing data')
-          emit(state.events.PANEL_PAGE_ADD, {
-            title: data.value.title,
-            view: 'default',
-            path: path.join(state.page.path, data.value.uri)
-          })
-          break
-        case 'cancel': return emit(state.events.REPLACESTATE, '?')
-      }
-    })
-
-    return Modal(state, emit, content)
-  }
-
-  function contentFileNew () {
-    return html`
-      <div class="p1 fwb">
-        New file coming soon
-      </div>
-    `
-  }
-
-  function contentFilesAll () {
-    return html`
-      <div class="p1 fwb">
-        All Files coming soon
-      </div>
-    `
-  }
-
-  function contentFile () {
-    var filename = files.decodeFilename(search.file)
-    var activeFile = state.page.files[filename]
-
-    return html`
-      <div>
-        <div class="p1">
-          <div class="fwb">${filename}</div>
+      <div id="header" class="x usn px1 bgblack tcwhite">
+        <div class="c4 p1">
+          <a href="/" class="nbb tcwhite">Site</a>
+          ${state.panel.loading ? 'Saving…' : ''}
         </div>
-        <div class="p1">
-          ${activeFile.type === 'image' ? image() : ''}
+        <div class="c8 breadcrumbs">
+          ${Breadcrumbs({ path: state.page.path })}
         </div>
-        <div>
-          ${Fields({
-
-          })}
-        </div>
-        ${ActionBar({
-
-        })}
       </div>
     `
-
-    function image () {
-      return html`<img class="c12" src="${activeFile.path}" />`
-    }
   }
 
-  function contentPage () {
+  // TODO: clean this up
+  function content () {
+    if (search.file === 'new') return FileNew(state, emit)
+    if (search.file) return File(state, emit)
+    if (search.files === 'all') return FilesAll()
+    if (search.page === 'new') return [PageNew(state, emit), Page(state, emit)]
+    if (search.pages === 'all') return PagesAll(state, emit)
+    return Page()
+  }
+
+  function Page () {
     return html`
       <div id="content-page" class="x xw">
         ${Fields({
@@ -181,15 +118,19 @@ function view (state, emit) {
   }
 
   function handleRemovePage () {
-    emit(state.events.PANEL_PAGE_REMOVE, {
+    emit(state.events.PANEL_REMOVE, {
       path: state.page.path
     })
   }
-}
 
-
-function getSearch () {
-  return (typeof window !== 'undefined' && window.location.search)
-    ? methodsPath.queryStringToJSON(window.location.search)
-    : false
+  function getBlueprint () {
+    if (!state.page) {
+      return { }
+    } else {
+      return (
+        state.site.blueprints[state.page.view] ||
+        state.site.blueprints.default
+      )
+    }
+  }
 }

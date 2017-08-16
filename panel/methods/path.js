@@ -1,5 +1,6 @@
 module.exports = {
-  queryStringToJSON: queryStringToJSON
+  queryStringToJSON: queryStringToJSON,
+  getSearch: getSearch
 }
 
 function queryStringToJSON (str) {            
@@ -12,4 +13,10 @@ function queryStringToJSON (str) {
   })
 
   return JSON.parse(JSON.stringify(result))
+}
+
+function getSearch () {
+  return (typeof window !== 'undefined' && window.location.search)
+    ? queryStringToJSON(window.location.search)
+    : false
 }
