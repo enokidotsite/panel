@@ -10,4 +10,5 @@ function events (state, emitter) {
   state.events.PANEL_REMOVE = 'panel:remove'
   state.events.PANEL_LOADING = 'panel:loading'
   state.events.PANEL_PAGE_ADD = 'panel:page:add'
+  state.events.PANEL_FILE_ADD = 'panel:file:add'
 }

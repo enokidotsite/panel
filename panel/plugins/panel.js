@@ -16,6 +16,7 @@ function panel (state, emitter) {
   emitter.on(state.events.PANEL_LOADING, onLoading)
   emitter.on(state.events.PANEL_REMOVE, onRemove)
   emitter.on(state.events.PANEL_PAGE_ADD, onPageAdd)
+  emitter.on(state.events.PANEL_FILE_ADD, onFileAdd)
 
   function onUpdate (data) {
     if (!data || !data.path) return
@@ -103,6 +104,30 @@ function panel (state, emitter) {
         alert(err.message)
       } else {
         emitter.emit(state.events.REPLACESTATE, path.join(data.path, '../'))
+      }
+      
+      emitter.emit(state.events.PANEL_LOADING, { loading: false })
+      emitter.emit(state.events.RENDER)
+    })  
+  }
+
+  function onFileAdd (data) {
+    if (!data.path || !data.filename || !data.result) {
+      return alert('Missing data')
+    }
+
+    emitter.emit(state.events.PANEL_LOADING, { loading: true })
+    emitter.emit(state.events.RENDER)
+
+    xhr.put({
+      uri: 'http://localhost:8082/add-file',
+      body: data,
+      json: true
+    }, function (err, resp, body) {
+      if (err) {
+        alert(err.message)
+      } else {
+        emitter.emit(state.events.REPLACESTATE, '?')
       }
       
       emitter.emit(state.events.PANEL_LOADING, { loading: false })

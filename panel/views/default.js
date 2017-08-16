@@ -67,7 +67,7 @@ function View (state, emit) {
     if (search.file === 'new') {
       return Split(
         sidebar(),
-        FileNew(state, emit)
+        [FileNew(state, emit), Page()]
       )
     }
 

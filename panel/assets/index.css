@@ -68,6 +68,8 @@ ul li { margin-left: 1.2rem }
 
 .psst { position: sticky; position: -webkit-sticky; }
 .psf { position: fixed }
+.psr { position: relative }
+.psa { position: absolute }
 .t0 { top: 0 }
 .l0 { left: 0 }
 .r0 { right: 0 }
