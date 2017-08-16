@@ -2,12 +2,14 @@ var html = require('choo/html')
 var ok = require('object-keys')
 var xtend = require('xtend')
 var path = require('path')
+var queryString = require('query-string')
 
 // Components
 var ActionBar = require('../components/actionbar')
 var Breadcrumbs = require('../components/breadcrumbs')
 var Fields = require('../components/fields')
 var Sidebar = require('../components/sidebar')
+var Split = require('../components/split')
 
 // Views
 var File = require('../views/file')
@@ -17,7 +19,6 @@ var PagesAll = require('../views/pages-all')
 var PageNew = require('../views/page-new')
 
 // Methods
-var methodsPath = require('../methods/path')
 var methodsSite = require('../methods/site')
 var methodsFile = require('../methods/file')
 
@@ -26,31 +27,20 @@ module.exports = View
 function View (state, emit) {
   var fields = methodsSite.getFields()
   var blueprint = getBlueprint()
-  var search = methodsPath.getSearch()
+  var search = queryString.parse(location.search)
   var draftPage = state.panel.changes[state.page.path]
 
   // Page structure
   return html`
-    <main>
+    <main class="x xdc vhmn100">
       <div class="c12">
-        ${Header()}
+        ${header()}
       </div>
-      <div class="x xw p1">
-        <div class="c4">
-          ${Sidebar({
-            page: state.page,
-            pagesActive: !(blueprint.pages === false),
-            filesActive: !(blueprint.files === false)
-          })}
-        </div>
-        <div class="c8">
-          ${content()} 
-        </div>
-      </div>
+      ${content()}
     </main>
   `
 
-  function Header () {
+  function header () {
     return html`
       <div id="header" class="x usn px1 bgblack tcwhite">
         <div class="c4 p1">
@@ -64,27 +54,67 @@ function View (state, emit) {
     `
   }
 
+  function sidebar () {
+    return Sidebar({
+      page: state.page,
+      pagesActive: !(blueprint.pages === false),
+      filesActive: !(blueprint.files === false)
+    })
+  }
+
   // TODO: clean this up
   function content () {
-    if (search.file === 'new') return FileNew(state, emit)
-    if (search.file) return File(state, emit)
-    if (search.files === 'all') return FilesAll()
-    if (search.page === 'new') return [PageNew(state, emit), Page(state, emit)]
-    if (search.pages === 'all') return PagesAll(state, emit)
-    return Page()
+    if (search.file === 'new') {
+      return Split(
+        sidebar(),
+        FileNew(state, emit)
+      )
+    }
+
+    if (search.file) {
+      return File(state, emit)
+    }
+
+    if (search.files === 'all') {
+      return Split(sidebar(), FilesAll())
+    }
+
+    if (search.page === 'new') {
+      return Split(
+        sidebar(),
+        [PageNew(state, emit), Page()]
+      )
+    }
+
+    if (search.pages === 'all') {
+      return Split(
+        sidebar(),
+        PagesAll(state, emit)
+      )
+    }
+
+    return Split(
+      sidebar(),
+      Page()
+    )
   }
 
   function Page () {
     return html`
-      <div id="content-page" class="x xw">
-        ${Fields({
-          blueprint: blueprint,
-          draft: draftPage,
-          fields: fields,
-          values: state.page,
-          handleFieldUpdate: handleFieldUpdate
-        })}
+      <div id="content-page" class="x xdc c12">
+        <div class="x1">
+          <div class="x xw">
+            ${Fields({
+              blueprint: blueprint,
+              draft: draftPage,
+              fields: fields,
+              values: state.page,
+              handleFieldUpdate: handleFieldUpdate
+            })}
+          </div>
+        </div>
         ${ActionBar({
+          saveLarge: true,
           handleSave: handleSavePage,
           handleCancel: handleCancelPage,
           handleRemove: handleRemovePage

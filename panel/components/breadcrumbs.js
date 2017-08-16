@@ -1,12 +1,24 @@
 var html = require('choo/html')
+var queryString = require('query-string')
+var objectKeys = require('object-keys')
 
 module.exports = breadcrumbs
 
 function breadcrumbs (props) {
   props = props || { }
   props.path = props.path === undefined ? '' : props.path
-  
-  return props.path
+  var search = queryString.parse(location.search)
+
+  var searchPaths = objectKeys(search).reduce(function (result, key) {
+    if (key !== 'file') return result
+    result.push({
+      path: '',
+      el: html`<a href="" class="db p1 tcwhite nbb">${search[key]}</a>`
+    })
+    return result
+  }, [ ])
+
+  var pagePaths = props.path
     .split('/')
     .filter(str => str)
     .reduce(function (result, path) {
@@ -19,8 +31,11 @@ function breadcrumbs (props) {
     }, [{
       path: '', el: ''
     }])
-    .reduce(function (arr, crumb, i, src) {
-      arr.push(crumb.el)
-      return arr
-    }, [ ])
+
+    return pagePaths
+      .concat(searchPaths)
+      .reduce(function (arr, crumb) {
+        arr.push(crumb.el)
+        return arr
+      }, [ ])
 }

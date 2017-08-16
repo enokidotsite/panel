@@ -21,6 +21,7 @@
     "nanocomponent": "^6.0.0-1",
     "object-keys": "^1.0.11",
     "object-values": "^1.0.0",
+    "query-string": "^5.0.0",
     "require-globify": "^1.4.1",
     "simplemde": "^1.11.2",
     "tags-input": "^1.1.1",

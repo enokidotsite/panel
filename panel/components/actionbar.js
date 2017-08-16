@@ -4,6 +4,7 @@ module.exports = ActionBar
 
 function ActionBar (props) {
   props = props || { }
+  props.saveLarge = !(props.saveLarge === false)
   props.disabled = (props.disabled === undefined) ? false : props.disabled
   var disabledClass = props.disabled ? 'pen op25' : ''
 

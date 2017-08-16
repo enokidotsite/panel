@@ -1,18 +1,19 @@
 var html = require('choo/html')
 var path = require('path')
+var queryString = require('query-string')
 
 var methodsFile = require('../methods/file')
-var methodsPath = require('../methods/path')
 var methodsSite = require('../methods/site')
 
 var ActionBar = require('../components/actionbar')
 var Fields = require('../components/fields')
+var Split = require('../components/split')
 
 module.exports = File
 
 function File (state, emit) {
   var fields = methodsSite.getFields()
-  var search = methodsPath.getSearch()
+  var search = queryString.parse(location.search)
   var filename = methodsFile.decodeFilename(search.file)
   var blueprint = getBlueprint()
   var file = state.page.files[filename]
@@ -20,31 +21,48 @@ function File (state, emit) {
 
   if (!file) return notFound()
 
-  return html`
-    <div id="content-file" class="x xw">
-      <div class="p1">
-        <div class="fwb">${filename}</div>
-      </div>
-      <div class="p1">
+  return Split(
+    sidebar(),
+    content()
+  )
+
+  function content () {
+    return html`
+      <div
+        id="content-file"
+        class="c12 p1 psr file-preview"
+      >
         ${file.type === 'image' ? image() : ''}
       </div>
-      ${Fields({
-        blueprint: blueprint,
-        draft: draftFile,
-        fields: fields,
-        values: file,
-        handleFieldUpdate: handleFieldUpdate
-      })}
-      ${ActionBar({
-        handleSave: handleSave,
-        handleCancel: handleCancel,
-        handleRemove: handleRemove
-      })}
-    </div>
-  `
+    `
+  }
+
+  function sidebar () {
+    return html`
+      <div id="sidebar-file" class="x xdc c12 psst t0">
+        <div class="x1">
+          <div class="p1 c12">
+            <div class="fwb">${filename}</div>
+          </div>
+          ${Fields({
+            blueprint: blueprint,
+            draft: draftFile,
+            fields: fields,
+            values: file,
+            handleFieldUpdate: handleFieldUpdate
+          })}
+        </div>
+        ${ActionBar({
+          handleSave: handleSave,
+          handleCancel: handleCancel,
+          handleRemove: handleRemove
+        })}
+      </div>
+    `
+  }
 
   function image () {
-    return html`<img class="c12" src="${file.path}" />`
+    return html`<img src="${file.path}" class="ofc" />`
   }
 
   function notFound () {

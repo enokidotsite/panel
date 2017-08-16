@@ -48,6 +48,8 @@ ul li { margin-left: 1.2rem }
 
 .x { display: flex }
 .xw { flex-wrap: wrap }
+.x1 { flex: 1 }
+.xdc { flex-direction: column }
 .xas { align-items: flex-start }
 .xje { justify-content: flex-end }
 .xjb { justify-content: space-between }
@@ -61,6 +63,8 @@ ul li { margin-left: 1.2rem }
 .c6 { width: 50% }
 .c8 { width: 66.6% }
 .c12 { width: 100% }
+
+.vhmn100 { min-height: 100vh }
 
 .psst { position: sticky; position: -webkit-sticky; }
 .psf { position: fixed }
@@ -129,10 +133,28 @@ textarea {
   min-height: 10rem;
 }
 
+.psr { position: relative }
 .br1 { border-radius: 3px }
 .pen { pointer-events: none }
 .op50 { opacity: 0.5 }
 .op25 { opacity: 0.25 }
+
+.ofc {
+  object-fit: contain;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  padding: 10vmin;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.file-preview {
+  margin: -0.75rem -0.75rem -0.75rem 0.75rem;
+  background-image: url('data:image/svg+xml;utf8,<svg height="10" width="10" viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg"><rect height="5" width="5" x="0" y="0" fill="rgba(127, 127, 127, 0.25)" /><rect height="5" width="5" x="5" y="5" fill="rgba(127, 127, 127, 0.25)" /></svg>');
+}
 
 .button-inline {
   background: #eee;
@@ -146,11 +168,6 @@ textarea {
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
-}
-
-a.button-inline:hover {
-  background: #000;
-  color: #fff;
 }
 
 .breadcrumbs {
@@ -199,7 +216,6 @@ a.button-inline:hover {
     cursor: pointer;
 }
 
-.tags-input .tag:hover,
 .tags-input .tag.selected {
     background-color: #000;
     border-color: #000;
