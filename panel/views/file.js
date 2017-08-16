@@ -16,7 +16,9 @@ function File (state, emit) {
   var filename = methodsFile.decodeFilename(search.file)
   var blueprint = getBlueprint()
   var file = state.page.files[filename]
-  var draftFile = state.panel.changes[file.path]
+  var draftFile = file ? state.panel.changes[file.path] : { }
+
+  if (!file) return notFound()
 
   return html`
     <div id="content-file" class="x xw">
@@ -43,6 +45,14 @@ function File (state, emit) {
 
   function image () {
     return html`<img class="c12" src="${file.path}" />`
+  }
+
+  function notFound () {
+    return html`
+      <div class="fs2 p1">
+        <b>${filename}</b> is not found 
+      </div>
+    `
   }
 
   function handleFieldUpdate (event, data) {

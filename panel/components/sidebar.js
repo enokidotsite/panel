@@ -21,12 +21,13 @@ function sidebar (props) {
   function elChildren () {
     return html`
       <div id="sidebar-children" class="mb2">
-        <div class="x xjb c12 mb1">
+        <div class="x xjb c12 mb1 usn">
           <div class="fwb">
             <a href="?pages=all">Pages</a>
           </div>
           <div>
-            <a href="?page=new">Add</a>
+            <a href="?page=new" class="button-inline">Add</a>
+            <a href="?pages=all" class="button-inline">All</a>
           </div>
         </div>
         <ul class="c12 myc1 lsn">
@@ -39,12 +40,13 @@ function sidebar (props) {
   function elFiles () {
     return html`
       <div id="sidebar-files">
-        <div class="x xjb mb1">
+        <div class="x xjb mb1 usn">
           <div class="fwb">
             <a href="?files=all">Files</a>
           </div>
           <div>
-            <a href="?file=new">Add</a>
+            <a href="?file=new" class="button-inline">Add</a>
+            <a href="?files=all" class="button-inline">All</a>
           </div>
         </div>
         <ul class="c12 myc1 lsn">
@@ -57,14 +59,23 @@ function sidebar (props) {
 
 function elsChildren (props) {
   props = props || { }
-  props.children = (typeof props.children === 'object')
-    ? props.children
-    : { }
+  var children = (typeof props.children === 'object') ? ov(props.children) : [ ]
 
-  return ov(props.children).map(function (child) {
+  if (children.length <= 0) {
+    return html`
+      <li class="m0 py0-5 tcgrey">
+        No sub-pages
+      </li>
+    `
+  }
+
+  return children.map(function (child) {
     return html`
       <li id="${child.url}" class="m0">
-        <a href="${child.url}" class="db py0-5 truncate">${child.title || child.dirname}</a>
+        <a
+          href="${child.url}"
+          class="db py0-5 truncate"
+        >${child.title || child.dirname}</a>
       </li>
     `
   })
@@ -72,9 +83,17 @@ function elsChildren (props) {
 
 function elsFiles (props) {
   props = props || { }
-  props.files = (typeof props.files === 'object') ? props.files : { }
+  var files = (typeof props.files === 'object') ? ov(props.files) : { }
 
-  return ov(props.files).map(function (child) {
+  if (files.length <= 0) {
+    return html`
+      <li class="m0 py0-5 tcgrey">
+        No files
+      </li>
+    `
+  }
+
+  return files.map(function (child) {
     var path = '?file=' + mf.encodeFilename(child.filename)
     return html`
       <li id="${child.url}" class="m0">

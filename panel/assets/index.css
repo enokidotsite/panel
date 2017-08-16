@@ -99,6 +99,8 @@ ul li { margin-left: 1.2rem }
 .bgblack { background: #000 }
 
 .tcwhite { color: #fff }
+.tcgrey { color: #999 }
+.tcblack { color: #000 }
 
 .truncate {
   white-space: nowrap;
@@ -132,6 +134,25 @@ textarea {
 .op50 { opacity: 0.5 }
 .op25 { opacity: 0.25 }
 
+.button-inline {
+  background: #eee;
+  color: #000;
+  padding: 4px;
+  margin: 0 2px;
+  border-radius: 3px;
+  font: inherit;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+a.button-inline:hover {
+  background: #000;
+  color: #fff;
+}
+
 .breadcrumbs {
   display: flex;
 }
@@ -147,6 +168,9 @@ textarea {
 
 .myc1 > * { border-top: 1px solid #ddd }
 .myc1 > *:last-child { border-bottom: 1px solid #ddd }
+
+::-moz-selection { background: #eee }
+::selection { background: #eee }
 
 /**
  * Tag input
@@ -166,7 +190,7 @@ textarea {
     color: #000;
     padding: 0 4px;
     margin: 2px;
-    border-radius: 2px;
+    border-radius: 3px;
     font: inherit;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -174,6 +198,8 @@ textarea {
     user-select: none;
     cursor: pointer;
 }
+
+.tags-input .tag:hover,
 .tags-input .tag.selected {
     background-color: #000;
     border-color: #000;
@@ -538,13 +564,13 @@ div.CodeMirror-dragcursors {
     visibility: visible
 }
 .CodeMirror-selected {
-    background: #ddd
+    background: #eee
 }
 .CodeMirror-focused .CodeMirror-selected,
 .CodeMirror-line::selection,
 .CodeMirror-line>span::selection,
 .CodeMirror-line>span>span::selection {
-    background: #ddd
+    background: #eee
 }
 .CodeMirror-crosshair {
     cursor: crosshair
@@ -552,7 +578,7 @@ div.CodeMirror-dragcursors {
 .CodeMirror-line::-moz-selection,
 .CodeMirror-line>span::-moz-selection,
 .CodeMirror-line>span>span::-moz-selection {
-    background: #d7d4f0
+    background: #eee
 }
 .cm-searching {
     background: #ffa;
@@ -639,8 +665,8 @@ span.CodeMirror-selectedtext {
     padding-bottom: 10px;
     box-sizing: border-box;
     background: #fff;
-    border: 0;
     position: fixed;
+    border-radius: 0;
     top: 0;
     left: 0;
     opacity: 1;
@@ -649,12 +675,6 @@ span.CodeMirror-selectedtext {
 .editor-toolbar.fullscreen::before {
     width: 20px;
     height: 50px;
-    background: -moz-linear-gradient(left, rgba(255, 255, 255, 1) 0, rgba(255, 255, 255, 0) 100%);
-    background: -webkit-gradient(linear, left top, right top, color-stop(0, rgba(255, 255, 255, 1)), color-stop(100%, rgba(255, 255, 255, 0)));
-    background: -webkit-linear-gradient(left, rgba(255, 255, 255, 1) 0, rgba(255, 255, 255, 0) 100%);
-    background: -o-linear-gradient(left, rgba(255, 255, 255, 1) 0, rgba(255, 255, 255, 0) 100%);
-    background: -ms-linear-gradient(left, rgba(255, 255, 255, 1) 0, rgba(255, 255, 255, 0) 100%);
-    background: linear-gradient(to right, rgba(255, 255, 255, 1) 0, rgba(255, 255, 255, 0) 100%);
     position: fixed;
     top: 0;
     left: 0;
@@ -664,12 +684,6 @@ span.CodeMirror-selectedtext {
 .editor-toolbar.fullscreen::after {
     width: 20px;
     height: 50px;
-    background: -moz-linear-gradient(left, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 1) 100%);
-    background: -webkit-gradient(linear, left top, right top, color-stop(0, rgba(255, 255, 255, 0)), color-stop(100%, rgba(255, 255, 255, 1)));
-    background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 1) 100%);
-    background: -o-linear-gradient(left, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 1) 100%);
-    background: -ms-linear-gradient(left, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 1) 100%);
-    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 1) 100%);
     position: fixed;
     top: 0;
     right: 0;
@@ -813,7 +827,7 @@ span.CodeMirror-selectedtext {
     color: #183691
 }
 .CodeMirror .CodeMirror-selected {
-    background: #d9d9d9
+    background: #eee
 }
 .CodeMirror .CodeMirror-code .cm-header-1 {
     font-size: 200%;
@@ -836,10 +850,10 @@ span.CodeMirror-selectedtext {
     border-radius: 2px
 }
 .CodeMirror .CodeMirror-code .cm-link {
-    color: #7f8c8d
+    color: #000
 }
 .CodeMirror .CodeMirror-code .cm-url {
-    color: #aab2b3
+    color: #999
 }
 .CodeMirror .CodeMirror-code .cm-strikethrough {
     text-decoration: line-through

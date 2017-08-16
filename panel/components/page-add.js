@@ -1,6 +1,6 @@
 var html = require('choo/html')
 var Nanocomponent = require('nanocomponent')
-var mf = require('../methods/files')
+var methodsFile = require('../methods/file')
 
 var components = { }
 module.exports = wrapper
@@ -102,7 +102,7 @@ PageAdd.prototype.createElement = function (state, emit) {
     this.value.title = data
     if (!this.customUri) {
       var el = this.element.querySelector('input[name="uri"]')
-      var value = mf.sanitizeName(data)
+      var value = methodsFile.sanitizeName(data)
       this.value.uri = value
       if (el) el.value = value
     }
