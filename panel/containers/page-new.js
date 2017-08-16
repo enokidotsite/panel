@@ -8,8 +8,6 @@ function PageNew () {
   if (!(this instanceof PageNew)) return new PageNew()
   Nanocomponent.call(this)
   this.id = 'pageAdd'
-  this.key = undefined
-  this.value = { }
   this.customUri = false
 }
 
@@ -18,8 +16,10 @@ PageNew.prototype = Object.create(Nanocomponent.prototype)
 PageNew.prototype.createElement = function (state, emit) {
   var self = this
   this.key = state.key
+  this.views = state.views || { }
   this.fields = state.fields || { }
   this.value = state.value || { }
+  this.value.view = state.view || 'default'
 
   return html`
     <div class="bgwhite p1 br1">
@@ -51,7 +51,7 @@ PageNew.prototype.createElement = function (state, emit) {
           View
         </div>
         ${state.fields.dropdown(
-          { id: 'pageAdd', key: 'dropdown', value: self.value.views },
+          { id: 'pageAdd', key: 'dropdown', value: self.views },
           handleView.bind(self)
         )}
       </div>

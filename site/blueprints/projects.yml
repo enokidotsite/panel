@@ -1,5 +1,8 @@
 title: Projects
 
+pages:
+  view: project
+
 fields:
   title:
     label: Title

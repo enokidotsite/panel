@@ -19,7 +19,7 @@ function project (state, emit) {
             ${state.page.title}
           </div>
           <div class="pt1 ffmono tcgrey">
-            ${state.page.tags.join(', ')}
+            ${state.page.tags ? state.page.tags.join(', ') : ''}
           </div>
           <div class="pt1 copy">
             ${format(state.page.text)}

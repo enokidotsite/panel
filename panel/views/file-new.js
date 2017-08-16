@@ -40,7 +40,7 @@ function Uploader (props) {
         id="select-file"
         type="file"
         multiple="true"
-        class="psa t0 l0 r0 b0 z2 c12 curp"
+        class="op0 psa t0 l0 r0 b0 z2 c12 curp"
         onchange=${handleChange}
       />
       <div>

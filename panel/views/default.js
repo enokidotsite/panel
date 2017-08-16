@@ -12,11 +12,12 @@ var Sidebar = require('../components/sidebar')
 var Split = require('../components/split')
 
 // Views
-var File = require('../views/file')
-var FilesAll = require('../views/files-all')
-var FileNew = require('../views/file-new')
-var PagesAll = require('../views/pages-all')
-var PageNew = require('../views/page-new')
+var File = require('./file')
+var FilesAll = require('./files-all')
+var FileNew = require('./file-new')
+var PagesAll = require('./pages-all')
+var PageNew = require('./page-new')
+var NotFound = require('./notfound')
 
 // Methods
 var methodsSite = require('../methods/site')
@@ -25,8 +26,9 @@ var methodsFile = require('../methods/file')
 module.exports = View
 
 function View (state, emit) {
-  var fields = methodsSite.getFields()
+  if (!state.page) return NotFound(state, emit)
   var blueprint = getBlueprint()
+  var fields = methodsSite.getFields()
   var search = queryString.parse(location.search)
   var draftPage = state.panel.changes[state.page.path]
 

@@ -1,5 +1,5 @@
 var html = require('choo/html')
-var tagsInput = require('tags-input')
+var objectKeys = require('object-keys')
 var Nanocomponent = require('nanocomponent')
 
 var components = { }
@@ -8,53 +8,63 @@ module.exports = wrapper
 
 function wrapper (state, emit) {
   if (!components[state.id]) {
-    components[state.id] = Tags()
+    components[state.id] = Dropdown()
   }
 
   return components[state.id].render(state, emit)
 }
 
-function Tags () {
-  if (!(this instanceof Tags)) return new Tags()
+function Dropdown () {
+  if (!(this instanceof Dropdown)) return new Dropdown()
   this.value = { }
   Nanocomponent.call(this)
 }
 
-Tags.prototype = Object.create(Nanocomponent.prototype)
+Dropdown.prototype = Object.create(Nanocomponent.prototype)
 
-Tags.prototype.createElement = function (state, emit) {
-  this.value = state.value
+Dropdown.prototype.createElement = function (state, emit) {
+  var self = this
   this.key = state.key
+  this.value = state.value || { }
 
   return html`
     <div>
-      <input
+      <select
         name="${state.key}"
         class="c12"
         type="tags"
-        value="${state.value || ''}"
         onchange=${onInput}
-      />
+      />${options()}</select>
     </div>
   `
 
+  function options () {
+    return objectKeys(self.value).map(function (option) {
+      return html`
+        <option value="${option}">
+          ${self.value[option].title || option}
+        </option>
+      `
+    })
+  }
+
   function onInput (event) {
-    emit('change', event.target.value.split(','))
+    emit('change', event.target.value)
   }
 }
 
-Tags.prototype.update = function (state) {
+Dropdown.prototype.update = function (state) {
   if (state.value !== this.value) {
     this.value = state.value
-    this.element.querySelector('input').value = state.value
+    // this.element.querySelector('input').value = state.value
   }
   return false
 }
 
-Tags.prototype.load = function (state) {
-  tagsInput(this.element.querySelector('input'))
+Dropdown.prototype.load = function (state) {
+  
 }
 
-Tags.prototype.unload = function (state) {
+Dropdown.prototype.unload = function (state) {
   delete components[this.key]
 }

@@ -1,4 +1,5 @@
 var html = require('choo/html')
+var objectKeys = require('object-keys')
 var path = require('path')
 
 var Modal = require('../components/modal')
@@ -10,20 +11,25 @@ var pageNew = PageNew()
 module.exports = PageNewView 
 
 function PageNewView (state, emit) {
+  var blueprint = getBlueprint()
   var fields = methodsSite.getFields()
+  var views = getViews()
 
   var content = pageNew.render({
     key: 'add',
-    views: state.site.views,
-    fields: fields
+    fields: fields,
+    view: views.default || objectKeys(views)[0],
+    views: views
   },
   function (name, data) {
     switch (name) {
       case 'save':
-        if (!data.value.uri) return alert('Missing data')
+        if (!data.value.title || !data.value.uri || !data.value.view) {
+          return alert('Missing data')
+        }
         emit(state.events.PANEL_PAGE_ADD, {
           title: data.value.title,
-          view: 'default',
+          view: data.value.view || 'default',
           path: path.join(state.page.path, data.value.uri)
         })
         break
@@ -32,4 +38,44 @@ function PageNewView (state, emit) {
   })
 
   return Modal(state, emit, content)
+
+  function getBlueprint () {
+    if (!state.page) {
+      return { }
+    } else {
+      return (
+        state.site.blueprints[state.page.view] ||
+        state.site.blueprints.default
+      )
+    }
+  }
+
+  // really gotta clean this one up
+  function getViews () {
+    if (
+      blueprint.pages &&
+      typeof blueprint.pages === 'object'
+    ) {
+      // disabled
+      if (blueprint.pages.view === false) return false
+
+      // presets
+      if (typeof blueprint.pages.view === 'object') {
+        return blueprint.pages.view.reduce(function (result, key) {
+          result[key] = state.site.blueprints[key]
+          return result
+        }, { })
+      } else {
+        // if just a string
+        return {
+          [blueprint.pages.view]: state.site.blueprints[blueprint.pages.view]
+        }
+      }
+    } else {
+      return objectKeys(state.site.blueprints).reduce(function (result, key) {
+        result[key] = state.site.blueprints[key]
+        return result
+      }, { })
+    }
+  }
 }

@@ -140,6 +140,7 @@ textarea {
 .pen { pointer-events: none }
 .op50 { opacity: 0.5 }
 .op25 { opacity: 0.25 }
+.op0 { opacity: 0 }
 
 .ofc {
   object-fit: contain;
