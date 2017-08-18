@@ -131,12 +131,17 @@ function View (state, emit) {
   }
 
   function handleSavePage () {
+    // if there is no draft, don’t bother
     if (!draftPage) return
+
     emit(state.events.PANEL_SAVE, {
       file: state.page.file,
       path: state.page.path,
-      page: ok(blueprint.fields).reduce(function (result, field) {
-          result[field] = draftPage[field] === undefined ? state.page[field] : draftPage[field]
+      page: ok(blueprint.fields)
+        .reduce(function (result, field) {
+          result[field] = draftPage[field] === undefined
+            ? state.page[field]
+            : draftPage[field]
           return result
         }, { })
     })

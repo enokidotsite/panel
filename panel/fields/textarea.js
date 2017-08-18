@@ -71,7 +71,10 @@ Textarea.prototype.load = function (element) {
     toolbar: self.toolbar
   })
 
+  // set default vlue
   this.simplemde.value(this.value)
+
+  // send state up
   this.simplemde.codemirror.on('change', function () {
     self.emit('input', self.simplemde.value())
   })

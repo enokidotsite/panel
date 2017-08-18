@@ -77,9 +77,14 @@ function elsChildren (props) {
         <a
           href="${child.url}"
           class="db py0-5 truncate"
+          ondragstart=${handleDragStart}
         >${child.title || child.dirname}</a>
       </li>
     `
+
+    function handleDragStart (event) {
+      event.dataTransfer.setData('text/plain', `[${child.title}](${child.url})`)
+    }
   })
 }
 
@@ -97,10 +102,19 @@ function elsFiles (props) {
 
   return files.map(function (child) {
     var path = '?file=' + mf.encodeFilename(child.filename)
+
     return html`
       <li id="${child.url}" class="m0">
-        <a href="${path}" class="db py0-5">${child.filename}</a>
+        <a
+          href="${path}"
+          class="db py0-5"
+          ondragstart=${handleDragStart}
+        >${child.filename}</a>
       </li>
     `
+
+    function handleDragStart (event) {
+      event.dataTransfer.setData('text/plain', '![](' +child.url + ')')
+    }
   })
 }
