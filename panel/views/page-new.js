@@ -4,7 +4,6 @@ var path = require('path')
 
 var Modal = require('../components/modal')
 var PageNew = require('../containers/page-new')
-var methodsSite = require('../methods/site')
 
 var pageNew = PageNew()
 
@@ -12,13 +11,11 @@ module.exports = PageNewView
 
 function PageNewView (state, emit) {
   var blueprint = getBlueprint()
-  var fields = methodsSite.getFields()
   var views = getViews()
 
   var content = pageNew.render({
     key: 'add',
-    fields: fields,
-    view: views.default || objectKeys(views)[0],
+    view: views.default ? 'default' : objectKeys(views)[0],
     views: views
   },
   function (name, data) {

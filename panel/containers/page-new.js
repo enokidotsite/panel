@@ -2,7 +2,13 @@ var html = require('choo/html')
 var Nanocomponent = require('nanocomponent')
 var methodsFile = require('../methods/file')
 
+var fields = require('../fields')
+
 module.exports = PageNew
+
+var Title = fields.text()
+var Uri = fields.text()
+var View = fields.dropdown()
 
 function PageNew () {
   if (!(this instanceof PageNew)) return new PageNew()
@@ -17,7 +23,6 @@ PageNew.prototype.createElement = function (state, emit) {
   var self = this
   this.key = state.key
   this.views = state.views || { }
-  this.fields = state.fields || { }
   this.value = state.value || { }
   this.value.view = state.view || 'default'
 
@@ -36,7 +41,7 @@ PageNew.prototype.createElement = function (state, emit) {
         <div class="c12 fwb usn mb1">
           Title
         </div>
-        ${state.fields.text(
+        ${Title.render(
           { id: 'pageAdd', key: 'title', value: self.value.title },
           handleTitle.bind(self)
         )}
@@ -50,7 +55,7 @@ PageNew.prototype.createElement = function (state, emit) {
         <div class="c12 fwb usn mb1">
           View
         </div>
-        ${state.fields.dropdown(
+        ${View.render(
           { id: 'pageAdd', key: 'dropdown', value: self.views },
           handleView.bind(self)
         )}
@@ -64,7 +69,7 @@ PageNew.prototype.createElement = function (state, emit) {
         <div class="c12 fwb usn mb1">
           Pathname
         </div>
-        ${state.fields.text(
+        ${Uri.render(
           { id: 'pageAdd', key: 'uri', value: self.value.uri },
           handleUri.bind(self)
         )}

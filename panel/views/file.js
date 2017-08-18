@@ -13,7 +13,6 @@ var Split = require('../components/split')
 module.exports = File
 
 function File (state, emit) {
-  var fields = methodsSite.getFields()
   var search = queryString.parse(location.search)
   var filename = methodsFile.decodeFilename(search.file)
   var blueprint = getBlueprint()
@@ -48,7 +47,6 @@ function File (state, emit) {
           ${Fields({
             blueprint: blueprint,
             draft: draftFile,
-            fields: fields,
             values: file,
             handleFieldUpdate: handleFieldUpdate
           })}

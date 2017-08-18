@@ -2,17 +2,7 @@ var html = require('choo/html')
 var objectKeys = require('object-keys')
 var Nanocomponent = require('nanocomponent')
 
-var components = { }
-
-module.exports = wrapper
-
-function wrapper (state, emit) {
-  if (!components[state.id]) {
-    components[state.id] = Dropdown()
-  }
-
-  return components[state.id].render(state, emit)
-}
+module.exports = Dropdown
 
 function Dropdown () {
   if (!(this instanceof Dropdown)) return new Dropdown()
@@ -66,5 +56,5 @@ Dropdown.prototype.load = function (state) {
 }
 
 Dropdown.prototype.unload = function (state) {
-  delete components[this.key]
+  
 }

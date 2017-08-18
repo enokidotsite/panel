@@ -28,7 +28,6 @@ module.exports = View
 function View (state, emit) {
   if (!state.page) return NotFound(state, emit)
   var blueprint = getBlueprint()
-  var fields = methodsSite.getFields()
   var search = queryString.parse(location.search)
   var draftPage = state.panel.changes[state.page.path]
 
@@ -109,7 +108,6 @@ function View (state, emit) {
             ${Fields({
               blueprint: blueprint,
               draft: draftPage,
-              fields: fields,
               values: state.page,
               handleFieldUpdate: handleFieldUpdate
             })}
@@ -133,6 +131,7 @@ function View (state, emit) {
   }
 
   function handleSavePage () {
+    if (!draftPage) return
     emit(state.events.PANEL_SAVE, {
       file: state.page.file,
       path: state.page.path,

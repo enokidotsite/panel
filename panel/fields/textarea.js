@@ -2,9 +2,6 @@ var html = require('choo/html')
 var SimpleMDE = require('simplemde')
 var Nanocomponent = require('nanocomponent')
 
-var components = { }
-module.exports = wrapper
-
 var toolbarDefaults = {
   condensed: [
     'bold', 'italic', 'heading', '|',
@@ -19,10 +16,7 @@ var toolbarDefaults = {
   ]
 }
 
-function wrapper (state, emit) {
-  if (!components[state.id]) components[state.id] = Textarea()
-  return components[state.id].render(state, emit)
-}
+module.exports = Textarea
 
 function Textarea () {
   if (!(this instanceof Textarea)) return new Textarea()
@@ -84,7 +78,7 @@ Textarea.prototype.load = function (element) {
 }
 
 Textarea.prototype.unload = function () {
-  delete components[this.id]
+  
 }
 
 function getToolbar (option) {

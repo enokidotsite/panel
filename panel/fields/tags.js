@@ -2,13 +2,7 @@ var html = require('choo/html')
 var tagsInput = require('tags-input')
 var Nanocomponent = require('nanocomponent')
 
-var components = { }
-module.exports = wrapper
-
-function wrapper (state, emit) {
-  if (!components[state.id]) components[state.id] = Tags()
-  return components[state.id].render(state, emit)
-}
+module.exports = Tags
 
 function Tags () {
   if (!(this instanceof Tags)) return new Tags()
@@ -61,5 +55,5 @@ Tags.prototype.load = function (state) {
 }
 
 Tags.prototype.unload = function (state) {
-  delete components[this.id]
+  
 }
