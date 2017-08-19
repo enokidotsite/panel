@@ -16,6 +16,8 @@ Dropdown.prototype.createElement = function (state, emit) {
   var self = this
   this.key = state.key
   this.value = state.value || { }
+  this.value.selected = this.value.selected || ''
+  this.value.options = this.value.options || { }
 
   return html`
     <div>
@@ -29,10 +31,13 @@ Dropdown.prototype.createElement = function (state, emit) {
   `
 
   function options () {
-    return objectKeys(self.value).map(function (option) {
+    return objectKeys(self.value.options).map(function (option) {
       return html`
-        <option value="${option}">
-          ${self.value[option].title || option}
+        <option
+          value="${option}"
+          ${self.value.selected === option ? 'selected' : ''}
+        >
+          ${self.value.options[option].title || option}
         </option>
       `
     })
@@ -44,9 +49,8 @@ Dropdown.prototype.createElement = function (state, emit) {
 }
 
 Dropdown.prototype.update = function (state) {
-  if (state.value !== this.value) {
-    this.value = state.value
-    // this.element.querySelector('input').value = state.value
+  if (state.value && state.value.selected !== this.value.selected) {
+    this.value.selected = state.value.selected
   }
   return false
 }

@@ -39,30 +39,6 @@ Text.prototype.createElement = function (state, emit) {
 }
 
 Text.prototype.update = function (state) {
-  // if (state.value !== this.value) {
-    this.value = state.value
-    // this.element.querySelector('input').value = state.value
-  // }
+  this.value = state.value
   return true
-}
-
-function text (state, emit) {
-  return html`
-    <input
-      name="${state.key}"
-      class="c12"
-      type="text"
-      value="${state.value || ''}"
-      oninput=${emit ? onInput : ''}
-      onfocus=${emit ? onFocus : ''}
-    />
-  `
-
-  function onInput (event) {
-    emit('input', event.target.value)
-  }
-
-  function onFocus (event) {
-    emit('focus', event.target.value)
-  }
 }

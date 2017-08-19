@@ -2,21 +2,33 @@ var html = require('choo/html')
 var objectValues = require('object-values')
 
 var Modal = require('../components/modal')
+var Uploader = require('../components/uploader')
+
+var uploader = Uploader()
+var modal = Modal()
 
 module.exports = FileNew
 
 function FileNew (state, emit) {
-  return Modal(state, emit, content())
+  return modal.render({
+    content: content(),
+    handleContainerClick: function () {
+      emit(state.events.REPLACESTATE, '?')
+    }
+  })
 
   function content () {
     return html`
       <div
-        class="x xjc xac bgwhite p1 br1 fwb fs2 psr"
-        style="height: 25vh"
+        class="x xjc xac bgwhite p2 br1 fwb fs2 psr tac"
+        style="height: 50vh; width: 75vw;"
       >
-        ${Uploader({
+        ${uploader.render({
           upload: true,
-          handleFile: handleUploadFile
+          text: 'Drag and drop here, or click to select files',
+          handleFile: handleUploadFile,
+          handleDragEnter: handleDragEnter,
+          handleDragLeave: handleDragLeave
         })}
       </div>
     `
@@ -29,57 +41,16 @@ function FileNew (state, emit) {
       result: data.result
     })
   }
-}
 
-function Uploader (props) {
-  props = props || { }
-
-  return html`
-    <div>
-      <input
-        id="select-file"
-        type="file"
-        multiple="true"
-        class="op0 psa t0 l0 r0 b0 z2 c12 curp"
-        onchange=${handleChange}
-      />
-      <div>
-        Drag and drop here
-      </div>
-    </div>
-  `
-
-  function handleChange (event) {
-    var files = event.srcElement.files
-
-    // if there are files and we can upload, go for it
-    if (files && props.upload !== false) {
-      objectValues(files).forEach(handleFile)
-    }
-
-    // little callback handler
-    if (props.handleChange) {
-      props.handleChange('change', {
-        files: files ? files : { }
-      })
-    }
+  function handleDragEnter (event) {
+    var el = event.target.parentNode.parentNode
+    el.classList.remove('bgwhite', 'tcblack')
+    el.classList.add('bgblack', 'tcwhite')
   }
 
-  function handleFile (file) {
-    var reader = new FileReader()
-
-    // when the file loads, go for it
-    reader.addEventListener('load', function () {
-      if (props.handleFile) {
-        props.handleFile('upload', {
-          name: file.name,
-          type: file.type,
-          size: file.size,
-          result: reader.result
-        })
-      }
-    }, false)
-
-    if (file) reader.readAsDataURL(file)
+  function handleDragLeave (event) {
+    var el = event.target.parentNode.parentNode
+    el.classList.add('bgwhite', 'tcblack')
+    el.classList.remove('bgblack', 'tcwhite')
   }
 }

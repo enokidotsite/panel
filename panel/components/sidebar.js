@@ -2,20 +2,21 @@ var ok = require('object-keys')
 var ov = require('object-values')
 var html = require('choo/html')
 
-var mf = require('../methods/file')
+var methodsFile = require('../methods/file')
 
 module.exports = sidebar
 
 function sidebar (props) {
   props = props || { }
-  props.pagesActive = (props.pagesActive === undefined) ? false : props.pagesActive
-  props.filesActive = (props.filesActive === undefined) ? false : props.filesActive
+  props.pagesActive = (props.pagesActive === undefined) ? true : props.pagesActive
+  props.filesActive = (props.filesActive === undefined) ? true : props.filesActive
 
   return html`
     <div id="sidebar" class="c12">
-      <div class="psst p1" style="top: 0.75rem">
+      <div class="psst p1" style="top: 0.75rem; padding-bottom: 5.5rem">
         ${props.pagesActive ? elChildren() : ''}
         ${props.filesActive ? elFiles() : ''}
+        ${props.handleRemovePage ? elRemove() : ''}
       </div>
     </div>
   `
@@ -41,7 +42,7 @@ function sidebar (props) {
 
   function elFiles () {
     return html`
-      <div id="sidebar-files">
+      <div id="sidebar-files" class="mb2">
         <div class="x xjb mb1 usn">
           <div class="fwb">
             <a href="?files=all">Files</a>
@@ -54,6 +55,17 @@ function sidebar (props) {
         <ul class="c12 myc1 lsn">
           ${elsFiles(props.page)}
         </div>
+      </div>
+    `
+  }
+
+  function elRemove () {
+    return html`
+      <div>
+        <span
+          class="tcgrey curp"
+          onclick=${props.handleRemovePage}
+        >Delete page</span>
       </div>
     `
   }
@@ -71,16 +83,18 @@ function elsChildren (props) {
     `
   }
 
-  return children.map(function (child) {
-    return html`
-      <li id="${child.url}" class="m0">
-        <a
-          href="${child.url}"
-          class="db py0-5 truncate"
-          ondragstart=${handleDragStart}
-        >${child.title || child.dirname}</a>
-      </li>
-    `
+  return children
+    .slice(0, 6)
+    .map(function (child) {
+      return html`
+        <li id="${child.url}" class="m0">
+          <a
+            href="${child.url}"
+            class="db py0-5 truncate"
+            ondragstart=${handleDragStart}
+          >${child.title || child.dirname}</a>
+        </li>
+      `
 
     function handleDragStart (event) {
       event.dataTransfer.setData('text/plain', `[${child.title}](${child.url})`)
@@ -90,28 +104,29 @@ function elsChildren (props) {
 
 function elsFiles (props) {
   props = props || { }
-  var files = (typeof props.files === 'object') ? ov(props.files) : { }
+  var files = (typeof props.files === 'object') ? ov(props.files) : [ ]
 
-  if (files.length <= 0) {
-    return html`
-      <li class="m0 py0-5 tcgrey">
-        No files
-      </li>
-    `
-  }
+  // Hide if there is nothing
+  if (files.length <= 0) return html`
+    <li class="m0 py0-5 tcgrey">
+      No files
+    </li>
+  `
 
-  return files.map(function (child) {
-    var path = '?file=' + mf.encodeFilename(child.filename)
+  return files
+    .slice(0, 6)
+    .map(function (child) {
+      var path = '?file=' + methodsFile.encodeFilename(child.filename)
 
-    return html`
-      <li id="${child.url}" class="m0">
-        <a
-          href="${path}"
-          class="db py0-5"
-          ondragstart=${handleDragStart}
-        >${child.filename}</a>
-      </li>
-    `
+      return html`
+        <li id="${child.url}" class="m0">
+          <a
+            href="${path}"
+            class="db py0-5"
+            ondragstart=${handleDragStart}
+          >${child.filename}</a>
+        </li>
+      `
 
     function handleDragStart (event) {
       event.dataTransfer.setData('text/plain', '![](' +child.url + ')')

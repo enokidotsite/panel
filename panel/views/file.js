@@ -7,19 +7,18 @@ var methodsFile = require('../methods/file')
 var methodsSite = require('../methods/site')
 
 var ActionBar = require('../components/actionbar')
-var Fields = require('../components/fields')
 var Split = require('../components/split')
+var Fields = require('../containers/fields')
 
 module.exports = File
 
 function File (state, emit) {
   var search = queryString.parse(location.search)
   var filename = methodsFile.decodeFilename(search.file)
-  var blueprint = getBlueprint()
   var file = state.page.files[filename]
-  var draftFile = file ? state.panel.changes[file.path] : { }
-
   if (!file) return notFound()
+  var blueprint = getBlueprint()
+  var draftFile = state.panel.changes[file.path]
 
   return Split(
     sidebar(),
@@ -40,9 +39,22 @@ function File (state, emit) {
   function sidebar () {
     return html`
       <div id="sidebar-file" class="x xdc c12 psst t0">
-        <div class="x1">
+        <div class="x1" style="padding-bottom: 4.5rem">
           <div class="p1 c12">
-            <div class="fwb">${filename}</div>
+            <div class="c12 fwb usn mb1">
+              Filename
+            </div>
+            <div class="input input-disabled p0-5">
+              ${filename}
+            </div>
+          </div>
+          <div class="p1 c12">
+            <div class="c12 fwb usn mb1">
+              Dimensions
+            </div>
+            <div class="input input-disabled p0-5">
+              ${file.height}/${file.width}px
+            </div>
           </div>
           ${Fields({
             blueprint: blueprint,
@@ -50,12 +62,23 @@ function File (state, emit) {
             values: file,
             handleFieldUpdate: handleFieldUpdate
           })}
+          <div class="p1">
+            <span
+              class="tcgrey curp"
+              onclick=${handleRemove}
+            >Delete file</span>
+          </div>
         </div>
-        ${ActionBar({
-          handleSave: handleSave,
-          handleCancel: handleCancel,
-          handleRemove: handleRemove
-        })}
+        <div class="psf b0 l0 r0 p1 pen z3">
+          <div class="action-gradient ${draftFile === undefined ? 'dn' : 'db'}"></div>
+          <div class="c4 pea">
+            ${ActionBar({
+              disabled: draftFile === undefined,
+              handleSave: handleSave,
+              handleCancel: handleCancel
+            })}
+          </div>
+        </div>
       </div>
     `
   }

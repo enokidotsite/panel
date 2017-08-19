@@ -13,9 +13,10 @@ function Tags () {
 Tags.prototype = Object.create(Nanocomponent.prototype)
 
 Tags.prototype.createElement = function (state, emit) {
+  var self = this
   this.id = state.id
   this.key = state.key
-  this.value = state.value
+  this.value = state.value || [ ]
   this.valueStart = state.value
 
   return html`
@@ -25,13 +26,15 @@ Tags.prototype.createElement = function (state, emit) {
         class="c12"
         type="tags"
         value="${state.value || ''}"
-        onchange=${onInput}
+        onchange=${onChange}
       />
     </div>
   `
 
-  function onInput (event) {
-    emit('change', event.target.value.split(','))
+  function onChange (event) {
+    if (self.value.join(',') !== event.target.value) {
+      emit('change', event.target.value.split(','))
+    }
   }
 }
 

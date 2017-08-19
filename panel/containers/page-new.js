@@ -56,7 +56,13 @@ PageNew.prototype.createElement = function (state, emit) {
           View
         </div>
         ${View.render(
-          { id: 'pageAdd', key: 'dropdown', value: self.views },
+          {
+            key: 'dropdown',
+            value: {
+              options: self.views,
+              selected: self.value.view
+            }
+          },
           handleView.bind(self)
         )}
       </div>

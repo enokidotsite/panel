@@ -20,6 +20,92 @@ a {
 ul li { margin-left: 1.2rem }
 .lsn { list-style: none }
 
+.fwb { font-weight: 700 }
+.tac { text-align: center }
+
+.x { display: flex }
+.xw { flex-wrap: wrap }
+.x1 { flex: 1 }
+.xdc { flex-direction: column }
+.xas { align-items: flex-start }
+.xje { justify-content: flex-end }
+.xjb { justify-content: space-between }
+.xjc { justify-content: center }
+.xac { align-items: center }
+.x1 { flex: 1 }
+.xx { flex: 1; width: 100% }
+.db { display: block }
+.dn { display: none }
+
+.c4 { width: 33.3% }
+.c6 { width: 50% }
+.c8 { width: 66.6% }
+.c12 { width: 100% }
+
+.vhmn100 { min-height: 100vh }
+
+.psst { position: sticky; position: -webkit-sticky; }
+.psf { position: fixed }
+.psr { position: relative }
+.psa { position: absolute }
+.t0 { top: 0 }
+.l0 { left: 0 }
+.r0 { right: 0 }
+.b0 { bottom: 0 }
+.z2 { z-index: 2 }
+.z3 { z-index: 3 }
+
+.p0-5 { padding: 0.5rem }
+.p1 { padding: 0.75rem }
+.p2 { padding: 1.5rem }
+.py0-5 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+.px1 { padding-left: 0.75rem; padding-right: 0.75rem; }
+.m0 { margin: 0 }
+.mb1 { margin-bottom: 0.75rem }
+.mt2 { margin-top: 1.5rem }
+.mb2 { margin-bottom: 1.5rem }
+.my4 { margin: 3rem 0 }
+.mt4 { margin-top: 3rem }
+.mt8 { margin-top: 6rem }
+.pr1 { padding-right: 0.75rem }
+.pl1 { padding-left: 0.75rem }
+.pb1 { padding-bottom: 0.75rem }
+
+.usn { user-select: none }
+.curp { cursor: pointer }
+.curd { cursor: default }
+
+.fs1 { font-size: 2rem }
+.fs2 { font-size: 2rem }
+
+.ffsans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif }
+.ffmono { font-family: "SFMono-Light", Consolas, "Liberation Mono", Menlo, Courier, monospace }
+
+.bgwhite { background: #fff }
+.bggrey { background: #eee }
+.bggreydark { background: #bfbfbf }
+.bgblack { background: #000 }
+.bgblack-hover:hover { background: #000 }
+
+.tcwhite { color: #fff }
+.tcgrey { color: #999 }
+.tcblack { color: #000 }
+
+.action-gradient {
+  background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.9) 25%);
+  background: -webkit-linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.9) 25%);
+  background: -moz-linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.9) 25%);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 6rem;
+  width: 33.3%;
+}
+
+/** 
+ * Copy
+ */
+
 .copy > *,
 .editor-preview-side > *,
 .editor-preview > * {
@@ -44,69 +130,6 @@ ul li { margin-left: 1.2rem }
   max-width: 100%;
 }
 
-.fwb { font-weight: 700 }
-
-.x { display: flex }
-.xw { flex-wrap: wrap }
-.x1 { flex: 1 }
-.xdc { flex-direction: column }
-.xas { align-items: flex-start }
-.xje { justify-content: flex-end }
-.xjb { justify-content: space-between }
-.xjc { justify-content: center }
-.xac { align-items: center }
-.x1 { flex: 1 }
-.xx { flex: 1; width: 100% }
-.db { display: block }
-
-.c4 { width: 33.3% }
-.c6 { width: 50% }
-.c8 { width: 66.6% }
-.c12 { width: 100% }
-
-.vhmn100 { min-height: 100vh }
-
-.psst { position: sticky; position: -webkit-sticky; }
-.psf { position: fixed }
-.psr { position: relative }
-.psa { position: absolute }
-.t0 { top: 0 }
-.l0 { left: 0 }
-.r0 { right: 0 }
-.b0 { bottom: 0 }
-.z2 { z-index: 2 }
-.z3 { z-index: 3 }
-
-.p1 { padding: 0.75rem }
-.p2 { padding: 1.5rem }
-.py0-5 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
-.px1 { padding-left: 0.75rem; padding-right: 0.75rem; }
-.m0 { margin: 0 }
-.mb1 { margin-bottom: 0.75rem }
-.mt2 { margin-top: 1.5rem }
-.mb2 { margin-bottom: 1.5rem }
-.my4 { margin: 3rem 0 }
-.mt4 { margin-top: 3rem }
-.mt8 { margin-top: 6rem }
-
-.usn { user-select: none }
-.curp { cursor: pointer }
-.curd { cursor: default }
-
-.fs1 { font-size: 2rem }
-.fs2 { font-size: 2rem }
-
-.ffsans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif }
-.ffmono { font-family: "SFMono-Light", Consolas, "Liberation Mono", Menlo, Courier, monospace }
-
-.bgwhite { background: #fff }
-.bggrey { background: #eee }
-.bggreydark { background: #999 }
-.bgblack { background: #000 }
-
-.tcwhite { color: #fff }
-.tcgrey { color: #999 }
-.tcblack { color: #000 }
 
 .truncate {
   white-space: nowrap;
@@ -129,6 +152,11 @@ input, textarea {
   width: 100%;
 }
 
+.input-disabled {
+  border: 1px solid #ccc;
+  color: #999;
+}
+
 [tabindex] { outline: 0 }
 
 textarea {
@@ -138,6 +166,7 @@ textarea {
 .psr { position: relative }
 .br1 { border-radius: 3px }
 .pen { pointer-events: none }
+.pea { pointer-events: auto }
 .op50 { opacity: 0.5 }
 .op25 { opacity: 0.25 }
 .op0 { opacity: 0 }
@@ -171,6 +200,11 @@ textarea {
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
+}
+
+.button-inline:hover {
+  background: #000;
+  color: #fff;
 }
 
 .breadcrumbs {

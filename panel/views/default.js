@@ -7,9 +7,11 @@ var queryString = require('query-string')
 // Components
 var ActionBar = require('../components/actionbar')
 var Breadcrumbs = require('../components/breadcrumbs')
-var Fields = require('../components/fields')
 var Sidebar = require('../components/sidebar')
 var Split = require('../components/split')
+
+// Containers
+var Fields = require('../containers/fields')
 
 // Views
 var File = require('./file')
@@ -17,19 +19,18 @@ var FilesAll = require('./files-all')
 var FileNew = require('./file-new')
 var PagesAll = require('./pages-all')
 var PageNew = require('./page-new')
-var NotFound = require('./notfound')
 
 // Methods
-var methodsSite = require('../methods/site')
 var methodsFile = require('../methods/file')
+var methodsPage = require('../methods/page')
+var methodsSite = require('../methods/site')
 
 module.exports = View
 
 function View (state, emit) {
-  if (!state.page) return NotFound(state, emit)
-  var blueprint = getBlueprint()
   var search = queryString.parse(location.search)
-  var draftPage = state.panel.changes[state.page.path]
+  var draftPage = getDraftPage()
+  var blueprint = getBlueprint()
 
   // Page structure
   return html`
@@ -49,7 +50,7 @@ function View (state, emit) {
           ${state.panel.loading ? 'Saving…' : ''}
         </div>
         <div class="c8 breadcrumbs">
-          ${Breadcrumbs({ path: state.page.path })}
+          ${Breadcrumbs({ page: state.page })}
         </div>
       </div>
     `
@@ -59,7 +60,8 @@ function View (state, emit) {
     return Sidebar({
       page: state.page,
       pagesActive: !(blueprint.pages === false),
-      filesActive: !(blueprint.files === false)
+      filesActive: !(blueprint.files === false),
+      handleRemovePage: handleRemovePage
     })
   }
 
@@ -108,17 +110,25 @@ function View (state, emit) {
             ${Fields({
               blueprint: blueprint,
               draft: draftPage,
+              site: state.site,
+              page: state.page,
               values: state.page,
               handleFieldUpdate: handleFieldUpdate
             })}
           </div>
+          <div class="psf b0 l0 r0 p1 pen z3">
+            <div class="action-gradient ${draftPage === undefined ? 'dn' : 'db'}"></div>
+            <div class="c4 pea">
+              ${ActionBar({
+                disabled: draftPage === undefined,
+                saveLarge: true,
+                handleSave: handleSavePage,
+                handleCancel: handleCancelPage,
+                handleRemove: handleRemovePage
+              })}
+            </div>
+          </div>
         </div>
-        ${ActionBar({
-          saveLarge: true,
-          handleSave: handleSavePage,
-          handleCancel: handleCancelPage,
-          handleRemove: handleRemovePage
-        })}
       </div>
     `
   }
@@ -168,5 +178,9 @@ function View (state, emit) {
         state.site.blueprints.default
       )
     }
+  }
+
+  function getDraftPage () {
+    return state.panel && state.page && state.panel.changes[state.page.path]
   }
 }

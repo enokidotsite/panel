@@ -8,8 +8,6 @@ var app = config(choo())
 // create your app
 app.use(require('./plugins/events'))
 app.use(require('./plugins/panel'))
-
-// error
 app.route('*', require('./views/default'))
 
 // public

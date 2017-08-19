@@ -76,12 +76,15 @@ Textarea.prototype.load = function (element) {
 
   // send state up
   this.simplemde.codemirror.on('change', function () {
-    self.emit('input', self.simplemde.value())
+    if (self.value !== self.simplemde.value()) {
+      self.emit('input', self.simplemde.value())
+    }
   })
 }
 
 Textarea.prototype.unload = function () {
-  
+  this.simplemde.toTextArea()
+  this.simplemde = null
 }
 
 function getToolbar (option) {

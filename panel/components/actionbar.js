@@ -4,27 +4,26 @@ module.exports = ActionBar
 
 function ActionBar (props) {
   props = props || { }
-  props.saveLarge = !(props.saveLarge === false)
-  props.disabled = (props.disabled === undefined) ? false : props.disabled
-  var disabledClass = props.disabled ? 'pen op25' : ''
+  var saveLarge = !(props.saveLarge === false)
+  var saveText = props.saveText || 'Save changes'
+  var cancelText = props.cancelText || 'Cancel'
+  var disabled = (props.disabled === undefined) ? false : props.disabled
+  var disabledClass = props.disabled ? 'pen dn' : 'x xjb'
 
   return html`
-    <div class="x xjb c12 lh1 usn">
-      <div class="x ${disabledClass}">
-        ${props.handleSave ? save() : ''} 
-        ${props.handleCancel ? cancel() : ''}
-      </div>
-      ${props.handleRemove ? remove() : ''}
+    <div id="action-bar" class="psr c12 lh1 usn ${disabledClass}">
+      ${props.handleSave ? save() : ''} 
+      ${props.handleCancel ? cancel() : ''}
     </div>
   `
 
   function save () {
     return html`
-      <div class="p1" id="save">
+      <div class="p1 x1" id="save">
         <div
           class="bgblack tcwhite p1 curp fwb br1"
           onclick=${props.handleSave}
-        >Save</div>
+        >${saveText}</div>
       </div>
     `
   }
@@ -33,20 +32,9 @@ function ActionBar (props) {
     return html`
       <div class="p1" id="cancel">
         <div
-          class="bggreydark tcwhite p1 curp br1"
+          class="bggreydark bgblack-hover tcwhite p1 curp br1"
           onclick=${props.handleCancel}
-        >Cancel</div>
-      </div>
-    `
-  }
-
-  function remove () {
-    return html`
-      <div class="p1" id="remove">
-        <div
-          class="bggreydark tcwhite p1 curp br1"
-          onclick=${props.handleRemove}
-        >Remove</div>
+        >${cancelText}</div>
       </div>
     `
   }

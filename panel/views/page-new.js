@@ -4,22 +4,36 @@ var path = require('path')
 
 var Modal = require('../components/modal')
 var PageNew = require('../containers/page-new')
+var methodsPage = require('../methods/page')
 
+var modal = Modal()
 var pageNew = PageNew()
 
 module.exports = PageNewView 
 
 function PageNewView (state, emit) {
   var blueprint = getBlueprint()
-  var views = getViews()
+  var views = methodsPage.getViews({
+    blueprint: blueprint,
+    blueprints: state.site.blueprints
+  })
 
   var content = pageNew.render({
     key: 'add',
     view: views.default ? 'default' : objectKeys(views)[0],
     views: views
-  },
-  function (name, data) {
-    switch (name) {
+  }, handleView)
+
+  return modal.render({
+    content: content,
+    className: 'c6',
+    handleContainerClick: function (event) {
+      emit(state.events.REPLACESTATE, '?')
+    }
+  })
+
+  function handleView (event, data) {
+    switch (event) {
       case 'save':
         if (!data.value.title || !data.value.uri || !data.value.view) {
           return alert('Missing data')
@@ -32,9 +46,7 @@ function PageNewView (state, emit) {
         break
       case 'cancel': return emit(state.events.REPLACESTATE, '?')
     }
-  })
-
-  return Modal(state, emit, content)
+  }
 
   function getBlueprint () {
     if (!state.page) {
@@ -44,35 +56,6 @@ function PageNewView (state, emit) {
         state.site.blueprints[state.page.view] ||
         state.site.blueprints.default
       )
-    }
-  }
-
-  // really gotta clean this one up
-  function getViews () {
-    if (
-      blueprint.pages &&
-      typeof blueprint.pages === 'object'
-    ) {
-      // disabled
-      if (blueprint.pages.view === false) return false
-
-      // presets
-      if (typeof blueprint.pages.view === 'object') {
-        return blueprint.pages.view.reduce(function (result, key) {
-          result[key] = state.site.blueprints[key]
-          return result
-        }, { })
-      } else {
-        // if just a string
-        return {
-          [blueprint.pages.view]: state.site.blueprints[blueprint.pages.view]
-        }
-      }
-    } else {
-      return objectKeys(state.site.blueprints).reduce(function (result, key) {
-        result[key] = state.site.blueprints[key]
-        return result
-      }, { })
     }
   }
 }
