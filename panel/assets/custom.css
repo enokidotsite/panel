@@ -130,6 +130,11 @@ ul li { margin-left: 1.2rem }
   max-width: 100%;
 }
 
+.copy a,
+.editor-preview-side a,
+.editor-preview a {
+  text-decoration: underline;
+}
 
 .truncate {
   white-space: nowrap;
