@@ -6,6 +6,7 @@ module.exports = Uploader
 
 function Uploader () {
   if (!(this instanceof Uploader)) return new Uploader()
+  this.open = this.open.bind(this)
   this.handleChange = this.handleChange.bind(this)
   this.handleFile = this.handleFile.bind(this)
   this.handleDragEnter = this.handleDragEnter.bind(this)
@@ -42,8 +43,6 @@ Uploader.prototype.handleChange = function (event) {
   var self = this
   var files = event.srcElement.files
 
-
-  console.log(self.handleFile)
   // if there are files and we can upload, go for it
   if (files && this.props.upload !== false) {
     objectValues(files).forEach(self.handleFile)
@@ -88,7 +87,11 @@ Uploader.prototype.handleDragLeave = function (event) {
   }
 }
 
+Uploader.prototype.open = function () {
+  var input = this.element.querySelector('input')
+  if (input) input.click()
+}
+
 Uploader.prototype.update = function (props) {
-  console.log('UPDATE', props)
   return true
 }

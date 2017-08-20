@@ -24,6 +24,7 @@ function FileNew (state, emit) {
         style="height: 50vh; width: 75vw;"
       >
         ${uploader.render({
+          redirect: true,
           upload: true,
           text: 'Drag and drop here, or click to select files',
           handleFile: handleUploadFile,
@@ -43,13 +44,13 @@ function FileNew (state, emit) {
   }
 
   function handleDragEnter (event) {
-    var el = event.target.parentNode.parentNode
+    var el = event.target.parentNode
     el.classList.remove('bgwhite', 'tcblack')
     el.classList.add('bgblack', 'tcwhite')
   }
 
   function handleDragLeave (event) {
-    var el = event.target.parentNode.parentNode
+    var el = event.target.parentNode
     el.classList.add('bgwhite', 'tcblack')
     el.classList.remove('bgblack', 'tcwhite')
   }

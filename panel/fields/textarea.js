@@ -79,7 +79,7 @@ Textarea.prototype.load = function (element) {
     if (self.value !== self.simplemde.value()) {
       self.emit('input', self.simplemde.value())
     }
-  })
+  }, false)
 }
 
 Textarea.prototype.unload = function () {

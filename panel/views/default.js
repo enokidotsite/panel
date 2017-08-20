@@ -44,7 +44,7 @@ function View (state, emit) {
 
   function header () {
     return html`
-      <div id="header" class="x usn px1 bgblack tcwhite">
+      <div id="header" class="x usn px1 z2 psr bgblack tcwhite">
         <div class="c4 p1">
           <a href="/" class="nbb tcwhite">Site</a>
           ${state.panel.loading ? 'Saving…' : ''}
@@ -59,10 +59,13 @@ function View (state, emit) {
   function sidebar () {
     return Sidebar({
       page: state.page,
+      uploadActive: state.ui.dragActive,
       pagesActive: !(blueprint.pages === false),
       filesActive: !(blueprint.files === false),
-      handleRemovePage: handleRemovePage
-    })
+      handleFile: handleFileUpload,
+      handleRemovePage: handleRemovePage,
+      handleFileUpload: handleFileUpload
+    }, emit)
   }
 
   // TODO: clean this up
@@ -166,6 +169,14 @@ function View (state, emit) {
   function handleRemovePage () {
     emit(state.events.PANEL_REMOVE, {
       path: state.page.path
+    })
+  }
+
+  function handleFileUpload (event, data) {
+    emit(state.events.PANEL_FILE_ADD, {
+      filename: data.name,
+      path: state.page.path,
+      result: data.result
     })
   }
 

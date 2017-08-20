@@ -2,14 +2,18 @@ var ok = require('object-keys')
 var ov = require('object-values')
 var html = require('choo/html')
 
+var Uploader = require('../components/uploader')
 var methodsFile = require('../methods/file')
+
+var uploader = Uploader()
 
 module.exports = sidebar
 
-function sidebar (props) {
+function sidebar (props, emit) {
   props = props || { }
-  props.pagesActive = (props.pagesActive === undefined) ? true : props.pagesActive
-  props.filesActive = (props.filesActive === undefined) ? true : props.filesActive
+  props.pagesActive = (props.pagesActive === undefined) ? false : props.pagesActive
+  props.filesActive = (props.filesActive === undefined) ? false : props.filesActive
+  props.uploadActive = (props.uploadActive === undefined) ? false : props.uploadActive
 
   return html`
     <div id="sidebar" class="c12">
@@ -42,19 +46,48 @@ function sidebar (props) {
 
   function elFiles () {
     return html`
-      <div id="sidebar-files" class="mb2">
+      <div id="sidebar-files" class="mb2 psr">
         <div class="x xjb mb1 usn">
           <div class="fwb">
             <a href="?files=all">Files</a>
           </div>
           <div>
-            <a href="?file=new" class="button-inline">Add</a>
+            <a
+              href="?file=new"
+              class="button-inline"
+              onclick=${handleFileAdd}
+            >Add</a>
             <a href="?files=all" class="button-inline">All</a>
           </div>
         </div>
+        ${props.handleFileUpload ? elUploadContainer() : ''}
         <ul class="c12 myc1 lsn">
           ${elsFiles(props.page)}
         </div>
+      </div>
+    `
+  }
+
+  function elUploadContainer () {
+    return html` 
+      <div class="
+        ${props.uploadActive ? 'x' : 'dn'}
+        bgwhite input psa t0 l0 r0 b0 x xjc xac
+      ">
+        ${uploader.render({
+          text: 'Drag and drop here to add file(s)',
+          handleFile: props.handleFileUpload,
+          handleDragEnter: function (event) {
+            var el = event.target.parentNode.parentNode
+            el.classList.remove('bgwhite', 'tcblack')
+            el.classList.add('bgblack', 'tcwhite')
+          },
+          handleDragLeave: function (event) {
+            var el = event.target.parentNode.parentNode
+            el.classList.add('bgwhite', 'tcblack')
+            el.classList.remove('bgblack', 'tcwhite')
+          }
+        }, emit)}
       </div>
     `
   }
@@ -68,6 +101,11 @@ function sidebar (props) {
         >Delete page</span>
       </div>
     `
+  }
+
+  function handleFileAdd (event) {
+    uploader.open()
+    event.preventDefault()
   }
 }
 

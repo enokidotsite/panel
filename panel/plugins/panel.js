@@ -41,7 +41,7 @@ function panel (state, emitter) {
 
     xhr.put({
       uri: 'http://localhost:8082/update',
-      body: xtend(data),
+      body: data,
       json: true
     }, function (err, resp, body) {
       if (err) alert(err.message)
@@ -127,7 +127,9 @@ function panel (state, emitter) {
       if (err) {
         alert(err.message)
       } else {
-        emitter.emit(state.events.REPLACESTATE, '?')
+        if (data.redirect !== false) {
+          emitter.emit(state.events.REPLACESTATE, '?')
+        }
       }
       
       emitter.emit(state.events.PANEL_LOADING, { loading: false })

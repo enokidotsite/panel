@@ -1,14 +1,16 @@
-Title: Proposals for Habitation
-----
-date: 2017-09-03
-----
-excerpt: In the course of six years Absalon created a series of one person living units based on everyday routine actions and designed entirely in relation to his measures.
-----
-source: https://en.wikipedia.org/wiki/Absalon_(artist)
-----
-text:
+title: Proposals for Habitation
 
-Meir Eshel (December 26, 1964, Ashdod – October 10, 1993, Paris), known professionally as Absalon, was an Israeli-French artist and sculptor.
+----
+
+date: 2017-09-03
+
+----
+
+excerpt: In the course of six years Absalon created a series of one person living units based on everyday routine actions and designed entirely in relation to his measures.
+
+----
+
+text: Meir Eshel (December 26, 1964, Ashdod – October 10, 1993, Paris), known professionally as Absalon, was an Israeli-French artist and sculptor.
 
 ![absalon](absalon.jpg)
 
