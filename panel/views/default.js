@@ -71,10 +71,7 @@ function View (state, emit) {
   // TODO: clean this up
   function content () {
     if (search.file === 'new') {
-      return Split(
-        sidebar(),
-        [FileNew(state, emit), Page()]
-      )
+      return Split(sidebar(), [FileNew(state, emit), Page()])
     }
 
     if (search.file) {
