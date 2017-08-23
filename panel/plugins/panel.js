@@ -71,7 +71,7 @@ function panel (state, emitter) {
     emitter.emit(state.events.RENDER)
 
     xhr.put({
-      uri: 'http://localhost:8082/update',
+      uri: '/api/v1/update',
       body: data,
       json: true
     }, function (err, resp, body) {
