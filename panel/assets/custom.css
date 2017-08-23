@@ -146,6 +146,37 @@ input, textarea {
   padding: 0.5rem;
 }
 
+.select {
+  position: relative;
+  width: 100%;
+}
+
+.select select {
+  cursor: pointer;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  background: #fff;
+  padding: 0.5rem;
+  border: 1px solid #000;
+  border-radius: 3px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  line-height: 1.5;
+  font-size: 1rem;
+  font-weight: 400;
+  outline: 0;
+  width: 100%;
+}
+
+.select:before {
+  content: '↓';
+  position: absolute;
+  font-size: 1.15rem;
+  top: 0;
+  right: 0;
+  padding: 0.5rem 0.75rem 0 0;
+  font-family: "SFMono-Light", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
 .input {
   border: 1px solid #000;
   border-radius: 3px;

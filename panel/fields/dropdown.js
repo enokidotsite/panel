@@ -21,12 +21,14 @@ Dropdown.prototype.createElement = function (state, emit) {
 
   return html`
     <div>
-      <select
-        name="${state.key}"
-        class="c12"
-        type="tags"
-        onchange=${onInput}
-      />${options()}</select>
+      <div class="select">
+        <select
+          name="${state.key}"
+          class="c12"
+          type="tags"
+          onchange=${onInput}
+        />${options()}</select>
+      </div>
     </div>
   `
 
