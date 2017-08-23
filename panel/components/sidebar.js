@@ -30,11 +30,11 @@ function sidebar (props, emit) {
       <div id="sidebar-children" class="mb2">
         <div class="x xjb c12 mb1 usn">
           <div class="fwb">
-            <a href="?pages=all">Pages</a>
+            <a href="?panel=active&pages=all">Pages</a>
           </div>
           <div>
-            <a href="?page=new" class="button-inline">Add</a>
-            <a href="?pages=all" class="button-inline">All</a>
+            <a href="?panel=active&page=new" class="button-inline">Add</a>
+            <a href="?panel=active&pages=all" class="button-inline">All</a>
           </div>
         </div>
         <ul class="c12 myc1 lsn">
@@ -49,15 +49,15 @@ function sidebar (props, emit) {
       <div id="sidebar-files" class="mb2 psr">
         <div class="x xjb mb1 usn">
           <div class="fwb">
-            <a href="?files=all">Files</a>
+            <a href="?panel=active&files=all">Files</a>
           </div>
           <div>
             <a
-              href="?file=new"
+              href="?panel=active&file=new"
               class="button-inline"
               onclick=${handleFileAdd}
             >Add</a>
-            <a href="?files=all" class="button-inline">All</a>
+            <a href="?panel=active&files=all" class="button-inline">All</a>
           </div>
         </div>
         ${props.handleFileUpload ? elUploadContainer() : ''}
@@ -127,7 +127,7 @@ function elsChildren (props) {
       return html`
         <li id="${child.url}" class="m0">
           <a
-            href="${child.url}"
+            href="${child.url}?panel=active"
             class="db py0-5 truncate"
             ondragstart=${handleDragStart}
           >${child.title || child.dirname}</a>
@@ -154,7 +154,7 @@ function elsFiles (props) {
   return files
     .slice(0, 6)
     .map(function (child) {
-      var path = '?file=' + methodsFile.encodeFilename(child.filename)
+      var path = '?panel=active&file=' + methodsFile.encodeFilename(child.filename)
 
       return html`
         <li id="${child.url}" class="m0">

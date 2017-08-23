@@ -1,6 +1,8 @@
 var xhr = require('xhr')
 var xtend = require('xtend')
+var html = require('choo/html')
 var path = require('path')
+var queryString = require('query-string')
 
 module.exports = panel
 
@@ -17,6 +19,35 @@ function panel (state, emitter) {
   emitter.on(state.events.PANEL_REMOVE, onRemove)
   emitter.on(state.events.PANEL_PAGE_ADD, onPageAdd)
   emitter.on(state.events.PANEL_FILE_ADD, onFileAdd)
+  emitter.on(state.events.DOMCONTENTLOADED, onLoad)
+  emitter.on(state.events.NAVIGATE, onNavigate)
+
+  // listen to navigation
+  window.addEventListener('popstate', function () {
+    emitter.emit(state.events.NAVIGATE)
+  })
+
+  function onLoad () {
+    if (window !== undefined) {
+      document.body.appendChild(html`<style id="panel-rules"></style>`)
+      onNavigate()
+    }
+  }
+
+  function onNavigate () {
+    var search = queryString.parse(location.search)
+    var rules = document.querySelector('#panel-rules')
+
+    if (search.panel !== undefined) {
+      rules.innerHTML = 'main { display: none !important }'
+    } else {
+      rules.innerHTML = '#panel { display: none !important }'
+    }
+
+    window.dispatchEvent(new CustomEvent('enokiNavigate', {
+      detail: { panelActive: search.panel !== undefined }
+    }))
+  }
 
   function onUpdate (data) {
     if (!data || !data.path) return
@@ -79,7 +110,7 @@ function panel (state, emitter) {
       if (err) {
         alert(err.message)
       } else {
-        emitter.emit(state.events.REPLACESTATE, data.path)
+        emitter.emit(state.events.REPLACESTATE, data.path + '?panel=active')
       }
       
       emitter.emit(state.events.PANEL_LOADING, { loading: false })
@@ -103,7 +134,7 @@ function panel (state, emitter) {
       if (err) {
         alert(err.message)
       } else {
-        emitter.emit(state.events.REPLACESTATE, path.join(data.path, '../'))
+        emitter.emit(state.events.REPLACESTATE, path.join(data.path, '../') + '?panel=active')
       }
       
       emitter.emit(state.events.PANEL_LOADING, { loading: false })
@@ -128,7 +159,7 @@ function panel (state, emitter) {
         alert(err.message)
       } else {
         if (data.redirect !== false) {
-          emitter.emit(state.events.REPLACESTATE, '?')
+          emitter.emit(state.events.REPLACESTATE, '?panel=active')
         }
       }
       

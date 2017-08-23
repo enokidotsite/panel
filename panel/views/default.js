@@ -33,25 +33,32 @@ function View (state, emit) {
   var blueprint = getBlueprint()
 
   // Page structure
-  return html`
-    <main class="x xdc vhmn100">
-      <div class="c12">
-        ${header()}
-      </div>
-      ${content()}
-    </main>
-  `
+  return search.panel !== undefined
+    ? html`<div id="panel" class="x xdc vhmn100">
+        <div class="c12">
+          ${header()}
+        </div>
+        ${content()}
+      </div>`
+    : html`<div id="panel"></div>`
 
   function header () {
     return html`
       <div id="header" class="x usn px1 z2 psr bgblack tcwhite">
         <div class="c4 p1">
-          <a href="/" class="nbb tcwhite">Site</a>
+          <a href="/?panel=active" class="nbb tcwhite">Site</a>
           ${state.panel.loading ? 'Saving…' : ''}
         </div>
-        <div class="c8 breadcrumbs">
+        <div class="x1 breadcrumbs">
           ${Breadcrumbs({ page: state.page })}
         </div>
+        <a
+          href="?"
+          class="p1 x xjc xac tcwhite"
+          style="font-size: 1.5rem; line-height: 0"
+        >
+          ×
+        </a>
       </div>
     `
   }

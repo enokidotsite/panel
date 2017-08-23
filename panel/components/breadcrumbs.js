@@ -27,7 +27,7 @@ function breadcrumbs (props) {
       var href = result.map(crumb => crumb.path).join('/') + '/' + path + '/'
       result.push({
         path: path,
-        el: html`<a href="${href}" class="db p1 tcwhite nbb">${path}</a>`
+        el: html`<a href="${href}?panel=active" class="db p1 tcwhite nbb">${path}</a>`
       })
       return result
     }, [{

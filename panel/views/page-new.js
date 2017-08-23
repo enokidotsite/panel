@@ -28,7 +28,7 @@ function PageNewView (state, emit) {
     content: content,
     className: 'c6',
     handleContainerClick: function (event) {
-      emit(state.events.REPLACESTATE, '?')
+      emit(state.events.REPLACESTATE, '?panel=active')
     }
   })
 

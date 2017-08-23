@@ -15,5 +15,6 @@ app.route('*', require('./views/default'))
 if (module.parent) {
   module.exports = app
 } else {
-  app.mount('main')
+  app.mount('#panel')
+  require('../site')
 }

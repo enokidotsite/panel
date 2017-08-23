@@ -13,7 +13,7 @@ function FileNew (state, emit) {
   return modal.render({
     content: content(),
     handleContainerClick: function () {
-      emit(state.events.REPLACESTATE, '?')
+      emit(state.events.REPLACESTATE, '?panel=active')
     }
   })
 
