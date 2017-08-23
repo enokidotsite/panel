@@ -8,6 +8,9 @@ function wrapper (view) {
   return function (state, emit) {
     return html`
       <main>
+        <div class="psf t0 r0 z2">
+          <a class="db bgblack p1 tcwhite" href="?panel=active">Panel</a>
+        </div>
         <div class="c12 p1">
           ${title(state.content)}
           ${navigation({
