@@ -1,7 +1,7 @@
+var queryString = require('query-string')
+var objectKeys = require('object-keys')
 var html = require('choo/html')
 var path = require('path')
-var objectKeys = require('object-keys')
-var queryString = require('query-string')
 
 var methodsFile = require('../methods/file')
 var methodsSite = require('../methods/site')
@@ -45,7 +45,7 @@ function File (state, emit) {
             <div class="c12 fwb usn mb1">
               Filename
             </div>
-            <div class="input input-disabled p0-5">
+            <div class="input input-disabled p0-5 truncate">
               ${filename}
             </div>
           </div>
@@ -122,7 +122,7 @@ function File (state, emit) {
 
   function handleRemove () {
     emit(state.events.PANEL_REMOVE, {
-      path: file.path
+      pathPage: file.path
     })
   } 
 

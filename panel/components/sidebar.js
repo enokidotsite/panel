@@ -1,5 +1,4 @@
-var ok = require('object-keys')
-var ov = require('object-values')
+var objectValues = require('object-values')
 var html = require('choo/html')
 
 var Uploader = require('../components/uploader')
@@ -11,9 +10,9 @@ module.exports = sidebar
 
 function sidebar (props, emit) {
   props = props || { }
-  props.pagesActive = (props.pagesActive === undefined) ? false : props.pagesActive
-  props.filesActive = (props.filesActive === undefined) ? false : props.filesActive
-  props.uploadActive = (props.uploadActive === undefined) ? false : props.uploadActive
+  props.pagesActive = props.pagesActive === true
+  props.filesActive = props.filesActive === true
+  props.uploadActive = props.uploadActive === true
 
   return html`
     <div id="sidebar" class="c12">
@@ -111,7 +110,7 @@ function sidebar (props, emit) {
 
 function elsChildren (props) {
   props = props || { }
-  var children = (typeof props.children === 'object') ? ov(props.children) : [ ]
+  var children = (typeof props.children === 'object') ? objectValues(props.children) : [ ]
 
   if (children.length <= 0) {
     return html`
@@ -142,7 +141,7 @@ function elsChildren (props) {
 
 function elsFiles (props) {
   props = props || { }
-  var files = (typeof props.files === 'object') ? ov(props.files) : [ ]
+  var files = (typeof props.files === 'object') ? objectValues(props.files) : [ ]
 
   // Hide if there is nothing
   if (files.length <= 0) return html`
@@ -160,7 +159,7 @@ function elsFiles (props) {
         <li id="${child.url}" class="m0">
           <a
             href="${path}"
-            class="db py0-5"
+            class="db py0-5 truncate"
             ondragstart=${handleDragStart}
           >${child.filename}</a>
         </li>

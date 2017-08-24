@@ -41,10 +41,10 @@ function PageNewView (state, emit) {
         emit(state.events.PANEL_PAGE_ADD, {
           title: data.value.title,
           view: data.value.view || 'default',
-          path: path.join(state.page.path, data.value.uri)
+          pathPage: path.join(state.page.path, data.value.uri)
         })
         break
-      case 'cancel': return emit(state.events.REPLACESTATE, '?')
+      case 'cancel': return emit(state.events.REPLACESTATE, '?panel=active')
     }
   }
 

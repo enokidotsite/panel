@@ -1,6 +1,6 @@
-var html = require('choo/html')
-var objectValues = require('object-values')
 var Nanocomponent = require('nanocomponent')
+var objectValues = require('object-values')
+var html = require('choo/html')
 
 module.exports = Uploader
 

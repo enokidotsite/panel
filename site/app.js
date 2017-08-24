@@ -29,13 +29,15 @@ function setup (app) {
     state.panel = { active: false }
 
     // lol hacks
-    window.addEventListener('enokiNavigate', function (data) {
-      if (data.detail) {
-        state.panel.active = data.detail.panelActive === true
-        if (state.panel.active) emitter.emit('render')
-      }
-      emitter.emit(state.events.NAVIGATE)
-    })
+    if (typeof window !== 'undefined') {
+      window.addEventListener('enokiNavigate', function (data) {
+        if (data.detail) {
+          state.panel.active = data.detail.panelActive === true
+          if (state.panel.active) emitter.emit('render')
+        }
+        emitter.emit(state.events.NAVIGATE)
+      })
+    }
   }
 
   // create the site structure

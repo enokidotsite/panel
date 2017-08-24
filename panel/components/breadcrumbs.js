@@ -1,6 +1,6 @@
-var html = require('choo/html')
 var queryString = require('query-string')
 var objectKeys = require('object-keys')
+var html = require('choo/html')
 
 module.exports = breadcrumbs
 

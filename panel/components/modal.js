@@ -1,5 +1,5 @@
-var html = require('choo/html')
 var Nanocomponent = require('nanocomponent')
+var html = require('choo/html')
 
 module.exports = Modal
 

@@ -1,8 +1,8 @@
+var queryString = require('query-string')
 var html = require('choo/html')
 var ok = require('object-keys')
 var xtend = require('xtend')
 var path = require('path')
-var queryString = require('query-string')
 
 // Components
 var ActionBar = require('../components/actionbar')
@@ -166,7 +166,7 @@ function View (state, emit) {
 
   function handleCancelPage () {
     emit(state.events.PANEL_CANCEL, {
-      pathPage: state.page.path
+      path: state.page.path
     })
   }
 
