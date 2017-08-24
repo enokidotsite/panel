@@ -103,7 +103,7 @@ function panel (state, emitter) {
     emitter.emit(state.events.RENDER)
 
     xhr.put({
-      uri: 'http://localhost:8082/add',
+      uri: '/api/v1/add',
       body: data,
       json: true
     }, function (err, resp, body) {
@@ -127,7 +127,7 @@ function panel (state, emitter) {
     emitter.emit(state.events.RENDER)
 
     xhr.put({
-      uri: 'http://localhost:8082/remove',
+      uri: '/api/v1/remove',
       body: data,
       json: true
     }, function (err, resp, body) {
@@ -151,7 +151,7 @@ function panel (state, emitter) {
     emitter.emit(state.events.RENDER)
 
     xhr.put({
-      uri: 'http://localhost:8082/add-file',
+      uri: '/api/v1/add-file',
       body: data,
       json: true
     }, function (err, resp, body) {
