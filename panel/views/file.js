@@ -106,7 +106,7 @@ function File (state, emit) {
   function handleSave () {
     emit(state.events.PANEL_SAVE, {
       file: file.filename + '.txt',
-      path: state.page.path,
+      pathPage: state.page.path,
       page: objectKeys(blueprint.fields).reduce(function (result, field) {
           result[field] = draftFile[field] === undefined ? file[field] : draftFile[field]
           return result

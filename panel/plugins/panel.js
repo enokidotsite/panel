@@ -61,12 +61,6 @@ function panel (state, emitter) {
   }
 
   function onSave (data) {
-    // temp have to past page state until we can query
-    // path against state.content obj
-    if (!data.page || !data.path || !data.file) {
-      alert('hold on')
-    }
-
     emitter.emit(state.events.PANEL_LOADING, { loading: true })
     emitter.emit(state.events.RENDER)
 

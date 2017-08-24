@@ -153,7 +153,7 @@ function View (state, emit) {
 
     emit(state.events.PANEL_SAVE, {
       file: state.page.file,
-      path: state.page.path,
+      pathPage: state.page.path,
       page: ok(blueprint.fields)
         .reduce(function (result, field) {
           result[field] = draftPage[field] === undefined
@@ -166,20 +166,20 @@ function View (state, emit) {
 
   function handleCancelPage () {
     emit(state.events.PANEL_CANCEL, {
-      path: state.page.path
+      pathPage: state.page.path
     })
   }
 
   function handleRemovePage () {
     emit(state.events.PANEL_REMOVE, {
-      path: state.page.path
+      pathPage: state.page.path
     })
   }
 
   function handleFileUpload (event, data) {
     emit(state.events.PANEL_FILE_ADD, {
-      filename: data.name,
-      path: state.page.path,
+      filename: data.filename,
+      pathPage: state.page.path,
       result: data.result
     })
   }

@@ -64,7 +64,7 @@ Uploader.prototype.handleFile = function (file) {
   reader.addEventListener('load', function () {
     if (self.props.handleFile) {
       self.props.handleFile('upload', {
-        name: file.name,
+        filename: file.name,
         type: file.type,
         size: file.size,
         result: reader.result
