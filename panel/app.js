@@ -15,6 +15,7 @@ function setup (app) {
 
   app.use(exposeState)
   app.use(structure)
+  remount(app)
 
   return app
 
@@ -28,10 +29,10 @@ function setup (app) {
     state.content = site.content
     state.site = site.site
 
-    // add the index route
+    // index route
     route(state.content)
 
-    // create route
+    // create a route
     function route (page) {
       var view = views[page.view] || views.default
       app.route(page.path, makePage(page, view))
@@ -44,35 +45,43 @@ function setup (app) {
       }
     }
   }
+}
 
-  // composition to extend state obj with page
-  function makePage (props, view) {
-    return function (state, emit) {
-      return view(xtend(state, { page: props }), emit)
-    }
+// composition to extend state obj with page
+function makePage (props, view) {
+  return function (state, emit) {
+    return view(xtend(state, { page: props }), emit)
+  }
+}
+
+// hacky way to get our views depending upon environment
+function getViews () {
+  return module.parent ? getNode() : getBrowserify()
+
+  function getNode () {
+    var pathViews = path.join(__dirname, './views')
+    return fs.readdirSync(pathViews).reduce(function (result, file) {
+      file = path.basename(file, path.extname(file))
+      result[file] = require(path.join(pathViews, file))
+      return result
+    }, { })
   }
 
-  // hacky way to get our views depending upon environment
-  function getViews () {
-    return module.parent
-      ? getNode()
-      : getBrowserify()
+  function getBrowserify () {
+    var viewSrc = require('./views/*.js', { mode: 'hash' })
+    return Object.keys(viewSrc).reduce(function (result, value) {
+      result[path.basename(value)] = viewSrc[value]
+      return result
+    }, { })
+  }
+}
 
-    function getNode () {
-      var pathViews = path.join(__dirname, './views')
-      return fs.readdirSync(pathViews).reduce(function (result, file) {
-        file = path.basename(file, path.extname(file))
-        result[file] = require(path.join(pathViews, file))
-        return result
-      }, { })
-    }
 
-    function getBrowserify () {
-      var viewSrc = require('./views/*.js', { mode: 'hash' })
-      return Object.keys(viewSrc).reduce(function (result, value) {
-        result[path.basename(value)] = viewSrc[value]
-        return result
-      }, { })
-    }
+// lol so jank
+function remount (app) {
+  var mount = app.mount.bind(app)
+  app.mount = function (el) {
+    mount(el)
+    require('../site')
   }
 }
