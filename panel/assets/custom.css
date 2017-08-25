@@ -98,9 +98,27 @@ ul li { margin-left: 1.2rem }
   background: -moz-linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.9) 25%);
   position: absolute;
   bottom: 0;
-  left: 0;
+  right: 0;
   height: 6rem;
   width: 33.3%;
+}
+
+.icon-panel {
+  background-image: url(/assets/settings.svg);
+  background-size: 1.25rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: block;
+  height: 3rem;
+  width: 3rem;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 99;
+}
+
+.icon-panel:hover {
+  background-size: 1.5rem;
 }
 
 /** 
