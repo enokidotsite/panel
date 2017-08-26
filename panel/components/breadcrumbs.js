@@ -10,15 +10,16 @@ function breadcrumbs (props) {
   var path = page.path || ''
   var search = queryString.parse(location.search)
 
-  var searchPaths = objectKeys(search).reduce(function (result, key) {
-    if (key !== 'file') return result
-    if (key === 'file' && search[key] === 'new') return result
-    result.push({
-      path: '',
-      el: html`<a href="" class="db p1 tcwhite nbb">${search[key]}</a>`
-    })
-    return result
-  }, [ ])
+  var searchPaths = objectKeys(search)
+    .reduce(function (result, key) {
+      if (key !== 'file') return result
+      if (key === 'file' && search[key] === 'new') return result
+      result.push({
+        path: '',
+        el: html`<a href="" class="db p1 tcwhite nbb">${search[key]}</a>`
+      })
+      return result
+    }, [ ])
 
   var pagePaths = path
     .split('/')
@@ -30,9 +31,7 @@ function breadcrumbs (props) {
         el: html`<a href="${href}?panel=active" class="db p1 tcwhite nbb">${path}</a>`
       })
       return result
-    }, [{
-      path: '', el: ''
-    }])
+    }, [{ path: '', el: ''}])
 
     return pagePaths
       .concat(searchPaths)

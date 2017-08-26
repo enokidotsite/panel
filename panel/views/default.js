@@ -50,6 +50,7 @@ function View (state, emit) {
           ${state.panel.loading ? 'Saving…' : ''}
         </div>
         <div class="x1 breadcrumbs">
+          <a href="/?panel=active" class="db p1 tcwhite nbb">index</a>
           ${Breadcrumbs({ page: state.page })}
         </div>
         <a
