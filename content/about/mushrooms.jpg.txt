@@ -1,5 +1,0 @@
-title: Mushroom
-
-----
-
-text: this is a caption

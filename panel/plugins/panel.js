@@ -1,4 +1,5 @@
 var queryString = require('query-string')
+var objectKeys = require('object-keys')
 var assert = require('nanoassert')
 var html = require('choo/html')
 var xtend = require('xtend')
@@ -24,7 +25,7 @@ function panel (state, emitter) {
   emitter.on(state.events.PANEL_LOADING, onLoading)
   emitter.on(state.events.PANEL_REMOVE, onRemove)
   emitter.on(state.events.PANEL_PAGE_ADD, onPageAdd)
-  emitter.on(state.events.PANEL_FILE_ADD, onFileAdd)
+  emitter.on(state.events.PANEL_FILES_ADD, onFilesAdd)
 
 
   function onUpdate (data) {
@@ -96,6 +97,12 @@ function panel (state, emitter) {
     assert.equal(typeof data, 'object', 'enoki: data must be type object')
     assert.equal(typeof data.pathPage, 'string', 'enoki: data.pathPage must be type string')
 
+    if (data.confirm) {
+      if (!window.confirm(`Are you sure you want to delete ${data.title || data.pathPage}?`)) {
+        return
+      }
+    }
+
     emitter.emit(state.events.PANEL_LOADING, { loading: true })
     emitter.emit(state.events.RENDER)
 
@@ -111,25 +118,36 @@ function panel (state, emitter) {
     })  
   }
 
-  function onFileAdd (data) {
+  function onFilesAdd (data) {
     assert.equal(typeof data, 'object', 'enoki: data must be type object')
     assert.equal(typeof data.pathPage, 'string', 'enoki: data.pathPage must be type string')
-    assert.equal(typeof data.filename, 'string', 'enoki: data.filename must be type string')
-    assert.equal(typeof data.result, 'string', 'enoki: data.result must be type string')
+    assert.equal(typeof data.files, 'object', 'enoki: data.files must be type object')
 
+    var send = new XMLHttpRequest()
+    var formData = new FormData()
+
+    // loading
     emitter.emit(state.events.PANEL_LOADING, { loading: true })
     emitter.emit(state.events.RENDER)
 
-    xhr.put({
-      uri: '/api/v1/add-file',
-      body: data,
-      json: true
-    }, function (err, resp, body) {
+    // add the files to the request
+    objectKeys(data.files).forEach(function (key) {
+      var file = data.files[key]
+      formData.append(file.name, file)
+    })
+
+    // sending
+    send.open('POST', '/api/v1/add-files', true)
+    send.setRequestHeader('path-page', data.pathPage)
+    send.send(formData)
+
+    // callback
+    send.addEventListener('load', function (event) {
       emitter.emit(state.events.PANEL_LOADING, { loading: false })
       emitter.emit(state.events.RENDER)
-      if (err) return alert(err.message)
+      if (this.status !== 200) return alert('Can not upload')
       emitter.emit(state.events.REPLACESTATE, '?panel=active')
-    })  
+    })
   }
 
   /**

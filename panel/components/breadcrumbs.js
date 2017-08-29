@@ -16,7 +16,7 @@ function breadcrumbs (props) {
       if (key === 'file' && search[key] === 'new') return result
       result.push({
         path: '',
-        el: html`<a href="" class="db p1 tcwhite nbb">${search[key]}</a>`
+        el: html`<a href="" class="db p1 nbb">${search[key]}</a>`
       })
       return result
     }, [ ])
@@ -28,7 +28,7 @@ function breadcrumbs (props) {
       var href = result.map(crumb => crumb.path).join('/') + '/' + path + '/'
       result.push({
         path: path,
-        el: html`<a href="${href}?panel=active" class="db p1 tcwhite nbb">${path}</a>`
+        el: html`<a href="${href}?panel=active" class="db p1 nbb">${path}</a>`
       })
       return result
     }, [{ path: '', el: ''}])

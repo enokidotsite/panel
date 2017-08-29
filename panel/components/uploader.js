@@ -2,96 +2,83 @@ var Nanocomponent = require('nanocomponent')
 var objectValues = require('object-values')
 var html = require('choo/html')
 
-module.exports = Uploader
-
-function Uploader () {
+module.exports = function Wrapper () {
   if (!(this instanceof Uploader)) return new Uploader()
-  this.open = this.open.bind(this)
-  this.handleChange = this.handleChange.bind(this)
-  this.handleFile = this.handleFile.bind(this)
-  this.handleDragEnter = this.handleDragEnter.bind(this)
-  this.handleDragLeave = this.handleDragLeave.bind(this)
-  Nanocomponent.call(this)
 }
 
-Uploader.prototype = Object.create(Nanocomponent.prototype)
+class Uploader extends Nanocomponent {
+  constructor () {
+    super()
+    this.open = this.open.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+    this.handleDragEnter = this.handleDragEnter.bind(this)
+    this.handleDragLeave = this.handleDragLeave.bind(this)
+  }
 
-Uploader.prototype.createElement = function (props) {
-  this.props = props || { }
-  this.text = this.props.text || 'Drag and drop here'
-  this.active = this.props.active || false
+  createElement (props) {
+    this.props = props || { }
+    this.text = this.props.text || 'Drag and drop here'
+    this.active = this.props.active || false
 
-  return html`
-    <div>
-      <input
-        id="select-file"
-        type="file"
-        multiple="true"
-        class="op0 psa t0 l0 r0 b0 z2 c12 curp"
-        onchange=${this.handleChange}
-        ondragenter=${this.handleDragEnter}
-        ondragleave=${this.handleDragLeave}
-      />
+    return html`
       <div>
-        ${this.text}
+        <form enctype="multipart/form-data">
+          <input
+            id="select-file"
+            type="file"
+            multiple="true"
+            class="op0 psa t0 l0 r0 b0 z2 c12 curp"
+            onchange=${this.handleChange}
+            ondragenter=${this.handleDragEnter}
+            ondragleave=${this.handleDragLeave}
+          />
+          <div>
+            ${this.text}
+          </div>
+        </form>
       </div>
-    </div>
-  `
-}
-
-Uploader.prototype.handleChange = function (event) {
-  var self = this
-  var files = event.srcElement.files
-
-  // if there are files and we can upload, go for it
-  if (files && this.props.upload !== false) {
-    objectValues(files).forEach(self.handleFile)
+    `
   }
 
-  // little callback handler
-  if (this.props.handleChange) {
-    this.props.handleChange('change', {
-      files: files ? files : { }
-    })
-  }
-}
+  handleChange (event) {
+    var self = this
+    var files = event.srcElement.files
 
-Uploader.prototype.handleFile = function (file) {
-  var self = this
-  var reader = new FileReader()
+    // if there are files and we can upload, go for it
+    if (files && this.props.upload !== false) {
+      if (self.props.handleFiles) {
+        self.props.handleFiles('upload', {
+          files: files
+        })
+      }
+    }
 
-  // when the file loads, go for it
-  reader.addEventListener('load', function () {
-    if (self.props.handleFile) {
-      self.props.handleFile('upload', {
-        filename: file.name,
-        type: file.type,
-        size: file.size,
-        result: reader.result
+    // little callback handler
+    if (this.props.handleChange) {
+      this.props.handleChange('change', {
+        files: files ? files : { }
       })
     }
-  }, false)
-
-  if (file) reader.readAsDataURL(file)
-}
-
-Uploader.prototype.handleDragEnter = function (event) {
-  if (this.props.handleDragEnter) {
-    this.props.handleDragEnter(event)
   }
-}
 
-Uploader.prototype.handleDragLeave = function (event) {
-  if (this.props.handleDragLeave) {
-    this.props.handleDragLeave(event)
+  handleDragEnter (event) {
+    if (this.props.handleDragEnter) {
+      this.props.handleDragEnter(event)
+    }
   }
-}
 
-Uploader.prototype.open = function () {
-  var input = this.element.querySelector('input')
-  if (input) input.click()
-}
+  handleDragLeave (event) {
+    if (this.props.handleDragLeave) {
+      this.props.handleDragLeave(event)
+    }
+  }
 
-Uploader.prototype.update = function (props) {
-  return true
+  open () {
+    var input = this.element.querySelector('input')
+    if (input) input.click()
+  }
+
+  update (props) {
+    return true
+  }
 }

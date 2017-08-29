@@ -91,6 +91,7 @@ ul li { margin-left: 1.2rem }
 .tcwhite { color: #fff }
 .tcgrey { color: #999 }
 .tcblack { color: #000 }
+.tcblack-hover:hover { color: #000 }
 
 .action-gradient {
   background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.9) 25%);
@@ -98,7 +99,7 @@ ul li { margin-left: 1.2rem }
   background: -moz-linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.9) 25%);
   position: absolute;
   bottom: 0;
-  right: 0;
+  left: 0;
   height: 6rem;
   width: 33.3%;
 }
@@ -265,15 +266,30 @@ textarea {
 
 .breadcrumbs {
   display: flex;
+  overflow-y: hidden;
+  width: 100%;
 }
 
 .breadcrumbs > a {
-  border-right: 1px solid rgba(127, 127, 127, 0.5);
   display: block;
+  position: relative;
+  color: #999;
 }
 
-.breadcrumbs > a:first-child {
-  border-left: 1px solid rgba(127, 127, 127, 0.5);
+.breadcrumbs > a:hover {
+  color: #000;
+}
+
+.breadcrumbs > a:before {
+  background: #ddd;
+  content: '';
+  display: block;
+  height: 2rem;
+  width: 1px;
+  position: absolute;
+  top: 0.5rem;
+  right: 0;
+  transform: rotate(15deg);
 }
 
 .myc1 > * { border-top: 1px solid #ddd }
@@ -709,14 +725,14 @@ span.CodeMirror-selectedtext {
     background: 0 0
 }
 .CodeMirror {
-    height: auto;
-    min-height: 100px;
-    padding: 1rem;
-    font: inherit;
-    z-index: 1
+  height: auto;
+  min-height: 10rem;
+  padding: 1rem;
+  font: inherit;
+  z-index: 1
 }
 .CodeMirror-scroll {
-    min-height: 100px
+  min-height: 10rem;
 }
 .CodeMirror-fullscreen {
     background: #fff;

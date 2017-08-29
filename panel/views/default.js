@@ -44,22 +44,19 @@ function View (state, emit) {
 
   function header () {
     return html`
-      <div id="header" class="x usn px1 z2 psr bgblack tcwhite">
+      <div id="header" class="x usn px1 z2 psr">
         <div class="c4 p1">
-          <a href="/?panel=active" class="nbb tcwhite">Site</a>
           ${state.panel.loading ? 'Saving…' : ''}
         </div>
         <div class="x1 breadcrumbs">
-          <a href="/?panel=active" class="db p1 tcwhite nbb">index</a>
+          <a href="/?panel=active" class="db p1 nbb">index</a>
           ${Breadcrumbs({ page: state.page })}
         </div>
         <a
           href="?"
           class="p1 x xjc xac tcwhite"
           style="font-size: 1.5rem; line-height: 0"
-        >
-          ×
-        </a>
+        >×</a>
       </div>
     `
   }
@@ -70,9 +67,9 @@ function View (state, emit) {
       uploadActive: state.ui.dragActive,
       pagesActive: !(blueprint.pages === false),
       filesActive: !(blueprint.files === false),
-      handleFile: handleFileUpload,
+      handleFiles: handleFilesUpload,
       handleRemovePage: handleRemovePage,
-      handleFileUpload: handleFileUpload
+      handleFilesUpload: handleFilesUpload
     }, emit)
   }
 
@@ -173,15 +170,16 @@ function View (state, emit) {
 
   function handleRemovePage () {
     emit(state.events.PANEL_REMOVE, {
+      confirm: true,
+      title: state.page.title,
       pathPage: state.page.path
     })
   }
 
-  function handleFileUpload (event, data) {
-    emit(state.events.PANEL_FILE_ADD, {
-      filename: data.filename,
+  function handleFilesUpload (event, data) {
+    emit(state.events.PANEL_FILES_ADD, {
       pathPage: state.page.path,
-      result: data.result
+      files: data.files
     })
   }
 

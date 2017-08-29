@@ -17,14 +17,38 @@ function sidebar (props, emit) {
   return html`
     <div id="sidebar" class="c12">
       <div class="psst p1" style="top: 0.75rem; padding-bottom: 5.5rem">
-        ${props.pagesActive ? elChildren() : ''}
+        ${elPage()}
+        ${props.pagesActive ? elPages() : ''}
         ${props.filesActive ? elFiles() : ''}
         ${props.handleRemovePage ? elRemove() : ''}
       </div>
     </div>
   `
 
-  function elChildren () {
+  function elPage () {
+    return html`
+      <div id="sidebar-children" class="mb2">
+        <div class="x xjb c12 mb1 usn">
+          <div class="fwb">
+            <a href="?panel=active">Page</a>
+          </div>
+          <div>
+            <a href="?" class="button-inline">Visit</a>
+          </div>
+        </div>
+        <ul class="c12 myc1 lsn">
+          <li class="m0 py0-5">
+            Settings
+          </li>
+          <li class="m0 py0-5 curp" onclick=${props.handleRemovePage}>
+            Delete page 
+          </li>
+        </ul>
+      </div>
+    `
+  }
+
+  function elPages () {
     return html`
       <div id="sidebar-children" class="mb2">
         <div class="x xjb c12 mb1 usn">
@@ -54,12 +78,12 @@ function sidebar (props, emit) {
             <a
               href="?panel=active&file=new"
               class="button-inline"
-              onclick=${handleFileAdd}
+              onclick=${handleFilesAdd}
             >Add</a>
             <a href="?panel=active&files=all" class="button-inline">All</a>
           </div>
         </div>
-        ${props.handleFileUpload ? elUploadContainer() : ''}
+        ${props.handleFilesUpload ? elUploadContainer() : ''}
         <ul class="c12 myc1 lsn">
           ${elsFiles(props.page)}
         </div>
@@ -75,7 +99,7 @@ function sidebar (props, emit) {
       ">
         ${uploader.render({
           text: 'Drag and drop here to add file(s)',
-          handleFile: props.handleFileUpload,
+          handleFiles: props.handleFilesUpload,
           handleDragEnter: function (event) {
             var el = event.target.parentNode.parentNode
             el.classList.remove('bgwhite', 'tcblack')
@@ -95,14 +119,14 @@ function sidebar (props, emit) {
     return html`
       <div>
         <span
-          class="tcgrey curp"
+          class="tcgrey curp tcblack-hover"
           onclick=${props.handleRemovePage}
         >Delete page</span>
       </div>
     `
   }
 
-  function handleFileAdd (event) {
+  function handleFilesAdd (event) {
     uploader.open()
     event.preventDefault()
   }

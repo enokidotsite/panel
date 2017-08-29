@@ -7,7 +7,7 @@ function events (state, emitter) {
   state.events.PANEL_MOVE = 'panel:move'
   
   state.events.PANEL_PAGE_ADD = 'panel:page:add'
-  state.events.PANEL_FILE_ADD = 'panel:file:add'
+  state.events.PANEL_FILES_ADD = 'panel:files:add'
 
   state.events.PANEL_LOADING = 'panel:loading'
   state.events.PANEL_SAVE = 'panel:save'
