@@ -13,12 +13,7 @@ function panel (state, emitter) {
     changes: { },
     loading: false
   }
-
-  // global hooks
-  emitter.on(state.events.DOMCONTENTLOADED, onLoad)
-  emitter.on(state.events.NAVIGATE, onNavigate)
-
-  // api
+  
   emitter.on(state.events.PANEL_UPDATE, onUpdate)
   emitter.on(state.events.PANEL_SAVE, onSave)
   emitter.on(state.events.PANEL_CANCEL, onCancel)
@@ -26,7 +21,6 @@ function panel (state, emitter) {
   emitter.on(state.events.PANEL_REMOVE, onRemove)
   emitter.on(state.events.PANEL_PAGE_ADD, onPageAdd)
   emitter.on(state.events.PANEL_FILES_ADD, onFilesAdd)
-
 
   function onUpdate (data) {
     assert.equal(typeof data, 'object', 'enoki: data must be type object')
@@ -148,37 +142,5 @@ function panel (state, emitter) {
       if (this.status !== 200) return alert('Can not upload')
       emitter.emit(state.events.REPLACESTATE, '?panel=active')
     })
-  }
-
-  /**
-   * Hacks
-   */
-
-  if (typeof window !== 'undefined') {
-    window.addEventListener('popstate', function () {
-      emitter.emit(state.events.NAVIGATE)
-    })
-  }
-
-  function onLoad () {
-    if (typeof window !== 'undefined') {
-      document.body.appendChild(html`<style id="panel-rules"></style>`)
-      onNavigate()
-    }
-  }
-
-  function onNavigate () {
-    var search = queryString.parse(location.search)
-    var rules = document.querySelector('#panel-rules')
-
-    if (search.panel !== undefined) {
-      rules.innerHTML = 'main { display: none !important }'
-    } else {
-      rules.innerHTML = '#panel { display: none !important }'
-    }
-
-    window.dispatchEvent(new CustomEvent('enokiNavigate', {
-      detail: { panelActive: search.panel !== undefined }
-    }))
   }
 }

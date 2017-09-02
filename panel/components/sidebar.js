@@ -17,7 +17,6 @@ function sidebar (props, emit) {
   return html`
     <div id="sidebar" class="c12">
       <div class="psst p1" style="top: 0.75rem; padding-bottom: 5.5rem">
-        ${elPage()}
         ${props.pagesActive ? elPages() : ''}
         ${props.filesActive ? elFiles() : ''}
         ${props.handleRemovePage ? elRemove() : ''}
@@ -30,18 +29,12 @@ function sidebar (props, emit) {
       <div id="sidebar-children" class="mb2">
         <div class="x xjb c12 mb1 usn">
           <div class="fwb">
-            <a href="?panel=active">Page</a>
-          </div>
-          <div>
-            <a href="?" class="button-inline">Visit</a>
+            <a href="?">Page</a>
           </div>
         </div>
         <ul class="c12 myc1 lsn">
           <li class="m0 py0-5">
             Settings
-          </li>
-          <li class="m0 py0-5 curp" onclick=${props.handleRemovePage}>
-            Delete page 
           </li>
         </ul>
       </div>
@@ -53,11 +46,11 @@ function sidebar (props, emit) {
       <div id="sidebar-children" class="mb2">
         <div class="x xjb c12 mb1 usn">
           <div class="fwb">
-            <a href="?panel=active&pages=all">Pages</a>
+            <a href="?pages=all">Pages</a>
           </div>
           <div>
-            <a href="?panel=active&page=new" class="button-inline">Add</a>
-            <a href="?panel=active&pages=all" class="button-inline">All</a>
+            <a href="?page=new" class="button-inline">Add</a>
+            <a href="?pages=all" class="button-inline">All</a>
           </div>
         </div>
         <ul class="c12 myc1 lsn">
@@ -72,15 +65,15 @@ function sidebar (props, emit) {
       <div id="sidebar-files" class="mb2 psr">
         <div class="x xjb mb1 usn">
           <div class="fwb">
-            <a href="?panel=active&files=all">Files</a>
+            <a href="?files=all">Files</a>
           </div>
           <div>
             <a
-              href="?panel=active&file=new"
+              href="?file=new"
               class="button-inline"
               onclick=${handleFilesAdd}
             >Add</a>
-            <a href="?panel=active&files=all" class="button-inline">All</a>
+            <a href="?files=all" class="button-inline">All</a>
           </div>
         </div>
         ${props.handleFilesUpload ? elUploadContainer() : ''}
@@ -101,7 +94,7 @@ function sidebar (props, emit) {
           text: 'Drag and drop here to add file(s)',
           handleFiles: props.handleFilesUpload,
           handleDragEnter: function (event) {
-            var el = event.target.parentNode.parentNode
+            var el = event.target.parentNode.parentNode.parentNode
             el.classList.remove('bgwhite', 'tcblack')
             el.classList.add('bgblack', 'tcwhite')
           },
@@ -177,7 +170,7 @@ function elsFiles (props) {
   return files
     .slice(0, 6)
     .map(function (child) {
-      var path = '?panel=active&file=' + methodsFile.encodeFilename(child.filename)
+      var path = '?file=' + methodsFile.encodeFilename(child.filename)
 
       return html`
         <li id="${child.url}" class="m0">

@@ -18,7 +18,7 @@
     "brfs": "^1.4.3",
     "choo": "^6.0.0",
     "enoki": "^1.0.2",
-    "nano-markdown": "^1.2.0",
+    "markdown-it": "^8.4.0",
     "nanoassert": "^1.1.0",
     "nanocomponent": "^6.0.0-1",
     "object-keys": "^1.0.11",

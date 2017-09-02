@@ -15,7 +15,6 @@ function setup (app) {
 
   app.use(exposeState)
   app.use(structure)
-  remount(app)
 
   return app
 
@@ -73,15 +72,5 @@ function getViews () {
       result[path.basename(value)] = viewSrc[value]
       return result
     }, { })
-  }
-}
-
-
-// lol so jank
-function remount (app) {
-  var mount = app.mount.bind(app)
-  app.mount = function (el) {
-    mount(el)
-    require('../site')
   }
 }

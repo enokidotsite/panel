@@ -356,6 +356,15 @@ textarea {
 }
 
 /**
+ * Mobile
+ */
+
+@media (max-width: 700px) {
+  .sm-dn { display: none }
+  .sm-c12 { width: 100% }
+}
+
+/**
  * simplemde v1.11.2
  * Copyright Next Step Webs, Inc.
  * @link https://github.com/NextStepWebs/simplemde-markdown-editor

@@ -8,7 +8,6 @@ function wrapper (view) {
   return function (state, emit) {
     return html`
       <main>
-        <a class="db icon-panel" href="?panel=active"></a>
         <div class="c12 p1">
           ${title(state.content)}
           ${navigation({

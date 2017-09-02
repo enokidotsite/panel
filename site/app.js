@@ -15,29 +15,12 @@ function setup (app) {
 
   app.use(exposeState)
   app.use(structure)
-  app.use(panel)
 
   return app
 
   // funny anti-pattern
   function exposeState (state, emitter) {
     app.state = state
-  }
-
-  // listen to panel events
-  function panel (state, emitter) {
-    state.panel = { active: false }
-
-    // lol hacks
-    if (typeof window !== 'undefined') {
-      window.addEventListener('enokiNavigate', function (data) {
-        if (data.detail) {
-          state.panel.active = data.detail.panelActive === true
-          if (state.panel.active) emitter.emit('render')
-        }
-        emitter.emit(state.events.NAVIGATE)
-      })
-    }
   }
 
   // create the site structure

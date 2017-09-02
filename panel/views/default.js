@@ -32,24 +32,18 @@ function View (state, emit) {
   var draftPage = getDraftPage()
   var blueprint = getBlueprint()
 
-  // Page structure
-  return search.panel !== undefined
-    ? html`<div id="panel" class="x xdc vhmn100">
-        <div class="c12">
-          ${header()}
-        </div>
-        ${content()}
-      </div>`
-    : html`<div id="panel"></div>`
+  return html`
+    <main class="x xdc vhmn100">
+      ${header()}
+      ${content()}
+    </main>
+  `
 
   function header () {
     return html`
       <div id="header" class="x usn px1 z2 psr">
-        <div class="c4 p1">
-          ${state.panel.loading ? 'Saving…' : ''}
-        </div>
         <div class="x1 breadcrumbs">
-          <a href="/?panel=active" class="db p1 nbb">index</a>
+          <a href="/" class="db p1 nbb">index</a>
           ${Breadcrumbs({ page: state.page })}
         </div>
         <a
@@ -58,6 +52,12 @@ function View (state, emit) {
           style="font-size: 1.5rem; line-height: 0"
         >×</a>
       </div>
+    `
+  }
+
+  function loading () {
+    return html`
+      ${state.panel.loading ? 'Saving…' : ''}
     `
   }
 
@@ -146,7 +146,6 @@ function View (state, emit) {
   }
 
   function handleSavePage () {
-    // if there is no draft, don’t bother
     if (!draftPage) return
 
     emit(state.events.PANEL_SAVE, {
