@@ -42,8 +42,8 @@ function View (state, emit) {
 
   function header () {
     return html`
-      <div id="header" class="x usn px1 z2 psr bgblack">
-        <div class="x1 breadcrumbs">
+      <div id="header" class="x usn z2 psr bgblack">
+        <div class="px1 wsnw breadcrumbs">
           <a href="/" class="db p1 nbb">index</a>
           ${Breadcrumbs({ page: state.page })}
         </div>
@@ -114,7 +114,7 @@ function View (state, emit) {
           </div>
           <div class="psf b0 l0 r0 p1 pen z3">
             <div class="action-gradient ${draftPage === undefined ? 'dn' : 'db'}"></div>
-            <div class="c4 pea">
+            <div class="c4 pea sm-c12">
               ${ActionBar({
                 disabled: draftPage === undefined,
                 saveLarge: true,

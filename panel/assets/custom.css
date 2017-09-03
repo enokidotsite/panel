@@ -54,6 +54,7 @@ ul li { margin-left: 1.2rem }
 .b0 { bottom: 0 }
 .z2 { z-index: 2 }
 .z3 { z-index: 3 }
+.z4 { z-index: 4 }
 
 .p0-5 { padding: 0.5rem }
 .p1 { padding: 0.75rem }
@@ -71,6 +72,7 @@ ul li { margin-left: 1.2rem }
 .pl1 { padding-left: 0.75rem }
 .pb1 { padding-bottom: 0.75rem }
 
+.wsnw { white-space: nowrap }
 .usn { user-select: none }
 .curp { cursor: pointer }
 .curd { cursor: default }
@@ -408,6 +410,12 @@ textarea {
 @media (max-width: 700px) {
   .sm-dn { display: none }
   .sm-c12 { width: 100% }
+  .file-preview {
+    height: 100vh;
+    width: 100vw;
+    margin: -0.75rem;
+  }
+  .action-gradient { width: 100% }
 }
 
 /**

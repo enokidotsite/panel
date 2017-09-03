@@ -21,7 +21,7 @@ function File (state, emit) {
   var draftFile = state.panel.changes[file.path]
 
   return Split(
-    sidebar(),
+    [sidebar(), actionbarWrapper()],
     content()
   )
 
@@ -69,15 +69,20 @@ function File (state, emit) {
             >Delete file</span>
           </div>
         </div>
-        <div class="psf b0 l0 r0 p1 pen z3">
-          <div class="action-gradient ${draftFile === undefined ? 'dn' : 'db'}"></div>
-          <div class="c4 pea">
-            ${ActionBar({
-              disabled: draftFile === undefined,
-              handleSave: handleSave,
-              handleCancel: handleCancel
-            })}
-          </div>
+      </div>
+    `
+  }
+
+  function actionbarWrapper () {
+    return html`
+      <div class="psf b0 l0 r0 p1 pen z3">
+        <div class="action-gradient ${draftFile === undefined ? 'dn' : 'db'}"></div>
+        <div class="c4 pea sm-c12">
+          ${ActionBar({
+            disabled: draftFile === undefined,
+            handleSave: handleSave,
+            handleCancel: handleCancel
+          })}
         </div>
       </div>
     `
