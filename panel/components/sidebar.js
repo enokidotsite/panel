@@ -90,7 +90,7 @@ function sidebar (props, emit) {
         bgwhite input psa t0 l0 r0 b0 x xjc xac
       ">
         ${uploader.render({
-          text: 'Drag and drop here to add file(s)',
+          text: 'Drag and drop here to add file',
           handleFiles: props.handleFilesUpload,
           handleDragEnter: function (event) {
             var el = event.target.parentNode.parentNode.parentNode

@@ -4,23 +4,23 @@ var ok = require('object-keys')
 var xtend = require('xtend')
 var path = require('path')
 
-// Components
+// components
 var ActionBar = require('../components/actionbar')
 var Breadcrumbs = require('../components/breadcrumbs')
 var Sidebar = require('../components/sidebar')
 var Split = require('../components/split')
 
-// Containers
+// containers
 var Fields = require('../containers/fields')
 
-// Views
+// views
 var File = require('./file')
 var FilesAll = require('./files-all')
 var FileNew = require('./file-new')
 var PagesAll = require('./pages-all')
 var PageNew = require('./page-new')
 
-// Methods
+// methods
 var methodsFile = require('../methods/file')
 var methodsPage = require('../methods/page')
 var methodsSite = require('../methods/site')
@@ -42,7 +42,7 @@ function View (state, emit) {
 
   function header () {
     return html`
-      <div id="header" class="x usn px1 z2 psr bggrey">
+      <div id="header" class="x usn px1 z2 psr bgblack">
         <div class="x1 breadcrumbs">
           <a href="/" class="db p1 nbb">index</a>
           ${Breadcrumbs({ page: state.page })}

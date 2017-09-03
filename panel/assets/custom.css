@@ -273,15 +273,15 @@ textarea {
 .breadcrumbs > a {
   display: block;
   position: relative;
-  color: #000;
+  color: #666;
 }
 
 .breadcrumbs > a:hover {
-  color: #000;
+  color: #fff;
 }
 
 .breadcrumbs > a:before {
-  background: #ccc;
+  background: #333;
   content: '';
   display: block;
   height: 2rem;
