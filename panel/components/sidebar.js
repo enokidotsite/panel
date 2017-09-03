@@ -3,7 +3,6 @@ var html = require('choo/html')
 
 var Uploader = require('../components/uploader')
 var methodsFile = require('../methods/file')
-
 var uploader = Uploader()
 
 module.exports = sidebar
@@ -99,7 +98,7 @@ function sidebar (props, emit) {
             el.classList.add('bgblack', 'tcwhite')
           },
           handleDragLeave: function (event) {
-            var el = event.target.parentNode.parentNode
+            var el = event.target.parentNode.parentNode.parentNode
             el.classList.add('bgwhite', 'tcblack')
             el.classList.remove('bgblack', 'tcwhite')
           }

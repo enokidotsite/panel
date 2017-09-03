@@ -108,7 +108,9 @@ function panel (state, emitter) {
       emitter.emit(state.events.PANEL_LOADING, { loading: false })
       emitter.emit(state.events.RENDER)
       if (err) return alert(err.message)
-      emitter.emit(state.events.REPLACESTATE, path.join(data.pathPage, '../') + '?panel=active')
+      if (data.redirect !== false) {
+        emitter.emit(state.events.REPLACESTATE, path.join(data.pathPage, '../') + '?panel=active')
+      }
     })  
   }
 
@@ -140,7 +142,7 @@ function panel (state, emitter) {
       emitter.emit(state.events.PANEL_LOADING, { loading: false })
       emitter.emit(state.events.RENDER)
       if (this.status !== 200) return alert('Can not upload')
-      emitter.emit(state.events.REPLACESTATE, '?panel=active')
+      // emitter.emit(state.events.REPLACESTATE, '?panel=active')
     })
   }
 }

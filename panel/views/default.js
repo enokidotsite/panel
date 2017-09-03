@@ -36,28 +36,27 @@ function View (state, emit) {
     <main class="x xdc vhmn100">
       ${header()}
       ${content()}
+      ${loading()}
     </main>
   `
 
   function header () {
     return html`
-      <div id="header" class="x usn px1 z2 psr">
+      <div id="header" class="x usn px1 z2 psr bggrey">
         <div class="x1 breadcrumbs">
           <a href="/" class="db p1 nbb">index</a>
           ${Breadcrumbs({ page: state.page })}
         </div>
-        <a
-          href="?"
-          class="p1 x xjc xac tcwhite"
-          style="font-size: 1.5rem; line-height: 0"
-        >×</a>
       </div>
     `
   }
 
   function loading () {
+    if (!state.panel.loading) return
     return html`
-      ${state.panel.loading ? 'Saving…' : ''}
+      <div class="psf z2 t0 r0 p1">
+        <div class="loader"></div>
+      </div>
     `
   }
 
@@ -79,13 +78,8 @@ function View (state, emit) {
       return Split(sidebar(), [FileNew(state, emit), Page()])
     }
 
-    if (search.file) {
-      return File(state, emit)
-    }
-
-    if (search.files === 'all') {
-      return Split(sidebar(), FilesAll())
-    }
+    if (search.file) return File(state, emit)
+    if (search.pages === 'all') return PagesAll(state, emit)
 
     if (search.page === 'new') {
       return Split(
@@ -94,11 +88,8 @@ function View (state, emit) {
       )
     }
 
-    if (search.pages === 'all') {
-      return Split(
-        sidebar(),
-        PagesAll(state, emit)
-      )
+    if (search.files === 'all') {
+      return FilesAll(state, emit)
     }
 
     return Split(

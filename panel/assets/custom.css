@@ -94,13 +94,13 @@ ul li { margin-left: 1.2rem }
 .tcblack-hover:hover { color: #000 }
 
 .action-gradient {
-  background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.9) 25%);
-  background: -webkit-linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.9) 25%);
-  background: -moz-linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.9) 25%);
+  background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 25%);
+  background: -webkit-linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 25%);
+  background: -moz-linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 25%);
   position: absolute;
   bottom: 0;
   left: 0;
-  height: 6rem;
+  height: 7rem;
   width: 33.3%;
 }
 
@@ -242,7 +242,7 @@ textarea {
 .file-preview {
   height: 100vh;
   margin: 0 -0.75rem 0 0.75rem;
-  background-image: url('data:image/svg+xml;utf8,<svg height="10" width="10" viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg"><rect height="5" width="5" x="0" y="0" fill="rgba(127, 127, 127, 0.25)" /><rect height="5" width="5" x="5" y="5" fill="rgba(127, 127, 127, 0.25)" /></svg>');
+  background-image: url('data:image/svg+xml;utf8,<svg height="10" width="10" viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg"><rect height="5" width="5" x="0" y="0" fill="rgba(127, 127, 127, 0.15)" /><rect height="5" width="5" x="5" y="5" fill="rgba(127, 127, 127, 0.15)" /></svg>');
 }
 
 .button-inline {
@@ -273,7 +273,7 @@ textarea {
 .breadcrumbs > a {
   display: block;
   position: relative;
-  color: #999;
+  color: #000;
 }
 
 .breadcrumbs > a:hover {
@@ -281,7 +281,7 @@ textarea {
 }
 
 .breadcrumbs > a:before {
-  background: #ddd;
+  background: #ccc;
   content: '';
   display: block;
   height: 2rem;
@@ -353,6 +353,52 @@ textarea {
 }
 .tags-input .selected~input {
     opacity: .3
+}
+
+/**
+ * Loader
+ */
+
+.loader,
+.loader:after {
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+}
+.loader {
+  margin: 0 auto;
+  font-size: 10px;
+  position: relative;
+  text-indent: -9999em;
+  border-top: 2px solid #fff;
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #000;
+  border-left: 2px solid #000;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation: load 1.1s infinite linear;
+  animation: load 1.1s infinite linear;
+}
+@-webkit-keyframes load {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes load {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
 }
 
 /**
