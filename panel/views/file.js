@@ -29,8 +29,7 @@ function File (state, emit) {
     return html`
       <div
         id="content-file"
-        class="psf t0 r0 b0 p1 file-preview"
-        style="left: 33.3%"
+        class="c12 psst t0 p1 file-preview"
       >
         ${file.type === 'image' ? image() : ''}
       </div>
