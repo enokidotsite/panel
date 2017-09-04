@@ -14,6 +14,7 @@ The starter-kit generates a [fully hydrated](#features) static website. Take a [
 - [Structure](#structure)
 - [Content](#content)
 - [Site](#site)
+- [Panel](#panel)
 - [Features](#features)
 
 ## Usage
@@ -41,6 +42,7 @@ npm run build  # build your static site
 ```
 /starter-kit
   /content
+  /panel
   /site
   - config.defaults.yml
   - package.json
@@ -53,6 +55,10 @@ This is where the text and files for your site live. This includes things like i
 ### [Site](#site) contains your site code
 
 This is where the code which creates your site lives. This is mostly javascript and css, and any global static assets like web fonts. The starter kit uses [Choo](https://github.com/choojs/choo)!
+
+### [Panel](#panel) contains your panel (cms)
+
+The pre-alpha Starter-Kit includes a very early version of the Enoki Panel, which provides an ultralight web interface to manage your site’s content.
 
 ### Configuration and Dependencies
 
@@ -253,7 +259,7 @@ The root of your `content` object is simply a [`page`](#page-object).
 
 ### Site object
 
-This will be documented once the Panel has been published. *More soon…*
+This is used for constructing your Panel. *More soon…*
 
 ## Building
 
@@ -277,6 +283,20 @@ In addition to creating a fully static HTML site, you can bundle your javascript
 Because it’s static HTML and javascript, you can upload this to any host, such as an Amazon S3 Bucket. There is also zero server configuration needed!
 
 Much more interesting and exciting than this though is publishing to the distributed web. It’s suggested to take a look at [Beaker Browser](http://beakerbrowser.com) and [Hashbase](http://hashbase.io)! *More soon…*
+
+## Panel
+
+The panel is an ultralight web interface for managing your content. The pre-alpha Panel previews one possible direction of where this could go.
+
+### Blueprints
+
+To know what data is associated with a view, a blueprint with a matching filename is used to define the data taxonomy. For example, `site/views/about.js` will have a matching `site/blueprints/about.yml` file.
+
+More on this soon, but in the meantime take a look at one of the existing blueprints for an example.
+
+### Custom Fields
+
+You can extend the panel with custom fields by creating a `/site/fields` directory. Take a look at one of the existing fields (text for instance) to see an example of how easy it is to add a custom field.
 
 ## Features
 
