@@ -1,6 +1,6 @@
 # Enoki Starter Kit
 
-[Enoki](https://github.com/jondashkyle/enoki) is a tool for making full websites.
+[Enoki](https://github.com/jondashkyle/enoki) is an ultralight set of tools for publishing on the open and distributed web.
 
 This (*pre-alpha*) starter-kit is an example of how you might structure an Enoki site. It includes [content](#content) and a [design](#site). It's a bit like the [Kirby](https://github.com/getkirby/starterkit) starter-kit, but built entirely in javascript and uses [Choo](https://github.com/choojs/choo) for the front-end.
 
