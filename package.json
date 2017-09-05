@@ -17,7 +17,7 @@
   "dependencies": {
     "brfs": "^1.4.3",
     "choo": "^6.0.0",
-    "enoki": "^1.0.2",
+    "enoki": "^1.0.4",
     "markdown-it": "^8.4.0",
     "nanoassert": "^1.1.0",
     "nanocomponent": "^6.0.0-1",
