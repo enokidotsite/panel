@@ -1,10 +1,18 @@
-# Enoki Starter Kit
+<h1 align="center">Enoki Starter Kit</h1>
+
+<div align="center">
+  <a href="https://nodejs.org/api/documentation.html#documentation_stability_index">
+    <img src="https://img.shields.io/badge/stability-experimental-orange.svg?style=flat-square" alt="Stability" />
+  </a>
+</div>
+
+<br />
 
 [Enoki](https://github.com/jondashkyle/enoki) is an ultralight set of tools for publishing on the open and distributed web.
 
 This (*pre-alpha*) starter-kit is an example of how you might structure an Enoki site. It includes [content](#content) and a [design](#site). It's a bit like the [Kirby](https://github.com/getkirby/starterkit) starter-kit, but built entirely in javascript and uses [Choo](https://github.com/choojs/choo) for the front-end.
 
-![](https://enoki.site/assets/starterkit-thumb.png)
+![screenshot](https://enoki.site/assets/starterkit-thumb.png)
 
 ## Example
 
