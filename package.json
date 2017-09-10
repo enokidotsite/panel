@@ -20,7 +20,7 @@
     "enoki": "^1.0.5",
     "markdown-it": "^8.4.0",
     "nanoassert": "^1.1.0",
-    "nanocomponent": "^6.0.0-1",
+    "nanocomponent": "^6.4.0",
     "object-keys": "^1.0.11",
     "object-values": "^1.0.0",
     "query-string": "^5.0.0",

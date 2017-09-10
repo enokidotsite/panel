@@ -9,6 +9,7 @@ var ActionBar = require('../components/actionbar')
 var Breadcrumbs = require('../components/breadcrumbs')
 var Sidebar = require('../components/sidebar')
 var Split = require('../components/split')
+var Publish = require('../components/publish')
 
 // containers
 var Fields = require('../containers/fields')
