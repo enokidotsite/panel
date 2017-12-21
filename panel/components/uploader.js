@@ -42,7 +42,7 @@ class Uploader extends Nanocomponent {
 
   handleChange (event) {
     var self = this
-    var files = event.srcElement.files
+    var files = event.srcElement ? event.srcElement.files : event.target.files;
 
     // if there are files and we can upload, go for it
     if (files && this.props.upload !== false) {
