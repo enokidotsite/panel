@@ -20,6 +20,7 @@ var FilesAll = require('./files-all')
 var FileNew = require('./file-new')
 var PagesAll = require('./pages-all')
 var PageNew = require('./page-new')
+var Upgrade = require('./upgrade')
 
 // methods
 var methodsFile = require('../methods/file')
@@ -44,13 +45,23 @@ function view (state, emit) {
 
   function header () {
     return html`
-      <div id="header" class="x usn z2 psr bgblack">
+      <div id="header" class="x xjb usn z2 psr bgblack">
         <div class="px1 wsnw breadcrumbs">
           <a href="?url=/" class="db p1 nbb">index</a>
           ${Breadcrumbs({ page: state.page })}
         </div>
+        ${state.panel.upgrade ? upgrade() : ''}
       </div>
     `
+
+    function upgrade () {
+      return html`
+        <a
+          href="?upgrade=true"
+          class="tcwhite p1 curp"
+        >Upgrade</a>
+      `
+    }
   }
 
   function loading () {
@@ -84,6 +95,7 @@ function view (state, emit) {
 
     if (search.file) return File(state, emit)
     if (search.pages === 'all') return PagesAll(state, emit)
+    if (search.upgrade) return Upgrade(state, emit)
 
     if (search.page === 'new') {
       return Split(
