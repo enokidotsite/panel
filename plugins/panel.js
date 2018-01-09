@@ -7,14 +7,13 @@ var xtend = require('xtend')
 var path = require('path')
 var xhr = require('xhr')
 
-var SOURCE = ''
+var SOURCE = 'b34752de83c49c3ad2d90cb71376b1a76bc5010f545d91cc9ddbe1824da3504d'
 
 module.exports = panel
 
 async function panel (state, emitter) {
   var archive = new DatArchive(window.location.toString())
-  var source = new DatArchive(window.location.toString())
-  console.log(window.location.toString())
+  var source = new DatArchive(SOURCE)
 
   state.panel = {
     changes: { },
@@ -45,6 +44,9 @@ async function panel (state, emitter) {
 
   try {
     state.site.blueprints = await loadBlueprints('/blueprints')
+    var panelPackage = await readPackageVersion(archive)
+    var sourcePackage = await readPackageVersion(archive)
+    console.log(panelPackage, sourcePackage)
   } catch (err) {
     state.p2p = false
   }
@@ -215,6 +217,7 @@ async function panel (state, emitter) {
       }
     }
   }
+
 }
 
 function getBase64 (file) {
@@ -228,4 +231,9 @@ function getBase64 (file) {
       reject(error)
     }
   })
+}
+
+async function readPackageVersion (archive) {
+  var package = await archive.readFile('/package.json')
+  return JSON.parse(package).version
 }
