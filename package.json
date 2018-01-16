@@ -5,18 +5,16 @@
   "main": "index.js",
   "scripts": {
     "start": "watchify index.js -o bundles/bundle.js -t brfs -t sheetify -p [ css-extract -o bundles/bundle.css ] index.js",
-    "build": "browserify index.js -o bundles/bundle.js -t brfs -t  [ sheetify -u sheetify-cssnext ] -p [ css-extract -o bundles/bundle.css ]"
+    "build": "browserify index.js -o bundles/bundle.js -t brfs -t yo-yoify -t  [ sheetify -u sheetify-cssnext ] -g es2040 -p [ css-extract -o bundles/bundle.css ] -p tinyify"
   },
   "keywords": [],
   "author": "Jon-Kyle <contact@jon-kyle.com> (http://jon-kyle.com)",
   "license": "MIT",
   "dependencies": {
-    "brfs": "^1.4.3",
-    "choo": "^6.0.0",
+    "choo": "^6.6.1",
     "choo-dat-hypha": "^0.3.0",
     "hypha": "^0.1.3",
     "markdown-it": "^8.4.0",
-    "nanoassert": "^1.1.0",
     "nanocomponent": "^6.5.0",
     "object-keys": "^1.0.11",
     "object-values": "^1.0.0",
@@ -29,12 +27,13 @@
     "yo-yoify": "^3.7.3"
   },
   "devDependencies": {
-    "browserify": "^14.5.0",
+    "brfs": "^1.4.3",
+    "browserify": "^15.2.0",
     "css-extract": "^1.2.0",
     "es2040": "^1.2.6",
-    "require-globify": "^1.4.1",
-    "sheetify": "^6.2.0",
+    "sheetify": "^7.0.0",
     "sheetify-cssnext": "^1.0.7",
+    "tinyify": "^2.4.0",
     "watchify": "^3.9.0"
   }
 }

@@ -1,25 +1,19 @@
 var queryString = require('query-string')
 var objectKeys = require('object-keys')
-var assert = require('nanoassert')
+var assert = require('assert')
 var html = require('choo/html')
 var smarkt = require('smarkt')
 var xtend = require('xtend')
 var path = require('path')
 var xhr = require('xhr')
 
-var SOURCE = 'b34752de83c49c3ad2d90cb71376b1a76bc5010f545d91cc9ddbe1824da3504d'
-
 module.exports = panel
 
 async function panel (state, emitter) {
   var archive = new DatArchive(window.location.toString())
-  var source = new DatArchive(SOURCE)
 
   state.panel = {
     changes: { },
-    config: { },
-    error: '',
-    upgrade: false,
     loading: false
   }
 
@@ -28,33 +22,27 @@ async function panel (state, emitter) {
     blueprints: { }
   }
 
-  state.events.PANEL_MOVE = 'panel:move'
-  state.events.PANEL_SAVE = 'panel:save'
   state.events.PANEL_UPDATE = 'panel:update'
-  state.events.PANEL_CANCEL = 'panel:cancel'
-  state.events.PANEL_REMOVE = 'panel:remove'
-  state.events.PANEL_LOADING = 'panel:loading'
-  state.events.PANEL_UPGRADE = 'panel:upgrade'
+  state.events.PANEL_MOVE = 'panel:move'
   state.events.PANEL_PAGE_ADD = 'panel:page:add'
   state.events.PANEL_FILES_ADD = 'panel:files:add'
+  state.events.PANEL_LOADING = 'panel:loading'
+  state.events.PANEL_SAVE = 'panel:save'
+  state.events.PANEL_CANCEL = 'panel:cancel'
+  state.events.PANEL_REMOVE = 'panel:remove'
   
+  emitter.on(state.events.PANEL_UPDATE, onUpdate)
   emitter.on(state.events.PANEL_SAVE, onSave)
   emitter.on(state.events.PANEL_CANCEL, onCancel)
-  emitter.on(state.events.PANEL_REMOVE, onRemove)
-  emitter.on(state.events.PANEL_UPDATE, onUpdate)
   emitter.on(state.events.PANEL_LOADING, onLoading)
-  emitter.on(state.events.PANEL_UPGRADE, onUpgrade)
+  emitter.on(state.events.PANEL_REMOVE, onRemove)
   emitter.on(state.events.PANEL_PAGE_ADD, onPageAdd)
   emitter.on(state.events.PANEL_FILES_ADD, onFilesAdd)
 
   try {
-    state.panel.config = xtend(state.panel.config, await getConfig())
-    if (!await isVersionLatest()) state.panel.upgrade = true
     state.site.blueprints = await loadBlueprints('/blueprints')
   } catch (err) {
     state.p2p = false
-    state.panel.error = err.message
-    console.error(err)
   }
 
   state.site.loaded = true
@@ -208,11 +196,6 @@ async function panel (state, emitter) {
     }
   }
 
-  async function onUpgrade () {
-    if (state.panel.config.panelLock) return
-    alert('upgrade')
-  }
-
   async function loadBlueprints (blueprintsDir) {
     var files = await archive.readdir(blueprintsDir)
     var output = { }
@@ -228,21 +211,6 @@ async function panel (state, emitter) {
       }
     }
   }
-
-  async function isVersionLatest () {
-    var panelVersion = await readPackageVersion(archive, state.panel.config.panel || '/panel') 
-    var sourceVersion = await readPackageVersion(source)
-    return panelVersion === sourceVersion
-  }
-
-  async function getConfig () {
-    try {
-      var package = await archive.readFile('/enoki.json')
-      return JSON.parse(package)
-    } catch (err) {
-      return  { }
-    }
-  }
 }
 
 function getBase64 (file) {
@@ -256,9 +224,4 @@ function getBase64 (file) {
       reject(error)
     }
   })
-}
-
-async function readPackageVersion (archive, dirPath) {
-  var package = await archive.readFile(path.join(dirPath || '/', '/package.json'))
-  return JSON.parse(package).version
 }

@@ -1,5 +1,0 @@
-title: Example
-----
-text: Whatever man!
-----
-path: /content
