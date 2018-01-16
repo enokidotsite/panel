@@ -22,6 +22,7 @@ async function panel (state, emitter) {
     blueprints: { }
   }
 
+  state.events.PANEL_LOAD = 'panel:load'
   state.events.PANEL_UPDATE = 'panel:update'
   state.events.PANEL_MOVE = 'panel:move'
   state.events.PANEL_PAGE_ADD = 'panel:page:add'
@@ -31,6 +32,7 @@ async function panel (state, emitter) {
   state.events.PANEL_CANCEL = 'panel:cancel'
   state.events.PANEL_REMOVE = 'panel:remove'
   
+  emitter.on(state.events.PANEL_LOAD, onLoad)
   emitter.on(state.events.PANEL_UPDATE, onUpdate)
   emitter.on(state.events.PANEL_SAVE, onSave)
   emitter.on(state.events.PANEL_CANCEL, onCancel)
@@ -47,6 +49,10 @@ async function panel (state, emitter) {
 
   state.site.loaded = true
   emitter.emit(state.events.RENDER)
+
+  function onLoad (data) {
+    console.log('load dat archive')
+  }
 
   function onUpdate (data) {
     assert.equal(typeof data, 'object', 'enoki: data must be type object')

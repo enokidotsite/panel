@@ -4,7 +4,6 @@ module.exports = ActionBar
 
 function ActionBar (props) {
   props = props || { }
-  var saveLarge = !(props.saveLarge === false)
   var saveText = props.saveText || 'Save changes'
   var cancelText = props.cancelText || 'Cancel'
   var disabled = (props.disabled === undefined) ? false : props.disabled
