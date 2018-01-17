@@ -3,8 +3,9 @@ var app = choo()
 
 // beaker
 app.use(require('choo-dat-hypha')('/content'))
-app.use(require('./plugins/panel'))
 
+app.use(require('./plugins/panel'))
+app.use(require('./plugins/sites'))
 app.use(require('./plugins/interface'))
 
 // panel catch all route

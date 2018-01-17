@@ -4,7 +4,7 @@ var Nanocomponent = require('nanocomponent')
 
 module.exports = function Wrapper () {
   if (!(this instanceof Dropdown)) return new Dropdown()
-  this.value = { 
+  this.value = { }
   Nanocomponent.call(this)
 }
 

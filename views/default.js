@@ -20,6 +20,7 @@ var FilesAll = require('./files-all')
 var FileNew = require('./file-new')
 var PagesAll = require('./pages-all')
 var PageNew = require('./page-new')
+var Sites = require('./sites')
 
 // methods
 var methodsFile = require('../methods/file')
@@ -32,7 +33,6 @@ function view (state, emit) {
   var search = queryString.parse(location.search)
   var draftPage = getDraftPage()
   var blueprint = getBlueprint()
-
 
   return html`
     <body class="x xdc vhmn100">
@@ -81,6 +81,8 @@ function view (state, emit) {
     if (search.file === 'new') {
       return Split(sidebar(), [FileNew(state, emit), Page()])
     }
+    
+    if (search.sites) return Sites(state, emit)
 
     if (search.file) return File(state, emit)
     if (search.pages === 'all') return PagesAll(state, emit)
