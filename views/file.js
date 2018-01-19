@@ -81,7 +81,7 @@ function File (state, emit) {
   }
 
   function image () {
-    return html`<img src="${file.path}" class="ofc" />`
+    return html`<img src="${file.source}" class="ofc" />`
   }
 
   function notFound () {

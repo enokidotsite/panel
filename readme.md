@@ -39,11 +39,12 @@ module.exports = class Field extends Nanocomponent {
 
 ### Design
 
-- [ ] Use gr8
+- [x] Use gr8
 - [ ] Cleanup design
 
 ### Functionality
 
 - [ ] Load `content` into panel
-- [ ] Localstorage of archive urls
-- [ ] Store archives in state
+- [x] Localstorage of archive urls
+- [x] Store archives in state
+- [ ] Read `enoki.json` for content dir

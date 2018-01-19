@@ -13,6 +13,7 @@ var Publish = require('../components/publish')
 
 // containers
 var Fields = require('../containers/fields')
+var blueprintDefault = require('../blueprints/default')
 
 // views
 var File = require('./file')
@@ -44,10 +45,13 @@ function view (state, emit) {
 
   function header () {
     return html`
-      <div id="header" class="x usn z2 psr bgblack">
+      <div id="header" class="x xjb usn z2 psr bgc-fg fc-bg">
         <div class="px1 wsnw breadcrumbs">
           <a href="?url=/" class="db p1 nbb">index</a>
           ${Breadcrumbs({ page: state.page })}
+        </div>
+        <div class="px1">
+          <a href="/?sites=all" class="fc-bg">Sites</a>
         </div>
       </div>
     `
@@ -78,11 +82,14 @@ function view (state, emit) {
 
   // TODO: clean this up
   function content () {
+    // sites
+    if (search.sites || !state.sites.active) {
+      return Sites(state, emit)
+    }
+
     if (search.file === 'new') {
       return Split(sidebar(), [FileNew(state, emit), Page()])
     }
-    
-    if (search.sites) return Sites(state, emit)
 
     if (search.file) return File(state, emit)
     if (search.pages === 'all') return PagesAll(state, emit)
@@ -119,7 +126,7 @@ function view (state, emit) {
           </div>
           <div class="psf b0 l0 r0 p1 pen z3">
             <div class="action-gradient ${draftPage === undefined ? 'dn' : 'db'}"></div>
-            <div class="c4 pea sm-c12">
+            <div class="c12 pea sm-c4">
               ${ActionBar({
                 disabled: draftPage === undefined,
                 saveLarge: true,
@@ -188,7 +195,8 @@ function view (state, emit) {
     } else {
       return (
         state.site.blueprints[state.page.view] ||
-        state.site.blueprints.default
+        state.site.blueprints.default ||
+        blueprintDefault
       )
     }
   }

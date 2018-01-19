@@ -10,16 +10,18 @@ var xhr = require('xhr')
 module.exports = panel
 
 async function panel (state, emitter) {
-  var archive = new DatArchive(window.location.toString())
+  var archive
 
-  state.panel = {
-    changes: { },
-    loading: false
-  }
+  state.content = { }
 
   state.site = {
     loaded: false,
     blueprints: { }
+  }
+
+  state.panel = {
+    changes: { },
+    loading: false
   }
 
   state.events.PANEL_LOAD = 'panel:load'
@@ -31,6 +33,7 @@ async function panel (state, emitter) {
   state.events.PANEL_SAVE = 'panel:save'
   state.events.PANEL_CANCEL = 'panel:cancel'
   state.events.PANEL_REMOVE = 'panel:remove'
+  state.events.PANEL_LOAD_SITE = 'panel:load:site'
   
   emitter.on(state.events.PANEL_LOAD, onLoad)
   emitter.on(state.events.PANEL_UPDATE, onUpdate)
@@ -40,15 +43,7 @@ async function panel (state, emitter) {
   emitter.on(state.events.PANEL_REMOVE, onRemove)
   emitter.on(state.events.PANEL_PAGE_ADD, onPageAdd)
   emitter.on(state.events.PANEL_FILES_ADD, onFilesAdd)
-
-  try {
-    state.site.blueprints = await loadBlueprints('/blueprints')
-  } catch (err) {
-    state.p2p = false
-  }
-
-  state.site.loaded = true
-  emitter.emit(state.events.RENDER)
+  emitter.on(state.events.PANEL_LOAD_SITE, onLoadSite)
 
   function onLoad (data) {
     console.log('load dat archive')
@@ -88,7 +83,7 @@ async function panel (state, emitter) {
 
       state.content[data.url] = xtend(state.content[data.url], state.panel.changes[data.url])
       delete state.panel.changes[data.url]
-      emitter.emit(state.events.CONTENT_LOAD)
+      emitter.emit(state.events.SITE_REFRESH)
     } catch (err) {
       alert(err.message)
       console.log(err)
@@ -112,6 +107,7 @@ async function panel (state, emitter) {
     } else {
       state.panel.loading = false
     }
+    if (data.render === true) emitter.emit(state.events.RENDER)
   }
 
   async function onPageAdd (data) {
@@ -132,7 +128,7 @@ async function panel (state, emitter) {
         smarkt.stringify(content)
       )
 
-      emitter.emit(state.events.CONTENT_LOAD)
+      emitter.emit(state.events.SITE_REFRESH)
     } catch (err) {
       alert(err.message)
       console.warn(err)
@@ -162,7 +158,7 @@ async function panel (state, emitter) {
       if (isFile) await archive.unlink(data.path)
       else await archive.rmdir(data.path, { recursive: true })
 
-      emitter.emit(state.events.CONTENT_LOAD)
+      emitter.emit(state.events.SITE_REFRESH)
       if (data.redirect !== false) {
         emitter.emit(state.events.REPLACESTATE, '?url=' + path.join(data.url, '../').replace(/\/$/, ''))
       }
@@ -187,7 +183,7 @@ async function panel (state, emitter) {
     await Promise.all(objectKeys(data.files).map(saveFile))
 
     emitter.emit(state.events.PANEL_LOADING, { loading: false })
-    emitter.emit(state.events.CONTENT_LOAD)
+    emitter.emit(state.events.SITE_REFRESH)
 
     async function saveFile (key) {
       try {
@@ -200,6 +196,13 @@ async function panel (state, emitter) {
         console.warn(err)
       }
     }
+  }
+
+  function onLoadSite (data) {
+    if (data.content) state.content = data.content
+    if (data.site) state.site = data.site
+    if (data.archive) archive = data.archive
+    if (data.render !== false) emitter.emit(state.events.RENDER)
   }
 
   async function loadBlueprints (blueprintsDir) {
@@ -217,6 +220,7 @@ async function panel (state, emitter) {
       }
     }
   }
+
 }
 
 function getBase64 (file) {

@@ -20,7 +20,7 @@ function ActionBar (props) {
     return html`
       <div class="p1 x1" id="save">
         <div
-          class="bgblack tcwhite p1 curp fwb br1"
+          class="bgc-fg fc-bg p1 curp fwb br1"
           onclick=${props.handleSave}
         >${saveText}</div>
       </div>
@@ -31,7 +31,7 @@ function ActionBar (props) {
     return html`
       <div class="p1" id="cancel">
         <div
-          class="bggreydark bgblack-hover tcwhite p1 curp br1"
+          class="bgc-bg25 bgch-fg fc-bg p1 curp br1"
           onclick=${props.handleCancel}
         >${cancelText}</div>
       </div>

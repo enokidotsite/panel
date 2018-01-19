@@ -7,23 +7,26 @@ module.exports = view
 
 function view (state, emit) {
   var sites = objectValues(state.sites.archives)
-  return html`
-    <div>
-      ${sites.length > 0
-        ? renderSites({
-          sites: sites,
-          handleAdd: handleAdd,
-          handleRemove: handleRemove
-        })
-        : renderEmpty({
-          handleAdd: handleAdd
-        })
-      }
-    </div>
-  `
+
+  if (sites.length > 0) {
+    return renderSites({
+      handleRemove: handleRemove,
+      handleLoad: handleLoad,
+      handleAdd: handleAdd,
+      sites: sites
+    })
+  } else {
+    return renderEmpty({
+      handleAdd: handleAdd
+    })
+  }
 
   function handleAdd () {
     emit(state.events.SITE_ADD)
+  }
+
+  function handleLoad (props) {
+    emit(state.events.SITE_LOAD, props)
   }
 
   function handleRemove (props) {
@@ -33,12 +36,24 @@ function view (state, emit) {
 
 function renderSites (props) {
   return html`
-    <div>
-      ${props.sites.map(function (site) {
-        return renderSite(xtend(site, {
-          handleRemove: props.handleRemove
-        }))
-      })}
+    <div class="w100">
+      <div class="p0-5">
+        ${props.sites.map(function (site) {
+          return renderSite(xtend(site, {
+            handleLoad: props.handleLoad,
+            handleRemove: props.handleRemove
+          }))
+        })}
+      </div>
+      <div class="x w100 p2">
+        <button
+          onclick=${props.handleAdd}
+          class=""
+        >Add Existing Site</button>
+        <button
+          class=""
+        >Create New Site</button>
+      </div>
     </div>
   `
 }
@@ -54,12 +69,29 @@ function renderEmpty (props) {
 
 function renderSite (props) {
   return html`
-    <div>
-      <div>${props.title}</div>
-      ${props.url}
-      <button onclick=${handleRemove}>remove</button>
+    <div class="p0-5">
+      <div
+        class="x xac bgc-bg5 fc-fg br1 curp usn"
+        onclick=${handleSiteClick}
+      >
+        <div class="oh p1 xx">
+          <div class="fs2">${props.title}</div>
+        </div>
+        <div class="p1">
+          <button class="w100 fs1 p1 bgc-fg fc-bg br1">Settings</button>
+        </div>
+        <div class="p1 dn">
+          <button class="w100 fs1 p1 bgc-fg fc-bg br1" onclick=${handleRemove}>Remove</button>
+        </div>
+      </div>
     </div>
   `
+
+  function handleSiteClick () {
+    if (typeof props.handleLoad === 'function') {
+      props.handleLoad({url: props.url, redirect: true })
+    }
+  }
 
   function handleRemove () {
     if (typeof props.handleRemove === 'function') {

@@ -130,7 +130,7 @@ function sidebar (props, emit) {
     return html`
       <div>
         <span
-          class="tcgrey curp tcblack-hover"
+          class="fc-bg25 curp fch-fg"
           onclick=${props.handleRemovePage}
         >Delete page</span>
       </div>
@@ -148,7 +148,7 @@ function elsChildren (children) {
 
   if (children.length <= 0) {
     return html`
-      <li class="m0 py0-5 tcgrey">
+      <li class="m0 py0-5 fc-bg25">
         No sub-pages
       </li>
     `
@@ -179,7 +179,7 @@ function elsFiles (files) {
 
   // Hide if there is nothing
   if (files.length <= 0) return html`
-    <li class="m0 py0-5 tcgrey">
+    <li class="m0 py0-5 fc-bg25">
       No files
     </li>
   `

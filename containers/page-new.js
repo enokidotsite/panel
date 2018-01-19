@@ -30,7 +30,7 @@ class PageNew extends Nanocomponent {
     this.emit = emit
 
     return html`
-      <div class="bgwhite p1 br1">
+      <div class="bgc-bg p1 br1">
         <form onsubmit={this.handleSave}>
           ${this.elTitle()}
           ${this.elUri()}
@@ -98,13 +98,13 @@ class PageNew extends Nanocomponent {
         <div class="p1">
           <button
             type="submit"
-            class="db fs1 lh1 fwn curp bgblack tcwhite p1 curp fwb br1 m0 b0"
+            class="db fs1 lh1 fwn curp bgc-fg fc-bg p1 curp fwb br1 m0 b0"
             onclick=${this.handleSave.bind(self)}
           >Save</button>
         </div>
         <div class="p1">
           <button
-            class="db b0 fs1 lh1 bgreydark m0 curp tcwhite p1 curp br1"
+            class="db b0 fs1 lh1 bgc-bg25 m0 curp fc-bg p1 curp br1"
             onclick=${this.handleCancel.bind(self)}
           >Cancel</button>
         </div>

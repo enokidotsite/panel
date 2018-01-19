@@ -12,7 +12,7 @@ function getViews (props) {
   var blueprint = props.blueprint
   var blueprints = props.blueprints
 
-  if ( blueprint.pages && typeof blueprint.pages === 'object') {
+  if (blueprint.pages && typeof blueprint.pages === 'object') {
     // if pages are disabled
     if (blueprint.pages.view === false) return false
 
