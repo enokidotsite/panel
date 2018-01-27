@@ -37,22 +37,26 @@ function view (state, emit) {
 function renderSites (props) {
   return html`
     <div class="w100">
-      <div class="p0-5">
+      <div class="p2 x xw" style="padding-bottom: 7rem">
         ${props.sites.map(function (site) {
           return renderSite(xtend(site, {
             handleLoad: props.handleLoad,
             handleRemove: props.handleRemove
           }))
         })}
-      </div>
-      <div class="x w100 p2">
-        <button
-          onclick=${props.handleAdd}
-          class=""
-        >Add Existing Site</button>
-        <button
-          class=""
-        >Create New Site</button>
+        <div class="psf b0 l0 r0 w100 p1 p1 x xjc">
+          <div class="p1">
+            <div
+              class="bgc-fg button-large"
+              onclick=${props.handleAdd}
+            >Load Existing Site</div>
+          </div>
+          <div class="p1">
+            <div
+              class="bgc-fg button-large"
+            >Create New Site</button>
+          </div>
+        </div>
       </div>
     </div>
   `
@@ -69,9 +73,9 @@ function renderEmpty (props) {
 
 function renderSite (props) {
   return html`
-    <div class="p0-5">
+    <div class="p1 w100">
       <div
-        class="x xac bgc-bg5 fc-fg br1 curp usn"
+        class="x xac bgc-bg5 fc-fg br1 curp usn p1"
         onclick=${handleSiteClick}
       >
         <div class="oh p1 xx">

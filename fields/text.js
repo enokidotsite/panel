@@ -20,7 +20,7 @@ class Text extends Nanocomponent {
       <div>
         <input
           name="${state.key}"
-          class="input"
+          class="input p1"
           type="text"
           value="${state.value || ''}"
           oninput=${emit ? onInput : ''}

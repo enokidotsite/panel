@@ -8,10 +8,14 @@ exports.colors = {
 }
 
 exports.typography = {
-  sans: '-apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif',
+  sans: '"Inter UI", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif',
   mono: '"SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace'
 }
 
-exports.fontSize = [1, 2, 3, 4]
+exports.fontSize = {
+  '0-8': 1.4,
+  '1': 1.8, 
+  '2': 3.6
+}
 
-exports.spacing = [0.25, 0.5, 1, 2, 3]
+exports.spacing = [1, 2, 3, 4, 5, 6]

@@ -46,10 +46,14 @@ class PageNew extends Nanocomponent {
     if (title && title.focus) title.focus()
   }
 
+  unload () {
+    this.customUri = false
+  }
+
   elTitle () {
     return html`
       <div class="p1">
-        <div class="c12 fwb usn mb1">
+        <div class="c12 fwb usn fs0-8 ttu mb1">
           Title
         </div>
         ${Title.render(
@@ -63,7 +67,7 @@ class PageNew extends Nanocomponent {
   elView () {
     return html`
       <div class="p1">
-        <div class="c12 fwb usn mb1">
+        <div class="c12 fwb usn fs0-8 ttu mb1">
           View
         </div>
         ${View.render({
@@ -80,7 +84,7 @@ class PageNew extends Nanocomponent {
   elUri () {
     return html`
       <div class="p1">
-        <div class="c12 fwb usn mb1">
+        <div class="c12 fwb usn fs0-8 ttu mb1">
           Pathname
         </div>
         ${Uri.render(
@@ -94,17 +98,17 @@ class PageNew extends Nanocomponent {
   elActions () {
     var self = this
     return html`
-      <div class="x c12 fs1 lh1 usn">
-        <div class="p1">
+      <div class="x c12 fs1 lh1 usn fs1">
+        <div class="p1 xx">
           <button
             type="submit"
-            class="db fs1 lh1 fwn curp bgc-fg fc-bg p1 curp fwb br1 m0 b0"
+            class="db w100 button-large bgc-fg"
             onclick=${this.handleSave.bind(self)}
-          >Save</button>
+          >Create Page</button>
         </div>
         <div class="p1">
           <button
-            class="db b0 fs1 lh1 bgc-bg25 m0 curp fc-bg p1 curp br1"
+            class="db button-large bgc-bg25 bgch-fg"
             onclick=${this.handleCancel.bind(self)}
           >Cancel</button>
         </div>
@@ -145,7 +149,7 @@ class PageNew extends Nanocomponent {
     if (event) event.preventDefault()
   }
 
-  update () {
-    return false
+  update (props) {
+    return props.views !== this.views
   }
 }

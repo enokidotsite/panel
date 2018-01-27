@@ -2,6 +2,8 @@ var queryString = require('query-string')
 var objectKeys = require('object-keys')
 var html = require('choo/html')
 
+var methodsFile = require('../methods/file')
+
 module.exports = breadcrumbs
 
 function breadcrumbs (props) {
@@ -14,9 +16,10 @@ function breadcrumbs (props) {
     .reduce(function (result, key) {
       if (key !== 'file') return result
       if (key === 'file' && search[key] === 'new') return result
+      var value = methodsFile.decodeFilename(search[key])
       result.push({
         path: '',
-        el: html`<a href="" class="db p1 nbb">${search[key]}</a>`
+        el: html`<a href="" class="db p1 nbb wsnw toe">${value}</a>`
       })
       return result
     }, [ ])
@@ -28,7 +31,7 @@ function breadcrumbs (props) {
       var href = result.map(crumb => crumb.path).join('/') + '/' + path
       result.push({
         path: path,
-        el: html`<a href="?url=${href}" class="db p1 nbb">${path}</a>`
+        el: html`<a href="?url=${href}" class="db p1 nbb wsnw toe">${path}</a>`
       })
       return result
     }, [{ path: '', el: ''}])

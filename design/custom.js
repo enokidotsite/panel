@@ -14,10 +14,17 @@ function typography () {
     html {
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-      line-height: 1.5;
+      box-sizing: border-box;
+      font-size: 62.50%;
+      height: auto;
     }
 
-    a { text-decoration: none }
+    body { line-height: 2rem; }
+
+    a {
+      color: ${options.colors.fg};
+      text-decoration: none;
+    }
 
     .truncate {
       white-space: nowrap;
@@ -25,8 +32,32 @@ function typography () {
       text-overflow: ellipsis; 
     }
 
-    ::-moz-selection { background: #eee }
-    ::selection { background: #eee }
+    ::-moz-selection { background: rgba(127, 127, 127, 0.5) }
+    ::selection { background: rgba(127, 127, 127, 0.5) }
+
+    @font-face {
+      font-family: 'Inter UI';
+      font-style:  normal;
+      font-weight: 400;
+      src: url("/assets/fonts/Inter-UI-Regular.woff2?v=2.4") format("woff2"),
+           url("/assets/fonts/Inter-UI-Regular.woff?v=2.4") format("woff");
+    }
+
+    @font-face {
+      font-family: 'Inter UI';
+      font-style:  italic;
+      font-weight: 400;
+      src: url("/assets/fonts/Inter-UI-Italic.woff2?v=2.4") format("woff2"),
+           url("/assets/fonts/Inter-UI-Italic.woff?v=2.4") format("woff");
+    }
+
+    @font-face {
+      font-family: 'Inter UI';
+      font-style:  normal;
+      font-weight: 700;
+      src: url("/assets/fonts/Inter-UI-Bold.woff2?v=2.4") format("woff2"),
+           url("/assets/fonts/Inter-UI-Bold.woff?v=2.4") format("woff");
+    }
   `
 }
 
@@ -98,10 +129,6 @@ function media () {
 
 function inputs () {
   return `
-    input, textarea {
-      padding: 0.5rem;
-    }
-
     .select {
       position: relative;
       width: 100%;
@@ -111,13 +138,13 @@ function inputs () {
       cursor: pointer;
       -moz-appearance: none;
       -webkit-appearance: none;
-      background: #fff;
-      padding: 0.5rem;
-      border: 1px solid #000;
+      background: #eee;
+      line-height: 4rem;
+      padding: 0 1rem;
       border-radius: 3px;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-      line-height: 1.5;
-      font-size: 1rem;
+      font-family: ${options.typography.sans};
+      line-height: 4rem;
+      font-size: 1.8rem;
       font-weight: 400;
       outline: 0;
       width: 100%;
@@ -126,23 +153,25 @@ function inputs () {
     .select:before {
       content: '↓';
       position: absolute;
-      font-size: 1.15rem;
+      font-size: 1.8rem;
       top: 0;
       right: 0;
-      padding: 0.5rem 0.75rem 0 0;
-      font-family: "SFMono-Light", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+      padding: 1rem;
+      font-family: ${options.typography.mono};
     }
 
     .input {
-      border: 1px solid #000;
+      background: #eee;
       border-radius: 3px;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-      line-height: 1.5;
-      font-size: 1rem;
+      font-family: ${options.typography.sans};
+      line-height: 2rem;
+      font-size: 1.8rem;
       font-weight: 400;
       outline: 0;
       width: 100%;
     }
+
+    .input.lh1-5 { line-height: 1.5 }
 
     .input-disabled {
       border: 1px solid #ccc;
@@ -158,13 +187,28 @@ function inputs () {
     button { outline: 0 }
     button:focus { outline: 0 }
 
+    .button-large {
+      cursor: pointer;
+      font-weight: bold;
+      color: #fff;
+      font-size: 1.8rem;
+      line-height: 6rem;
+      text-align: center;
+      padding: 0 4rem;
+      border-radius: 3rem;
+    }
+
     .button-inline {
-      background: #eee;
+      background: #fff;
       color: #000;
-      padding: 4px;
-      margin: 0 2px;
-      border-radius: 3px;
-      font: inherit;
+      margin-left: 0.5rem;
+      padding: 0.4rem 1rem 0.6rem;
+      line-height: 1rem;
+      height: 2rem;
+      border-radius: 1rem;
+      display: inline-block;
+      border: 1px solid #000;
+      text-transform: uppercase;
       -webkit-user-select: none;
       -moz-user-select: none;
       -ms-user-select: none;
@@ -195,13 +239,32 @@ function extensions () {
       width: 33.3%;
     }
 
-    .myc1 > * { border-top: 1px solid #ddd }
-    .myc1 > *:last-child { border-bottom: 1px solid #ddd }
+    .myc1 > * { position: relative; }
+
+    .myc1 > *:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: #ddd;
+      height: 1px;
+    }
+
+    .myc1 > *:last-child:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #ddd;
+      height: 1px;
+    }
 
     .breadcrumbs {
       display: flex;
-      overflow-y: hidden;
       width: 100%;
+      line-height: 4rem;
     }
 
     .breadcrumbs > a {
@@ -210,18 +273,19 @@ function extensions () {
       color: ${options.colors.bg70};
     }
 
+    .breadcrumbs > a:last-child,
     .breadcrumbs > a:hover {
       color: ${options.colors.bg};
     }
 
-    .breadcrumbs > a:before {
+    .breadcrumbs > a:not(:last-child):before {
       background: ${options.colors.bg90};
       content: '';
       display: block;
-      height: 2rem;
+      height: 4rem;
       width: 1px;
       position: absolute;
-      top: 0.5rem;
+      top: 1rem;
       right: 0;
       transform: rotate(15deg);
     }
@@ -233,20 +297,20 @@ function loader () {
     .loader,
     .loader:after {
       border-radius: 50%;
-      width: 2rem;
-      height: 2rem;
+      width: 3rem;
+      height: 3rem;
     }
 
     .loader {
-      margin: 0 auto;
-      font-size: 10px;
+      margin: 1.5rem;
+      font-size: 3rem;
       position: relative;
       text-indent: -9999em;
       border-top: 2px solid #fff;
       border-right: 2px solid #fff;
       border-bottom: 2px solid #000;
       border-left: 2px solid #000;
-      animation: load 1.1s infinite linear;
+      animation: load 1s infinite linear;
     }
 
     @keyframes load {

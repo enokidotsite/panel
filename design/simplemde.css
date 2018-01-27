@@ -391,9 +391,8 @@ span.CodeMirror-selectedtext {
     width: 50%!important
 }
 .editor-toolbar {
-    background: #fff;
-    border-bottom: 1px solid #000;
-    margin-bottom: -1px;
+    background: #000;
+    color: #fff;
     display: flex;
     top: 0;
     z-index: 2;
@@ -452,7 +451,7 @@ span.CodeMirror-selectedtext {
     display: inline-block;
     text-align: center;
     text-decoration: none!important;
-    color: #000!important;
+    color: #fff!important;
     width: 30px;
     height: 30px;
     margin: 0;
@@ -471,8 +470,8 @@ span.CodeMirror-selectedtext {
 .editor-toolbar i.separator {
     display: inline-block;
     width: 0;
-    border-left: 1px solid #ddd;
-    border-right: 1px solid #fff;
+    border-left: 1px solid #333;
+    border-right: 1px solid #000;
     color: transparent;
     text-indent: -10px;
     margin: 0 6px

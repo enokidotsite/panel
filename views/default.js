@@ -36,7 +36,7 @@ function view (state, emit) {
   var blueprint = getBlueprint()
 
   return html`
-    <body class="x xdc vhmn100">
+    <body class="fs1 ff-sans x xdc vhmn100">
       ${header()}
       ${content()}
       ${loading()}
@@ -44,15 +44,29 @@ function view (state, emit) {
   `
 
   function header () {
+    var editorActive = typeof search.url !== 'undefined'
+    var sitesActive = typeof search.sites !== 'undefined'
     return html`
-      <div id="header" class="x xjb usn z2 psr bgc-fg fc-bg">
-        <div class="px1 wsnw breadcrumbs">
-          <a href="?url=/" class="db p1 nbb">index</a>
-          ${Breadcrumbs({ page: state.page })}
+      <div id="header" class="x xjb usn z2 psr bgc-fg fc-bg oxh">
+        ${editorActive ? breadcrumbs() : html`<div class="py2 px3">Enoki</div>`}
+        <div class="x">
+          <div class="p1 bl1-bg90 br1-bg90">
+            <a href="/?sites=all" class="${sitesActive ? 'fc-bg' : 'fc-bg70'} fc-bg db p1">Sites</a>
+          </div>
+          <div class="p1 br1-bg90">
+            <a href="/?url=/" class="${editorActive ? 'fc-bg' : 'fc-bg70'} fc-bg db p1">Editor</a>
+          </div>
+          <div style="height: 6rem; width: 6rem"></div>
         </div>
-        <div class="px1">
-          <a href="/?sites=all" class="fc-bg">Sites</a>
-        </div>
+      </div>
+    `
+  }
+
+  function breadcrumbs () {
+    return html`
+      <div class="px2 wsnw breadcrumbs">
+        <a href="?url=/" class="db p1 nbb">index</a>
+        ${Breadcrumbs({ page: state.page })}
       </div>
     `
   }
@@ -60,7 +74,7 @@ function view (state, emit) {
   function loading () {
     if (!state.panel.loading) return
     return html`
-      <div class="psf z2 t0 r0 p1">
+      <div class="psf z2 t0 r0">
         <div class="loader"></div>
       </div>
     `
@@ -113,7 +127,7 @@ function view (state, emit) {
 
   function Page () {
     return html`
-      <div id="content-page" class="x xdc c12">
+      <div id="content-page" class="x xdc c12" style="padding-bottom: 7rem">
         <div class="x1">
           <div class="x xw">
             ${Fields({
@@ -124,11 +138,10 @@ function view (state, emit) {
               handleFieldUpdate: handleFieldUpdate
             })}
           </div>
-          <div class="psf b0 l0 r0 p1 pen z3">
-            <div class="action-gradient ${draftPage === undefined ? 'dn' : 'db'}"></div>
-            <div class="c12 pea sm-c4">
+          <div class="psf b0 l0 r0 p1 pen z2">
+            <div class="c12 pea">
               ${ActionBar({
-                disabled: draftPage === undefined,
+                disabled: draftPage === undefined || search.page,
                 saveLarge: true,
                 handleSave: handleSavePage,
                 handleCancel: handleCancelPage,

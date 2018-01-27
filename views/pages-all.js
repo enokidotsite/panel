@@ -14,19 +14,17 @@ function pagesAll (state, emit) {
   })
 
   return html`
-    <div class="p1">
-      <div class="p1">
-        <div class="x xjb c12 mb1 usn">
-          <div class="fwb">
-            Pages
-          </div>
-          <div>
-            <a href="?${urlPageNew}" class="button-inline">Add</a>
-          </div>
+    <div class="p3">
+      <div class="x xjb py1 c12 usn fs0-8 ttu">
+        <div class="fwb">
+          Pages
         </div>
-        <ul class="c12 myc1 lsn">
-          ${elsChildren(pagePages)}
+        <div>
+          <a href="?${urlPageNew}" class="button-inline">Add</a>
         </div>
+      </div>
+      <ul class="c12 myc1 lsn">
+        ${elsChildren(pagePages)}
       </div>
     </div>
   `
@@ -37,7 +35,7 @@ function elsChildren (children) {
 
   if (children.length <= 0) {
     return html`
-      <li class="m0 py0-5 tcgrey">
+      <li class="m0 py1 tcgrey">
         No sub-pages
       </li>
     `
@@ -49,7 +47,7 @@ function elsChildren (children) {
       <li id="${child.url}" class="m0">
         <a
           href="?url=${child.url}"
-          class="db py0-5 truncate"
+          class="db py1 truncate"
         >${child.title || child.name}</a>
       </li>
     `

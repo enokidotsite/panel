@@ -30,7 +30,7 @@ function sidebar (props, emit) {
 
   return html`
     <div id="sidebar" class="c12">
-      <div class="psst p1" style="top: 0.75rem; padding-bottom: 5.5rem">
+      <div class="psst p2" style="top: 0.75rem;">
         ${props.pagesActive ? elPages() : ''}
         ${props.filesActive ? elFiles() : ''}
         ${props.handleRemovePage && props.page.url !== '/' ? elRemove() : ''}
@@ -40,14 +40,14 @@ function sidebar (props, emit) {
 
   function elPage () {
     return html`
-      <div id="sidebar-children" class="mb2">
-        <div class="x xjb c12 mb1 usn">
+      <div id="sidebar-children" class="mb4">
+        <div class="x xjb c12 fs0-8 ttu usn">
           <div class="fwb">
             <a href="?">Page</a>
           </div>
         </div>
         <ul class="c12 myc1 lsn">
-          <li class="m0 py0-5">
+          <li class="m0 py1">
             Settings
           </li>
         </ul>
@@ -59,13 +59,13 @@ function sidebar (props, emit) {
     var urlPageNew = unescape(queryString.stringify(xtend({ page: 'new' }, props.query)))
     var urlPagesAll = unescape(queryString.stringify(xtend({ pages: 'all' }, props.query)))
     return html`
-      <div id="sidebar-children" class="mb2">
-        <div class="x xjb c12 mb1 usn">
+      <div id="sidebar-children" class="mb4">
+        <div class="x xjb c12 py1 fs0-8 ttu usn">
           <div class="fwb">
             <a href="?${urlPagesAll}">Pages</a>
           </div>
           <div>
-            <a href="?${urlPageNew}" class="button-inline">Add</a>
+            <a href="?${urlPageNew}" class="button-inline">Create</a>
             <a href="?${urlPagesAll}" class="button-inline">All</a>
           </div>
         </div>
@@ -80,8 +80,8 @@ function sidebar (props, emit) {
     var urlFileNew = unescape(queryString.stringify(xtend({ file: 'new' }, props.query)))
     var urlFilesAll = unescape(queryString.stringify(xtend({ files: 'all' }, props.query)))
     return html`
-      <div id="sidebar-files" class="mb2 psr">
-        <div class="x xjb mb1 usn">
+      <div id="sidebar-files" class="mb4 psr">
+        <div class="x xjb py1 fs0-8 ttu usn">
           <div class="fwb">
             <a href="?${urlFilesAll}">Files</a>
           </div>
@@ -90,7 +90,7 @@ function sidebar (props, emit) {
               href="?${urlFileNew}"
               class="button-inline"
               onclick=${handleFilesAdd}
-            >Add</a>
+            >Upload</a>
             <a href="?${urlFilesAll}" class="button-inline">All</a>
           </div>
         </div>
@@ -148,7 +148,7 @@ function elsChildren (children) {
 
   if (children.length <= 0) {
     return html`
-      <li class="m0 py0-5 fc-bg25">
+      <li class="m0 py1 fc-bg25">
         No sub-pages
       </li>
     `
@@ -162,7 +162,7 @@ function elsChildren (children) {
         <li id="page-${child.url}" class="m0">
           <a
             href="?url=${child.url}"
-            class="db py0-5 truncate"
+            class="db py1 truncate"
             ondragstart=${handleDragStart}
           >${child.title || child.name}</a>
         </li>
@@ -179,7 +179,7 @@ function elsFiles (files) {
 
   // Hide if there is nothing
   if (files.length <= 0) return html`
-    <li class="m0 py0-5 fc-bg25">
+    <li class="m0 py1 fc-bg25">
       No files
     </li>
   `
@@ -192,7 +192,7 @@ function elsFiles (files) {
         <li id="${child.url}" class="m0">
           <a
             href="?${child.urlPanel}"
-            class="db py0-5 truncate"
+            class="db py1 truncate"
             ondragstart=${handleDragStart}
           >${child.filename}</a>
         </li>

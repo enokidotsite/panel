@@ -34,7 +34,7 @@ class Textarea extends Nanocomponent {
     this.emit = emit
 
     return html`
-      <div class="input rich-editor">
+      <div class="input rich-editor lh1-5">
         <textarea
           class="c12"
           oninput=${emit ? onInput : ''}
@@ -47,14 +47,16 @@ class Textarea extends Nanocomponent {
     }
   }
 
-  update (state) {
-    if (state.value !== this.value) {
-      this.value = state.value || ''
+  update (props) {
+    var value = props.value || ''
+
+    if (value !== this.value) {
+      this.value = value
       this.element.querySelector('textarea').value = this.value
     }
 
     // cancel
-    if (state.value === this.valueStart) {
+    if (value === this.valueStart) {
       this.simplemde.value(this.value)
     }
 
@@ -63,6 +65,7 @@ class Textarea extends Nanocomponent {
 
   load (element) {
     var self = this
+
     this.simplemde = new SimpleMDE({
       autoDownloadFontAwesome: false,
       element: element.querySelector('textarea'),

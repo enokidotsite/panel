@@ -51,10 +51,10 @@ class Dropdown extends Nanocomponent {
     }
   }
 
-  update () {
-    if (state.value && state.value.selected !== this.value.selected) {
-      this.value.selected = state.value.selected
+  update (props) {
+    if (props.value && props.value.selected !== this.value.selected) {
+      this.value.selected = props.value.selected
     }
-    return false
+    return true
   }
 }

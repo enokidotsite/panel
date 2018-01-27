@@ -28,17 +28,38 @@ utils.push({
 })
 
 utils.push({
-  prop: { fc: 'color' },
-  join: '-',
-  tail: ' a',
-  vals: options.colors
-})
-
-utils.push({
   prop: { fch: 'color' },
   join: '-',
   tail: ':hover',
   vals: options.colors
+})
+
+utils.push({
+  prop: { oph: 'opacity' },
+  tail: ':hover',
+  vals: [0, 25, 50, 75, 100],
+  transform: function (val) {
+    return val / 100
+  }
+})
+
+var borderWeights = [0, 1, 2]
+var borders = {}
+borderWeights.forEach(border => {
+  Object.keys(options.colors).forEach(key => {
+    borders[border + '-' + key] = `${border * 0.05}rem solid ${options.colors[key]}`
+  })
+})
+
+utils.push({
+  prop: [
+    'border',
+    'border-top',
+    'border-right',
+    'border-bottom',
+    'border-left'
+  ],
+  vals: borders
 })
 
 module.exports = gr8({
