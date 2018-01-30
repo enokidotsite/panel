@@ -1,0 +1,22 @@
+.bootstrap-load {
+  box-sizing: border-box;
+  border-radius: 50%;
+  width: 5vmin;
+  height: 5vmin;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin: -2.5vmin;
+  font-size: 5vmin;
+  text-indent: -9999em;
+  border-top: 0.5vmin solid #fff;
+  border-right: 0.5vmin solid #fff;
+  border-bottom: 0.5vmin solid #000;
+  border-left: 0.5vmin solid #000;
+  animation: bootstrap_load 1s infinite linear;
+}
+
+@keyframes bootstrap_load {
+  0% { transform: rotate(0deg) }
+  100% { transform: rotate(360deg) }
+}

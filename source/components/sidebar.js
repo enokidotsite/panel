@@ -30,7 +30,7 @@ function sidebar (props, emit) {
 
   return html`
     <div id="sidebar" class="c12">
-      <div class="psst p2" style="top: 0.75rem;">
+      <div class="psst p1" style="top: 0.75rem;">
         ${props.pagesActive ? elPages() : ''}
         ${props.filesActive ? elFiles() : ''}
         ${props.handleRemovePage && props.page.url !== '/' ? elRemove() : ''}
@@ -40,7 +40,7 @@ function sidebar (props, emit) {
 
   function elPage () {
     return html`
-      <div id="sidebar-children" class="mb4">
+      <div id="sidebar-children" class="mb2">
         <div class="x xjb c12 fs0-8 ttu usn">
           <div class="fwb">
             <a href="?">Page</a>
@@ -59,7 +59,7 @@ function sidebar (props, emit) {
     var urlPageNew = unescape(queryString.stringify(xtend({ page: 'new' }, props.query)))
     var urlPagesAll = unescape(queryString.stringify(xtend({ pages: 'all' }, props.query)))
     return html`
-      <div id="sidebar-children" class="mb4">
+      <div id="sidebar-children" class="mb2">
         <div class="x xjb c12 py1 fs0-8 ttu usn">
           <div class="fwb">
             <a href="?${urlPagesAll}">Pages</a>
@@ -80,7 +80,7 @@ function sidebar (props, emit) {
     var urlFileNew = unescape(queryString.stringify(xtend({ file: 'new' }, props.query)))
     var urlFilesAll = unescape(queryString.stringify(xtend({ files: 'all' }, props.query)))
     return html`
-      <div id="sidebar-files" class="mb4 psr">
+      <div id="sidebar-files" class="mb2 psr">
         <div class="x xjb py1 fs0-8 ttu usn">
           <div class="fwb">
             <a href="?${urlFilesAll}">Files</a>
@@ -106,7 +106,7 @@ function sidebar (props, emit) {
     return html` 
       <div class="
         ${props.uploadActive ? 'x' : 'dn'}
-        bgwhite input psa t0 l0 r0 b0 x xjc xac
+        bgc-bg input psa t0 l0 r0 b0 x xjc xac z2
       ">
         ${uploader.render({
           text: 'Drag and drop here to add file',
@@ -130,7 +130,7 @@ function sidebar (props, emit) {
     return html`
       <div>
         <span
-          class="fc-bg25 curp fch-fg"
+          class="fc-bg25 fch-fg curp fch-fg"
           onclick=${props.handleRemovePage}
         >Delete page</span>
       </div>
@@ -199,7 +199,7 @@ function elsFiles (files) {
       `
 
     function handleDragStart (event) {
-      event.dataTransfer.setData('text/plain', '![](' +child.url + ')')
+      event.dataTransfer.setData('text/plain', '![](' +child.source + ')')
     }
   })
 }

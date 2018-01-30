@@ -6,9 +6,8 @@ var css = require('sheetify')
 var style = css`
   :host {
       display: inline-block;
-      padding: 0.5rem;
-      background: #FFF;
-      border: 1px solid #000;
+      padding: 1rem;
+      background: #eee;
       width: 100%;
       border-radius: 3px;
       cursor: text;
@@ -16,11 +15,11 @@ var style = css`
 
   :host .tag {
       display: inline-block;
-      background: #eee;
+      background: #fff;
       color: #000;
-      padding: 0 4px;
-      margin: 2px;
-      border-radius: 3px;
+      padding: 0.5rem 1rem;
+      margin: -0.5rem 0.25rem;
+      border-radius: 2rem;
       font: inherit;
       -webkit-user-select: none;
       -moz-user-select: none;
@@ -76,35 +75,34 @@ class Tags extends Nanocomponent {
     var self = this
     this.id = state.id
     this.key = state.key
-    this.value = state.value || [ ]
+    this.value = state.value || ''
     this.valueStart = state.value
 
     return html`
       <div class="${style}">
         <input
-          name="${state.key}"
+          name="${this.key}"
           class="c12 input"
           type="tags"
-          value="${state.value || ''}"
+          value="${this.value}"
           onchange=${onChange}
         />
       </div>
     `
 
     function onChange (event) {
-      if (self.value.join(',') !== event.target.value) {
+      if (self.value !== event.target.value) {
         emit('change', event.target.value.split(','))
       }
     }
   }
 
   update (props) {
-    if (props.value !== this.value) {
+    var value = props.value || ''
+    if (value !== this.value) {
       var el = this.element.querySelector('.tags-input')
-      this.value = props.value
-      this.element.querySelector('input').value = props.value
-
-      console.log(this.value, this.valueStart)
+      this.value = value
+      this.element.querySelector('input').value = value
 
       // reset
       if (this.value === this.valueStart) {

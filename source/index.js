@@ -2,9 +2,10 @@ var choo = require('choo')
 var app = choo()
 require('./design')
 
-app.use(require('./plugins/panel'))
 app.use(require('./plugins/sites'))
+app.use(require('./plugins/panel'))
 app.use(require('./plugins/interface'))
+app.use(require('./plugins/docs'))
 
 app.route('*', require('./views/default'))
 

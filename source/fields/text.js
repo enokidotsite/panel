@@ -8,12 +8,12 @@ module.exports = function Wrapper () {
 class Text extends Nanocomponent {
   constructor () {
     super()
-    this.value = { }
+    this.value = ''
   }
 
   createElement (state, emit) {
     this.id = state.id
-    this.value = state.value
+    this.value = state.value || ''
     this.key = state.key
 
     return html`
@@ -22,24 +22,24 @@ class Text extends Nanocomponent {
           name="${state.key}"
           class="input p1"
           type="text"
-          value="${state.value || ''}"
-          oninput=${emit ? onInput : ''}
-          onfocus=${emit ? onFocus : ''}
+          value="${this.value}"
+          oninput=${onInput}
+          onfocus=${onFocus}
         />
       </div>
     `
 
     function onInput (event) {
-      emit('input', event.target.value)
+      emit('input', event.target.value || '')
     }
 
     function onFocus (event) {
-      emit('focus', event.target.value)
+      emit('focus', event.target.value || '')
     }
   }
 
   update (state) {
-    this.value = state.value
+    this.value = state.value || ''
     return true
   }
 }

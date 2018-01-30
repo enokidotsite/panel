@@ -39,12 +39,12 @@ function File (state, emit) {
   function sidebar () {
     return html`
       <div id="sidebar-file" class="x xdc c12 psst t0">
-        <div class="x1" style="padding-bottom: 4.5rem">
+        <div class="x1">
           <div class="p1 c12">
-            <div class="c12 fwb usn mb1">
+            <div class="c12 fwb usn py1 fs0-8 ttu">
               Filename
             </div>
-            <div class="input input-disabled p0-5 truncate">
+            <div class="p1 input input-disabled truncate">
               ${filename}
             </div>
           </div>
@@ -56,7 +56,7 @@ function File (state, emit) {
           })}
           <div class="p1">
             <span
-              class="tcgrey curp"
+              class="fc-bg25 fch-fg curp"
               onclick=${handleRemove}
             >Delete file</span>
           </div>
@@ -67,9 +67,8 @@ function File (state, emit) {
 
   function actionbarWrapper () {
     return html`
-      <div class="psf b0 l0 r0 p1 pen z3">
-        <div class="action-gradient ${draftFile === undefined ? 'dn' : 'db'}"></div>
-        <div class="c4 pea sm-c12">
+      <div class="psf b0 l0 r0 p1 pen z2">
+        <div class="pea">
           ${ActionBar({
             disabled: draftFile === undefined,
             handleSave: handleSave,

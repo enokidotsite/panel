@@ -57,7 +57,7 @@ class PageNew extends Nanocomponent {
           Title
         </div>
         ${Title.render(
-          { id: 'pageAdd', key: 'title', value: this.value.title },
+          { id: 'pageAdd', key: 'title', value: this.value.title || '' },
           this.handleTitle.bind(this)
         )}
       </div>
@@ -88,7 +88,7 @@ class PageNew extends Nanocomponent {
           Pathname
         </div>
         ${Uri.render(
-          { id: 'pageAdd', key: 'uri', value: this.value.uri },
+          { id: 'pageAdd', key: 'uri', value: this.value.uri || '' },
           this.handleUri.bind(this)
         )}
       </div>
@@ -102,13 +102,13 @@ class PageNew extends Nanocomponent {
         <div class="p1 xx">
           <button
             type="submit"
-            class="db w100 button-large bgc-fg"
+            class="db w100 button-medium bgc-fg"
             onclick=${this.handleSave.bind(self)}
           >Create Page</button>
         </div>
         <div class="p1">
           <button
-            class="db button-large bgc-bg25 bgch-fg"
+            class="db button-medium bgc-bg25 bgch-fg"
             onclick=${this.handleCancel.bind(self)}
           >Cancel</button>
         </div>

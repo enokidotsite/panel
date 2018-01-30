@@ -1,7 +1,7 @@
 var queryString = require('query-string')
 var objectKeys = require('object-keys')
-var assert = require('assert')
 var html = require('choo/html')
+var assert = require('assert')
 var smarkt = require('smarkt')
 var xtend = require('xtend')
 var path = require('path')
@@ -20,33 +20,35 @@ async function panel (state, emitter) {
   }
 
   state.panel = {
+    version: '0.0.1',
     changes: { },
     loading: false
   }
 
-  state.events.PANEL_LOAD = 'panel:load'
-  state.events.PANEL_UPDATE = 'panel:update'
-  state.events.PANEL_MOVE = 'panel:move'
-  state.events.PANEL_PAGE_ADD = 'panel:page:add'
   state.events.PANEL_FILES_ADD = 'panel:files:add'
-  state.events.PANEL_LOADING = 'panel:loading'
-  state.events.PANEL_SAVE = 'panel:save'
-  state.events.PANEL_CANCEL = 'panel:cancel'
-  state.events.PANEL_REMOVE = 'panel:remove'
   state.events.PANEL_LOAD_SITE = 'panel:load:site'
+  state.events.PANEL_PAGE_ADD = 'panel:page:add'
+  state.events.PANEL_LOADING = 'panel:loading'
+  state.events.PANEL_UPGRADE = 'panel:upgrade'
+  state.events.PANEL_CANCEL = 'panel:cancel'
+  state.events.PANEL_UPDATE = 'panel:update'
+  state.events.PANEL_REMOVE = 'panel:remove'
+  state.events.PANEL_MOVE = 'panel:move'
+  state.events.PANEL_SAVE = 'panel:save'
   
-  emitter.on(state.events.PANEL_LOAD, onLoad)
-  emitter.on(state.events.PANEL_UPDATE, onUpdate)
-  emitter.on(state.events.PANEL_SAVE, onSave)
-  emitter.on(state.events.PANEL_CANCEL, onCancel)
-  emitter.on(state.events.PANEL_LOADING, onLoading)
-  emitter.on(state.events.PANEL_REMOVE, onRemove)
-  emitter.on(state.events.PANEL_PAGE_ADD, onPageAdd)
   emitter.on(state.events.PANEL_FILES_ADD, onFilesAdd)
   emitter.on(state.events.PANEL_LOAD_SITE, onLoadSite)
+  emitter.on(state.events.PANEL_PAGE_ADD, onPageAdd)
+  emitter.on(state.events.DOMCONTENTLOADED, onLoad)
+  emitter.on(state.events.PANEL_LOADING, onLoading)
+  emitter.on(state.events.PANEL_UPDATE, onUpdate)
+  emitter.on(state.events.PANEL_CANCEL, onCancel)
+  emitter.on(state.events.PANEL_REMOVE, onRemove)
+  emitter.on(state.events.PANEL_SAVE, onSave)
 
-  function onLoad (data) {
-    console.log('load dat archive')
+  function onLoad () {
+    var localVersion = window.localStorage.getItem('version')
+    console.log(localVersion, state.panel.version)
   }
 
   function onUpdate (data) {
@@ -70,10 +72,12 @@ async function panel (state, emitter) {
     try {
       var page = xtend(state.content[data.url], data.page)
 
+      // cleanup
       delete page.files
       delete page.pages
       delete page.url
       delete page.name
+      delete page.path
 
       var content = smarkt.stringify(page)
       await archive.writeFile(
@@ -155,8 +159,12 @@ async function panel (state, emitter) {
     try {
       var isFile = path.extname(data.path)
 
-      if (isFile) await archive.unlink(data.path)
-      else await archive.rmdir(data.path, { recursive: true })
+      if (isFile) {
+        await archive.unlink(data.path)
+        try { await archive.unlink(data.path + '.txt') } catch (err) { }
+      } else {
+        await archive.rmdir(data.path, { recursive: true })
+      }
 
       emitter.emit(state.events.SITE_REFRESH)
       if (data.redirect !== false) {

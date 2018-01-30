@@ -26,7 +26,7 @@ function Field (props, emit) {
 
   // public
   return html`
-    <div class="${width} p2">
+    <div class="${width} p1">
       <div class="c12 py1 fwb usn fs0-8 ttu">
         ${props.field.label || props.field.key}
       </div>

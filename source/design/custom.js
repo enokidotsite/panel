@@ -174,7 +174,6 @@ function inputs () {
     .input.lh1-5 { line-height: 1.5 }
 
     .input-disabled {
-      border: 1px solid #ccc;
       color: #999;
     }
 
@@ -188,6 +187,7 @@ function inputs () {
     button:focus { outline: 0 }
 
     .button-large {
+      display: block;
       cursor: pointer;
       font-weight: bold;
       color: #fff;
@@ -196,6 +196,17 @@ function inputs () {
       text-align: center;
       padding: 0 4rem;
       border-radius: 3rem;
+    }
+
+    .button-medium {
+      display: block;
+      cursor: pointer;
+      color: #fff;
+      font-size: 1.8rem;
+      line-height: 4rem;
+      text-align: center;
+      padding: 0 2rem;
+      border-radius: 2rem;
     }
 
     .button-inline {
@@ -294,8 +305,7 @@ function extensions () {
 
 function loader () {
   return `
-    .loader,
-    .loader:after {
+    .loader {
       border-radius: 50%;
       width: 3rem;
       height: 3rem;

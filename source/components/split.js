@@ -5,10 +5,10 @@ module.exports = Split
 function Split (left, right) {
   return html`
     <div class="x xw p1 xx">
-      <div class="c12 x sm-c4">
+      <div class="c12 x p1 sm-c4">
         ${left}
       </div>
-      <div class="c12 x sm-c8">
+      <div class="c12 x p1 sm-c8">
         ${right} 
       </div>
     </div>

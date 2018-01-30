@@ -32,7 +32,7 @@ class Uploader extends Nanocomponent {
             ondragenter=${this.handleDragEnter}
             ondragleave=${this.handleDragLeave}
           />
-          <div>
+          <div class="p1">
             ${this.text}
           </div>
         </form>

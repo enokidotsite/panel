@@ -80,8 +80,9 @@ class Textarea extends Nanocomponent {
 
     // send state up
     this.simplemde.codemirror.on('change', function () {
-      if (self.value !== self.simplemde.value()) {
-        self.emit('input', self.simplemde.value())
+      var value = self.simplemde.value() || ''
+      if (self.value !== value) {
+        self.emit('input', value)
       }
     }, false)
   }

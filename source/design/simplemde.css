@@ -333,13 +333,13 @@ div.CodeMirror-dragcursors {
     visibility: visible
 }
 .CodeMirror-selected {
-    background: #eee
+    background: rgba(127, 127, 127, 0.5);
 }
 .CodeMirror-focused .CodeMirror-selected,
 .CodeMirror-line::selection,
 .CodeMirror-line>span::selection,
 .CodeMirror-line>span>span::selection {
-    background: #eee
+    background: rgba(127, 127, 127, 0.5);
 }
 .CodeMirror-crosshair {
     cursor: crosshair
@@ -347,7 +347,7 @@ div.CodeMirror-dragcursors {
 .CodeMirror-line::-moz-selection,
 .CodeMirror-line>span::-moz-selection,
 .CodeMirror-line>span>span::-moz-selection {
-    background: #eee
+    background: rgba(127, 127, 127, 0.5);
 }
 .cm-searching {
     background: #ffa;
@@ -500,7 +500,7 @@ span.CodeMirror-selectedtext {
 }
 .editor-toolbar.disabled-for-preview a:not(.no-disable) {
     pointer-events: none;
-    background: #fff;
+    opacity: 0.2;
     border-color: transparent;
     text-shadow: inherit
 }
@@ -584,7 +584,7 @@ span.CodeMirror-selectedtext {
     color: #183691
 }
 .CodeMirror .CodeMirror-selected {
-    background: #eee
+    background: rgba(127, 127, 127, 0.5);
 }
 .CodeMirror .CodeMirror-code .cm-header-1 {
     font-size: 200%;

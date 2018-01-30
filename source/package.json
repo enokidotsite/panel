@@ -4,8 +4,8 @@
   "description": "A little javascript static site generator",
   "main": "index.js",
   "scripts": {
-    "start": "watchify index.js -o bundles/bundle.js -t brfs -t sheetify -p [ css-extract -o bundles/bundle.css ] index.js",
-    "build": "browserify index.js -o bundles/bundle.js -t brfs -t yo-yoify -t  [ sheetify -u sheetify-cssnext ] -g es2040 -p [ css-extract -o bundles/bundle.css ] -p tinyify"
+    "start": "watchify index.js -o ../bundles/0.1.0/bundle.js -t brfs -t sheetify -p [ css-extract -o ../bundles/0.1.0/bundle.css ] index.js",
+    "build": "browserify index.js -o ../bundles/0.1.0/bundle.js -t brfs -t yo-yoify -t  [ sheetify -u sheetify-cssnext ] -g es2040 -p [ css-extract -o ../bundles/0.1.0/bundle.css ] -p tinyify"
   },
   "keywords": [],
   "author": "Jon-Kyle <contact@jon-kyle.com> (http://jon-kyle.com)",

@@ -17,6 +17,7 @@ function sites (state, emitter, app) {
   }
 
   // events
+  state.events.SITE_GENERATE = 'site:refresh'
   state.events.SITES_LOADED = 'sites:loaded'
   state.events.SITE_REFRESH = 'site:refresh'
   state.events.SITES_RESET = 'sites:reset'
@@ -27,6 +28,7 @@ function sites (state, emitter, app) {
 
   // listeners
   emitter.on(state.events.DOMCONTENTLOADED, handleSetup)
+  emitter.on(state.events.SITE_GENERATE, handleGenerate)
   emitter.on(state.events.SITE_REFRESH, handleRefresh)
   emitter.on(state.events.SITE_REMOVE, handleRemove)
   emitter.on(state.events.SITES_RESET, handleReset)
@@ -40,7 +42,14 @@ function sites (state, emitter, app) {
 
     if (state.sites.active) {
       emitter.emit(state.events.SITE_LOAD, { url: state.sites.active })
+    } else {
+      state.sites.loaded = true
+      emitter.emit(state.events.RENDER)
     }
+  }
+
+  async function handleGenerate (data) {
+    alert('new')
   }
 
   async function handleAdd () {
@@ -87,10 +96,12 @@ function sites (state, emitter, app) {
       if (props.redirect === true) {
         emitter.emit(state.events.PUSHSTATE, '/?url=/')
       } else if (props.render !== false) {
+        state.sites.loaded = true
         emitter.emit(state.events.RENDER)
       }
 
     } catch (err) {
+      console.warn(err)
       state.sites.error = err.message
       emitter.emit(state.events.PANEL_LOADING, { loading: false })
       emitter.emit(state.events.RENDER)

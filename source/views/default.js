@@ -22,6 +22,7 @@ var FileNew = require('./file-new')
 var PagesAll = require('./pages-all')
 var PageNew = require('./page-new')
 var Sites = require('./sites')
+var Docs = require('./docs')
 
 // methods
 var methodsFile = require('../methods/file')
@@ -46,15 +47,20 @@ function view (state, emit) {
   function header () {
     var editorActive = typeof search.url !== 'undefined'
     var sitesActive = typeof search.sites !== 'undefined'
+    var docsActive = typeof search.docs !== 'undefined'
+
     return html`
       <div id="header" class="x xjb usn z2 psr bgc-fg fc-bg oxh">
         ${editorActive ? breadcrumbs() : html`<div class="py2 px3">Enoki</div>`}
         <div class="x">
-          <div class="p1 bl1-bg90 br1-bg90">
+          <div class="p1 bl1-bg90">
+            <a href="/?url=/" class="${editorActive ? 'fc-bg' : 'fc-bg70'} fc-bg db p1">Editor</a>
+          </div>
+          <div class="p1 bl1-bg90 ">
             <a href="/?sites=all" class="${sitesActive ? 'fc-bg' : 'fc-bg70'} fc-bg db p1">Sites</a>
           </div>
-          <div class="p1 br1-bg90">
-            <a href="/?url=/" class="${editorActive ? 'fc-bg' : 'fc-bg70'} fc-bg db p1">Editor</a>
+          <div class="p1 bl1-bg90 br1-bg90">
+            <a href="/?docs=all" class="${docsActive ? 'fc-bg' : 'fc-bg70'} fc-bg db p1">Docs</a>
           </div>
           <div style="height: 6rem; width: 6rem"></div>
         </div>
@@ -96,11 +102,17 @@ function view (state, emit) {
 
   // TODO: clean this up
   function content () {
+    // docs
+    if (search.docs) {
+      return Docs(state, emit)
+    }
+
     // sites
     if (search.sites || !state.sites.active) {
       return Sites(state, emit)
     }
 
+    // files
     if (search.file === 'new') {
       return Split(sidebar(), [FileNew(state, emit), Page()])
     }

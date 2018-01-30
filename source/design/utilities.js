@@ -63,6 +63,7 @@ utils.push({
 })
 
 module.exports = gr8({
+  lineHeight: [1, 1.25, 1.5],
   fontSize: options.fontSize,
   spacing: options.spacing,
   breakpointSelector: 'class',
