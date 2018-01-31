@@ -3,7 +3,7 @@ var objectValues = require('object-values')
 var html = require('choo/html')
 var xtend = require('xtend')
 
-var renderNewSite = require('./sites-new')
+var RenderSiteCreate = require('./sites-create')
 
 module.exports = view
 
@@ -12,9 +12,9 @@ function view (state, emit) {
 
   if (!state.sites.loaded) return
 
-  // new
-  if (state.query.sites === 'new') {
-    return renderNewSite(state, emit)
+  // create
+  if (state.query.sites === 'create') {
+    return RenderSiteCreate(state, emit)
   }
 
   // all
@@ -60,7 +60,7 @@ function renderSites (props) {
         <div class="psf b0 l0 r0 w100 p1 p1 x xjc">
           <div class="p1">
             <a
-              href="?sites=new"
+              href="?sites=create"
               class="bgc-fg button-large"
             >Create a New Site</a>
           </div>
@@ -86,7 +86,7 @@ function renderEmpty (props) {
         <div class="x xjc c12">
           <div class="p1">
             <a
-              href="?sites=new"
+              href="?sites=create"
               class="bgc-fg button-large"
             >Create a New Site</a>
           </div>
@@ -109,8 +109,11 @@ function renderSite (props) {
     <div class="p1 w100">
       <div class="w100 bgc-bg5 fc-fg br1">
         <div class="x xw xac p1">
-          <div class="oh p1 xx lh1">
-            <div class="fs2">${props.title}</div>
+          <div class="c12 sm-xx oh p1 lh1">
+            <div class="fs2 wsnw toe">${props.title}</div>
+          </div>
+          <div class="p1">
+            <a href="${props.url}" target="_blank" class="db bgc-bg25 bgch-fg button-medium">Open</a>
           </div>
           <div class="p1">
             <a href="${settingsUrl}" class="db ${settingsClass} button-medium">Settings</a>
@@ -119,13 +122,18 @@ function renderSite (props) {
             <button
               class="bgc-fg button-medium"
               onclick=${handleSiteClick}
-            >Edit Site</button>
+            >Edit Content</button>
           </div>
         </div>
+        ${props.error ? renderError() : ''}
         ${props.active ? renderSettings() : ''}
       </div>
     </div>
   `
+
+  function renderError () {
+    return html`<div class="p2 pt0 fc-red">${props.error}</div>`
+  }
 
   function renderSettings () {
     return html`

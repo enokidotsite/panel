@@ -111,8 +111,10 @@ function media () {
 
     .file-preview {
       max-height: 100vh;
-      margin: -0.75rem -0.75rem -0.75rem 0.75rem;
+      width: 100%;
+      margin: -2rem -3rem -2rem 1rem;
       background-image: url('data:image/svg+xml;utf8,<svg height="10" width="10" viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg"><rect height="5" width="5" x="0" y="0" fill="rgba(127, 127, 127, 0.15)" /><rect height="5" width="5" x="5" y="5" fill="rgba(127, 127, 127, 0.15)" /></svg>');
+      background-repeat: repeat;
     }
 
     @media (max-width: 767px) {
@@ -284,12 +286,12 @@ function extensions () {
       color: ${options.colors.bg70};
     }
 
-    .breadcrumbs > a:last-child,
+    .breadcrumbs > a:first-child,
     .breadcrumbs > a:hover {
       color: ${options.colors.bg};
     }
 
-    .breadcrumbs > a:not(:last-child):before {
+    .breadcrumbs > a:not(:first-child):before {
       background: ${options.colors.bg90};
       content: '';
       display: block;

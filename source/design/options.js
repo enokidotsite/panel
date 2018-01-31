@@ -4,7 +4,8 @@ exports.colors = {
   bg25: '#999',
   bg70: '#666',
   bg90: '#333',
-  fg: '#000'
+  fg: '#000',
+  red: '#f33'
 }
 
 exports.typography = {
@@ -18,4 +19,4 @@ exports.fontSize = {
   '2': 3.6
 }
 
-exports.spacing = [1, 2, 3, 4, 5, 6]
+exports.spacing = [0, 1, 2, 3, 4, 5, 6]

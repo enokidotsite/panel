@@ -7,6 +7,8 @@ var xtend = require('xtend')
 var path = require('path')
 var xhr = require('xhr')
 
+var package = require('../package.json')
+
 module.exports = panel
 
 async function panel (state, emitter) {
@@ -20,7 +22,7 @@ async function panel (state, emitter) {
   }
 
   state.panel = {
-    version: '0.0.1',
+    version: package.version,
     changes: { },
     loading: false
   }
@@ -30,6 +32,7 @@ async function panel (state, emitter) {
   state.events.PANEL_PAGE_ADD = 'panel:page:add'
   state.events.PANEL_LOADING = 'panel:loading'
   state.events.PANEL_UPGRADE = 'panel:upgrade'
+  state.events.PANEL_UPDATED = 'panel:updated'
   state.events.PANEL_CANCEL = 'panel:cancel'
   state.events.PANEL_UPDATE = 'panel:update'
   state.events.PANEL_REMOVE = 'panel:remove'
@@ -41,14 +44,18 @@ async function panel (state, emitter) {
   emitter.on(state.events.PANEL_PAGE_ADD, onPageAdd)
   emitter.on(state.events.DOMCONTENTLOADED, onLoad)
   emitter.on(state.events.PANEL_LOADING, onLoading)
+  emitter.on(state.events.PANEL_UPGRADE, onUpgrade)
   emitter.on(state.events.PANEL_UPDATE, onUpdate)
   emitter.on(state.events.PANEL_CANCEL, onCancel)
   emitter.on(state.events.PANEL_REMOVE, onRemove)
   emitter.on(state.events.PANEL_SAVE, onSave)
 
   function onLoad () {
-    var localVersion = window.localStorage.getItem('version')
-    console.log(localVersion, state.panel.version)
+
+  }
+
+  function onUpgrade () {
+    confirm('do you want to upgrade?')
   }
 
   function onUpdate (data) {
@@ -56,6 +63,7 @@ async function panel (state, emitter) {
     assert.equal(typeof data.url, 'string', 'enoki: data.url must be type string')
     var changes = state.panel.changes[data.url]
     state.panel.changes[data.url] = xtend(changes, data.data)
+    emitter.emit(state.events.PANEL_UPDATED)
     emitter.emit(state.events.RENDER)
   }
 
@@ -63,7 +71,7 @@ async function panel (state, emitter) {
     assert.equal(typeof data, 'object', 'enoki: data must be type object')
     assert.equal(typeof data.path, 'string', 'enoki: data.path must be type string')
     assert.equal(typeof data.url, 'string', 'enoki: data.url must be type string')
-    assert.equal(typeof data.page, 'object', 'enoki: data.file must be type object')
+    assert.equal(typeof data.page, 'object', 'enoki: data.page must be type object')
 
     emitter.emit(state.events.PANEL_LOADING, { loading: true })
     emitter.emit(state.events.RENDER)
@@ -89,7 +97,6 @@ async function panel (state, emitter) {
       delete state.panel.changes[data.url]
       emitter.emit(state.events.SITE_REFRESH)
     } catch (err) {
-      alert(err.message)
       console.log(err)
     }
 
@@ -207,9 +214,24 @@ async function panel (state, emitter) {
   }
 
   function onLoadSite (data) {
+    var siteKey = data.site.info.key
+    var localVersionCheck = window.localStorage.getItem('version-checked-' + siteKey) || data.site.config.panel
+    var localVersion = window.localStorage.getItem('version-selected-' + siteKey)
+
     if (data.content) state.content = data.content
     if (data.site) state.site = data.site
     if (data.archive) archive = data.archive
+
+    // if ((localVersionCheck !== state.panel.version || localVersion !== state.panel.version)) {
+    //   var shouldUpgrade = confirm(`Panel update (${localVersion} to ${state.panel.version}) available. Would you like to upgrade?`) 
+    //   window.localStorage.setItem('version-checked-' + siteKey, state.panel.version)
+    //   if (shouldUpgrade) {
+    //     window.localStorage.setItem('version-selected-' + siteKey, state.panel.version)
+    //   } else {
+    //     window.localStorage.setItem('version-selected-' + siteKey, state.panel.version)
+    //   }
+    // }
+
     if (data.render !== false) emitter.emit(state.events.RENDER)
   }
 

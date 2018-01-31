@@ -29,7 +29,7 @@ function File (state, emit) {
     return html`
       <div
         id="content-file"
-        class="c12 psst t0 p1 file-preview"
+        class="psst t0 p1 file-preview"
       >
         ${file.type === 'image' ? image() : ''}
       </div>
@@ -85,8 +85,8 @@ function File (state, emit) {
 
   function notFound () {
     return html`
-      <div class="fs2 p1">
-        <b>${filename}</b> is not found 
+      <div class="p1 xx x xjc xac">
+        ${filename} is not found 
       </div>
     `
   }

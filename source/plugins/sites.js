@@ -1,5 +1,6 @@
-var assert = require('assert')
 var objectKeys = require('object-keys')
+var assert = require('assert')
+var xtend = require('xtend')
 var Enoki = require('choo-dat-hypha/lib')
 
 module.exports = sites
@@ -12,14 +13,16 @@ function sites (state, emitter, app) {
   state.sites = {
     loaded: false,
     archives: { },
+    create: { },
     active: '',
     error: ''
   }
 
   // events
-  state.events.SITE_GENERATE = 'site:refresh'
   state.events.SITES_LOADED = 'sites:loaded'
+  state.events.SITE_CREATOR = 'site:creator'
   state.events.SITE_REFRESH = 'site:refresh'
+  state.events.SITE_CREATE = 'site:create'
   state.events.SITES_RESET = 'sites:reset'
   state.events.SITE_LOADED = 'site:loaded'
   state.events.SITE_REMOVE = 'site:remove'
@@ -28,8 +31,9 @@ function sites (state, emitter, app) {
 
   // listeners
   emitter.on(state.events.DOMCONTENTLOADED, handleSetup)
-  emitter.on(state.events.SITE_GENERATE, handleGenerate)
+  emitter.on(state.events.SITE_CREATOR, handleCreator)
   emitter.on(state.events.SITE_REFRESH, handleRefresh)
+  emitter.on(state.events.SITE_CREATE, handleCreate)
   emitter.on(state.events.SITE_REMOVE, handleRemove)
   emitter.on(state.events.SITES_RESET, handleReset)
   emitter.on(state.events.SITE_LOAD, handleLoad)
@@ -48,8 +52,39 @@ function sites (state, emitter, app) {
     }
   }
 
-  async function handleGenerate (data) {
-    alert('new')
+  function handleCreator (data) {
+    assert.equal(typeof data, 'object', 'enoki: data must be type object')
+    var changes = state.sites.create
+    state.sites.create = xtend(changes, data.data)
+    emitter.emit(state.events.RENDER)
+  }
+
+  async function handleCreate (data) {
+    var url = state.designs.public.starterkit.url
+    try {
+      // fork the design archive
+      var archiveCreate = await DatArchive.fork(url, state.sites.create)
+
+      // reset create state
+      state.designs.create = { }
+
+      // one time commit those changes
+      emitter.once(state.events.SITE_LOADED, function () {
+        emitter.emit(state.events.PANEL_SAVE, {
+          path: state.content['/'].path,
+          url: '/',
+          page: { title: state.sites.create.title }
+        })
+      })
+
+      // commit to loading
+      emitter.emit(state.events.SITE_LOAD, {
+        url: archiveCreate.url,
+        redirect: true
+      })
+    } catch (err) {
+      console.warn(err)
+    }
   }
 
   async function handleAdd () {
@@ -99,10 +134,13 @@ function sites (state, emitter, app) {
         state.sites.loaded = true
         emitter.emit(state.events.RENDER)
       }
-
     } catch (err) {
-      console.warn(err)
+      var archiveInfo = state.sites.archives[props.url]
+      if (typeof archiveInfo === 'object') {
+        archiveInfo.error = err.message
+      }
       state.sites.error = err.message
+      state.sites.loaded = true
       emitter.emit(state.events.PANEL_LOADING, { loading: false })
       emitter.emit(state.events.RENDER)
     }

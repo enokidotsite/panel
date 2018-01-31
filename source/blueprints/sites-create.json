@@ -1,0 +1,14 @@
+{
+  "title": "Create Site",
+  "fields": {
+    "title": {
+      "label": "Title",
+      "type":  "text"
+    },
+    "description": {
+      "label": "Description",
+      "type":  "textarea",
+      "toolbar": false
+    }
+  }
+}

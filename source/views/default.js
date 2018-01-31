@@ -56,11 +56,8 @@ function view (state, emit) {
           <div class="p1 bl1-bg90">
             <a href="/?url=/" class="${editorActive ? 'fc-bg' : 'fc-bg70'} fc-bg db p1">Editor</a>
           </div>
-          <div class="p1 bl1-bg90 ">
-            <a href="/?sites=all" class="${sitesActive ? 'fc-bg' : 'fc-bg70'} fc-bg db p1">Sites</a>
-          </div>
           <div class="p1 bl1-bg90 br1-bg90">
-            <a href="/?docs=all" class="${docsActive ? 'fc-bg' : 'fc-bg70'} fc-bg db p1">Docs</a>
+            <a href="/?sites=all" class="${sitesActive ? 'fc-bg' : 'fc-bg70'} fc-bg db p1">Hub</a>
           </div>
           <div style="height: 6rem; width: 6rem"></div>
         </div>
@@ -70,9 +67,11 @@ function view (state, emit) {
 
   function breadcrumbs () {
     return html`
-      <div class="px2 wsnw breadcrumbs">
-        <a href="?url=/" class="db p1 nbb">index</a>
-        ${Breadcrumbs({ page: state.page })}
+      <div class="oxh" style="direction: rtl;">
+        <div class="px2 wsnw breadcrumbs">
+          ${Breadcrumbs({ page: state.page })}
+          <a href="?url=/" class="db p1 nbb">index</a>
+        </div>
       </div>
     `
   }

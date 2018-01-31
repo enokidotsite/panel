@@ -5,59 +5,60 @@ var css = require('sheetify')
 
 var style = css`
   :host {
-      display: inline-block;
-      padding: 1rem;
-      background: #eee;
-      width: 100%;
-      border-radius: 3px;
-      cursor: text;
+    display: inline-block;
+    padding: 0.5rem;
+    background: #eee;
+    width: 100%;
+    border-radius: 3px;
+    cursor: text;
+    line-height: 1;
   }
 
   :host .tag {
-      display: inline-block;
-      background: #fff;
-      color: #000;
-      padding: 0.5rem 1rem;
-      margin: -0.5rem 0.25rem;
-      border-radius: 2rem;
-      font: inherit;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-      cursor: pointer;
+    display: inline-block;
+    background: #fff;
+    color: #000;
+    padding: 0.5rem 1rem;
+    margin: 0.25rem 0.25rem;
+    border-radius: 2rem;
+    font: inherit;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
   }
 
   :host .tag.selected {
-      background-color: #000;
-      border-color: #000;
-      color: #fff
+    background-color: #000;
+    border-color: #000;
+    color: #fff
   }
 
   :host .tag.dupe {
-      -webkit-transform: scale3d(1.2, 1.2, 1.2);
-      transform: scale3d(1.2, 1.2, 1.2);
-      background-color: #FCC;
-      border-color: #700
+    -webkit-transform: scale3d(1.2, 1.2, 1.2);
+    transform: scale3d(1.2, 1.2, 1.2);
+    background-color: #FCC;
+    border-color: #700
   }
 
   :host input {
-      -webkit-appearance: none!important;
-      -moz-appearance: none!important;
-      appearance: none!important;
-      display: inline-block!important;
-      padding: 3px;
-      margin: 0!important;
-      background: 0 0!important;
-      border: none!important;
-      box-shadow: none!important;
-      font: inherit!important;
-      font-size: 100%!important;
-      outline: 0!important
+    -webkit-appearance: none!important;
+    -moz-appearance: none!important;
+    appearance: none!important;
+    display: inline-block!important;
+    padding: 0.5rem 1rem !important;
+    margin: 0.25rem 0.25rem !important;
+    background: 0 0!important;
+    border: none!important;
+    box-shadow: none!important;
+    font: inherit!important;
+    font-size: 100%!important;
+    outline: 0!important;
   }
 
   :host .selected~input {
-      opacity: .3
+    opacity: .3;
   }
 `
 

@@ -38,6 +38,7 @@ function breadcrumbs (props) {
 
     return pagePaths
       .concat(searchPaths)
+      .reverse()
       .reduce(function (arr, crumb) {
         arr.push(crumb.el)
         return arr

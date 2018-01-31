@@ -1,6 +1,6 @@
 {
   "name": "enoki-panel",
-  "version": "0.0.3",
+  "version": "0.0.2",
   "description": "A little javascript static site generator",
   "main": "index.js",
   "scripts": {
