@@ -104,7 +104,7 @@ function renderEmpty (props) {
 
 function renderSite (props) {
   var settingsUrl = props.active ? '?sites=all' : ('?sites=' + props.url)
-  var settingsClass = props.active ? 'op100' : 'oph100 op50'
+  var settingsClass = props.active ? 'bgc-fg' : 'bgc-bg25 bgch-fg'
   return html`
     <div class="w100 fc-fg br1 ${props.active ? '' : 'ophc100'}">
       <div class="x xw xac py2">
@@ -112,10 +112,10 @@ function renderSite (props) {
           <div class="fs2 wsnw toe">${props.title}</div>
         </div>
         <div class="p1 ${props.active ? '' : 'sm-op0'} oph">
-          <a href="${props.url}" target="_blank" class="db bgc-fg op50 oph100 button-medium">Open</a>
+          <a href="${props.url}" target="_blank" class="db bgc-bg25 bgch-fg button-medium">Open</a>
         </div>
         <div class="p1 ${props.active ? '' : 'sm-op0'} oph">
-          <a href="${settingsUrl}" class="db ${settingsClass} bgc-fg button-medium">Settings</a>
+          <a href="${settingsUrl}" class="db ${settingsClass} button-medium">Settings</a>
         </div>
         <div class="p1 ${props.active ? '' : 'sm-op0'} oph">
           <button

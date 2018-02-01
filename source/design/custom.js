@@ -190,10 +190,8 @@ function inputs () {
 
     .button-large {
       user-select: none;
-      box-shadow: 0 0 2rem 2rem rgb(0, 0, 0);
-      line-height: 2rem;
-      padding: 0 2rem;
-      margin: 2rem;
+      line-height: 6rem;
+      padding: 0 4rem;
       border-radius: 3rem;
       display: block;
       cursor: pointer;
@@ -205,11 +203,9 @@ function inputs () {
 
     .button-medium {
       user-select: none;
-      box-shadow: 0 0 1rem 1rem rgb(0, 0, 0);
-      line-height: 2rem;
-      padding: 0 1rem;
-      margin: 1rem;
-      border-radius: 3rem;
+      line-height: 4rem;
+      padding: 0 2rem;
+      border-radius: 2rem;
       display: block;
       cursor: pointer;
       color: #fff;
@@ -218,15 +214,14 @@ function inputs () {
 
     .button-inline {
       user-select: none;
-      background: rgba(0, 0, 0, 0.1);
-      box-shadow: 0 0 0.5rem 0.5rem rgba(0, 0, 0, 0.1);
+      background: #fff;
+      border: 1px solid #000;
       color: #000;
-      margin-left: 1rem;
-      padding: 0.5rem 1rem;
-      line-height: 1rem;
+      margin: 0 0 0 0.5rem;
+      padding: 0 1rem 0.1rem;
+      line-height: 2rem;
       height: 2rem;
       border-radius: 1rem;
-      display: inline-block;
       text-transform: uppercase;
       -webkit-user-select: none;
       -moz-user-select: none;
@@ -240,7 +235,6 @@ function inputs () {
     .button-inline:hover {
       background: #000;
       color: #fff;
-      box-shadow: 0 0 1rem 1rem #000;
     }
   `
 }

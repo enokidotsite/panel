@@ -31,16 +31,14 @@ function sidebar (props, emit) {
   return html`
     <div id="sidebar" class="c12">
       <div class="psst p1" style="top: 0.75rem;">
-        ${elPage()}
         ${props.pagesActive ? elPages() : ''}
         ${props.filesActive ? elFiles() : ''}
-        ${props.handleRemovePage && props.page.url !== '/' ? elRemove() : ''}
+        ${elMeta()}
       </div>
     </div>
   `
 
   function elPage () {
-    console.log(props)
     return html`
       <div id="sidebar-page" class="mb2">
         <div class="x xjb c12 py1 fs0-8 ttu usn">
@@ -54,13 +52,13 @@ function sidebar (props, emit) {
         <ul class="c12 myc1 lsn">
           ${props.site.info
             ? html`
-              <li class="m0">
+              <div>
                 <a
                   href="${props.site.info.url}${props.page.url}"
                   target="_blank"
-                  class="db py1 truncate"
-                >Open in Site</a>
-              </li>
+                  class="button-inline"
+                >View in Site</a>
+              </div>
             `
             : ''
           }
@@ -141,14 +139,35 @@ function sidebar (props, emit) {
     `
   }
 
+  function elMeta () {
+    return html`
+      <div class="x py1">
+        <div class="xx pr1">
+          ${props.site.info ? elView() : ''}
+        </div>
+        <div class="xx pl1">
+          ${props.handleRemovePage && props.page.url !== '/' ? elRemove() : ''}
+        </div>
+      </div>
+    `
+  }
+
+  function elView () {
+    return html`
+      <a
+        href="${props.site.info.url}${props.page.url}"
+        target="_blank"
+        class="tac bgch-fg bgc-bg25 button-medium"
+      >Open</a>
+    `
+  }
+
   function elRemove () {
     return html`
-      <div>
-        <span
-          class="fc-bg25 fch-fg curp fch-fg"
-          onclick=${props.handleRemovePage}
-        >Delete page</span>
-      </div>
+      <span
+        class="tac bgch-fg bgc-bg25 button-medium"
+        onclick=${props.handleRemovePage}
+      >Delete</span>
     `
   }
 

@@ -123,10 +123,7 @@ function view (state, emit) {
     if (search.pages === 'all') return PagesAll(state, emit)
 
     if (search.page === 'new') {
-      return Split(
-        sidebar(),
-        [PageNew(state, emit), Page()]
-      )
+      return Split(sidebar(), [PageNew(state, emit), Page()])
     }
 
     if (search.files === 'all') {

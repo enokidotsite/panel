@@ -1,10 +1,5 @@
 # Enoki Panel Notes
 
-## Doing
-
-- [ ] Tag testing
-- [ ] 
-
 ## Global
 
 **UI**
@@ -17,6 +12,7 @@
 **Functionality**
 
 - [ ] Non-p2p view
+- [ ] Versioning and upgrade
 
 ## Sites
 
@@ -51,6 +47,8 @@ This area is dedicated to creating new sites, loading existing sites, and adjust
 
 - [ ] Browse designs
 - [ ] Select design
+- [ ] Title
+- [ ] Description
 
 **Designs**
 
@@ -59,10 +57,11 @@ This area is dedicated to creating new sites, loading existing sites, and adjust
 **Functionality**
 
 - [ ] Select a Design
-- [ ] Enter name and description
+- [ ] Enter title and description
 - [ ] Copy Content toggle
 - [ ] This forks the Design
 - [ ] Load into the panel
+- [ ] Write title into `content/index.txt`
 
 ### Load existing site
 
@@ -102,3 +101,7 @@ This area contains the tools for managing the content of your sites.
 ## Ideas
 
 - Create a demo which can run over HTTP, and be used to manage 
+
+## Docs
+
+Guides and overviews of how to use the Panel.

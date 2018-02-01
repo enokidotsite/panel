@@ -31,7 +31,7 @@ function ActionBar (props) {
     return html`
       <div class="p1" id="cancel">
         <div
-          class="op50 oph100 bgc-fg button-large"
+          class="bgc-bg25 bgch-fg button-large"
           onclick=${props.handleCancel}
         >${cancelText}</div>
       </div>
