@@ -27,18 +27,24 @@ function Field (props, emit) {
   // public
   return html`
     <div class="${width} p1">
+      ${wrapper(props.field, emit)}
+    </div>
+  `
+
+  function label () {
+    return html`
       <div class="c12 py1 fwb usn fs0-8 ttu">
         ${props.field.label || props.field.key}
       </div>
-      <div class="c12">
-        ${wrapper(props.field, emit)}
-      </div>
-    </div>
-  `
+    `
+  }
 
   // wrap the field in a cache for nanocomponent
   function wrapper (state, emit) {
     if (!cache[state.id]) cache[state.id] = input()
-    return cache[state.id].render(state, emit)
+    return [
+      cache[state.id].label !== false ? label() : '',
+      cache[state.id].render(state, emit)
+    ]
   }
 }

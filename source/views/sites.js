@@ -18,18 +18,18 @@ function view (state, emit) {
   }
 
   // all
-  if (sites.length > 0) {
+  if (sites.length === 0 || state.query.sites === 'empty') {
+    return renderEmpty({
+      handleAdd: handleAdd
+    })
+  // empty
+  } else {
     return renderSites({
       handleRemove: handleRemove,
       handleLoad: handleLoad,
       handleAdd: handleAdd,
       active: state.query.sites,
       sites: sites
-    })
-  // empty
-  } else {
-    return renderEmpty({
-      handleAdd: handleAdd
     })
   }
 
@@ -49,7 +49,7 @@ function view (state, emit) {
 function renderSites (props) {
   return html`
     <div class="w100">
-      <div class="p2 x xw" style="padding-bottom: 7rem">
+      <div class="px2" style="padding-bottom: 7rem">
         ${props.sites.map(function (site) {
           return renderSite(xtend(site, {
             active: props.active === site.url,
@@ -104,30 +104,29 @@ function renderEmpty (props) {
 
 function renderSite (props) {
   var settingsUrl = props.active ? '?sites=all' : ('?sites=' + props.url)
-  var settingsClass = props.active ? 'bgc-fg' : 'bgc-bg25 bgch-fg'
+  var settingsClass = props.active ? 'op100' : 'oph100 op50'
   return html`
-    <div class="p1 w100">
-      <div class="w100 bgc-bg5 fc-fg br1">
-        <div class="x xw xac p1">
-          <div class="c12 sm-xx oh p1 lh1">
-            <div class="fs2 wsnw toe">${props.title}</div>
-          </div>
-          <div class="p1">
-            <a href="${props.url}" target="_blank" class="db bgc-bg25 bgch-fg button-medium">Open</a>
-          </div>
-          <div class="p1">
-            <a href="${settingsUrl}" class="db ${settingsClass} button-medium">Settings</a>
-          </div>
-          <div class="p1">
-            <button
-              class="bgc-fg button-medium"
-              onclick=${handleSiteClick}
-            >Edit Content</button>
-          </div>
+    <div class="w100 fc-fg br1 ${props.active ? '' : 'ophc100'}">
+      <div class="x xw xac py2">
+        <div class="c12 sm-xx oh p1 lh1">
+          <div class="fs2 wsnw toe">${props.title}</div>
         </div>
-        ${props.error ? renderError() : ''}
-        ${props.active ? renderSettings() : ''}
+        <div class="p1 ${props.active ? '' : 'sm-op0'} oph">
+          <a href="${props.url}" target="_blank" class="db bgc-fg op50 oph100 button-medium">Open</a>
+        </div>
+        <div class="p1 ${props.active ? '' : 'sm-op0'} oph">
+          <a href="${settingsUrl}" class="db ${settingsClass} bgc-fg button-medium">Settings</a>
+        </div>
+        <div class="p1 ${props.active ? '' : 'sm-op0'} oph">
+          <button
+            class="bgc-fg button-medium"
+            onclick=${handleSiteClick}
+          >Edit Content</button>
+        </div>
       </div>
+      ${props.error ? renderError() : ''}
+      ${props.active ? renderSettings() : ''}
+      <div class="w100 px1"><div class="w100 bb1-bg10"></div></div>
     </div>
   `
 
@@ -137,8 +136,18 @@ function renderSite (props) {
 
   function renderSettings () {
     return html`
-      <div class="c12 p2 bt2-bg">
-        <button class="bgc-fg button-medium" onclick=${handleRemove}>Remove</button>
+      <div class="c12">
+        <div class="px1">
+          <div style="border-top: 1px dashed #ddd"></div>
+        </div>
+        <div class="x xjb py1">
+          <div class="px1 py2 fc-bg25">
+            Additional settings and p2p stats coming soon
+          </div>
+          <div class="p1">
+            <button class="bgc-fg button-medium" onclick=${handleRemove}>Remove from Hub</button>
+          </div>
+        </div>
       </div>
     `
   }

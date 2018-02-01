@@ -50,16 +50,18 @@ function view (state, emit) {
     var docsActive = typeof search.docs !== 'undefined'
 
     return html`
-      <div id="header" class="x xjb usn z2 psr bgc-fg fc-bg oxh">
-        ${editorActive ? breadcrumbs() : html`<div class="py2 px3">Enoki</div>`}
+      <div id="header" class="x xjb usn z2 psr oxh">
+        <div class="x xx bb1-bg10 oxh">
+          ${editorActive ? breadcrumbs() : html`<div class="py2 px3">Enoki</div>`}
+        </div>
         <div class="x">
-          <div class="p1 bl1-bg90">
-            <a href="/?url=/" class="${editorActive ? 'fc-bg' : 'fc-bg70'} fc-bg db p1">Editor</a>
+          <div class="bl1-bg10 ">
+            <a href="/?url=/" class="${editorActive ? 'fc-fg' : 'fc-bg25 fch-fg bb1-bg10'} db p2">Editor</a>
           </div>
-          <div class="p1 bl1-bg90 br1-bg90">
-            <a href="/?sites=all" class="${sitesActive ? 'fc-bg' : 'fc-bg70'} fc-bg db p1">Hub</a>
+          <div class="bl1-bg10 br1-bg10">
+            <a href="/?sites=all" class="${sitesActive ? 'fc-fg' : 'fc-bg25 fch-fg bb1-bg10'} db p2">Hub</a>
           </div>
-          <div style="height: 6rem; width: 6rem"></div>
+          <div class="bb1-bg10" style="height: 6.1rem; width: 6.1rem"></div>
         </div>
       </div>
     `
@@ -67,10 +69,10 @@ function view (state, emit) {
 
   function breadcrumbs () {
     return html`
-      <div class="oxh" style="direction: rtl;">
-        <div class="px2 wsnw breadcrumbs">
+      <div class="x oxh px2">
+        <a href="?url=/" class="bgc-bg db px1 nbb py2 breadcrumb">index</a>
+        <div class="oxh xx breadcrumbs wsnw" style="direction: rtl;">
           ${Breadcrumbs({ page: state.page })}
-          <a href="?url=/" class="db p1 nbb">index</a>
         </div>
       </div>
     `
@@ -87,6 +89,7 @@ function view (state, emit) {
 
   function sidebar () {
     return Sidebar({
+      site: state.site,
       page: state.page,
       content: state.content,
       query: state.query,

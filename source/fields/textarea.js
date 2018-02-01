@@ -23,6 +23,7 @@ module.exports = function Wrapper () {
 class Textarea extends Nanocomponent {
   constructor () {
     super()
+    this.label = false
   }
 
   createElement (state, emit) {
@@ -34,11 +35,22 @@ class Textarea extends Nanocomponent {
     this.emit = emit
 
     return html`
-      <div class="input rich-editor lh1-5">
-        <textarea
-          class="c12"
-          oninput=${emit ? onInput : ''}
-        ></textarea>
+      <div class="w100 rich-editor psr">
+        <div class="psst l0 r0 z2 b0 pen" style="top: 2rem">
+          <div class="bgc-bg psa l0 r0" style="top: -2rem; height: 2rem;"></div>
+          <div class="bgc-bg x xjb pea" data-editor-toolbar>
+            <div class="py1 fwb usn fs0-8 ttu">
+              ${state.label || state.key}
+            </div>
+          </div>
+          <div class="pen c12" style="height: 5rem"></div>
+        </div>
+        <div class="input lh1-5" style="margin-top: -5rem">
+          <textarea
+            class="c12"
+            oninput=${emit ? onInput : ''}
+          ></textarea>
+        </div>
       </div>
     `
 
@@ -77,6 +89,10 @@ class Textarea extends Nanocomponent {
 
     // set default vlue
     this.simplemde.value(this.value)
+    var elToolbar = element.querySelector('.editor-toolbar')
+    if (elToolbar) {
+      element.querySelector('[data-editor-toolbar]').appendChild(elToolbar)
+    }
 
     // send state up
     this.simplemde.codemirror.on('change', function () {
@@ -88,8 +104,8 @@ class Textarea extends Nanocomponent {
   }
 
   unload () {
-    this.simplemde.toTextArea()
-    this.simplemde = null
+    // this.simplemde.toTextArea()
+    // this.simplemde = null
   }
 }
 

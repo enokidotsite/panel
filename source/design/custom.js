@@ -111,8 +111,8 @@ function media () {
 
     .file-preview {
       max-height: 100vh;
-      width: 100%;
-      margin: -2rem -3rem -2rem 1rem;
+      margin: -2rem -2rem -2rem 1rem;
+      width: calc(100% + 2rem);
       background-image: url('data:image/svg+xml;utf8,<svg height="10" width="10" viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg"><rect height="5" width="5" x="0" y="0" fill="rgba(127, 127, 127, 0.15)" /><rect height="5" width="5" x="5" y="5" fill="rgba(127, 127, 127, 0.15)" /></svg>');
       background-repeat: repeat;
     }
@@ -189,49 +189,58 @@ function inputs () {
     button:focus { outline: 0 }
 
     .button-large {
+      user-select: none;
+      box-shadow: 0 0 2rem 2rem rgb(0, 0, 0);
+      line-height: 2rem;
+      padding: 0 2rem;
+      margin: 2rem;
+      border-radius: 3rem;
       display: block;
       cursor: pointer;
       font-weight: bold;
       color: #fff;
       font-size: 1.8rem;
-      line-height: 6rem;
       text-align: center;
-      padding: 0 4rem;
-      border-radius: 3rem;
     }
 
     .button-medium {
+      user-select: none;
+      box-shadow: 0 0 1rem 1rem rgb(0, 0, 0);
+      line-height: 2rem;
+      padding: 0 1rem;
+      margin: 1rem;
+      border-radius: 3rem;
       display: block;
       cursor: pointer;
       color: #fff;
       font-size: 1.8rem;
-      line-height: 4rem;
-      text-align: center;
-      padding: 0 2rem;
-      border-radius: 2rem;
     }
 
     .button-inline {
-      background: #fff;
+      user-select: none;
+      background: rgba(0, 0, 0, 0.1);
+      box-shadow: 0 0 0.5rem 0.5rem rgba(0, 0, 0, 0.1);
       color: #000;
-      margin-left: 0.5rem;
-      padding: 0.4rem 1rem 0.6rem;
+      margin-left: 1rem;
+      padding: 0.5rem 1rem;
       line-height: 1rem;
       height: 2rem;
       border-radius: 1rem;
       display: inline-block;
-      border: 1px solid #000;
       text-transform: uppercase;
       -webkit-user-select: none;
       -moz-user-select: none;
       -ms-user-select: none;
       user-select: none;
       cursor: pointer;
+      position: relative;
+      z-index: 2;
     }
 
     .button-inline:hover {
       background: #000;
       color: #fff;
+      box-shadow: 0 0 1rem 1rem #000;
     }
   `
 }
@@ -260,7 +269,7 @@ function extensions () {
       top: 0;
       left: 0;
       right: 0;
-      background: #ddd;
+      background: ${options.colors.bg10};
       height: 1px;
     }
 
@@ -270,7 +279,7 @@ function extensions () {
       bottom: 0;
       left: 0;
       right: 0;
-      background: #ddd;
+      background: ${options.colors.bg10};
       height: 1px;
     }
 
@@ -280,19 +289,23 @@ function extensions () {
       line-height: 4rem;
     }
 
+    a.breadcrumb,
     .breadcrumbs > a {
       display: block;
       position: relative;
-      color: ${options.colors.bg70};
+      color: ${options.colors.bg25};
     }
 
+    a.breadcrumb,
+    a.breadcrumb:hover,
     .breadcrumbs > a:first-child,
     .breadcrumbs > a:hover {
-      color: ${options.colors.bg};
+      color: ${options.colors.fg};
     }
 
+    .breadcrumb:before,
     .breadcrumbs > a:not(:first-child):before {
-      background: ${options.colors.bg90};
+      background: ${options.colors.bg10};
       content: '';
       display: block;
       height: 4rem;

@@ -31,6 +31,7 @@ function sidebar (props, emit) {
   return html`
     <div id="sidebar" class="c12">
       <div class="psst p1" style="top: 0.75rem;">
+        ${elPage()}
         ${props.pagesActive ? elPages() : ''}
         ${props.filesActive ? elFiles() : ''}
         ${props.handleRemovePage && props.page.url !== '/' ? elRemove() : ''}
@@ -39,19 +40,33 @@ function sidebar (props, emit) {
   `
 
   function elPage () {
+    console.log(props)
     return html`
-      <div id="sidebar-children" class="mb2">
-        <div class="x xjb c12 fs0-8 ttu usn">
+      <div id="sidebar-page" class="mb2">
+        <div class="x xjb c12 py1 fs0-8 ttu usn">
           <div class="fwb">
-            <a href="?">Page</a>
+            Page
+          </div>
+          <div class="dn">
+            <a class="button-inline">Settings</a>
           </div>
         </div>
         <ul class="c12 myc1 lsn">
-          <li class="m0 py1">
-            Settings
-          </li>
+          ${props.site.info
+            ? html`
+              <li class="m0">
+                <a
+                  href="${props.site.info.url}${props.page.url}"
+                  target="_blank"
+                  class="db py1 truncate"
+                >Open in Site</a>
+              </li>
+            `
+            : ''
+          }
         </ul>
       </div>
+
     `
   }
 
@@ -59,7 +74,7 @@ function sidebar (props, emit) {
     var urlPageNew = unescape(queryString.stringify(xtend({ page: 'new' }, props.query)))
     var urlPagesAll = unescape(queryString.stringify(xtend({ pages: 'all' }, props.query)))
     return html`
-      <div id="sidebar-children" class="mb2">
+      <div id="sidebar-pages" class="mb2">
         <div class="x xjb c12 py1 fs0-8 ttu usn">
           <div class="fwb">
             <a href="?${urlPagesAll}">Pages</a>

@@ -12,7 +12,7 @@ function SitesCreate (state, emit) {
 
   return html`
     <div class="x xx sm-xjc sm-xac">
-      <div class="c12 sm-c6 p2" style="padding-bottom: 7rem">
+      <div class="c12 sm-c6 p2" style="padding-bottom: 9rem">
         ${Fields({
           blueprint: blueprint,
           draft: { },

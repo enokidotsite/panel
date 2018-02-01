@@ -391,21 +391,15 @@ span.CodeMirror-selectedtext {
     width: 50%!important
 }
 .editor-toolbar {
-    background: #000;
-    color: #fff;
+    color: #000;
     display: flex;
-    top: 0;
-    z-index: 2;
-    position: sticky;
-    position: -webkit-sticky;
+    height: 4rem;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     -o-user-select: none;
     user-select: none;
-    padding: 0.5rem;
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px
+    padding: 0.5rem 0;
 }
 .editor-toolbar:hover,
 .editor-wrapper input.title:focus,
@@ -451,7 +445,7 @@ span.CodeMirror-selectedtext {
     display: inline-block;
     text-align: center;
     text-decoration: none!important;
-    color: #fff!important;
+    color: #999!important;
     width: 30px;
     height: 30px;
     margin: 0;
@@ -461,8 +455,7 @@ span.CodeMirror-selectedtext {
 }
 .editor-toolbar a.active,
 .editor-toolbar a:hover {
-    background: #000;
-    color: #fff!important;
+    color: #000!important;
 }
 .editor-toolbar a:before {
     line-height: 30px
@@ -470,8 +463,7 @@ span.CodeMirror-selectedtext {
 .editor-toolbar i.separator {
     display: inline-block;
     width: 0;
-    border-left: 1px solid #333;
-    border-right: 1px solid #000;
+    border-left: 1px solid #ddd;
     color: transparent;
     text-indent: -10px;
     margin: 0 6px

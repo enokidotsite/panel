@@ -35,6 +35,15 @@ utils.push({
 })
 
 utils.push({
+  prop: { ophc: 'opacity' },
+  tail: ':hover .oph',
+  vals: [0, 25, 50, 75, 100],
+  transform: function (val) {
+    return val / 100
+  }
+})
+
+utils.push({
   prop: { oph: 'opacity' },
   tail: ':hover',
   vals: [0, 25, 50, 75, 100],

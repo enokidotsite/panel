@@ -1,6 +1,7 @@
 exports.colors = {
   bg: '#fff',
   bg5: '#eee',
+  bg10: '#ddd',
   bg25: '#999',
   bg70: '#666',
   bg90: '#333',
@@ -9,7 +10,7 @@ exports.colors = {
 }
 
 exports.typography = {
-  sans: '"Inter UI", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif',
+  sans: '-apple-system, BlinkMacSystemFont, "Inter UI", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif',
   mono: '"SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace'
 }
 

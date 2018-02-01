@@ -99,16 +99,16 @@ class PageNew extends Nanocomponent {
     var self = this
     return html`
       <div class="x c12 fs1 lh1 usn fs1">
-        <div class="p1 xx">
+        <div class="p1 xx x">
           <button
             type="submit"
-            class="db w100 button-medium bgc-fg"
+            class="xx button-medium bgc-fg"
             onclick=${this.handleSave.bind(self)}
           >Create Page</button>
         </div>
         <div class="p1">
           <button
-            class="db button-medium bgc-bg25 bgch-fg"
+            class="db button-medium bgc-fg op50 oph100"
             onclick=${this.handleCancel.bind(self)}
           >Cancel</button>
         </div>

@@ -92,8 +92,9 @@ class Tags extends Nanocomponent {
     `
 
     function onChange (event) {
-      if (self.value !== event.target.value) {
-        emit('change', event.target.value.split(','))
+      var value = event.target.value.split(',') 
+      if (!arraysEqual(self.value, value)) {
+        emit('change', value)
       }
     }
   }
@@ -117,4 +118,16 @@ class Tags extends Nanocomponent {
   load (props) {
     tagsInput(this.element.querySelector('input'))
   }
+}
+
+function arraysEqual (a, b) {
+  if (a === b) return true
+  if (a == null || b == null) return false
+  if (a.length != b.length) return false
+
+  for (var i = 0; i < a.length; ++i) {
+    if (a[i] !== b[i]) return false
+  }
+
+  return true
 }
