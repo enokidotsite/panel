@@ -6,17 +6,18 @@ var css = require('sheetify')
 var style = css`
   :host {
     display: inline-block;
-    padding: 0.5rem;
-    background: #eee;
+    padding: 0.25rem;
+    background: #fff;
+    border: 1px solid #ddd;
     width: 100%;
-    border-radius: 3px;
+    border-radius: 2rem;
     cursor: text;
     line-height: 1;
   }
 
   :host .tag {
     display: inline-block;
-    background: #fff;
+    background: #eee;
     color: #000;
     padding: 0.5rem 1rem;
     margin: 0.25rem 0.25rem;

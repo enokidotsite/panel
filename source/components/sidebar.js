@@ -118,20 +118,20 @@ function sidebar (props, emit) {
     return html` 
       <div class="
         ${props.uploadActive ? 'x' : 'dn'}
-        bgc-bg input psa t0 l0 r0 b0 x xjc xac z2
+        bgc-bg fc-fg psa t0 l0 r0 b0 x xjc xac z2
       ">
         ${uploader.render({
           text: 'Drag and drop here to add file',
           handleFiles: props.handleFilesUpload,
           handleDragEnter: function (event) {
             var el = event.target.parentNode.parentNode.parentNode
-            el.classList.remove('bgwhite', 'tcblack')
-            el.classList.add('bgblack', 'tcwhite')
+            el.classList.remove('bgc-bg', 'fc-fg')
+            el.classList.add('bgc-fg', 'fc-bg')
           },
           handleDragLeave: function (event) {
             var el = event.target.parentNode.parentNode.parentNode
-            el.classList.add('bgwhite', 'tcblack')
-            el.classList.remove('bgblack', 'tcwhite')
+            el.classList.add('bgc-bg', 'fc-fg')
+            el.classList.remove('bgc-fg', 'fc-bg')
           }
         }, emit)}
       </div>

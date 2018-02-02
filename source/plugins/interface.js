@@ -1,4 +1,6 @@
 var draggableCount = 0
+var renderTimeout
+var dragTimeout
 
 module.exports = ui
 
@@ -10,34 +12,27 @@ function ui (state, emitter) {
   emitter.on(state.events.DOMCONTENTLOADED, handleLoad)
 
   function handleLoad (data) {
-    window.addEventListener('dragenter', handleDragEnter, false)
-    window.addEventListener('dragleave', handleDragLeave, false)
+    document.body.addEventListener('dragenter', handleDrag, false)
     window.addEventListener('dragend', handleDragEnd, false)
+    window.addEventListener('drag', handleDrag, false)
     window.addEventListener('drop', handleDragEnd, false)
   }
 
-  function handleDragEnter (event) {
-    event.preventDefault()
-    draggableCount += 1
+  function handleDrag () {
     if (!state.ui.dragActive) {
+      clearTimeout(dragTimeout)
+      dragTimeout = setTimeout(handleDragEnd, 500)
       state.ui.dragActive = true
       emitter.emit(state.events.RENDER)
     }
   }
 
-  function handleDragLeave (event) {
-    event.preventDefault()
-    draggableCount -= 1
-    if (draggableCount <= 0) {
-      state.ui.dragActive = false
-      emitter.emit(state.events.RENDER)
-      draggableCount = 0
-    }
-  }
-
   function handleDragEnd (event) {
-    draggableCount = 0
+    if (event) event.preventDefault()
     state.ui.dragActive = false
-    emitter.emit(state.events.RENDER)
+    clearTimeout(dragTimeout)
+    renderTimeout = setTimeout(function () {
+      if (!state.ui.dragActive) emitter.emit(state.events.RENDER)
+    }, 100)
   }
 }

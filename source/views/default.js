@@ -1,4 +1,5 @@
 var queryString = require('query-string')
+var raw = require('choo/html/raw')
 var html = require('choo/html')
 var ok = require('object-keys')
 var xtend = require('xtend')
@@ -70,7 +71,7 @@ function view (state, emit) {
   function breadcrumbs () {
     return html`
       <div class="x oxh px2">
-        <a href="?url=/" class="bgc-bg db px1 nbb py2 breadcrumb">index</a>
+        <a href="?url=/" class="bgc-bg db px1 nbb py2 breadcrumb fc-bg25 fch-fg">home</a>
         <div class="oxh xx breadcrumbs wsnw" style="direction: rtl;">
           ${Breadcrumbs({ page: state.page })}
         </div>
@@ -179,7 +180,7 @@ function view (state, emit) {
       <div class="px2">
         <div class="x py1 xjb">
           <div class="fs2 px1 py2">
-            <a href="?url=${state.page.url}">${state.page.title || state.page.name}</a>
+            <a href="?url=${state.page.url}">${state.page.title || state.page.name || raw('&nbsp;')}</a>
           </div>
           ${elMeta()}
         </div>
@@ -196,7 +197,7 @@ function view (state, emit) {
           ${state.site.info ? elView() : ''}
         </div>
         <div class="p1">
-          ${state.page.url !== '/' ? elRemove() : ''}
+          ${state.page.url && state.page.url !== '/' ? elRemove() : ''}
         </div>
       </div>
     `

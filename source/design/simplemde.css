@@ -7,6 +7,9 @@
 .rich-editor {
   position: relative;
 }
+.rich-editor:hover .editor-toolbar {
+  opacity: 1;
+}
 .CodeMirror {
     color: #000
 }
@@ -392,6 +395,7 @@ span.CodeMirror-selectedtext {
 }
 .editor-toolbar {
     color: #000;
+    opacity: 0;
     display: flex;
     height: 4rem;
     -webkit-user-select: none;

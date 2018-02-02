@@ -217,7 +217,7 @@ function inputs () {
     .button-inline {
       user-select: none;
       background: ${options.colors.bg};
-      border: 1px solid ${options.colors.bg25};
+      border: 1px solid ${options.colors.bg10};
       color: ${options.colors.bg25};
       margin: 0 0 0 0.5rem;
       padding: 0 1rem 0.1rem;

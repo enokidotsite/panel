@@ -41,10 +41,10 @@ function File (state, emit) {
       <div id="sidebar-file" class="x xdc c12 psst t0">
         <div class="x1">
           <div class="p1 c12">
-            <div class="c12 fwb usn py1 fs0-8 ttu">
+            <div class="c12 fwb usn py1 fs0-8 ttu fc-bg25">
               Filename
             </div>
-            <div class="p1 input input-disabled truncate">
+            <div class="py1 px1-5 input input-disabled truncate">
               ${filename}
             </div>
           </div>
@@ -56,7 +56,7 @@ function File (state, emit) {
           })}
           <div class="p1">
             <span
-              class="fc-bg25 fch-fg curp"
+              class="tac bgch-fg bgc-bg25 button-medium"
               onclick=${handleRemove}
             >Delete file</span>
           </div>
