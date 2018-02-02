@@ -131,7 +131,7 @@ function renderSite (props) {
   `
 
   function renderError () {
-    return html`<div class="p2 pt0 fc-red">${props.error}</div>`
+    return html`<div class="px1 pb2 pt0 fc-red">${props.error}</div>`
   }
 
   function renderSettings () {
