@@ -53,7 +53,7 @@ class PageNew extends Nanocomponent {
   elTitle () {
     return html`
       <div class="p1">
-        <div class="c12 fwb usn fs0-8 ttu mb1">
+        <div class="c12 fwb usn fs0-8 ttu fc-bg25 mb1">
           Title
         </div>
         ${Title.render(
@@ -67,7 +67,7 @@ class PageNew extends Nanocomponent {
   elView () {
     return html`
       <div class="p1">
-        <div class="c12 fwb usn fs0-8 ttu mb1">
+        <div class="c12 fwb usn fs0-8 ttu fc-bg25 mb1">
           View
         </div>
         ${View.render({
@@ -84,7 +84,7 @@ class PageNew extends Nanocomponent {
   elUri () {
     return html`
       <div class="p1">
-        <div class="c12 fwb usn fs0-8 ttu mb1">
+        <div class="c12 fwb usn fs0-8 ttu fc-bg25 mb1">
           Pathname
         </div>
         ${Uri.render(
@@ -98,7 +98,7 @@ class PageNew extends Nanocomponent {
   elActions () {
     var self = this
     return html`
-      <div class="x c12 fs1 lh1 usn fs1">
+      <div class="x c12 fs1 usn fs1">
         <div class="p1 xx x">
           <button
             type="submit"

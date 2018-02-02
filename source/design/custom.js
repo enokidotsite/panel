@@ -140,10 +140,11 @@ function inputs () {
       cursor: pointer;
       -moz-appearance: none;
       -webkit-appearance: none;
-      background: #eee;
+      background: ${options.colors.bg};
+      border: 1px solid ${options.colors.bg10};
       line-height: 4rem;
-      padding: 0 1rem;
-      border-radius: 3px;
+      padding: 0 1.5rem;
+      border-radius: 2rem;
       font-family: ${options.typography.sans};
       line-height: 4rem;
       font-size: 1.8rem;
@@ -158,13 +159,14 @@ function inputs () {
       font-size: 1.8rem;
       top: 0;
       right: 0;
-      padding: 1rem;
+      padding: 1.2rem 1.5rem 0.8rem;
       font-family: ${options.typography.mono};
     }
 
     .input {
-      background: #eee;
-      border-radius: 3px;
+      background: ${options.colors.bg};
+      border: 1px solid ${options.colors.bg10};
+      border-radius: 2rem;
       font-family: ${options.typography.sans};
       line-height: 2rem;
       font-size: 1.8rem;
@@ -214,9 +216,9 @@ function inputs () {
 
     .button-inline {
       user-select: none;
-      background: #fff;
-      border: 1px solid #000;
-      color: #000;
+      background: ${options.colors.bg};
+      border: 1px solid ${options.colors.bg25};
+      color: ${options.colors.bg25};
       margin: 0 0 0 0.5rem;
       padding: 0 1rem 0.1rem;
       line-height: 2rem;
@@ -234,6 +236,7 @@ function inputs () {
 
     .button-inline:hover {
       background: #000;
+      border: 1px solid ${options.colors.fg};
       color: #fff;
     }
   `
@@ -243,6 +246,13 @@ function extensions () {
   return `
     .psst { position: sticky; position: -webkit-sticky; }
     .br1 { border-radius: 3px }
+
+    .external:after {
+      content: '→';
+      display: inline-block;
+      transform: translateY(0.1rem) rotate(-45deg);
+      margin-left: 0.5rem;
+    }
 
     .action-gradient {
       background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 25%);

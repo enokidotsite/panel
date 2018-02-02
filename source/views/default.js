@@ -116,24 +116,33 @@ function view (state, emit) {
 
     // files
     if (search.file === 'new') {
-      return Split(sidebar(), [FileNew(state, emit), Page()])
+      return [
+        PageHeader(),
+        Split(sidebar(), [FileNew(state, emit), Page()])
+      ]
     }
 
     if (search.file) return File(state, emit)
-    if (search.pages === 'all') return PagesAll(state, emit)
+
+    if (search.pages === 'all') {
+      return [PageHeader(), PagesAll(state, emit)]
+    }
 
     if (search.page === 'new') {
-      return Split(sidebar(), [PageNew(state, emit), Page()])
+      return [
+        PageHeader(),
+        Split(sidebar(), [PageNew(state, emit), Page()])
+      ]
     }
 
     if (search.files === 'all') {
-      return FilesAll(state, emit)
+      return [PageHeader(), FilesAll(state, emit)]
     }
 
-    return Split(
-      sidebar(),
-      Page()
-    )
+    return [
+      PageHeader(),
+      Split(sidebar(), Page())
+    ]
   }
 
   function Page () {
@@ -162,6 +171,53 @@ function view (state, emit) {
           </div>
         </div>
       </div>
+    `
+  }
+
+  function PageHeader () {
+    return html`
+      <div class="px2">
+        <div class="x py1 xjb">
+          <div class="fs2 px1 py2">
+            <a href="?url=${state.page.url}">${state.page.title || state.page.name}</a>
+          </div>
+          ${elMeta()}
+        </div>
+        <div class="px1"><div class="bb1-bg10"></div></div>
+      </div>
+    `
+  }
+
+
+  function elMeta () {
+    return html`
+      <div class="x">
+        <div class="p1">
+          ${state.site.info ? elView() : ''}
+        </div>
+        <div class="p1">
+          ${state.page.url !== '/' ? elRemove() : ''}
+        </div>
+      </div>
+    `
+  }
+
+  function elView () {
+    return html`
+      <a
+        href="${state.site.info.url}${state.page.url}"
+        target="_blank"
+        class="tac bgch-fg bgc-bg25 button-medium external"
+      >Open</a>
+    `
+  }
+
+  function elRemove () {
+    return html`
+      <span
+        class="tac bgch-fg bgc-bg25 button-medium"
+        onclick=${handleRemovePage}
+      >Delete</span>
     `
   }
 

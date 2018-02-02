@@ -33,7 +33,6 @@ function sidebar (props, emit) {
       <div class="psst p1" style="top: 0.75rem;">
         ${props.pagesActive ? elPages() : ''}
         ${props.filesActive ? elFiles() : ''}
-        ${elMeta()}
       </div>
     </div>
   `
@@ -41,7 +40,7 @@ function sidebar (props, emit) {
   function elPage () {
     return html`
       <div id="sidebar-page" class="mb2">
-        <div class="x xjb c12 py1 fs0-8 ttu usn">
+        <div class="x xjb c12 py1 fs0-8 ttu fc-bg25 usn">
           <div class="fwb">
             Page
           </div>
@@ -75,7 +74,7 @@ function sidebar (props, emit) {
       <div id="sidebar-pages" class="mb2">
         <div class="x xjb c12 py1 fs0-8 ttu usn">
           <div class="fwb">
-            <a href="?${urlPagesAll}">Pages</a>
+            <a href="?${urlPagesAll}" class="fc-bg25 fch-fg">Pages</a>
           </div>
           <div>
             <a href="?${urlPageNew}" class="button-inline">Create</a>
@@ -96,7 +95,7 @@ function sidebar (props, emit) {
       <div id="sidebar-files" class="mb2 psr">
         <div class="x xjb py1 fs0-8 ttu usn">
           <div class="fwb">
-            <a href="?${urlFilesAll}">Files</a>
+            <a href="?${urlFilesAll}" class="fc-bg25 fch-fg">Files</a>
           </div>
           <div>
             <a
@@ -136,38 +135,6 @@ function sidebar (props, emit) {
           }
         }, emit)}
       </div>
-    `
-  }
-
-  function elMeta () {
-    return html`
-      <div class="x py1">
-        <div class="xx pr1">
-          ${props.site.info ? elView() : ''}
-        </div>
-        <div class="xx pl1">
-          ${props.handleRemovePage && props.page.url !== '/' ? elRemove() : ''}
-        </div>
-      </div>
-    `
-  }
-
-  function elView () {
-    return html`
-      <a
-        href="${props.site.info.url}${props.page.url}"
-        target="_blank"
-        class="tac bgch-fg bgc-bg25 button-medium"
-      >Open</a>
-    `
-  }
-
-  function elRemove () {
-    return html`
-      <span
-        class="tac bgch-fg bgc-bg25 button-medium"
-        onclick=${props.handleRemovePage}
-      >Delete</span>
     `
   }
 

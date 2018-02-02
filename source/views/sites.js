@@ -107,12 +107,12 @@ function renderSite (props) {
   var settingsClass = props.active ? 'bgc-fg' : 'bgc-bg25 bgch-fg'
   return html`
     <div class="w100 fc-fg br1 ${props.active ? '' : 'ophc100'}">
-      <div class="x xw xac py2">
-        <div class="c12 sm-xx oh p1 lh1">
+      <div class="x xw xac py1">
+        <div class="c12 sm-xx oh p1">
           <div class="fs2 wsnw toe">${props.title}</div>
         </div>
         <div class="p1 ${props.active ? '' : 'sm-op0'} oph">
-          <a href="${props.url}" target="_blank" class="db bgc-bg25 bgch-fg button-medium">Open</a>
+          <a href="${props.url}" target="_blank" class="db bgc-bg25 bgch-fg button-medium external">Open</a>
         </div>
         <div class="p1 ${props.active ? '' : 'sm-op0'} oph">
           <a href="${settingsUrl}" class="db ${settingsClass} button-medium">Settings</a>

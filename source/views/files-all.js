@@ -22,7 +22,7 @@ function FilesAll (state, emit) {
   return html`
     <div class="x xw p3 xx">
       <div class="w100 ">
-        <div class="x xjb py1 c12 mb1 usn fs0-8 ttu">
+        <div class="x xjb py1 c12 usn fs0-8 ttu fc-bg25">
           <div class="fwb">
             Files
           </div>

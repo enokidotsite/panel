@@ -33,7 +33,7 @@ function Field (props, emit) {
 
   function label () {
     return html`
-      <div class="c12 py1 fwb usn fs0-8 ttu">
+      <div class="c12 py1 fwb usn fs0-8 ttu fc-bg25">
         ${props.field.label || props.field.key}
       </div>
     `
