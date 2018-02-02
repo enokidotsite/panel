@@ -7,7 +7,7 @@ var xtend = require('xtend')
 var path = require('path')
 var xhr = require('xhr')
 
-var package = require('../package.json')
+var _package = require('../package.json')
 
 module.exports = panel
 
@@ -22,7 +22,7 @@ async function panel (state, emitter) {
   }
 
   state.panel = {
-    version: package.version,
+    version: _package.version,
     changes: { },
     loading: false
   }
