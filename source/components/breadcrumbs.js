@@ -19,7 +19,7 @@ function breadcrumbs (props) {
       var value = methodsFile.decodeFilename(search[key])
       result.push({
         path: '',
-        el: html`<a href="" class="db p1 nbb wsnw toe">${value}</a>`
+        el: html`<a href="" class="db p1 nbb wsnw toe dltr">${value}</a>`
       })
       return result
     }, [ ])
@@ -31,7 +31,7 @@ function breadcrumbs (props) {
       var href = result.map(crumb => crumb.path).join('/') + '/' + path
       result.push({
         path: path,
-        el: html`<a href="?url=${href}" class="db p1 nbb wsnw toe">${path}</a>`
+        el: html`<a href="?url=${href}" class="db p1 nbb wsnw toe dltr">${path}</a>`
       })
       return result
     }, [{ path: '', el: ''}])

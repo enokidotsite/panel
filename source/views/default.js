@@ -47,7 +47,7 @@ function view (state, emit) {
 
   function header () {
     var editorActive = typeof search.url !== 'undefined'
-    var sitesActive = typeof search.sites !== 'undefined'
+    var hubActive = typeof (search.sites || search.docs) !== 'undefined'
     var docsActive = typeof search.docs !== 'undefined'
 
     return html`
@@ -60,7 +60,7 @@ function view (state, emit) {
             <a href="/?url=/" class="${editorActive ? 'fc-fg' : 'fc-bg25 fch-fg bb1-bg10'} db p2">Editor</a>
           </div>
           <div class="bl1-bg10 br1-bg10">
-            <a href="/?sites=all" class="${sitesActive ? 'fc-fg' : 'fc-bg25 fch-fg bb1-bg10'} db p2">Hub</a>
+            <a href="/?sites=all" class="${hubActive ? 'fc-fg' : 'fc-bg25 fch-fg bb1-bg10'} db p2">Hub</a>
           </div>
           <div class="bb1-bg10" style="height: 6.1rem; width: 6.1rem"></div>
         </div>
@@ -72,7 +72,7 @@ function view (state, emit) {
     return html`
       <div class="x oxh px2">
         <a href="?url=/" class="bgc-bg db px1 nbb py2 breadcrumb fc-bg25 fch-fg">home</a>
-        <div class="oxh xx breadcrumbs wsnw" style="direction: rtl;">
+        <div class="oxh xx breadcrumbs wsnw drtl">
           ${Breadcrumbs({ page: state.page })}
         </div>
       </div>
@@ -178,8 +178,8 @@ function view (state, emit) {
   function PageHeader () {
     return html`
       <div class="px2">
-        <div class="x py1 xjb">
-          <div class="fs2 px1 py2">
+        <div class="x xw py1 xjb">
+          <div class="fs2 px1 py2 toe wsnw oxh c12 sm-xx">
             <a href="?url=${state.page.url}">${state.page.title || state.page.name || raw('&nbsp;')}</a>
           </div>
           ${elMeta()}
@@ -193,32 +193,32 @@ function view (state, emit) {
   function elMeta () {
     return html`
       <div class="x">
-        <div class="p1">
-          ${state.site.info ? elView() : ''}
-        </div>
-        <div class="p1">
-          ${state.page.url && state.page.url !== '/' ? elRemove() : ''}
-        </div>
+        ${state.site.info ? elView() : ''}
+        ${state.page.url && state.page.url !== '/' ? elRemove() : ''}
       </div>
     `
   }
 
   function elView () {
     return html`
-      <a
-        href="${state.site.info.url}${state.page.url}"
-        target="_blank"
-        class="tac bgch-fg bgc-bg25 button-medium external"
-      >Open</a>
+      <div class="p1 xx">
+        <a
+          href="${state.site.info.url}${state.page.url}"
+          target="_blank"
+          class="tac bgch-fg bgc-bg25 button-medium external"
+        >Open</a>
+      </div>
     `
   }
 
   function elRemove () {
     return html`
-      <span
-        class="tac bgch-fg bgc-bg25 button-medium"
-        onclick=${handleRemovePage}
-      >Delete</span>
+      <div class="p1 xx">
+        <span
+          class="tac bgch-fg bgc-bg25 button-medium"
+          onclick=${handleRemovePage}
+        >Delete</span>
+      </div>
     `
   }
 

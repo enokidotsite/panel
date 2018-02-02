@@ -18,7 +18,7 @@ function File (state, emit) {
   var file = state.page.files ? state.page.files[filename] : false
   if (!file) return notFound()
   var blueprint = getBlueprint()
-  var draftFile = state.panel.changes[file.path]
+  var draftFile = state.panel.changes[file.url]
 
   return Split(
     [sidebar(), actionbarWrapper()],
@@ -93,25 +93,29 @@ function File (state, emit) {
 
   function handleFieldUpdate (event, data) {
     emit(state.events.PANEL_UPDATE, {
+      url: file.url,
       path: file.path,
       data: { [event]: data }
     })
   }
 
   function handleSave () {
-    emit(state.events.PANEL_SAVE, {
-      file: file.filename + '.txt',
-      pathPage: state.page.url,
-      page: objectKeys(blueprint.fields).reduce(function (result, field) {
-          result[field] = draftFile[field] === undefined ? file[field] : draftFile[field]
-          return result
-        }, { })
-    })
+    alert('Image meta saving coming soon')
+    // emit(state.events.PANEL_SAVE, {
+    //   file: file.filename + '.txt',
+    //   path: state.page.path,
+    //   url: file.url,
+    //   page: objectKeys(blueprint.fields).reduce(function (result, field) {
+    //     result[field] = draftFile[field] === undefined ? file[field] : draftFile[field]
+    //     return result
+    //   }, { })
+    // })
   }
 
   function handleCancel () {
     emit(state.events.PANEL_CANCEL, {
-      url: file.path
+      path: file.path,
+      url: file.url
     })
   }
 

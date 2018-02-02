@@ -32,6 +32,9 @@ function typography () {
       text-overflow: ellipsis; 
     }
 
+    .drtl { direction: rtl }
+    .dltr { direction: ltr }
+
     ::-moz-selection { background: rgba(127, 127, 127, 0.5) }
     ::selection { background: rgba(127, 127, 127, 0.5) }
 
@@ -201,6 +204,7 @@ function inputs () {
       color: #fff;
       font-size: 1.8rem;
       text-align: center;
+      white-space: nowrap;
     }
 
     .button-medium {
@@ -212,6 +216,7 @@ function inputs () {
       cursor: pointer;
       color: #fff;
       font-size: 1.8rem;
+      white-space: nowrap;
     }
 
     .button-inline {
@@ -225,6 +230,7 @@ function inputs () {
       height: 2rem;
       border-radius: 1rem;
       text-transform: uppercase;
+      white-space: nowrap;
       -webkit-user-select: none;
       -moz-user-select: none;
       -ms-user-select: none;

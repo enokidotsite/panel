@@ -18,7 +18,9 @@ async function panel (state, emitter) {
 
   state.site = {
     loaded: false,
-    blueprints: { }
+    blueprints: { },
+    config: { },
+    info: { }
   }
 
   state.panel = {
@@ -79,6 +81,7 @@ async function panel (state, emitter) {
     // todo: cleanup
     try {
       var page = xtend(state.content[data.url], data.page)
+      var file = data.file || state.site.config.file
 
       // cleanup
       delete page.files
@@ -87,10 +90,9 @@ async function panel (state, emitter) {
       delete page.name
       delete page.path
 
-      var content = smarkt.stringify(page)
       await archive.writeFile(
-        path.join(data.path, 'index.txt'),
-        content
+        path.join(data.path, file),
+        smarkt.stringify(page)
       )
 
       state.content[data.url] = xtend(state.content[data.url], state.panel.changes[data.url])
