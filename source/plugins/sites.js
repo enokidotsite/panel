@@ -40,9 +40,10 @@ function sites (state, emitter, app) {
   emitter.on(state.events.SITE_ADD, handleAdd)
 
   async function handleSetup () {
+    var archives = window.localStorage.getItem('archives')
     storage = window.localStorage
-    state.sites.archives = JSON.parse(storage.getItem('archives')) || { }
-    state.sites.active = storage.getItem('active') || ''
+    state.sites.archives = archives ? JSON.parse(archives) : { }
+    state.sites.active = window.localStorage.getItem('active') || ''
 
     if (state.sites.active) {
       emitter.emit(state.events.SITE_LOAD, { url: state.sites.active })

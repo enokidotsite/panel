@@ -216,22 +216,27 @@ async function panel (state, emitter) {
   }
 
   function onLoadSite (data) {
-    var siteKey = data.site.info.key
-    var localVersionCheck = window.localStorage.getItem('version-checked-' + siteKey) || data.site.config.panel
-    var localVersion = window.localStorage.getItem('version-selected-' + siteKey)
+    // var siteKey = data.site.info.key
+    // var localVersion = window.localStorage.getItem('version-' + siteKey)
+    // var fallbackVersion = data.site.config.version || state.panel.version
+    // var activeVersion = localVersion ? JSON.parse(localVersion) : { selected: fallbackVersion }
+    // var canUpgrade = activeVersion.checked !== state.panel.version
 
     if (data.content) state.content = data.content
     if (data.site) state.site = data.site
     if (data.archive) archive = data.archive
 
-    // if ((localVersionCheck !== state.panel.version || localVersion !== state.panel.version)) {
-    //   var shouldUpgrade = confirm(`Panel update (${localVersion} to ${state.panel.version}) available. Would you like to upgrade?`) 
-    //   window.localStorage.setItem('version-checked-' + siteKey, state.panel.version)
-    //   if (shouldUpgrade) {
-    //     window.localStorage.setItem('version-selected-' + siteKey, state.panel.version)
-    //   } else {
-    //     window.localStorage.setItem('version-selected-' + siteKey, state.panel.version)
-    //   }
+    // if (canUpgrade) {
+      // var shouldUpgrade = confirm(`Panel update (${activeVersion.selected} to ${state.panel.version}) available. Would you like to upgrade?`) 
+      // if (shouldUpgrade) {
+
+      //   window.localStorage.setItem('version-selected-' + siteKey, state.panel.version)
+      // }
+    // } else {
+    //   window.localStorage.setItem(
+    //     'version-' + siteKey,
+    //     JSON.stringify({ selected: state.panel.version, checked: state.panel.verison })
+    //   )
     // }
 
     if (data.render !== false) emitter.emit(state.events.RENDER)
