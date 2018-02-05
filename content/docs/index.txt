@@ -1,0 +1,82 @@
+title: Docs
+----
+view: docs
+----
+text:
+
+## Alpha Release
+
+You’re here early—everything is extremely unstable. Consider this a modestly functional sketch. A starting point with clear limitations, leaning on existing and familiar convention to form a foundation for spanning the gap between here and there.
+
+How do we save the future? With another CMS, of course.
+
+Hoping you find this immediately useful as a basic tool for creating experimental personal sites in the short term.
+
+## Features
+
+- **No database**: there is only a filesystem
+- **Data ownership**: your data remains with you
+- **Offline accessible**: manage your site without a connection
+- **Hackable**: fork the panel and sites to customize as you see fit
+- **Extendable**: easily define custom fieldsets with blueprints
+- **Free**: publish to the web for free without any intermediaries
+- **Fun**: uses [Choo](https://choo.io) as a front-end framework
+
+## Philosophy
+
+You are your data, your data is you. You should own your tools, your tools should not own you. Culture wants to be free. Platforms are dead. Universal knowledge for everyone.
+
+## Getting Started
+
+Enoki is an ultralight set of tools for publishing on the decentralized web. Simply open [Beaker Browser](https://beakerbrowser.com) and navigate to [https://panel.enoki.site](https://panel.enoki.site).
+
+## Sites
+
+Creating a site is as simple as navigating to **Sites** → **Create a New Site**. Choose a design, enter some basic information, and authorize Beaker to fork the design. Your site is now loaded into Enoki and will remain accessible in the **Sites** area.
+
+Say you manually created an Archive with Beaker, or forked a site some other way. Simply click **Load an Existing Site** and select your Archive. Note that you must be the owner of the Archive, and it must contain a `/content` directory.
+
+## Editor
+
+The **Editor** is where you make edits to your Site’s content.
+
+### Pages
+
+To create a new page navigate to **Editor** → **Pages** → **Create**. When creating a page you’ll see a few options.
+
+- **Title** is self explanatory.
+- **Pathname** is the `/what-you-see-in-the-url`.
+- **View** defines how the content is displayed on your Site, and what fields you see in the Panel.
+
+### Coming soon
+
+- Change page location after creation
+- Adjust view after creation
+
+## Files
+
+Files are pretty dumb at the moment.
+
+## Blueprints
+
+When viewing Pages and Files in the Panel you’re presented with a set of fields representing the content. What fields should appear are defined by creating **Blueprints**. 
+
+For now, take a look at a blueprint associated with one of the Designs. It’s pretty self-explanatory.
+
+## Customization and Development
+
+This version of Enoki is highly experimental! Certain things are going to change quite quickly, so please tread lightly.
+
+### Front-end
+
+Enoki uses [Choo](https://choo.io) as a front-end framework. It’s like React, but fun. Fork the Panel or any Design, then navigate to `/source` and run `npm install` and `npm start`. Working to document this better, but should give you a starting point.
+
+### Fields
+
+Fields are constructed using [`nanocomponent`](https://github.com/choojs/nanocomponent). For now, take a look at a simple field such as `text`. For a more advanced example which depends on a 3rd party library, look at `textarea`.
+
+### Idiosyncrasies
+
+- Shit is messy right now, please watch your step.
+- When creating a View, be sure to add it to `/views/index.js`.
+- Also be sure to create a Blueprint so the correct fields appear in the Panel.

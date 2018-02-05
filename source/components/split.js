@@ -4,7 +4,7 @@ module.exports = Split
 
 function Split (left, right) {
   return html`
-    <div class="x xw p1 xx">
+    <div class="x xw p2 xx">
       <div class="c12 x p1 sm-c4">
         ${left}
       </div>

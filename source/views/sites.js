@@ -49,7 +49,7 @@ function view (state, emit) {
 function renderSites (props) {
   return html`
     <div class="w100">
-      <div class="px2" style="padding-bottom: 7rem">
+      <div class="px3" style="padding-bottom: 10rem">
         ${props.sites.map(function (site) {
           return renderSite(xtend(site, {
             active: props.active === site.url,
@@ -106,10 +106,10 @@ function renderSite (props) {
   var settingsUrl = props.active ? '?sites=all' : ('?sites=' + props.url)
   var settingsClass = props.active ? 'bgc-fg' : 'bgc-bg25 bgch-fg'
   return html`
-    <div class="w100 fc-fg br1 ${props.active ? '' : 'ophc100'}">
+    <div class="w100 fc-fg ${props.active ? '' : 'ophc100'}">
       <div class="x xw xac py1">
         <div class="c12 sm-xx oh p1">
-          <div class="fs2 wsnw toe">${props.title}</div>
+          <div class="fs2 wsnw toe fw500">${props.title}</div>
         </div>
         <div class="p1 ${props.active ? '' : 'sm-op0'} oph">
           <a href="${props.url}" target="_blank" class="db bgc-bg25 bgch-fg button-medium external">Open</a>
@@ -145,7 +145,7 @@ function renderSite (props) {
             Additional settings and p2p stats coming soon
           </div>
           <div class="p1">
-            <button class="bgc-fg button-medium" onclick=${handleRemove}>Remove from Hub</button>
+            <button class="bgch-fg bgc-bg25 button-medium" onclick=${handleRemove}>Remove from Hub</button>
           </div>
         </div>
       </div>

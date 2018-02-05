@@ -23,7 +23,7 @@ var FileNew = require('./file-new')
 var PagesAll = require('./pages-all')
 var PageNew = require('./page-new')
 var Sites = require('./sites')
-var Docs = require('./docs')
+var Hub = require('./hub')
 
 // methods
 var methodsFile = require('../methods/file')
@@ -47,20 +47,23 @@ function view (state, emit) {
 
   function header () {
     var editorActive = typeof search.url !== 'undefined'
-    var hubActive = typeof (search.sites || search.docs) !== 'undefined'
-    var docsActive = typeof search.docs !== 'undefined'
+    var sitesActive = typeof search.sites !== 'undefined'
+    var hubActive = typeof search.hub !== 'undefined'
 
     return html`
       <div id="header" class="x xjb usn z2 psr oxh">
         <div class="x xx bb1-bg10 oxh">
-          ${editorActive ? breadcrumbs() : html`<div class="py2 px3">Enoki</div>`}
+          ${editorActive ? breadcrumbs() : html`<div class="py2 px4">Enoki</div>`}
         </div>
         <div class="x">
           <div class="bl1-bg10 ">
             <a href="/?url=/" class="${editorActive ? 'fc-fg' : 'fc-bg25 fch-fg bb1-bg10'} db p2">Editor</a>
           </div>
+          <div class="bl1-bg10">
+            <a href="/?sites=all" class="${sitesActive ? 'fc-fg' : 'fc-bg25 fch-fg bb1-bg10'} db p2">Sites</a>
+          </div>
           <div class="bl1-bg10 br1-bg10">
-            <a href="/?sites=all" class="${hubActive ? 'fc-fg' : 'fc-bg25 fch-fg bb1-bg10'} db p2">Hub</a>
+            <a href="/?hub=docs" class="${hubActive ? 'fc-fg' : 'fc-bg25 fch-fg bb1-bg10'} db p2">Hub</a>
           </div>
           <div class="bb1-bg10" style="height: 6.1rem; width: 6.1rem"></div>
         </div>
@@ -70,7 +73,7 @@ function view (state, emit) {
 
   function breadcrumbs () {
     return html`
-      <div class="x oxh px2">
+      <div class="x oxh px3">
         <a href="?url=/" class="bgc-bg db px1 nbb py2 breadcrumb fc-bg25 fch-fg">home</a>
         <div class="oxh xx breadcrumbs wsnw drtl">
           ${Breadcrumbs({ page: state.page })}
@@ -106,8 +109,8 @@ function view (state, emit) {
   // TODO: clean this up
   function content () {
     // docs
-    if (search.docs) {
-      return Docs(state, emit)
+    if (search.hub) {
+      return Hub(state, emit)
     }
 
     // sites
@@ -177,9 +180,9 @@ function view (state, emit) {
 
   function PageHeader () {
     return html`
-      <div class="px2">
+      <div class="px3">
         <div class="x xw py1 xjb">
-          <div class="fs2 px1 py2 toe wsnw oxh c12 sm-xx">
+          <div class="fs2 px1 py2 toe wsnw oxh c12 sm-xx fw500">
             <a href="?url=${state.page.url}">${state.page.title || state.page.name || raw('&nbsp;')}</a>
           </div>
           ${elMeta()}

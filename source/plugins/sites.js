@@ -1,7 +1,7 @@
+var Enoki = require('choo-dat-hypha/lib')
 var objectKeys = require('object-keys')
 var assert = require('assert')
 var xtend = require('xtend')
-var Enoki = require('choo-dat-hypha/lib')
 
 module.exports = sites
 

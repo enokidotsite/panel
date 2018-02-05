@@ -71,6 +71,11 @@ utils.push({
   vals: borders
 })
 
+utils.push({
+  prop: 'font-weight',
+  vals: ['normal', 500, { b: '600' }]
+})
+
 module.exports = gr8({
   lineHeight: [1, 1.25, 1.5],
   fontSize: options.fontSize,

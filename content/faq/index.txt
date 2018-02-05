@@ -1,0 +1,33 @@
+title: FAQ
+----
+view: faq
+----
+text:
+
+## Who is this for?
+
+Right now, for people who probably spend most of their time making websites to learn more about the peer-to-peer web.
+
+## What about access over HTTP?
+
+Yeah, this is important. For now, Enoki uses Beaker’s web API to read your site’s Dat archive into one big javascript object. This object loaded into Choo’s state.
+
+It would be trivial to write the state of `content` into `content.json`, and request that when visiting over HTTP. This is likely the short-term solution.
+
+With that in place you could use a service like [Hashbase](https://hashbase.io) to persistently sync your app.
+
+## This looks like a wireframe
+
+Yeah, it sort of is a functional wireframe—a representation of the expected basics for a CMS today. Consider it a starting point meant to progressively evolve into an interface for peer-to-peer publishing as we collectively develop the language.
+
+## Shouldn’t this output static HTML for pre-rendered routes?
+
+Yeah, this would be great. Found a few difficult questions about how to do this without cluttering up the content directory with a bunch of `index.html` files.
+
+## How does pagination work?
+
+Enoki currently reads your entire `/content` directory into one big object. For smaller sites, this is fine. For larger sites, that can become an issue. For now, just manually fake paginate by converting an object of content into an array, then using array methods.
+
+## What about image resizing?
+
+Because everything happens client-side in Beaker, it’s not possible to execute server-side functions, like image resizing. It could be possible to hit a micro-service via XHR and write the returned blob, but this requires an internet connection, and goes against offline-first design. There are a few possibilities for solving this, though—soon!

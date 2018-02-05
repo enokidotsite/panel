@@ -66,10 +66,24 @@ function typography () {
 
 function copy () {
   return `
+    .copy {
+      line-height: 1.5;
+    }
+
+    .copy h2 { font-size: 3.6rem; font-weight: 500; line-height: 1.25; }
+    .copy h3 { font-size: 2.7rem; font-weight: 300; color: ${options.colors.bg25}; }
+
+    .copy code {
+      font-family: ${options.typography.mono};
+      background: ${options.colors.bg5};
+      border-radius: 3px;
+      padding: 0.2rem;
+    }
+
     .copy > *,
     .editor-preview-side > *,
     .editor-preview > * {
-      margin-top: 1.5rem; margin-bottom: 1.5rem;
+      margin-top: 2rem; margin-bottom: 2rem;
     }
 
     .copy > *:first-child,
@@ -84,6 +98,10 @@ function copy () {
       margin-bottom: 0
     }
 
+    .copy > h2:not(:first-child) {
+      margin-top: 4rem;
+    }
+
     .copy img,
     .editor-preview-side img,
     .editor-preview img {
@@ -94,6 +112,12 @@ function copy () {
     .editor-preview-side a,
     .editor-preview a {
       text-decoration: underline;
+    }
+
+    .copy ul li {
+      list-style: disc;
+      padding-left: 2rem;
+      margin-left: 2rem;
     }
   `
 }
@@ -114,7 +138,7 @@ function media () {
 
     .file-preview {
       max-height: 100vh;
-      margin: -2rem -2rem -2rem 1rem;
+      margin: -3rem -3rem -3rem 2rem;
       width: calc(100% + 2rem);
       background-image: url('data:image/svg+xml;utf8,<svg height="10" width="10" viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg"><rect height="5" width="5" x="0" y="0" fill="rgba(127, 127, 127, 0.15)" /><rect height="5" width="5" x="5" y="5" fill="rgba(127, 127, 127, 0.15)" /></svg>');
       background-repeat: repeat;
@@ -178,18 +202,12 @@ function inputs () {
       width: 100%;
     }
 
-    .input.lh1-5 { line-height: 1.5 }
-
-    .input-disabled {
-      color: #999;
-    }
-
     [tabindex] { outline: 0 }
+    .input.lh1-5 { line-height: 1.5 }
+    .input-disabled { color: #999 }
+    textarea { min-height: 10rem }
 
-    textarea {
-      min-height: 10rem;
-    }
-
+    input { height: 4rem; line-height: 4rem; }
     button { outline: 0 }
     button:focus { outline: 0 }
 
@@ -200,7 +218,6 @@ function inputs () {
       border-radius: 3rem;
       display: block;
       cursor: pointer;
-      font-weight: bold;
       color: #fff;
       font-size: 1.8rem;
       text-align: center;
@@ -252,6 +269,7 @@ function extensions () {
   return `
     .psst { position: sticky; position: -webkit-sticky; }
     .br1 { border-radius: 3px }
+    .br2 { border-radius: 2rem }
 
     .external:after {
       content: '→';
@@ -286,7 +304,7 @@ function extensions () {
     .myc1 > *:last-child:after {
       content: '';
       position: absolute;
-      bottom: 0;
+      bottom: -1px;
       left: 0;
       right: 0;
       background: ${options.colors.bg10};
@@ -325,6 +343,11 @@ function extensions () {
       right: 0;
       transform: rotate(15deg);
     }
+
+    ::-webkit-input-placeholder { color: ${options.colors.bg25}; }
+    ::-moz-placeholder { color: ${options.colors.bg25}; }
+    :-ms-input-placeholder { color: ${options.colors.bg25}; }
+    :-moz-placeholder { color: ${options.colors.bg25}; }
   `
 }
 

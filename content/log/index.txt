@@ -1,0 +1,9 @@
+title: Log
+----
+view: log
+----
+text:
+
+## 0.1.0
+
+Testing or whatever
