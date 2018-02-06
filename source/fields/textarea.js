@@ -61,7 +61,6 @@ class Textarea extends Nanocomponent {
 
   update (props) {
     var value = props.value || ''
-    console.log(props.value)
 
     if (value !== this.value) {
       this.value = value
