@@ -108,7 +108,7 @@ function view (state, emit) {
 
   // TODO: clean this up
   function content () {
-    if (state.sites.p2p && state.sites.loaded) {
+    if (!state.sites.p2p && state.sites.loaded) {
       // non p2p
       return nonDat(state, emit)
     }
