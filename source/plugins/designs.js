@@ -6,6 +6,7 @@ function designs (state, emitter) {
     public: {
       starterkit: {
         title: 'Starter Kit',
+        thumbnail: '/assets/designs/starter-kit.png',
         url: 'dat://57cb1b649045ab34d762e25a16fc08dbe8ea2006d4373e10719899d2ae7c6ff5'
       }
     }
