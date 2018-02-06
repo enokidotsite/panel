@@ -1,3 +1,4 @@
 .DS_Store
+.dat
 .git
 source/node_modules/**

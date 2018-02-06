@@ -34,4 +34,4 @@ Because everything happens client-side in Beaker, it’s not possible to execute
 
 ## I want _______________
 
-Yeah, chances are this has been thought about. Honestly, there are so many solid and mature CMS solutions on there which can output static sites. Just use one of those and publish the contents inside a Dat Archive. This project is looking to expand upon much more than just making sites.
+Yeah, chances are this has been thought about. Honestly, there are so many solid and mature CMS solutions that can output static sites. Just use one of those and publish the contents inside a Dat Archive if your’re looking for all the classic stuff. This project is looking to expand upon much more than just making sites.
