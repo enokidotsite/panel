@@ -6,15 +6,15 @@ text:
 
 ## Who is this for?
 
-Right now, for people who probably spend most of their time making websites to learn more about the peer-to-peer web.
+Currently, for people who probably spend most of their time making websites to learn more about the peer-to-peer web. In the future? Hmm…
 
 ## What about access over HTTP?
 
 Yeah, this is important. For now, Enoki uses Beaker’s web API to read your site’s Dat archive into one big javascript object. This object loaded into Choo’s state.
 
-It would be trivial to write the state of `content` into `content.json`, and request that when visiting over HTTP. This is likely the short-term solution.
+One way to do this is to write `state.content` to a JSON file saving from the Panel. Then, depending upon dat/http use the web API or request the JSON file. Actually, this happens now, it’s just not documented as there are interesting things which could be done by reading multiple archives into a site, and writing to static JSON prevents that from happening.
 
-With that in place you could use a service like [Hashbase](https://hashbase.io) to persistently sync your app.
+Anyway, with that static JSON in place you can use a service like [Hashbase](https://hashbase.io) to persistently sync your app. Just copy the `dat://` url of your site to Hashbase. Alternatively, install [`dathttpd`](https://github.com/beakerbrowser/dathttpd) on your own server.
 
 ## This looks like a wireframe
 
@@ -31,3 +31,7 @@ Enoki currently reads your entire `/content` directory into one big object. For 
 ## What about image resizing?
 
 Because everything happens client-side in Beaker, it’s not possible to execute server-side functions, like image resizing. It could be possible to hit a micro-service via XHR and write the returned blob, but this requires an internet connection, and goes against offline-first design. There are a few possibilities for solving this, though—soon!
+
+## I want _______________
+
+Yeah, chances are this has been thought about. Honestly, there are so many solid and mature CMS solutions on there which can output static sites. Just use one of those and publish the contents inside a Dat Archive. This project is looking to expand upon much more than just making sites.

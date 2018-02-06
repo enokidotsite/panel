@@ -19,6 +19,7 @@ function sites (state, emitter, app) {
   }
 
   // events
+  state.events.SITE_REFRESHED = 'site:refreshed'
   state.events.SITES_LOADED = 'sites:loaded'
   state.events.SITE_CREATOR = 'site:creator'
   state.events.SITE_REFRESH = 'site:refresh'
@@ -151,6 +152,7 @@ function sites (state, emitter, app) {
 
   async function handleRefresh (props) {
     await handleLoad({ url: state.sites.active })
+    emitter.emit(state.events.SITE_REFRESHED)
     emitter.emit(state.events.RENDER)
   }
 

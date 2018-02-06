@@ -95,8 +95,24 @@ async function panel (state, emitter) {
         smarkt.stringify(page)
       )
 
+      await archive.commit()
+
+      // very messy
       state.content[data.url] = xtend(state.content[data.url], state.panel.changes[data.url])
       delete state.panel.changes[data.url]
+
+      emitter.once(state.events.SITE_REFRESHED, async function () {
+        try {
+          await archive.writeFile(
+            '/bundles/content.json',
+            JSON.stringify(state.content, { }, 2)
+          )
+          await archive.commit()
+        } catch (err) {
+          console.warn(err)
+        }
+      })
+
       emitter.emit(state.events.SITE_REFRESH)
     } catch (err) {
       console.log(err)
