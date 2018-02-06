@@ -108,7 +108,7 @@ function view (state, emit) {
 
   // TODO: clean this up
   function content () {
-    if (!state.sites.p2p && state.sites.loaded) {
+    if (state.sites.p2p && state.sites.loaded) {
       // non p2p
       return nonDat(state, emit)
     }
@@ -309,21 +309,21 @@ function nonDat (state, emit) {
         </div>
         <div class="x xjc c12">
           <div class="p1">
-            <a href="https://beakerbrowser.com" target="_blank" class="button-large bgc-bg25 bgch-fg">
+            <a href="https://beakerbrowser.com" target="_blank" class="button-large bgc-fg">
               Download Beaker Browser
             </a>
           </div>
         </div>
-        <div class="p1 py3 fs2 lh1-25 tac c12">
-          Once in Beaker, open the dat:// url
+        <div class="p1 py3 tac fc-bg25 lh1-5 c12" style="max-width: 55rem">
+          Want to edit your site offline? Navigate to the dat:// url and “Add to Library”, or customize to your liking by forking.
         </div>
         <div class="x xjc c12">
           <div class="p1">
-            <a href="dat://panel.enoki.site" class="button-large bgc-fg fc-bg">Open dat:// in Beaker Browser</a>
+            <a href="dat://panel.enoki.site" class="button-medium bgc-bg25 bgch-fg fc-bg">Open dat:// in Beaker Browser</a>
           </div>
         </div>
         <div class="p1 py3 tac fc-bg25 c12">
-          Thanks for your patience; this flow will be improving soon
+          Thanks for your patience; this flow will be improving soon :)
         </div>
       </div>
     </div>
