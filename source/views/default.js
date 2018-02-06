@@ -108,31 +108,39 @@ function view (state, emit) {
 
   // TODO: clean this up
   function content () {
-    // docs
-    if (search.hub) {
-      return Hub(state, emit)
+    if (!state.sites.p2p && state.sites.loaded) {
+      // non p2p
+      return nonDat(state, emit)
     }
 
-    // sites
     if (search.sites || !state.sites.active) {
+      // sites
       return Sites(state, emit)
     }
 
-    // files
+    if (search.hub) {
+      // docs
+      return Hub(state, emit)
+    }
+
     if (search.file === 'new') {
+      // files
       return [
         PageHeader(),
         Split(sidebar(), [FileNew(state, emit), Page()])
       ]
     }
 
+    // single file
     if (search.file) return File(state, emit)
 
+    // pages
     if (search.pages === 'all') {
       return [PageHeader(), PagesAll(state, emit)]
     }
 
     if (search.page === 'new') {
+      // create page
       return [
         PageHeader(),
         Split(sidebar(), [PageNew(state, emit), Page()])
@@ -140,10 +148,12 @@ function view (state, emit) {
     }
 
     if (search.files === 'all') {
+      // all files
       return [PageHeader(), FilesAll(state, emit)]
     }
 
     return [
+      // default fields
       PageHeader(),
       Split(sidebar(), Page())
     ]
@@ -288,6 +298,36 @@ function view (state, emit) {
   function getDraftPage () {
     return state.panel && state.page && state.panel.changes[state.page.url]
   }
+}
+
+function nonDat (state, emit) {
+  return html`
+    <div class="xx c12 x xac">
+      <div class="c12 p1 x xw xjc">
+        <div class="p1 pb3 fs2 lh1-25 tac c12">
+          Please open Enoki in Beaker, an<br class="dn sm-dib"> experimental peer-to-peer browser
+        </div>
+        <div class="x xjc c12">
+          <div class="p1">
+            <a href="https://beakerbrowser.com" target="_blank" class="button-large bgc-bg25 bgch-fg">
+              Download Beaker Browser
+            </a>
+          </div>
+        </div>
+        <div class="p1 py3 fs2 lh1-25 tac c12">
+          Once in Beaker, open the dat:// url
+        </div>
+        <div class="x xjc c12">
+          <div class="p1">
+            <a href="dat://panel.enoki.site" class="button-large bgc-fg fc-bg">Open dat:// in Beaker Browser</a>
+          </div>
+        </div>
+        <div class="p1 py3 tac fc-bg25 c12">
+          Thanks for your patience; this flow will be improving soon
+        </div>
+      </div>
+    </div>
+  `
 }
 
 function wrapper (view) {

@@ -12,6 +12,7 @@ function sites (state, emitter, app) {
   // state
   state.sites = {
     loaded: false,
+    p2p: typeof DatArchive !== 'undefined',
     archives: { },
     create: { },
     active: '',
