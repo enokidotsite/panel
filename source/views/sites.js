@@ -111,13 +111,13 @@ function renderSite (props) {
         <div class="c12 sm-xx oh p1">
           <div class="fs2 wsnw toe fw500">${props.title}</div>
         </div>
-        <div class="p1 ${props.active ? '' : 'sm-op0'} oph">
+        <div class="p1 ${props.active ? '' : 'sm-op0'} oph tom">
           <a href="${props.url}" target="_blank" class="db bgc-bg25 bgch-fg button-medium external">Open</a>
         </div>
-        <div class="p1 ${props.active ? '' : 'sm-op0'} oph">
+        <div class="p1 ${props.active ? '' : 'sm-op0'} oph tom">
           <a href="${settingsUrl}" class="db ${settingsClass} button-medium">Settings</a>
         </div>
-        <div class="p1 ${props.active ? '' : 'sm-op0'} oph">
+        <div class="p1 ${props.active ? '' : 'sm-op0'} oph tom">
           <button
             class="bgc-fg button-medium"
             onclick=${handleSiteClick}

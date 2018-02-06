@@ -50,7 +50,7 @@ function renderNavigation (state, emit) {
     var colorClass = state.query.hub === href ? '' : 'fc-bg25 fch-fg'
     return html`
       <div class="px2 py1">
-        <a href="?hub=${href}" class="${colorClass}">${hrefPage.title}</a>
+        <a href="?hub=${href}" class="${colorClass} tfcm">${hrefPage.title}</a>
       </div>
     `
   }

@@ -57,13 +57,13 @@ function view (state, emit) {
         </div>
         <div class="x">
           <div class="bl1-bg10 ">
-            <a href="/?url=/" class="${editorActive ? 'fc-fg' : 'fc-bg25 fch-fg bb1-bg10'} db p2">Editor</a>
+            <a href="/?url=/" class="${editorActive ? 'fc-fg' : 'fc-bg25 fch-fg bb1-bg10'} tfcm db p2">Editor</a>
           </div>
           <div class="bl1-bg10">
-            <a href="/?sites=all" class="${sitesActive ? 'fc-fg' : 'fc-bg25 fch-fg bb1-bg10'} db p2">Sites</a>
+            <a href="/?sites=all" class="${sitesActive ? 'fc-fg' : 'fc-bg25 fch-fg bb1-bg10'} tfcm db p2">Sites</a>
           </div>
           <div class="bl1-bg10 br1-bg10">
-            <a href="/?hub=docs" class="${hubActive ? 'fc-fg' : 'fc-bg25 fch-fg bb1-bg10'} db p2">Hub</a>
+            <a href="/?hub=docs" class="${hubActive ? 'fc-fg' : 'fc-bg25 fch-fg bb1-bg10'} tfcm db p2">Hub</a>
           </div>
           <div class="bb1-bg10" style="height: 6.1rem; width: 6.1rem"></div>
         </div>

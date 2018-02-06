@@ -222,6 +222,16 @@ function inputs () {
       font-size: 1.8rem;
       text-align: center;
       white-space: nowrap;
+      transition: background 150ms ease-out, transform 150ms ease-out;
+    }
+
+    .button-large:hover {
+      transform: translateY(-0.2rem) ;
+    }
+
+    .button-large:active {
+      transform: translateY(0.2rem) ;
+      transition: transform 50ms ease-out;
     }
 
     .button-medium {
@@ -234,6 +244,16 @@ function inputs () {
       color: #fff;
       font-size: 1.8rem;
       white-space: nowrap;
+      transition: background 150ms ease-out, transform 150ms ease-out;
+    }
+
+    .button-medium:hover {
+      transform: translateY(-0.2rem) ;
+    }
+
+    .button-medium:active {
+      transform: translateY(0.2rem) ;
+      transition: transform 50ms ease-out;
     }
 
     .button-inline {
@@ -255,6 +275,7 @@ function inputs () {
       cursor: pointer;
       position: relative;
       z-index: 2;
+      transition: background 150ms ease-out, color 150ms ease-out, border 150ms ease-out;
     }
 
     .button-inline:hover {
@@ -270,6 +291,9 @@ function extensions () {
     .psst { position: sticky; position: -webkit-sticky; }
     .br1 { border-radius: 3px }
     .br2 { border-radius: 2rem }
+
+    .tom { transition: opacity 150ms ease-out }
+    .tfcm { transition: color 150ms ease-out }
 
     .external:after {
       content: '→';
