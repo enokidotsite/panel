@@ -600,7 +600,7 @@ span.CodeMirror-selectedtext {
 }
 .CodeMirror .CodeMirror-code .cm-comment {
     background: rgba(0, 0, 0, .05);
-    border-radius: 2px
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
 }
 .CodeMirror .CodeMirror-code .cm-link {
     color: #000

@@ -46,7 +46,7 @@ function view (state, emit) {
   `
 
   function header () {
-    var editorActive = typeof search.url !== 'undefined'
+    var editorActive = typeof search.url !== 'undefined' && state.sites.active
     var sitesActive = typeof search.sites !== 'undefined'
     var hubActive = typeof search.hub !== 'undefined'
 
@@ -56,7 +56,7 @@ function view (state, emit) {
           ${editorActive ? breadcrumbs() : html`<div class="py2 px4">Enoki</div>`}
         </div>
         <div class="x">
-          <div class="bl1-bg10 ">
+          <div class="bl1-bg10 ${state.sites.active ? '' : 'pen'}">
             <a href="/?url=/" class="${editorActive ? 'fc-fg' : 'fc-bg25 fch-fg bb1-bg10'} tfcm db p2">Editor</a>
           </div>
           <div class="bl1-bg10">
@@ -113,14 +113,14 @@ function view (state, emit) {
       return nonDat(state, emit)
     }
 
-    if (search.sites || !state.sites.active) {
-      // sites
-      return Sites(state, emit)
-    }
-
     if (search.hub) {
       // docs
       return Hub(state, emit)
+    }
+
+    if (search.sites || !state.sites.active) {
+      // sites
+      return Sites(state, emit)
     }
 
     if (search.file === 'new') {

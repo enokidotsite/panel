@@ -1,0 +1,16 @@
+title: Fields
+----
+view: default
+----
+text: ## Cleanup
+
+Currently, fields are a bit sloppy. Some immediate improvements.
+
+- Store everything within an internal `state` object
+- Output a single object to `emit` containing `.value`
+
+## New fields
+
+- Range
+- Toggle
+- Structure data

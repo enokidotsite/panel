@@ -1,0 +1,9 @@
+title: Cleanup codebase
+----
+view: default
+----
+text: Gotta refactor a little bit, it’s getting messy in here.
+
+1. Switch from gr8 for layout to CSS grid/variables.
+2. Try to make the DOM as representational as possible.
+3. Simple `sheetify` css-in-js for most things.

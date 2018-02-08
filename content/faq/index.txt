@@ -2,9 +2,7 @@ title: FAQ
 ----
 view: faq
 ----
-text:
-
-## Who is this for?
+text: ## Who is this for?
 
 Currently, for people who probably spend most of their time making websites to learn more about the peer-to-peer web. In the future? Hmm…
 
@@ -20,6 +18,10 @@ Anyway, with that static JSON in place you can use a service like [Hashbase](htt
 
 Yeah, it sort of is a functional wireframe—a representation of the expected basics for a CMS today. Consider it a starting point meant to progressively evolve into an interface for peer-to-peer publishing as we collectively develop the language.
 
+## My Sites sometime dissapear
+
+This is because sites are currently using localstorage, which associates data with domain. If you load a site at `https://panel.enoki.site`, it will not appear in the Sites section when at `dat://panel.enoki.site`. This will be resolved in the future.
+
 ## Shouldn’t this output static HTML for pre-rendered routes?
 
 Yeah, this would be great. Found a few difficult questions about how to do this without cluttering up the content directory with a bunch of `index.html` files.
@@ -30,7 +32,7 @@ Enoki currently reads your entire `/content` directory into one big object. For 
 
 ## What about image resizing?
 
-Because everything happens client-side in Beaker, it’s not possible to execute server-side functions, like image resizing. It could be possible to hit a micro-service via XHR and write the returned blob, but this requires an internet connection, and goes against offline-first design. There are a few possibilities for solving this, though—soon!
+This will probably be handled with Canvas in the future. Nothing yet.
 
 ## I want _______________
 

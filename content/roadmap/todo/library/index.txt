@@ -1,0 +1,8 @@
+title: Library
+----
+view: default
+----
+text: Need to clean up some of the boundaries between things.
+
+- `choo-dat-hypha` needs to become `enoki`
+- `enoki/choo` needs to be the choo plugin

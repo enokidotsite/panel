@@ -2,8 +2,6 @@ title: Log
 ----
 view: log
 ----
-text:
+text: ## 0.1.0
 
-## 0.1.0
-
-Notes coming soon
+Whatup

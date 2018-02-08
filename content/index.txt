@@ -1,5 +1,3 @@
-title: Documentation
+title: Hub
 ----
-text:
-
-## Testing whats good
+text: 
