@@ -1,5 +1,6 @@
-var html = require('choo/html')
 var Nanocomponent = require('nanocomponent')
+var html = require('choo/html')
+var xtend = require('xtend')
 
 module.exports = function Wrapper () {
   if (!(this instanceof Text)) return new Text()
@@ -8,38 +9,33 @@ module.exports = function Wrapper () {
 class Text extends Nanocomponent {
   constructor () {
     super()
-    this.value = ''
+    this.state = {
+      value: ''
+    }
   }
 
   createElement (state, emit) {
-    this.id = state.id
-    this.value = state.value || ''
-    this.key = state.key
+    this.state = xtend(this.state, state)
 
     return html`
       <div>
         <input
-          name="${state.key}"
+          name="${this.state.key}"
           class="input py1 px1-5"
           type="text"
-          value="${this.value}"
+          value="${this.state.value}"
           oninput=${onInput}
-          onfocus=${onFocus}
         />
       </div>
     `
 
     function onInput (event) {
-      emit('input', event.target.value || '')
-    }
-
-    function onFocus (event) {
-      emit('focus', event.target.value || '')
+      emit({ value: event.target.value })
     }
   }
 
-  update (state) {
-    this.value = state.value || ''
+  update (props) {
+    this.state.value = props.value || ''
     return true
   }
 }

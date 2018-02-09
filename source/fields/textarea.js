@@ -1,5 +1,6 @@
 var Nanocomponent = require('nanocomponent')
 var SimpleMDE = require('simplemde')
+var xtend = require('xtend')
 var html = require('choo/html')
 
 var toolbarDefaults = {
@@ -23,15 +24,21 @@ module.exports = function Wrapper () {
 class Textarea extends Nanocomponent {
   constructor () {
     super()
-    this.label = false
+    this.state = {
+      id: '',
+      key: '',
+      value: '',
+      valueStart: '',
+      toolbar: ''
+    }
+
+    this.wrapperLabel = false
+    this.toolbar = { }
   }
 
-  createElement (state, emit) {
-    this.id = state.id
-    this.key = state.key
-    this.value = state.value || ''
-    this.valueStart = state.value || ''
-    this.toolbar = getToolbar(state.toolbar)
+  createElement (props, emit) {
+    this.state = xtend(this.state, props)
+    this.toolbar = getToolbar(this.state.toolbar)
     this.emit = emit
 
     return html`
@@ -40,7 +47,7 @@ class Textarea extends Nanocomponent {
           <div class="psa l0 r0" style="background: rgba(255, 255, 255, 0.9); top: -2rem; height: 2rem;"></div>
           <div class="x xjb pea" style="background: linear-gradient(180deg,  rgba(255, 255, 255, 0.9),  rgba(255, 255, 255, 0.9) 75%,  rgba(255, 255, 255, 0));" data-editor-toolbar>
             <div class="py1 fwb usn fs0-8 ttu fc-bg25">
-              ${state.label || state.key}
+              ${this.state.label || this.state.key}
             </div>
           </div>
           <div class="pen c12" style="height: 5rem"></div>
@@ -55,21 +62,21 @@ class Textarea extends Nanocomponent {
     `
 
     function onInput (event) {
-      emit('input', event.target.value)
+      emit({ value: event.target.value })
     }
   }
 
   update (props) {
     var value = props.value || ''
 
-    if (value !== this.value) {
-      this.value = value
-      this.element.querySelector('textarea').value = this.value
+    if (value !== this.state.value) {
+      this.state.value = value
+      this.element.querySelector('textarea').value = this.state.value
     }
 
     // cancel
-    if (value === this.valueStart) {
-      this.simplemde.value(this.value)
+    if (value === this.state.valueStart) {
+      this.simplemde.value(this.state.value)
     }
 
     return false
@@ -88,7 +95,7 @@ class Textarea extends Nanocomponent {
     })
 
     // set default vlue
-    this.simplemde.value(this.value)
+    this.simplemde.value(this.state.value)
     var elToolbar = element.querySelector('.editor-toolbar')
     if (elToolbar) {
       element.querySelector('[data-editor-toolbar]').appendChild(elToolbar)
@@ -97,8 +104,8 @@ class Textarea extends Nanocomponent {
     // send state up
     this.simplemde.codemirror.on('change', function () {
       var value = self.simplemde.value() || ''
-      if (self.value !== value) {
-        self.emit('input', value)
+      if (self.state.value !== value) {
+        self.emit({ value: value })
       }
     }, false)
   }

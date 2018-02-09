@@ -2,11 +2,12 @@ var Nanocomponent = require('nanocomponent')
 var tagsInput = require('tags-input')
 var html = require('choo/html')
 var css = require('sheetify')
+var xtend = require('xtend')
 
 var style = css`
   :host {
     display: inline-block;
-    padding: 0.25rem;
+    padding: 0 0.25rem;
     background: #fff;
     border: 1px solid #ddd;
     width: 100%;
@@ -52,6 +53,7 @@ var style = css`
     margin: 0.25rem 0.25rem !important;
     background: 0 0!important;
     border: none!important;
+    height: 3.5rem !important;
     box-shadow: none!important;
     font: inherit!important;
     font-size: 100%!important;
@@ -71,22 +73,23 @@ module.exports = function Wrapper () {
 class Tags extends Nanocomponent {
   constructor () {
     super()
+    this.state = {
+      value: '',
+      valueStart: ''
+    }
   }
 
-  createElement (state, emit) {
+  createElement (props, emit) {
     var self = this
-    this.id = state.id
-    this.key = state.key
-    this.value = state.value || ''
-    this.valueStart = state.value
+    this.state = xtend(this.state, props)
 
     return html`
       <div class="${style}">
         <input
-          name="${this.key}"
+          name="${this.state.key}"
           class="c12 input"
           type="tags"
-          value="${this.value}"
+          value="${this.state.value}"
           onchange=${onChange}
         />
       </div>
@@ -94,21 +97,21 @@ class Tags extends Nanocomponent {
 
     function onChange (event) {
       var value = event.target.value.split(',') 
-      if (!arraysEqual(self.value, value)) {
-        emit('change', value)
+      if (!arraysEqual(self.state.value, value)) {
+        emit({ value: value })
       }
     }
   }
 
   update (props) {
     var value = props.value || ''
-    if (value !== this.value) {
+    if (value !== this.state.value) {
       var el = this.element.querySelector('.tags-input')
-      this.value = value
+      this.state.value = value
       this.element.querySelector('input').value = value
 
       // reset
-      if (this.value === this.valueStart) {
+      if (this.state.value === this.state.valueStart) {
         this.element.removeChild(el)
         tagsInput(this.element.querySelector('input'))
       }
