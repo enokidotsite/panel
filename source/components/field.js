@@ -40,11 +40,14 @@ function Field (props, emit) {
   }
 
   // wrap the field in a cache for nanocomponent
-  function wrapper (state, emit) {
-    if (!cache[state.id]) cache[state.id] = input()
+  function wrapper (props, emit) {
+    if (!cache[props.id]) cache[props.id] = input()
+    var hasState = typeof cache[props.id].state === 'object'
+    var hasLabel = hasState && cache[props.id].wrapperLabel !== false
+
     return [
-      cache[state.id].label !== false ? label() : '',
-      cache[state.id].render(state, emit)
+      hasLabel ? label() : '',
+      cache[props.id].render(props, emit)
     ]
   }
 }

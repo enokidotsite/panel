@@ -1,0 +1,11 @@
+title: Inline editing
+----
+view: issue
+----
+tags:
+  - idea
+
+----
+text: Explore implimentation of inline-editing in a design.
+
+- Web API `isOwner` to enable `contenteditable`

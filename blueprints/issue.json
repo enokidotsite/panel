@@ -1,0 +1,18 @@
+{
+  "title": "Issue",
+  "pages": false,
+  "fields": {
+    "title": {
+      "label": "Title",
+      "type": "text"
+    },
+    "tags": {
+      "label": "Tags",
+      "type": "tags"
+    },
+    "text": {
+      "label": "Text",
+      "type": "textarea"
+    }
+  }
+}

@@ -102,6 +102,10 @@ async function panel (state, emitter) {
       delete state.panel.changes[data.url]
 
       emitter.once(state.events.SITE_REFRESHED, async function () {
+        // bundles directory
+        try { await archive.readdir('/bundles') }
+        catch (err) { await archive.mkdir('/bundles') }
+
         try {
           await archive.writeFile(
             '/bundles/content.json',

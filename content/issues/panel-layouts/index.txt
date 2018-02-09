@@ -1,6 +1,6 @@
 title: Panel layouts
 ----
-view: default
+view: issue
 ----
 text: Fields will be both **input** and **display**. An example of an input field is `text` and `textarea`. An an example of a display field is `pages` or `files` in the existing sidebar.
 
@@ -39,3 +39,10 @@ For instance:
 	}
 }
 ```
+
+## Features
+
+- `sticky` option for columns to replicate sidebar functionality
+----
+tags:
+  - todo

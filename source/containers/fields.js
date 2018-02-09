@@ -39,9 +39,10 @@ function Fields (props) {
       })
     }
 
-    function handleFieldUpdate (event, data) {
-      if (event === 'focus') return
-      props.handleFieldUpdate(key, data)
+    function handleFieldUpdate (data) {
+      if (typeof data === 'object' && data.value) {
+        props.handleFieldUpdate(key, data.value)
+      }
     }
   })
 }

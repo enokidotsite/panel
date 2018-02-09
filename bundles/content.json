@@ -29,6 +29,59 @@
     "files": {},
     "pages": {}
   },
+  "/issues": {
+    "title": "Issues",
+    "view": "issues",
+    "text": "## Contributing\n\nFeel free to fork the panel repository, create whatever changes you’d like by following the pattern here (or using the panel itself to manage issues), then creating a pull request. Wanting to consolidate things outside of Github Issues to make things offline accessibile.",
+    "name": "issues",
+    "path": "/content/issues",
+    "url": "/issues",
+    "files": {},
+    "pages": {
+      "cleanup-codebase": {
+        "name": "cleanup-codebase",
+        "path": "/content/issues/cleanup-codebase",
+        "url": "/issues/cleanup-codebase",
+        "source": "/content/issues/cleanup-codebase"
+      },
+      "designs": {
+        "name": "designs",
+        "path": "/content/issues/designs",
+        "url": "/issues/designs",
+        "source": "/content/issues/designs"
+      },
+      "fields": {
+        "name": "fields",
+        "path": "/content/issues/fields",
+        "url": "/issues/fields",
+        "source": "/content/issues/fields"
+      },
+      "inline-editing": {
+        "name": "inline-editing",
+        "path": "/content/issues/inline-editing",
+        "url": "/issues/inline-editing",
+        "source": "/content/issues/inline-editing"
+      },
+      "library": {
+        "name": "library",
+        "path": "/content/issues/library",
+        "url": "/issues/library",
+        "source": "/content/issues/library"
+      },
+      "page-functionality": {
+        "name": "page-functionality",
+        "path": "/content/issues/page-functionality",
+        "url": "/issues/page-functionality",
+        "source": "/content/issues/page-functionality"
+      },
+      "panel-layouts": {
+        "name": "panel-layouts",
+        "path": "/content/issues/panel-layouts",
+        "url": "/issues/panel-layouts",
+        "source": "/content/issues/panel-layouts"
+      }
+    }
+  },
   "/log": {
     "title": "Log",
     "view": "log",
@@ -39,104 +92,96 @@
     "files": {},
     "pages": {}
   },
-  "/roadmap": {
-    "title": "Roadmap",
-    "text": "## Contributing\n\nFeel free to fork the panel repository, create whatever changes you’d like by following the pattern here (or using the panel itself to manage issues), then creating a pull request. Wanting to consolidate things outside of Github Issues to make things offline accessibile.",
-    "name": "roadmap",
-    "path": "/content/roadmap",
-    "url": "/roadmap",
-    "files": {},
-    "pages": {
-      "doing": {
-        "name": "doing",
-        "path": "/content/roadmap/doing",
-        "url": "/roadmap/doing",
-        "source": "/content/roadmap/doing"
-      },
-      "done": {
-        "name": "done",
-        "path": "/content/roadmap/done",
-        "url": "/roadmap/done",
-        "source": "/content/roadmap/done"
-      },
-      "ideas": {
-        "name": "ideas",
-        "path": "/content/roadmap/ideas",
-        "url": "/roadmap/ideas",
-        "source": "/content/roadmap/ideas"
-      },
-      "todo": {
-        "name": "todo",
-        "path": "/content/roadmap/todo",
-        "url": "/roadmap/todo",
-        "source": "/content/roadmap/todo"
-      }
-    }
-  },
-  "/roadmap/todo/cleanup-codebase": {
+  "/issues/cleanup-codebase": {
     "title": "Cleanup codebase",
-    "view": "default",
-    "text": "Gotta refactor a little bit, it’s getting messy in here.\n\n1. Switch from gr8 for layout to CSS grid/variables.\n2. Try to make the DOM as representational as possible.\n3. Simple `sheetify` css-in-js for most things.",
+    "view": "issue",
+    "text": "Gotta refactor a little bit, it’s getting messy in here.\n\n- [ ] Switch from gr8 for layout to CSS grid/variables.\n- [ ] Try to make the DOM as representational as possible.\n- [ ] Simple `sheetify` css-in-js for most things.",
+    "tags": [
+      "todo"
+    ],
     "name": "cleanup-codebase",
-    "path": "/content/roadmap/todo/cleanup-codebase",
-    "url": "/roadmap/todo/cleanup-codebase",
+    "path": "/content/issues/cleanup-codebase",
+    "url": "/issues/cleanup-codebase",
     "files": {},
     "pages": {}
   },
-  "/roadmap/todo/fields": {
+  "/issues/designs": {
+    "title": "Designs",
+    "view": "issue",
+    "tags": [
+      "1.0.0",
+      "todo"
+    ],
+    "text": "Create some fresh designs.\n\n## Things to keep in mind\n\n- Super simple document / plain CSS\n\n## System\n\nThis is a sort of designed filesystem view, sort of like the Area 17 CMS.\n\n## Ripple\n\n- SVG warping sort of thing, text input to outlined shapes",
+    "name": "designs",
+    "path": "/content/issues/designs",
+    "url": "/issues/designs",
+    "files": {},
+    "pages": {}
+  },
+  "/issues/fields": {
     "title": "Fields",
-    "view": "default",
-    "text": "## Cleanup\n\nCurrently, fields are a bit sloppy. Some immediate improvements.\n\n- Store everything within an internal `state` object\n- Output a single object to `emit` containing `.value`\n\n## New fields\n\n- Range\n- Toggle\n- Structure data",
+    "view": "issue",
+    "text": "## Cleanup\n\nCurrently, fields are a bit sloppy. Some immediate improvements.\n\n- [x] Store everything within an internal `state` object\n- [X] Output a single object to `emit` containing `.value`\n\n## New fields\n\n- [ ] Checkbox\n- [ ] Range\n- [ ] Toggle\n- [ ] Structure data",
+    "tags": [
+      "1.0.0",
+      "todo"
+    ],
     "name": "fields",
-    "path": "/content/roadmap/todo/fields",
-    "url": "/roadmap/todo/fields",
+    "path": "/content/issues/fields",
+    "url": "/issues/fields",
     "files": {},
     "pages": {}
   },
-  "/roadmap/todo/library": {
+  "/issues/inline-editing": {
+    "title": "Inline editing",
+    "view": "issue",
+    "tags": [
+      "idea"
+    ],
+    "text": "Explore implimentation of inline-editing in a design.\n\n- Web API `isOwner` to enable `contenteditable`",
+    "name": "inline-editing",
+    "path": "/content/issues/inline-editing",
+    "url": "/issues/inline-editing",
+    "files": {},
+    "pages": {}
+  },
+  "/issues/library": {
     "title": "Library",
-    "view": "default",
-    "text": "Need to clean up some of the boundaries between things.\n\n- `choo-dat-hypha` needs to become `enoki`\n- `enoki/choo` needs to be the choo plugin",
+    "view": "issue",
+    "text": "Need to clean up some of the boundaries between things.\n\n- [ ] `choo-dat-hypha` needs to become `enoki`\n- [ ] `enoki/choo` needs to be the choo plugin",
+    "tags": [
+      "todo"
+    ],
     "name": "library",
-    "path": "/content/roadmap/todo/library",
-    "url": "/roadmap/todo/library",
+    "path": "/content/issues/library",
+    "url": "/issues/library",
     "files": {},
     "pages": {}
   },
-  "/roadmap/todo/page-functionality": {
-    "title": "Page functionality",
-    "view": "default",
-    "text": "Need to improve some management issues with Pages.\n\n- Move **Delete** into **Settings**, which has similar interface to the Sites settings.\n- Field for adjusting `view` in Settings.\n- Field for adjusting `pathname` in Settings.",
-    "name": "page-functionality",
-    "path": "/content/roadmap/todo/page-functionality",
-    "url": "/roadmap/todo/page-functionality",
-    "files": {},
-    "pages": {}
-  },
-  "/roadmap/todo/panel-layouts": {
+  "/issues/panel-layouts": {
     "title": "Panel layouts",
-    "view": "default",
-    "text": "Fields will be both **input** and **display**. An example of an input field is `text` and `textarea`. An an example of a display field is `pages` or `files` in the existing sidebar.\n\nNothing is needed to make display fields possible, however it should be possible to not only place custom fields in the sidebar, but be able to define custom columns an layouts from within blueprints.\n\nFor instance:\n\n```\n{\n  \"title\": \"hi\",\n\t\"layout\": {\n\t\t\"navigation\": {\n\t\t\t\"fields\": ['pages', 'files'],\n\t\t\t\"width\": \"1/3\"\n\t\t},\n\t\t\"fieldset\": {\n\t\t\t\"fields\": ['title', 'text'],\n\t\t\t\"width\": \"2/3\"\n\t\t}\n  },\n\t\"fields\": {\n\t\t\"pages\": {\n\t\t\t\"type\": \"pages\"\n\t\t},\n\t\t\"files\": {\n\t\t\t\"type\": \"files\"\n\t\t},\n\t\t\"title\": {\n\t\t\t\"label\": \"Title\",\n\t\t\t\"type\": \"text\"\n\t\t},\n\t\t\"text\": {\n\t\t\t\"label\": \"Text\",\n\t\t\t\"type\": \"textarea\"\n\t\t}\n\t}\n}\n```",
+    "view": "issue",
+    "text": "Fields will be both **input** and **display**. An example of an input field is `text` and `textarea`. An an example of a display field is `pages` or `files` in the existing sidebar.\n\nNothing is needed to make display fields possible, however it should be possible to not only place custom fields in the sidebar, but be able to define custom columns an layouts from within blueprints.\n\nFor instance:\n\n```\n{\n  \"title\": \"hi\",\n\t\"layout\": {\n\t\t\"navigation\": {\n\t\t\t\"fields\": ['pages', 'files'],\n\t\t\t\"width\": \"1/3\"\n\t\t},\n\t\t\"fieldset\": {\n\t\t\t\"fields\": ['title', 'text'],\n\t\t\t\"width\": \"2/3\"\n\t\t}\n  },\n\t\"fields\": {\n\t\t\"pages\": {\n\t\t\t\"type\": \"pages\"\n\t\t},\n\t\t\"files\": {\n\t\t\t\"type\": \"files\"\n\t\t},\n\t\t\"title\": {\n\t\t\t\"label\": \"Title\",\n\t\t\t\"type\": \"text\"\n\t\t},\n\t\t\"text\": {\n\t\t\t\"label\": \"Text\",\n\t\t\t\"type\": \"textarea\"\n\t\t}\n\t}\n}\n```\n\n## Features\n\n- `sticky` option for columns to replicate sidebar functionality",
+    "tags": [
+      "todo"
+    ],
     "name": "panel-layouts",
-    "path": "/content/roadmap/todo/panel-layouts",
-    "url": "/roadmap/todo/panel-layouts",
+    "path": "/content/issues/panel-layouts",
+    "url": "/issues/panel-layouts",
     "files": {},
     "pages": {}
   },
-  "/roadmap/doing": {
-    "title": "Doing",
-    "name": "doing",
-    "path": "/content/roadmap/doing",
-    "url": "/roadmap/doing",
-    "files": {},
-    "pages": {}
-  },
-  "/roadmap/ideas": {
-    "title": "Ideas",
-    "text": "## Ideas",
-    "name": "ideas",
-    "path": "/content/roadmap/ideas",
-    "url": "/roadmap/ideas",
+  "/issues/page-functionality": {
+    "title": "Page functionality",
+    "view": "issue",
+    "text": "Need to improve some management issues with Pages.\n\n- [ ] Move **Delete** into **Settings**, which has similar interface to the Sites settings.\n- [ ] Field for adjusting `view` in Settings.\n- [ ] Field for adjusting `pathname` in Settings.",
+    "tags": [
+      "todo"
+    ],
+    "name": "page-functionality",
+    "path": "/content/issues/page-functionality",
+    "url": "/issues/page-functionality",
     "files": {},
     "pages": {}
   },
@@ -166,66 +211,18 @@
         "url": "/faq",
         "source": "/content/faq"
       },
+      "issues": {
+        "name": "issues",
+        "path": "/content/issues",
+        "url": "/issues",
+        "source": "/content/issues"
+      },
       "log": {
         "name": "log",
         "path": "/content/log",
         "url": "/log",
         "source": "/content/log"
-      },
-      "roadmap": {
-        "name": "roadmap",
-        "path": "/content/roadmap",
-        "url": "/roadmap",
-        "source": "/content/roadmap"
       }
     }
-  },
-  "/roadmap/todo": {
-    "title": "Todo",
-    "text": "Feeling out how to tackle certain things.",
-    "name": "todo",
-    "path": "/content/roadmap/todo",
-    "url": "/roadmap/todo",
-    "files": {},
-    "pages": {
-      "cleanup-codebase": {
-        "name": "cleanup-codebase",
-        "path": "/content/roadmap/todo/cleanup-codebase",
-        "url": "/roadmap/todo/cleanup-codebase",
-        "source": "/content/roadmap/todo/cleanup-codebase"
-      },
-      "fields": {
-        "name": "fields",
-        "path": "/content/roadmap/todo/fields",
-        "url": "/roadmap/todo/fields",
-        "source": "/content/roadmap/todo/fields"
-      },
-      "library": {
-        "name": "library",
-        "path": "/content/roadmap/todo/library",
-        "url": "/roadmap/todo/library",
-        "source": "/content/roadmap/todo/library"
-      },
-      "page-functionality": {
-        "name": "page-functionality",
-        "path": "/content/roadmap/todo/page-functionality",
-        "url": "/roadmap/todo/page-functionality",
-        "source": "/content/roadmap/todo/page-functionality"
-      },
-      "panel-layouts": {
-        "name": "panel-layouts",
-        "path": "/content/roadmap/todo/panel-layouts",
-        "url": "/roadmap/todo/panel-layouts",
-        "source": "/content/roadmap/todo/panel-layouts"
-      }
-    }
-  },
-  "/roadmap/done": {
-    "title": "Done",
-    "name": "done",
-    "path": "/content/roadmap/done",
-    "url": "/roadmap/done",
-    "files": {},
-    "pages": {}
   }
 }

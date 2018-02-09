@@ -1,0 +1,22 @@
+title: Designs
+----
+view: issue
+----
+tags:
+  - 1.0.0
+  - todo
+
+----
+text: Create some fresh designs.
+
+## Things to keep in mind
+
+- Super simple document / plain CSS
+
+## System
+
+This is a sort of designed filesystem view, sort of like the Area 17 CMS.
+
+## Ripple
+
+- SVG warping sort of thing, text input to outlined shapes

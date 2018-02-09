@@ -1,0 +1,21 @@
+title: Fields
+----
+view: issue
+----
+text: ## Cleanup
+
+Currently, fields are a bit sloppy. Some immediate improvements.
+
+- [x] Store everything within an internal `state` object
+- [X] Output a single object to `emit` containing `.value`
+
+## New fields
+
+- [ ] Checkbox
+- [ ] Range
+- [ ] Toggle
+- [ ] Structure data
+----
+tags:
+  - 1.0.0
+  - todo

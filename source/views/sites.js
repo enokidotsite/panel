@@ -108,7 +108,7 @@ function renderSite (props) {
   return html`
     <div class="w100 fc-fg ${props.active ? '' : 'ophc100'}">
       <div class="x xw xac py1">
-        <div class="c12 sm-xx oh p1">
+        <div class="c12 sm-xx oh p1 curp" onclick=${handleSiteClick}>
           <div class="fs2 wsnw toe fw500">${props.title}</div>
         </div>
         <div class="p1 ${props.active ? '' : 'sm-op0'} oph tom">

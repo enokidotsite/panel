@@ -1,4 +1,6 @@
-title: Roadmap
+title: Issues
+----
+view: issues
 ----
 text: ## Contributing
 
