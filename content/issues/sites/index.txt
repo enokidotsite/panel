@@ -7,9 +7,11 @@ tags:
   - 1.0.1
 
 ----
-text: ## Settings
+text: ## Todo
 
-- [x] Remove
+- [x] Settings → Remove
+- [ ] Reordering
+- [ ] Persist across domains (ditch localstorage?)
 
 ## Ideas
 
