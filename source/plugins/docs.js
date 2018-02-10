@@ -1,4 +1,4 @@
-var Enoki = require('enoki/lib')
+var Enoki = require('enoki')
 var enoki = new Enoki()
 
 module.exports = docs
