@@ -1,4 +1,4 @@
-var Enoki = require('choo-dat-hypha/lib')
+var Enoki = require('enoki')
 var objectKeys = require('object-keys')
 var assert = require('assert')
 var xtend = require('xtend')
