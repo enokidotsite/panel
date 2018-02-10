@@ -2,6 +2,6 @@ title: Log
 ----
 view: log
 ----
-text: ## 0.1.0
+text: ## 0.0.9
 
-Whatup
+Enoki pre-release for Peer-to-Peer Web / Berlin

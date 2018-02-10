@@ -32,8 +32,9 @@ function PageNewView (state, emit) {
     }
   })
 
-  function handleView (event, data) {
-    switch (event) {
+  function handleView (data) {
+    console.log(data.event)
+    switch (data.event) {
       case 'save':
         if (!data.value.title || !data.value.uri || !data.value.view) {
           return alert('Missing data')

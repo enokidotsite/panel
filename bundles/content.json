@@ -17,7 +17,14 @@
     "path": "/content/docs",
     "url": "/docs",
     "files": {},
-    "pages": {}
+    "pages": {
+      "fields": {
+        "name": "fields",
+        "path": "/content/docs/fields",
+        "url": "/docs/fields",
+        "source": "/content/docs/fields"
+      }
+    }
   },
   "/faq": {
     "title": "FAQ",
@@ -79,16 +86,37 @@
         "path": "/content/issues/panel-layouts",
         "url": "/issues/panel-layouts",
         "source": "/content/issues/panel-layouts"
+      },
+      "sites": {
+        "name": "sites",
+        "path": "/content/issues/sites",
+        "url": "/issues/sites",
+        "source": "/content/issues/sites"
       }
     }
   },
   "/log": {
     "title": "Log",
     "view": "log",
-    "text": "## 0.1.0\n\nWhatup",
+    "text": "## 0.0.9\n\nEnoki pre-release for Peer-to-Peer Web / Berlin",
     "name": "log",
     "path": "/content/log",
     "url": "/log",
+    "files": {},
+    "pages": {}
+  },
+  "/docs/fields": {
+    "title": "Fields",
+    "view": "fields",
+    "text": "An overview of the available fields.",
+    "tags": [
+      "technopastoral",
+      "extra-statecraft"
+    ],
+    "checkbox": true,
+    "name": "fields",
+    "path": "/content/docs/fields",
+    "url": "/docs/fields",
     "files": {},
     "pages": {}
   },
@@ -102,6 +130,46 @@
     "name": "cleanup-codebase",
     "path": "/content/issues/cleanup-codebase",
     "url": "/issues/cleanup-codebase",
+    "files": {},
+    "pages": {}
+  },
+  "/issues/fields": {
+    "title": "Fields",
+    "view": "issue",
+    "text": "## Cleanup\n\nCurrently, fields are a bit sloppy. Some immediate improvements.\n\n- [x] Store everything within an internal `state` object\n- [X] Output a single object to `emit` containing `.value`\n\n## New fields\n\n- [X] Checkbox\n- [ ] Range\n- [ ] Radio selector\n- [ ] Structured data\n- [ ] Help (description sort of thing)",
+    "tags": [
+      "1.0.0",
+      "todo"
+    ],
+    "name": "fields",
+    "path": "/content/issues/fields",
+    "url": "/issues/fields",
+    "files": {},
+    "pages": {}
+  },
+  "/issues/library": {
+    "title": "Library",
+    "view": "issue",
+    "text": "Need to clean up some of the boundaries between things.\n\n- [ ] `choo-dat-hypha` needs to become `enoki`\n- [ ] merge the `choo-dat-hypha` repo into `enoki`\n- [x] `enoki/choo` needs to be the choo plugin",
+    "tags": [
+      "todo"
+    ],
+    "name": "library",
+    "path": "/content/issues/library",
+    "url": "/issues/library",
+    "files": {},
+    "pages": {}
+  },
+  "/issues/inline-editing": {
+    "title": "Inline editing",
+    "view": "issue",
+    "tags": [
+      "idea"
+    ],
+    "text": "Explore implimentation of inline-editing in a design.\n\n- Web API `isOwner` to enable `contenteditable`",
+    "name": "inline-editing",
+    "path": "/content/issues/inline-editing",
+    "url": "/issues/inline-editing",
     "files": {},
     "pages": {}
   },
@@ -119,43 +187,30 @@
     "files": {},
     "pages": {}
   },
-  "/issues/fields": {
-    "title": "Fields",
+  "/issues/page-functionality": {
+    "title": "Page functionality",
     "view": "issue",
-    "text": "## Cleanup\n\nCurrently, fields are a bit sloppy. Some immediate improvements.\n\n- [x] Store everything within an internal `state` object\n- [X] Output a single object to `emit` containing `.value`\n\n## New fields\n\n- [ ] Checkbox\n- [ ] Range\n- [ ] Toggle\n- [ ] Structure data",
-    "tags": [
-      "1.0.0",
-      "todo"
-    ],
-    "name": "fields",
-    "path": "/content/issues/fields",
-    "url": "/issues/fields",
-    "files": {},
-    "pages": {}
-  },
-  "/issues/inline-editing": {
-    "title": "Inline editing",
-    "view": "issue",
-    "tags": [
-      "idea"
-    ],
-    "text": "Explore implimentation of inline-editing in a design.\n\n- Web API `isOwner` to enable `contenteditable`",
-    "name": "inline-editing",
-    "path": "/content/issues/inline-editing",
-    "url": "/issues/inline-editing",
-    "files": {},
-    "pages": {}
-  },
-  "/issues/library": {
-    "title": "Library",
-    "view": "issue",
-    "text": "Need to clean up some of the boundaries between things.\n\n- [ ] `choo-dat-hypha` needs to become `enoki`\n- [ ] `enoki/choo` needs to be the choo plugin",
+    "text": "Need to improve some management issues with Pages.\n\n- [ ] Move **Delete** into **Settings**, which has similar interface to the Sites settings.\n- [ ] Field for adjusting `view` in Settings.\n- [ ] Field for adjusting `pathname` in Settings.",
     "tags": [
       "todo"
     ],
-    "name": "library",
-    "path": "/content/issues/library",
-    "url": "/issues/library",
+    "name": "page-functionality",
+    "path": "/content/issues/page-functionality",
+    "url": "/issues/page-functionality",
+    "files": {},
+    "pages": {}
+  },
+  "/issues/sites": {
+    "title": "Sites",
+    "view": "issue",
+    "tags": [
+      "todo",
+      "1.0.1"
+    ],
+    "text": "## Settings\n\n- [x] Remove\n\n## Ideas\n\n- Some sort of p2p stats, such as how many peers, etc…\n- A simple way of deploying to a service like Hashbase",
+    "name": "sites",
+    "path": "/content/issues/sites",
+    "url": "/issues/sites",
     "files": {},
     "pages": {}
   },
@@ -169,19 +224,6 @@
     "name": "panel-layouts",
     "path": "/content/issues/panel-layouts",
     "url": "/issues/panel-layouts",
-    "files": {},
-    "pages": {}
-  },
-  "/issues/page-functionality": {
-    "title": "Page functionality",
-    "view": "issue",
-    "text": "Need to improve some management issues with Pages.\n\n- [ ] Move **Delete** into **Settings**, which has similar interface to the Sites settings.\n- [ ] Field for adjusting `view` in Settings.\n- [ ] Field for adjusting `pathname` in Settings.",
-    "tags": [
-      "todo"
-    ],
-    "name": "page-functionality",
-    "path": "/content/issues/page-functionality",
-    "url": "/issues/page-functionality",
     "files": {},
     "pages": {}
   },

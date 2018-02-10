@@ -118,20 +118,20 @@ class PageNew extends Nanocomponent {
     `
   }
 
-  handleTitle (name, data) {
-    this.value.title = data
+  handleTitle (data) {
+    this.value.title = data.value
     if (!this.customUri) {
       var el = this.element.querySelector('input[name="uri"]')
-      var value = methodsFile.sanitizeName(data)
+      var value = methodsFile.sanitizeName(data.value)
       this.value.uri = value
       if (el) el.value = value
     }
   }
 
-  handleUri (name, data) {
-    if (name === 'input') {
+  handleUri (data) {
+    if (data.event === 'input') {
       var el = this.element.querySelector('input[name="uri"]')
-      this.value.uri = methodsFile.sanitizeName(data)
+      this.value.uri = methodsFile.sanitizeName(data.value)
       this.customUri = true
       if (el) el.value = this.value.uri
     }
@@ -142,12 +142,12 @@ class PageNew extends Nanocomponent {
   }
 
   handleSave (event) {
-    this.emit('save', { key: this.key, value: this.value })
+    this.emit({ key: this.key, event: 'save', value: this.value })
     if (event) event.preventDefault()
   }
 
   handleCancel (event) {
-    this.emit('cancel')
+    this.emit({ event: 'cancel' })
     if (event) event.preventDefault()
   }
 

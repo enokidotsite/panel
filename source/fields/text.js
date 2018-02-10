@@ -14,8 +14,8 @@ class Text extends Nanocomponent {
     }
   }
 
-  createElement (state, emit) {
-    this.state = xtend(this.state, state)
+  createElement (props, emit) {
+    this.state = xtend(this.state, props)
 
     return html`
       <div>

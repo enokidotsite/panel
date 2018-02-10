@@ -1,0 +1,23 @@
+{
+  "title": "Fields",
+  "pages": false,
+  "fields": {
+    "title": {
+      "label": "Title",
+      "type": "text"
+    },
+    "tags": {
+      "label": "Tags",
+      "type": "tags"
+    },
+    "checkbox": {
+      "label": "Checkbox",
+      "text": "Descriptive text",
+      "type": "checkbox"
+    },
+    "text": {
+      "label": "Text",
+      "type": "textarea"
+    }
+  }
+}

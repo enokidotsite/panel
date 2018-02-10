@@ -11,10 +11,11 @@ Currently, fields are a bit sloppy. Some immediate improvements.
 
 ## New fields
 
-- [ ] Checkbox
+- [X] Checkbox
 - [ ] Range
-- [ ] Toggle
-- [ ] Structure data
+- [ ] Radio selector
+- [ ] Structured data
+- [ ] Help (description sort of thing)
 ----
 tags:
   - 1.0.0

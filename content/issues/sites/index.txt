@@ -1,0 +1,17 @@
+title: Sites
+----
+view: issue
+----
+tags:
+  - todo
+  - 1.0.1
+
+----
+text: ## Settings
+
+- [x] Remove
+
+## Ideas
+
+- Some sort of p2p stats, such as how many peers, etc…
+- A simple way of deploying to a service like Hashbase

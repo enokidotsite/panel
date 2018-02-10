@@ -40,7 +40,10 @@ function Fields (props) {
     }
 
     function handleFieldUpdate (data) {
-      if (typeof data === 'object' && data.value) {
+      if (
+        typeof data === 'object' &&
+        typeof data.value !== 'undefined'
+      ) {
         props.handleFieldUpdate(key, data.value)
       }
     }
