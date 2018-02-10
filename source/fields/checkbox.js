@@ -17,11 +17,7 @@ var style = css`
   }
 `
 
-module.exports = function Wrapper () {
-  if (!(this instanceof Checkbox)) return new Checkbox()
-}
-
-class Checkbox extends Nanocomponent {
+module.exports = class Checkbox extends Nanocomponent {
   constructor () {
     super()
     this.state = {

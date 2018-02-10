@@ -2,11 +2,7 @@ var Nanocomponent = require('nanocomponent')
 var html = require('choo/html')
 var xtend = require('xtend')
 
-module.exports = function Wrapper () {
-  if (!(this instanceof Text)) return new Text()
-}
-
-class Text extends Nanocomponent {
+module.exports = class Text extends Nanocomponent {
   constructor () {
     super()
     this.state = {

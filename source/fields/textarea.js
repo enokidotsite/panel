@@ -17,11 +17,7 @@ var toolbarDefaults = {
   ]
 }
 
-module.exports = function Wrapper () {
-  if (!(this instanceof Textarea)) return new Textarea()
-}
-
-class Textarea extends Nanocomponent {
+module.exports = class Textarea extends Nanocomponent {
   constructor () {
     super()
     this.state = {

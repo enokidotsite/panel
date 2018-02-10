@@ -2,13 +2,7 @@ var html = require('choo/html')
 var objectKeys = require('object-keys')
 var Nanocomponent = require('nanocomponent')
 
-module.exports = function Wrapper () {
-  if (!(this instanceof Dropdown)) return new Dropdown()
-  this.value = { }
-  Nanocomponent.call(this)
-}
-
-class Dropdown extends Nanocomponent {
+module.exports = class Dropdown extends Nanocomponent {
   constructor () {
     super()
   }

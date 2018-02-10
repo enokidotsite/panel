@@ -4,9 +4,9 @@ var html = require('choo/html')
 var methodsFile = require('../methods/file')
 var fields = require('../fields')
 
-var Title = fields.text()
-var Uri = fields.text()
-var View = fields.dropdown()
+var Title = new fields.text()
+var Uri = new fields.text()
+var View = new fields.dropdown()
 
 module.exports = wrapper
 

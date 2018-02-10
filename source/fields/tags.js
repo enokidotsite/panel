@@ -65,12 +65,7 @@ var style = css`
   }
 `
 
-
-module.exports = function Wrapper () {
-  if (!(this instanceof Tags)) return new Tags()
-}
-
-class Tags extends Nanocomponent {
+module.exports = class Tags extends Nanocomponent {
   constructor () {
     super()
     this.state = {
