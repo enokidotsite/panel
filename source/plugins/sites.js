@@ -14,7 +14,10 @@ function sites (state, emitter, app) {
     loaded: false,
     p2p: typeof DatArchive !== 'undefined',
     archives: { },
-    create: { },
+    create: {
+      title: '',
+      description: ''
+    },
     active: '',
     error: ''
   }

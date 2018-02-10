@@ -12,6 +12,7 @@ module.exports = class Text extends Nanocomponent {
 
   createElement (props, emit) {
     this.state = xtend(this.state, props)
+    this.state.value = this.state.value || ''
 
     return html`
       <div>
