@@ -1,4 +1,4 @@
-var Enoki = require('choo-dat-hypha/lib')
+var Enoki = require('enoki/lib')
 var enoki = new Enoki()
 
 module.exports = docs
