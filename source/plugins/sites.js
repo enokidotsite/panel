@@ -16,7 +16,8 @@ function sites (state, emitter, app) {
     archives: { },
     create: {
       title: '',
-      description: ''
+      description: '',
+      url: 'dat://57cb1b649045ab34d762e25a16fc08dbe8ea2006d4373e10719899d2ae7c6ff5'
     },
     active: '',
     error: ''
@@ -66,10 +67,12 @@ function sites (state, emitter, app) {
   }
 
   async function handleCreate (data) {
-    var url = state.designs.public.starterkit.url
     try {
       // fork the design archive
-      var archiveCreate = await DatArchive.fork(url, state.sites.create)
+      var archiveCreate = await DatArchive.fork(
+        state.sites.create.url,
+        state.sites.create
+      )
 
       // reset create state
       state.designs.create = { }
