@@ -8,6 +8,7 @@ Currently, fields are a bit sloppy. Some immediate improvements.
 
 - [x] Store everything within an internal `state` object
 - [X] Output a single object to `emit` containing `.value`
+- [ ] Autoscroll textarea when at bottom
 
 ## New fields
 
@@ -15,6 +16,7 @@ Currently, fields are a bit sloppy. Some immediate improvements.
 - [ ] Range
 - [ ] Radio selector
 - [ ] Structured data
+- [ ] Color
 - [ ] Help (description sort of thing)
 ----
 tags:
