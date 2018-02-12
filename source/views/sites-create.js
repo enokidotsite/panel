@@ -11,23 +11,31 @@ function SitesCreate (state, emit) {
   var designs = objectValues(state.designs.public)
 
   return html`
-    <div class="x xx sm-xjc sm-xac">
-      <div class="c12 sm-c6 p2" style="padding-bottom: 9rem">
-        ${Fields({
-          blueprint: blueprint,
-          draft: { },
-          page: state.sites.create,
-          values: state.sites.create,
-          handleFieldUpdate: handleFieldUpdate
-        })}
-        <div class="p1">
-          <div class="ttu fc-bg25 fs0-8 py1 x xjb">
-            <div class="fwb">Design</div>
-            <div>More coming soon</div>
-          </div>
-          ${designs.map(renderDesign)}
+    <div class="c12 x xx xw p2 psr">
+      <div class="c12 sm-c6">
+        <div class="w100 psst p1" style="top: 0.75rem; padding-bottom: 8rem">
+          ${Fields({
+            blueprint: blueprint,
+            draft: { },
+            page: state.sites.create,
+            values: state.sites.create,
+            handleFieldUpdate: handleFieldUpdate
+          })}
         </div>
-      </div> 
+      </div>
+      <div class="c12 sm-c6 x xw p1" style="padding-bottom: 8rem">
+        <div class="c12 ttu fc-bg25 p1 pt2 fs0-8 x xjb">
+          <div class="fwb">Design</div>
+          <div>More coming soon</div>
+        </div>
+        ${designs.map(function (design) {
+          var props = xtend({
+            active: state.sites.create.url === design.url,
+            handleSelect: handleDesignSelect
+          }, design)
+          return renderDesign(props)
+        })}
+      </div>
       <div class="psf b0 l0 r0 p1 x xjc">
         <div class="p1">
           <button
@@ -47,30 +55,38 @@ function SitesCreate (state, emit) {
     })
   }
 
+  function handleDesignSelect (data) {
+    emit(state.events.SITE_CREATOR, {
+      path: 'sites-create',
+      data: { url: data.url }
+    })
+  }
+
   function handleCreate (event) {
+    console.log(state.sites.createUrl)
     event.preventDefault()
     emit(state.events.SITE_CREATE, {
-      url: state.designs.public.starterkit.url
+      url: state.sites.create.url
     })
   }
 }
 
 function renderDesign (props) {
   return html`
-    <div class="br2 b1-bg10 curp oh">
-      <img src="${props.thumbnail}" class="db">
-      <div class="py1 px1-5 bt1-bg10 x xjb">
-        <div class="fwb">${props.title}</div>
-        <div><a href="${props.url}" class="fc-bg25 fch-fg external" target="_blank">Preview</a></div>
+    <div class="c12 p1" onclick=${handleSelect}>
+      <div class="br2 b1-bg10 curp oh">
+        <img src="${props.thumbnail}" class="db">
       </div>
+      <div class="py1 tac fs0-8 ttu">
+        <a href="${props.url}" class="fc-bg25 fch-fg external" target="_blank">${props.title}</a>
+      </div>
+      active: ${props.active === true}
     </div>
   `
 
-  function handleCreate () {
-    if (typeof props.handleCreate === 'function' && props.key) {
-      props.handleCreate({
-        design: props.key
-      })
+  function handleSelect () {
+    if (typeof props.handleSelect === 'function' && props.url) {
+      props.handleSelect({ url: props.url })
     }
   }
 }

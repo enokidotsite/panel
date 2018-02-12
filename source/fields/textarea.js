@@ -34,6 +34,7 @@ module.exports = class Textarea extends Nanocomponent {
 
   createElement (props, emit) {
     this.state = xtend(this.state, props)
+    this.state.value = this.state.value || ''
     this.toolbar = getToolbar(this.state.toolbar)
     this.emit = emit
 
