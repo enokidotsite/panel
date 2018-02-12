@@ -50,6 +50,9 @@ function view (state, emit) {
     var sitesActive = typeof search.sites !== 'undefined'
     var hubActive = typeof search.hub !== 'undefined'
 
+    // non p2p
+    if (!state.sites.p2p) return ''
+
     return html`
       <div id="header" class="x xjb usn z2 psr oxh">
         <div class="x xx bb1-bg10 oxh">
@@ -309,7 +312,7 @@ function nonDat (state, emit) {
         </div>
         <div class="x xjc c12">
           <div class="p1">
-            <a href="https://beakerbrowser.com" target="_blank" class="button-large bgc-fg">
+            <a href="https://beakerbrowser.com" target="_blank" class="button-large bgc-hg">
               Download Beaker Browser
             </a>
           </div>
