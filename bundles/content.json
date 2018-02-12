@@ -9,16 +9,6 @@
     "files": {},
     "pages": {}
   },
-  "/faq": {
-    "title": "FAQ",
-    "view": "faq",
-    "text": "## Who is this for?\n\nCurrently, for people who probably spend most of their time making websites to learn more about the peer-to-peer web. In the future? Hmm…\n\n## What about access over HTTP?\n\nYeah, this is important. For now, Enoki uses Beaker’s web API to read your site’s Dat archive into one big javascript object. This object loaded into Choo’s state.\n\nOne way to do this is to write `state.content` to a JSON file saving from the Panel. Then, depending upon dat/http use the web API or request the JSON file. Actually, this happens now, it’s just not documented as there are interesting things which could be done by reading multiple archives into a site, and writing to static JSON prevents that from happening.\n\nAnyway, with that static JSON in place you can use a service like [Hashbase](https://hashbase.io) to persistently sync your app. Just copy the `dat://` url of your site to Hashbase. Alternatively, install [`dathttpd`](https://github.com/beakerbrowser/dathttpd) on your own server.\n\n## This looks like a wireframe\n\nYeah, it sort of is a functional wireframe—a representation of the expected basics for a CMS today. Consider it a starting point meant to progressively evolve into an interface for peer-to-peer publishing as we collectively develop the language.\n\n## My Sites sometime dissapear\n\nThis is because sites are currently using localstorage, which associates data with domain. If you load a site at `https://panel.enoki.site`, it will not appear in the Sites section when at `dat://panel.enoki.site`. This will be resolved in the future.\n\n## Shouldn’t this output static HTML for pre-rendered routes?\n\nYeah, this would be great. Found a few difficult questions about how to do this without cluttering up the content directory with a bunch of `index.html` files.\n\n## How does pagination work?\n\nEnoki currently reads your entire `/content` directory into one big object. For smaller sites, this is fine. For larger sites, that can become an issue. For now, just manually fake paginate by converting an object of content into an array, then using array methods.\n\n## What about image resizing?\n\nThis will probably be handled with Canvas in the future. Nothing yet.\n\n## I want _______________\n\nYeah, chances are this has been thought about. Honestly, there are so many solid and mature CMS solutions that can output static sites. Just use one of those and publish the contents inside a Dat Archive if your’re looking for all the classic stuff. This project is looking to expand upon much more than just making sites.",
-    "name": "faq",
-    "path": "/content/faq",
-    "url": "/faq",
-    "files": {},
-    "pages": {}
-  },
   "/docs": {
     "title": "Docs",
     "view": "docs",
@@ -35,6 +25,16 @@
         "source": "/content/docs/fields"
       }
     }
+  },
+  "/faq": {
+    "title": "FAQ",
+    "view": "faq",
+    "text": "## Who is this for?\n\nCurrently, for people who probably spend most of their time making websites to learn more about the peer-to-peer web. In the future? Hmm…\n\n## What about access over HTTP?\n\nYeah, this is important. For now, Enoki uses Beaker’s web API to read your site’s Dat archive into one big javascript object. This object loaded into Choo’s state.\n\nOne way to do this is to write `state.content` to a JSON file saving from the Panel. Then, depending upon dat/http use the web API or request the JSON file. Actually, this happens now, it’s just not documented as there are interesting things which could be done by reading multiple archives into a site, and writing to static JSON prevents that from happening.\n\nAnyway, with that static JSON in place you can use a service like [Hashbase](https://hashbase.io) to persistently sync your app. Just copy the `dat://` url of your site to Hashbase. Alternatively, install [`dathttpd`](https://github.com/beakerbrowser/dathttpd) on your own server.\n\n## This looks like a wireframe\n\nYeah, it sort of is a functional wireframe—a representation of the expected basics for a CMS today. Consider it a starting point meant to progressively evolve into an interface for peer-to-peer publishing as we collectively develop the language.\n\n## My Sites sometime dissapear\n\nThis is because sites are currently using localstorage, which associates data with domain. If you load a site at `https://panel.enoki.site`, it will not appear in the Sites section when at `dat://panel.enoki.site`. This will be resolved in the future.\n\n## Shouldn’t this output static HTML for pre-rendered routes?\n\nYeah, this would be great. Found a few difficult questions about how to do this without cluttering up the content directory with a bunch of `index.html` files.\n\n## How does pagination work?\n\nEnoki currently reads your entire `/content` directory into one big object. For smaller sites, this is fine. For larger sites, that can become an issue. For now, just manually fake paginate by converting an object of content into an array, then using array methods.\n\n## What about image resizing?\n\nThis will probably be handled with Canvas in the future. Nothing yet.\n\n## I want _______________\n\nYeah, chances are this has been thought about. Honestly, there are so many solid and mature CMS solutions that can output static sites. Just use one of those and publish the contents inside a Dat Archive if your’re looking for all the classic stuff. This project is looking to expand upon much more than just making sites.",
+    "name": "faq",
+    "path": "/content/faq",
+    "url": "/faq",
+    "files": {},
+    "pages": {}
   },
   "/issues": {
     "title": "Issues",
@@ -98,7 +98,7 @@
   "/log": {
     "title": "Log",
     "view": "log",
-    "text": "## 0.0.9\n\nEnoki pre-release for Peer-to-Peer Web / Berlin",
+    "text": "## 0.1.0\n\n- Simplified how data is passed to fields from fieldsets\n- New checkbox field\n- Added support for selecting a design when creating a site\n- Created the new **System** design, the most basic functional design",
     "name": "log",
     "path": "/content/log",
     "url": "/log",
@@ -133,20 +133,6 @@
     "files": {},
     "pages": {}
   },
-  "/issues/designs": {
-    "title": "Designs",
-    "view": "issue",
-    "tags": [
-      "1.0.0",
-      "todo"
-    ],
-    "text": "Create some fresh designs.\n\n## Things to keep in mind\n\n- Super simple document / plain CSS\n\n## System\n\nThis is a sort of designed filesystem view, sort of like the Area 17 CMS.\n\n## Ripple\n\n- SVG warping sort of thing, text input to outlined shapes",
-    "name": "designs",
-    "path": "/content/issues/designs",
-    "url": "/issues/designs",
-    "files": {},
-    "pages": {}
-  },
   "/issues/fields": {
     "title": "Fields",
     "view": "issue",
@@ -158,6 +144,20 @@
     "name": "fields",
     "path": "/content/issues/fields",
     "url": "/issues/fields",
+    "files": {},
+    "pages": {}
+  },
+  "/issues/designs": {
+    "title": "Designs",
+    "view": "issue",
+    "tags": [
+      "1.0.0",
+      "todo"
+    ],
+    "text": "Create some fresh designs.\n\n## Things to keep in mind\n\n- Super simple document / plain CSS\n\n## Streamer\n\n- [ ] A design for streams (vvatch style)\n- [ ] Vlog style?\n\n## Ripple\n\n- SVG warping sort of thing, text input to outlined shapes",
+    "name": "designs",
+    "path": "/content/issues/designs",
+    "url": "/issues/designs",
     "files": {},
     "pages": {}
   },
@@ -177,26 +177,13 @@
   "/issues/library": {
     "title": "Library",
     "view": "issue",
-    "text": "Need to clean up some of the boundaries between things.\n\n- [ ] `choo-dat-hypha` needs to become `enoki`\n- [ ] merge the `choo-dat-hypha` repo into `enoki`\n- [x] `enoki/choo` needs to be the choo plugin",
+    "text": "Need to clean up some of the boundaries between things.\n\n- [ ] Localization support",
     "tags": [
       "todo"
     ],
     "name": "library",
     "path": "/content/issues/library",
     "url": "/issues/library",
-    "files": {},
-    "pages": {}
-  },
-  "/issues/page-functionality": {
-    "title": "Page functionality",
-    "view": "issue",
-    "text": "Need to improve some management issues with Pages.\n\n- [ ] Move **Delete** into **Settings**, which has similar interface to the Sites settings.\n- [ ] Field for adjusting `view` in Settings.\n- [ ] Field for adjusting `pathname` in Settings.",
-    "tags": [
-      "todo"
-    ],
-    "name": "page-functionality",
-    "path": "/content/issues/page-functionality",
-    "url": "/issues/page-functionality",
     "files": {},
     "pages": {}
   },
@@ -213,6 +200,19 @@
     "files": {},
     "pages": {}
   },
+  "/issues/page-functionality": {
+    "title": "Page functionality",
+    "view": "issue",
+    "text": "Need to improve some management issues with Pages.\n\n- [ ] Move **Delete** into **Settings**, which has similar interface to the Sites settings.\n- [ ] Field for `hidden` toggle\n- [ ] Field for adjusting `view` in Settings.\n- [ ] Field for adjusting `pathname` in Settings.",
+    "tags": [
+      "todo"
+    ],
+    "name": "page-functionality",
+    "path": "/content/issues/page-functionality",
+    "url": "/issues/page-functionality",
+    "files": {},
+    "pages": {}
+  },
   "/issues/sites": {
     "title": "Sites",
     "view": "issue",
@@ -220,7 +220,7 @@
       "todo",
       "1.0.1"
     ],
-    "text": "## Todo\n\n- [x] Settings → Remove\n- [ ] Reordering\n- [ ] Persist across domains (ditch localstorage?)\n\n## Ideas\n\n- Some sort of p2p stats, such as how many peers, etc…\n- A simple way of deploying to a service like Hashbase",
+    "text": "## Todo\n\n- [x] Settings → Remove\n- [ ] Settings → HTTP fallback\n- [ ] Reordering\n- [ ] Persist across domains (ditch localstorage?)\n\n## Ideas\n\n- Some sort of p2p stats, such as how many peers, etc…\n- A simple way of deploying to a service like Hashbase",
     "name": "sites",
     "path": "/content/issues/sites",
     "url": "/issues/sites",

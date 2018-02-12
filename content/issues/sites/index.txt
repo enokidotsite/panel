@@ -10,6 +10,7 @@ tags:
 text: ## Todo
 
 - [x] Settings → Remove
+- [ ] Settings → HTTP fallback
 - [ ] Reordering
 - [ ] Persist across domains (ditch localstorage?)
 

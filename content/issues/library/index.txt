@@ -4,9 +4,7 @@ view: issue
 ----
 text: Need to clean up some of the boundaries between things.
 
-- [ ] `choo-dat-hypha` needs to become `enoki`
-- [ ] merge the `choo-dat-hypha` repo into `enoki`
-- [x] `enoki/choo` needs to be the choo plugin
+- [ ] Localization support
 ----
 tags:
   - todo

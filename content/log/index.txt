@@ -2,6 +2,9 @@ title: Log
 ----
 view: log
 ----
-text: ## 0.0.9
+text: ## 0.1.0
 
-Enoki pre-release for Peer-to-Peer Web / Berlin
+- Simplified how data is passed to fields from fieldsets
+- New checkbox field
+- Added support for selecting a design when creating a site
+- Created the new **System** design, the most basic functional design

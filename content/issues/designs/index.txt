@@ -13,9 +13,10 @@ text: Create some fresh designs.
 
 - Super simple document / plain CSS
 
-## System
+## Streamer
 
-This is a sort of designed filesystem view, sort of like the Area 17 CMS.
+- [ ] A design for streams (vvatch style)
+- [ ] Vlog style?
 
 ## Ripple
 
