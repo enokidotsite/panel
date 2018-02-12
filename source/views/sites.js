@@ -121,7 +121,7 @@ function renderSite (props) {
           <button
             class="bgc-fg button-medium"
             onclick=${handleSiteClick}
-          >Edit Content</button>
+          >Edit this Site</button>
         </div>
       </div>
       ${props.error ? renderError() : ''}
