@@ -1,4 +1,14 @@
 {
+  "/community": {
+    "title": "Community",
+    "view": "community",
+    "text": "Coming soon",
+    "name": "community",
+    "path": "/content/community",
+    "url": "/community",
+    "files": {},
+    "pages": {}
+  },
   "/docs": {
     "title": "Docs",
     "view": "docs",
@@ -23,16 +33,6 @@
     "name": "faq",
     "path": "/content/faq",
     "url": "/faq",
-    "files": {},
-    "pages": {}
-  },
-  "/community": {
-    "title": "Community",
-    "view": "community",
-    "text": "Coming soon",
-    "name": "community",
-    "path": "/content/community",
-    "url": "/community",
     "files": {},
     "pages": {}
   },
@@ -98,7 +98,7 @@
   "/log": {
     "title": "Log",
     "view": "log",
-    "text": "## 0.1.0\n\n- Simplified how data is passed to fields from fieldsets\n- New checkbox field\n- New color field\n- Added support for selecting a design when creating a site\n- Created the new **System** design, the most basic functional design",
+    "text": "## 0.1.0\n\n- New checkbox field\n- New color field\n- New range field\n- Simplified how data is passed to fields from fieldsets, enabling the migration of the from the existing fixed format to a display field convention.\n- Added support for selecting a design when creating a site.\n- Created the new **System** design, the most basic functional design.",
     "name": "log",
     "path": "/content/log",
     "url": "/log",
@@ -132,6 +132,20 @@
     "name": "cleanup-codebase",
     "path": "/content/issues/cleanup-codebase",
     "url": "/issues/cleanup-codebase",
+    "files": {},
+    "pages": {}
+  },
+  "/issues/designs": {
+    "title": "Designs",
+    "view": "issue",
+    "tags": [
+      "1.0.0",
+      "todo"
+    ],
+    "text": "Create some fresh designs.\n\n## Things to keep in mind\n\n- Super simple document / plain CSS\n\n## Streamer\n\n- [ ] A design for streams (vvatch style)\n- [ ] Vlog style?\n\n## Ripple\n\n- SVG warping sort of thing, text input to outlined shapes",
+    "name": "designs",
+    "path": "/content/issues/designs",
+    "url": "/issues/designs",
     "files": {},
     "pages": {}
   },
@@ -198,20 +212,6 @@
     "name": "panel-layouts",
     "path": "/content/issues/panel-layouts",
     "url": "/issues/panel-layouts",
-    "files": {},
-    "pages": {}
-  },
-  "/issues/designs": {
-    "title": "Designs",
-    "view": "issue",
-    "tags": [
-      "1.0.0",
-      "todo"
-    ],
-    "text": "Create some fresh designs.\n\n## Things to keep in mind\n\n- Super simple document / plain CSS\n\n## Streamer\n\n- [ ] A design for streams (vvatch style)\n- [ ] Vlog style?\n\n## Ripple\n\n- SVG warping sort of thing, text input to outlined shapes",
-    "name": "designs",
-    "path": "/content/issues/designs",
-    "url": "/issues/designs",
     "files": {},
     "pages": {}
   },
