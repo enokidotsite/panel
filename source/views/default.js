@@ -59,7 +59,7 @@ function view (state, emit) {
           ${editorActive ? breadcrumbs() : html`<div class="py2 px4">Enoki</div>`}
         </div>
         <div class="x">
-          <div class="bl1-bg10 ${state.sites.active ? '' : 'pen'}">
+          <div class="bl1-bg10 ${state.sites.active ? '' : 'dn'}">
             <a href="/?url=/" class="${editorActive ? 'fc-fg' : 'fc-bg25 fch-fg bb1-bg10'} tfcm db p2">Editor</a>
           </div>
           <div class="bl1-bg10">
