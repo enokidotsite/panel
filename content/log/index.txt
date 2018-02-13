@@ -6,5 +6,6 @@ text: ## 0.1.0
 
 - Simplified how data is passed to fields from fieldsets
 - New checkbox field
+- New color field
 - Added support for selecting a design when creating a site
 - Created the new **System** design, the most basic functional design

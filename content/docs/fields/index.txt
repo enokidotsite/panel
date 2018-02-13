@@ -10,3 +10,5 @@ tags:
 
 ----
 checkbox: true
+----
+color: #fffb00

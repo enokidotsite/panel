@@ -15,6 +15,11 @@
       "text": "Descriptive text",
       "type": "checkbox"
     },
+    "color": {
+      "label": "Color",
+      "text": "Descriptive text",
+      "type": "color"
+    },
     "text": {
       "label": "Text",
       "type": "textarea"
