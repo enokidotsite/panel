@@ -51,7 +51,8 @@
   z-index: 10;
 }
 .Scp-hue {
-  width: 21px;
+  width: 19px;
+  margin-left: 2px;
   height: 100%;
   position: relative;
   background: linear-gradient(#f00 0%, #f0f 17%, #00f 34%, #0ff 50%, #0f0 67%, #ff0 84%, #f00 100%);
