@@ -165,28 +165,23 @@ function view (state, emit) {
   function Page () {
     return html`
       <div id="content-page" class="x xdc c12" style="padding-bottom: 7rem">
-        <div class="x1">
-          <div class="x xw">
-            ${Fields({
-              blueprint: blueprint,
-              draft: draftPage,
-              page: state.page,
-              values: state.page,
-              handleFieldUpdate: handleFieldUpdate
+        <form class="x xw x1" onsubmit=${handleSavePage}>
+          ${Fields({
+            blueprint: blueprint,
+            draft: draftPage,
+            page: state.page,
+            values: state.page,
+            handleFieldUpdate: handleFieldUpdate
+          })}
+          <div class="psf b0 l0 r0 p1 pen z2">
+            ${ActionBar({
+              disabled: draftPage === undefined || search.page,
+              saveLarge: true,
+              handleCancel: handleCancelPage,
+              handleRemove: handleRemovePage
             })}
           </div>
-          <div class="psf b0 l0 r0 p1 pen z2">
-            <div class="c12 pea">
-              ${ActionBar({
-                disabled: draftPage === undefined || search.page,
-                saveLarge: true,
-                handleSave: handleSavePage,
-                handleCancel: handleCancelPage,
-                handleRemove: handleRemovePage
-              })}
-            </div>
-          </div>
-        </div>
+        </form>
       </div>
     `
   }
@@ -246,8 +241,9 @@ function view (state, emit) {
     })
   }
 
-  function handleSavePage () {
+  function handleSavePage (event) {
     if (!draftPage) return
+    if (typeof event === 'object' && event.preventDefault) event.preventDefault()
 
     emit(state.events.PANEL_SAVE, {
       file: state.page.file,

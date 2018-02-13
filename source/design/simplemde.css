@@ -9,6 +9,7 @@
 }
 .rich-editor:hover .editor-toolbar {
   opacity: 1;
+  transform: translateY(0);
 }
 .CodeMirror {
     color: #000
@@ -395,7 +396,6 @@ span.CodeMirror-selectedtext {
 }
 .editor-toolbar {
     color: #000;
-    opacity: 0;
     display: flex;
     height: 4rem;
     -webkit-user-select: none;
@@ -404,6 +404,9 @@ span.CodeMirror-selectedtext {
     -o-user-select: none;
     user-select: none;
     padding: 0.5rem 0;
+    opacity: 0;
+    transform: translateY(-0.5rem);
+    transition: transform 250ms ease, opacity 250ms ease;
 }
 .editor-toolbar:hover,
 .editor-wrapper input.title:focus,
