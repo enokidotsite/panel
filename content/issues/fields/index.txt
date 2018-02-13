@@ -14,7 +14,7 @@ Currently, fields are a bit sloppy. Some immediate improvements.
 ## New fields
 
 - [X] Checkbox
-- [ ] Range
+- [X] Range
 - [ ] Radio selector
 - [ ] Structured data
 - [x] Color

@@ -13,4 +13,4 @@ checkbox: true
 ----
 color: #fffb00
 ----
-range: 33
+range: 70

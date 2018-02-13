@@ -1,14 +1,4 @@
 {
-  "/community": {
-    "title": "Community",
-    "view": "community",
-    "text": "Coming soon",
-    "name": "community",
-    "path": "/content/community",
-    "url": "/community",
-    "files": {},
-    "pages": {}
-  },
   "/docs": {
     "title": "Docs",
     "view": "docs",
@@ -36,13 +26,13 @@
     "files": {},
     "pages": {}
   },
-  "/log": {
-    "title": "Log",
-    "view": "log",
-    "text": "## 0.1.0\n\n- Simplified how data is passed to fields from fieldsets\n- New checkbox field\n- New color field\n- Added support for selecting a design when creating a site\n- Created the new **System** design, the most basic functional design",
-    "name": "log",
-    "path": "/content/log",
-    "url": "/log",
+  "/community": {
+    "title": "Community",
+    "view": "community",
+    "text": "Coming soon",
+    "name": "community",
+    "path": "/content/community",
+    "url": "/community",
     "files": {},
     "pages": {}
   },
@@ -105,6 +95,16 @@
       }
     }
   },
+  "/log": {
+    "title": "Log",
+    "view": "log",
+    "text": "## 0.1.0\n\n- Simplified how data is passed to fields from fieldsets\n- New checkbox field\n- New color field\n- Added support for selecting a design when creating a site\n- Created the new **System** design, the most basic functional design",
+    "name": "log",
+    "path": "/content/log",
+    "url": "/log",
+    "files": {},
+    "pages": {}
+  },
   "/docs/fields": {
     "title": "Fields",
     "view": "fields",
@@ -115,7 +115,7 @@
     ],
     "checkbox": true,
     "color": "#fffb00",
-    "range": "33",
+    "range": "70",
     "name": "fields",
     "path": "/content/docs/fields",
     "url": "/docs/fields",
@@ -135,24 +135,10 @@
     "files": {},
     "pages": {}
   },
-  "/issues/designs": {
-    "title": "Designs",
-    "view": "issue",
-    "tags": [
-      "1.0.0",
-      "todo"
-    ],
-    "text": "Create some fresh designs.\n\n## Things to keep in mind\n\n- Super simple document / plain CSS\n\n## Streamer\n\n- [ ] A design for streams (vvatch style)\n- [ ] Vlog style?\n\n## Ripple\n\n- SVG warping sort of thing, text input to outlined shapes",
-    "name": "designs",
-    "path": "/content/issues/designs",
-    "url": "/issues/designs",
-    "files": {},
-    "pages": {}
-  },
   "/issues/fields": {
     "title": "Fields",
     "view": "issue",
-    "text": "## Cleanup\n\nCurrently, fields are a bit sloppy. Some immediate improvements.\n\n- [x] Store everything within an internal `state` object\n- [X] Output a single object to `emit` containing `.value`\n- [ ] Autoscroll textarea when at bottom\n- [ ] Add html5 validation\n\n## New fields\n\n- [X] Checkbox\n- [ ] Range\n- [ ] Radio selector\n- [ ] Structured data\n- [x] Color\n- [ ] Help (description sort of thing)",
+    "text": "## Cleanup\n\nCurrently, fields are a bit sloppy. Some immediate improvements.\n\n- [x] Store everything within an internal `state` object\n- [X] Output a single object to `emit` containing `.value`\n- [ ] Autoscroll textarea when at bottom\n- [ ] Add html5 validation\n\n## New fields\n\n- [X] Checkbox\n- [X] Range\n- [ ] Radio selector\n- [ ] Structured data\n- [x] Color\n- [ ] Help (description sort of thing)",
     "tags": [
       "1.0.0",
       "todo"
@@ -176,19 +162,6 @@
     "files": {},
     "pages": {}
   },
-  "/issues/page-functionality": {
-    "title": "Page functionality",
-    "view": "issue",
-    "text": "Need to improve some management issues with Pages.\n\n- [ ] Move **Delete** into **Settings**, which has similar interface to the Sites settings.\n- [ ] Field for `hidden` toggle\n- [ ] Field for adjusting `view` in Settings.\n- [ ] Field for adjusting `pathname` in Settings.",
-    "tags": [
-      "todo"
-    ],
-    "name": "page-functionality",
-    "path": "/content/issues/page-functionality",
-    "url": "/issues/page-functionality",
-    "files": {},
-    "pages": {}
-  },
   "/issues/library": {
     "title": "Library",
     "view": "issue",
@@ -202,6 +175,19 @@
     "files": {},
     "pages": {}
   },
+  "/issues/page-functionality": {
+    "title": "Page functionality",
+    "view": "issue",
+    "text": "Need to improve some management issues with Pages.\n\n- [ ] Move **Delete** into **Settings**, which has similar interface to the Sites settings.\n- [ ] Field for `hidden` toggle\n- [ ] Field for adjusting `view` in Settings.\n- [ ] Field for adjusting `pathname` in Settings.",
+    "tags": [
+      "todo"
+    ],
+    "name": "page-functionality",
+    "path": "/content/issues/page-functionality",
+    "url": "/issues/page-functionality",
+    "files": {},
+    "pages": {}
+  },
   "/issues/panel-layouts": {
     "title": "Panel layouts",
     "view": "issue",
@@ -212,6 +198,20 @@
     "name": "panel-layouts",
     "path": "/content/issues/panel-layouts",
     "url": "/issues/panel-layouts",
+    "files": {},
+    "pages": {}
+  },
+  "/issues/designs": {
+    "title": "Designs",
+    "view": "issue",
+    "tags": [
+      "1.0.0",
+      "todo"
+    ],
+    "text": "Create some fresh designs.\n\n## Things to keep in mind\n\n- Super simple document / plain CSS\n\n## Streamer\n\n- [ ] A design for streams (vvatch style)\n- [ ] Vlog style?\n\n## Ripple\n\n- SVG warping sort of thing, text input to outlined shapes",
+    "name": "designs",
+    "path": "/content/issues/designs",
+    "url": "/issues/designs",
     "files": {},
     "pages": {}
   },
