@@ -33,7 +33,7 @@ module.exports = class Textarea extends Nanocomponent {
   }
 
   createElement (props, emit) {
-    this.state = xtend(this.state, props)
+    this.state = xtend(this.state, props.field)
     this.state.value = this.state.value || ''
     this.toolbar = getToolbar(this.state.toolbar)
     this.emit = emit
@@ -64,7 +64,7 @@ module.exports = class Textarea extends Nanocomponent {
   }
 
   update (props) {
-    var value = props.value || ''
+    var value = props.field.value || ''
 
     if (value !== this.state.value) {
       this.state.value = value

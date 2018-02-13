@@ -7,6 +7,10 @@ var style = css`
   :host .value {
     background: linear-gradient(to right, #ddd calc(var(--value)*1%), #fff 0%)
   }
+
+  :host input[type="range"] {
+    cursor: ew-resize;
+  }
 `
 
 module.exports = class Range extends Nanocomponent {
@@ -20,8 +24,8 @@ module.exports = class Range extends Nanocomponent {
   }
 
   createElement (props, emit) {
-    this.state = xtend(this.state, props)
-    this.state.value = props.value || 0
+    this.state = xtend(this.state, props.field)
+    this.state.value = props.field.value || 0
 
     return html`
       <div class="${style}" style="--value: ${this.state.value}">
@@ -46,7 +50,7 @@ module.exports = class Range extends Nanocomponent {
           </div>
           <input
             type="text"
-            class="bl1-bg10 ff-mono fs1 px1-5"
+            class="bl1-bg10 ff-mono fs1 px1-5 tac"
             style="width: 6.5rem; outline: 0;"
             value="${this.state.value}"
           />

@@ -76,7 +76,7 @@ module.exports = class Tags extends Nanocomponent {
 
   createElement (props, emit) {
     var self = this
-    this.state = xtend(this.state, props)
+    this.state = xtend(this.state, props.field)
 
     return html`
       <div class="${style}">
@@ -99,7 +99,7 @@ module.exports = class Tags extends Nanocomponent {
   }
 
   update (props) {
-    var value = props.value || ''
+    var value = props.field.value || ''
     if (value !== this.state.value) {
       var el = this.element.querySelector('.tags-input')
       this.state.value = value

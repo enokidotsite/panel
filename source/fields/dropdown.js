@@ -1,24 +1,28 @@
-var html = require('choo/html')
-var objectKeys = require('object-keys')
 var Nanocomponent = require('nanocomponent')
+var objectKeys = require('object-keys')
+var html = require('choo/html')
+var xtend = require('xtend')
 
 module.exports = class Dropdown extends Nanocomponent {
   constructor () {
     super()
+    this.state = {
+      value: {
+        selected:  '',
+        options: { }
+      }
+    }
   }
 
-  createElement (state, emit) {
+  createElement (props, emit) {
     var self = this
-    this.key = state.key
-    this.value = state.value || { }
-    this.value.selected = this.value.selected || ''
-    this.value.options = this.value.options || { }
+    this.state = xtend(this.state, props.field)
 
     return html`
       <div>
         <div class="select">
           <select
-            name="${state.key}"
+            name="${this.state.key}"
             class="c12"
             type="tags"
             onchange=${onInput}
@@ -28,13 +32,13 @@ module.exports = class Dropdown extends Nanocomponent {
     `
 
     function options () {
-      return objectKeys(self.value.options).map(function (option) {
+      return objectKeys(self.state.value.options).map(function (option) {
         return html`
           <option
             value="${option}"
-            ${self.value.selected === option ? 'selected' : ''}
+            ${self.state.value.selected === option ? 'selected' : ''}
           >
-            ${self.value.options[option].title || option}
+            ${self.state.value.options[option].title || option}
           </option>
         `
       })
@@ -46,7 +50,7 @@ module.exports = class Dropdown extends Nanocomponent {
   }
 
   update (props) {
-    if (props.value && props.value.selected !== this.value.selected) {
+    if (props.field.value && props.field.value.selected !== this.state.value.selected) {
       this.value.selected = props.value.selected
     }
     return true

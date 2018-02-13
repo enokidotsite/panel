@@ -20,14 +20,10 @@ function Field (props, emit) {
   // field width
   var width = props.field.width === '1/2' ? 'c6' : 'c12'
 
-  // extend the field with page and site
-  props.field.site = props.site
-  props.field.page = props.page
-
   // public
   return html`
     <div class="${width} p1">
-      ${wrapper(props.field, emit)}
+      ${wrapper(props, emit)}
     </div>
   `
 
@@ -41,13 +37,13 @@ function Field (props, emit) {
 
   // wrap the field in a cache for nanocomponent
   function wrapper (props, emit) {
-    if (!cache[props.id]) cache[props.id] = new input()
-    var hasState = typeof cache[props.id].state === 'object'
-    var hasLabel = hasState && cache[props.id].wrapperLabel !== false
+    if (!cache[props.field.id]) cache[props.field.id] = new input()
+    var hasState = typeof cache[props.field.id].state === 'object'
+    var hasLabel = hasState && cache[props.field.id].wrapperLabel !== false
 
     return [
       hasLabel ? label() : '',
-      cache[props.id].render(props, emit)
+      cache[props.field.id].render(props, emit)
     ]
   }
 }
