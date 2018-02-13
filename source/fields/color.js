@@ -34,14 +34,14 @@ module.exports = class Color extends Nanocomponent {
     var self = this
 
     this.colorPicker = new ColorPicker({
-      color: this.state.value,
+      color: this.state.value.toLowerCase(),
       el: element,
       width: 200,
       height: 200
     })
 
     this.colorPicker.onChange(function (data) {
-      self.onInput({ target: { value: data }})
+      self.onInput({ target: { value: data.toLowerCase() }})
     })
 
     this.colorPicker.$el.style.display = 'none'
@@ -76,7 +76,10 @@ module.exports = class Color extends Nanocomponent {
   }
 
   onInput (event) {
-    this.emit({ value: event.target.value })
+    var value = event.target.value.toLowerCase()
+    if (this.state.value !== value) {
+      this.emit({ value: value })
+    }
   }
 
   onFocus (event) {
@@ -91,9 +94,9 @@ module.exports = class Color extends Nanocomponent {
     this.state = xtend(this.state, props)
 
     if (this.colorPicker) {
-      this.colorPicker.setColor(props.value)
+      this.colorPicker.setColor(props.value.toLowerCase())
     }
 
-    return true
+    return this.state.value !== props.value
   }
 }
