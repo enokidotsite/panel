@@ -12,3 +12,5 @@ tags:
 checkbox: true
 ----
 color: #fffb00
+----
+range: 33
