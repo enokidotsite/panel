@@ -11,7 +11,7 @@ module.exports = class Text extends Nanocomponent {
   }
 
   createElement (props, emit) {
-    this.state = xtend(this.state, props)
+    this.state = xtend(this.state, props.field)
     this.state.value = this.state.value || ''
 
     return html`
@@ -22,6 +22,7 @@ module.exports = class Text extends Nanocomponent {
           type="text"
           value="${this.state.value}"
           oninput=${onInput}
+          ${this.state.required ? 'required' : ''}
         />
       </div>
     `
@@ -32,7 +33,8 @@ module.exports = class Text extends Nanocomponent {
   }
 
   update (props) {
-    this.state.value = props.value || ''
+    this.state = xtend(this.state, props.field)
+    this.state.value = props.field.value || ''
     return true
   }
 }

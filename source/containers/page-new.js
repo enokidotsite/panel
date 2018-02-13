@@ -15,10 +15,18 @@ function wrapper () {
 }
 
 class PageNew extends Nanocomponent {
-  super () {
+  constructor () {
+    super()
     this.id = 'pageAdd'
     this.customUri = false
-    this.super()
+
+    this.state = {
+
+    }
+
+    this.handleTitle = this.handleTitle.bind(this)
+    this.handleView = this.handleView.bind(this)
+    this.handleUri = this.handleUri.bind(this)
   }
 
   createElement (state, emit) {
@@ -53,46 +61,54 @@ class PageNew extends Nanocomponent {
   }
 
   elTitle () {
+    var titleProps = {
+      field: {
+        id: 'pageAdd',
+        key: 'title',
+        value: this.value.title || ''
+      }
+    }
     return html`
       <div class="p1">
         <div class="c12 fwb usn fs0-8 ttu fc-bg25 mb1">
           Title
         </div>
-        ${Title.render(
-          { id: 'pageAdd', key: 'title', value: this.value.title || '' },
-          this.handleTitle.bind(this)
-        )}
+        ${Title.render(titleProps, this.handleTitle)}
       </div>
     `
   }
 
   elView () {
+    var viewProps = {
+      field: {
+        key: 'dropdown',
+        value: {
+          options: this.views,
+          selected: this.value.view
+        }
+      }
+    }
+
     return html`
       <div class="p1">
         <div class="c12 fwb usn fs0-8 ttu fc-bg25 mb1">
           View
         </div>
-        ${View.render({
-          key: 'dropdown',
-          value: {
-            options: this.views,
-            selected: this.value.view
-          }
-        }, this.handleView.bind(this))}
+        ${View.render(viewProps, this.handleView)}
       </div>
     `
   }
 
   elUri () {
+    var uriProps = {
+      field: { id: 'pageAdd', key: 'uri', value: this.value.uri || '' }
+    }
     return html`
       <div class="p1">
         <div class="c12 fwb usn fs0-8 ttu fc-bg25 mb1">
           Pathname
         </div>
-        ${Uri.render(
-          { id: 'pageAdd', key: 'uri', value: this.value.uri || '' },
-          this.handleUri.bind(this)
-        )}
+        ${Uri.render(uriProps, this.handleUri)}
       </div>
     `
   }

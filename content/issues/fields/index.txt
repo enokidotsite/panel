@@ -9,14 +9,15 @@ Currently, fields are a bit sloppy. Some immediate improvements.
 - [x] Store everything within an internal `state` object
 - [X] Output a single object to `emit` containing `.value`
 - [ ] Autoscroll textarea when at bottom
+- [ ] Add html5 validation
 
 ## New fields
 
 - [X] Checkbox
-- [ ] Range
+- [X] Range
 - [ ] Radio selector
 - [ ] Structured data
-- [ ] Color
+- [x] Color
 - [ ] Help (description sort of thing)
 ----
 tags:

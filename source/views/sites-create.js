@@ -33,7 +33,6 @@ function SitesCreate (state, emit) {
         <div class="c12 sm-c6">
           <div class="c12 px1 x xjb pt3 usn fs0-8 ttu fc-bg25">
             <div class="fwb">Design</div>
-            <div>More on the way</div>
           </div>
           <div class="c12 x xw">
             ${designs.map(function (design) {
@@ -83,7 +82,7 @@ function SitesCreate (state, emit) {
 function renderDesign (props) {
   return html`
     <div class="c6 p1" onclick=${handleSelect}>
-      <div class="br2 ${props.active ? 'b2-fg' : 'b1-bg10'} curp oh">
+      <div class="br2 ${props.active ? 'focused' : ''} b1-bg10 curp oh">
         <img src="${props.thumbnail}" class="db">
       </div>
       <div class="py1 fs0-8 ttu">

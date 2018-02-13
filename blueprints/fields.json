@@ -6,18 +6,31 @@
       "label": "Title",
       "type": "text"
     },
-    "tags": {
-      "label": "Tags",
-      "type": "tags"
+    "text": {
+      "label": "Text",
+      "type": "textarea"
     },
     "checkbox": {
       "label": "Checkbox",
       "text": "Descriptive text",
-      "type": "checkbox"
+      "type": "checkbox",
+      "width": "1/2"
     },
-    "text": {
-      "label": "Text",
-      "type": "textarea"
+    "color": {
+      "label": "Color",
+      "text": "Descriptive text",
+      "type": "color",
+      "width": "1/2"
+    },
+    "tags": {
+      "label": "Tags",
+      "type": "tags"
+    },
+    "range": {
+      "label": "Range",
+      "text": "Descriptive text",
+      "type": "range",
+      "start": 20
     }
   }
 }
