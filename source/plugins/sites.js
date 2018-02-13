@@ -92,7 +92,7 @@ function sites (state, emitter, app) {
         redirect: true
       })
     } catch (err) {
-      console.warn(err)
+      throw err
     }
   }
 
@@ -106,8 +106,8 @@ function sites (state, emitter, app) {
       emitter.emit(state.events.SITE_LOAD, { url: archive.url, redirect: true })
     } catch (err) {
       state.sites.error = err.message
-      console.warn(err)
       emitter.emit(state.events.RENDER)
+      throw err
     }
   }
 
@@ -150,10 +150,10 @@ function sites (state, emitter, app) {
         archiveInfo.error = err.message
       }
       state.sites.error = err.message
-      console.warn(err)
       state.sites.loaded = true
       emitter.emit(state.events.PANEL_LOADING, { loading: false })
       emitter.emit(state.events.RENDER)
+      throw err
     }
   }
 

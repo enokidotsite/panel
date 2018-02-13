@@ -22,6 +22,7 @@ module.exports = class Text extends Nanocomponent {
           type="text"
           value="${this.state.value}"
           oninput=${onInput}
+          ${this.state.required ? 'required' : ''}
         />
       </div>
     `

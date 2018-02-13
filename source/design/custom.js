@@ -211,6 +211,10 @@ function inputs () {
     button { outline: 0 }
     button:focus { outline: 0 }
 
+    .focused {
+      box-shadow: 0 0 0 2px #ddd;
+    }
+
     .button-large {
       user-select: none;
       line-height: 6rem;

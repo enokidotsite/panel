@@ -3,12 +3,14 @@
   "fields": {
     "title": {
       "label": "Title",
-      "type":  "text"
+      "type":  "text",
+      "required": true
     },
     "description": {
       "label": "Description",
       "type":  "textarea",
-      "toolbar": false
+      "toolbar": false,
+      "required": true
     }
   }
 }
