@@ -8,7 +8,6 @@ var path = require('path')
 // components
 var ActionBar = require('../components/actionbar')
 var Breadcrumbs = require('../components/breadcrumbs')
-var Sidebar = require('../components/sidebar')
 var Split = require('../components/split')
 var Publish = require('../components/publish')
 
@@ -94,21 +93,6 @@ function view (state, emit) {
     `
   }
 
-  function sidebar () {
-    return Sidebar({
-      site: state.site,
-      page: state.page,
-      content: state.content,
-      query: state.query,
-      uploadActive: state.ui.dragActive,
-      pagesActive: !(blueprint.pages === false),
-      filesActive: !(blueprint.files === false),
-      handleFiles: handleFilesUpload,
-      handleRemovePage: handleRemovePage,
-      handleFilesUpload: handleFilesUpload
-    }, emit)
-  }
-
   // TODO: clean this up
   function content () {
     if (!state.sites.p2p && state.sites.loaded) {
@@ -130,7 +114,7 @@ function view (state, emit) {
       // files
       return [
         PageHeader(),
-        Split(sidebar(), [FileNew(state, emit), Page()])
+        [FileNew(state, emit), Page()]
       ]
     }
 
@@ -146,7 +130,7 @@ function view (state, emit) {
       // create page
       return [
         PageHeader(),
-        Split(sidebar(), [PageNew(state, emit), Page()])
+        [PageNew(state, emit), Page()]
       ]
     }
 
@@ -158,18 +142,19 @@ function view (state, emit) {
     return [
       // default fields
       PageHeader(),
-      Split(sidebar(), Page())
+      Page()
     ]
   }
 
   function Page () {
     return html`
       <div id="content-page" class="x xdc c12" style="padding-bottom: 7rem">
-        <form class="x xw x1" onsubmit=${handleSavePage}>
+        <form class="x xw p2 x1" onsubmit=${handleSavePage}>
           ${Fields({
             handleFieldUpdate: handleFieldUpdate,
             content: state.content,
             blueprint: blueprint,
+            query: state.query,
             values: state.page,
             draft: draftPage,
             site: state.site,

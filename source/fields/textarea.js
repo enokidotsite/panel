@@ -28,7 +28,7 @@ module.exports = class Textarea extends Nanocomponent {
       toolbar: ''
     }
 
-    this.wrapperLabel = false
+    this.label = false
     this.toolbar = { }
   }
 

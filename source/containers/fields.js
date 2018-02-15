@@ -12,12 +12,13 @@ function Fields (props) {
   props.blueprint = props.blueprint || blueprintDefault
   props.blueprint.layout = props.blueprint.layout || blueprintDefault.layout
   props.blueprint.fields = props.blueprint.fields || blueprintDefault.fields
-  props.draft = props.draft || { }
-  props.fields = props.fields || { }
   props.content = props.content || { }
+  props.values = props.values || { }
+  props.fields = props.fields || { }
+  props.draft = props.draft || { }
+  props.query = props.query || { }
   props.site = props.site || { }
   props.page = props.page || { }
-  props.values = props.values || { }
 
   props.handleFieldUpdate = (props.handleFieldUpdate === undefined)
     ? function () { }
@@ -31,7 +32,7 @@ function Fields (props) {
     var fields = getFields()
 
     return html`
-      <div class="psr ${width}">
+      <div class="psr p1 ${width}">
         <div class="x xw w100 ${column.sticky ? 'psst t0-75' : ''}">
           ${fields}
         </div>
