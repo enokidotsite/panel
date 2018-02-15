@@ -95,16 +95,6 @@
       }
     }
   },
-  "/log": {
-    "title": "Log",
-    "view": "log",
-    "text": "## 0.1.0\n\n- New checkbox field\n- New color field\n- New range field\n- Simplified how data is passed to fields from fieldsets, enabling the migration of the from the existing fixed format to a display field convention.\n- Added support for selecting a design when creating a site.\n- Created the new **System** design, the most basic functional design.",
-    "name": "log",
-    "path": "/content/log",
-    "url": "/log",
-    "files": {},
-    "pages": {}
-  },
   "/docs/fields": {
     "title": "Fields",
     "view": "fields",
@@ -119,6 +109,16 @@
     "name": "fields",
     "path": "/content/docs/fields",
     "url": "/docs/fields",
+    "files": {},
+    "pages": {}
+  },
+  "/log": {
+    "title": "Log",
+    "view": "log",
+    "text": "## 0.1.0\n\n- New checkbox field\n- New color field\n- New range field\n- Simplified how data is passed to fields from fieldsets, enabling the migration of the from the existing fixed format to a display field convention.\n- Added support for selecting a design when creating a site.\n- Created the new **System** design, the most basic functional design.",
+    "name": "log",
+    "path": "/content/log",
+    "url": "/log",
     "files": {},
     "pages": {}
   },
@@ -152,7 +152,7 @@
   "/issues/fields": {
     "title": "Fields",
     "view": "issue",
-    "text": "## Cleanup\n\nCurrently, fields are a bit sloppy. Some immediate improvements.\n\n- [x] Store everything within an internal `state` object\n- [X] Output a single object to `emit` containing `.value`\n- [ ] Autoscroll textarea when at bottom\n- [ ] Add html5 validation\n\n## New fields\n\n- [X] Checkbox\n- [X] Range\n- [ ] Radio selector\n- [ ] Structured data\n- [x] Color\n- [ ] Help (description sort of thing)",
+    "text": "## Cleanup\n\nCurrently, fields are a bit sloppy. Some immediate improvements.\n\n- [x] Store everything within an internal `state` object\n- [X] Output a single object to `emit` containing `.value`\n- [ ] Autoscroll textarea when at bottom\n- [ ] Wrap fieldset in `<form>`\n- [ ] Convert change to `button[type=\"submit\"]`\n- [ ] Add html5 validation\n\n## New fields\n\n- [X] Checkbox\n- [X] Range\n- [ ] Radio selector\n- [ ] Structured data\n- [x] Color\n- [ ] Help (description sort of thing)",
     "tags": [
       "1.0.0",
       "todo"
@@ -215,20 +215,6 @@
     "files": {},
     "pages": {}
   },
-  "/issues/sites": {
-    "title": "Sites",
-    "view": "issue",
-    "tags": [
-      "todo",
-      "1.0.1"
-    ],
-    "text": "## Todo\n\n- [x] Settings → Remove\n- [ ] Settings → HTTP fallback\n- [ ] Reordering\n- [ ] Persist across domains (ditch localstorage?)\n\n## Ideas\n\n- Some sort of p2p stats, such as how many peers, etc…\n- A simple way of deploying to a service like Hashbase",
-    "name": "sites",
-    "path": "/content/issues/sites",
-    "url": "/issues/sites",
-    "files": {},
-    "pages": {}
-  },
   "/": {
     "title": "Hub",
     "text:": "",
@@ -268,5 +254,19 @@
         "source": "/content/log"
       }
     }
+  },
+  "/issues/sites": {
+    "title": "Sites",
+    "view": "issue",
+    "tags": [
+      "todo",
+      "1.0.1"
+    ],
+    "text": "## Todo\n\n- [x] Settings → Remove\n- [ ] Settings → HTTP fallback\n- [ ] Reordering\n- [ ] Persist across domains (ditch localstorage?)\n\n## Ideas\n\n- Some sort of p2p stats, such as how many peers, etc…\n- A simple way of deploying to a service like Hashbase",
+    "name": "sites",
+    "path": "/content/issues/sites",
+    "url": "/issues/sites",
+    "files": {},
+    "pages": {}
   }
 }
