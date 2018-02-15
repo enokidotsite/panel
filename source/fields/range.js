@@ -11,6 +11,16 @@ var style = css`
   :host input[type="range"] {
     cursor: ew-resize;
   }
+
+  :host input[type=number]::-webkit-inner-spin-button, 
+  :host input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    margin: 0; /* Removes leftover margin */
+  }
+
+  :host input[type="number"] {
+    -moz-appearance: textfield;
+  }
 `
 
 module.exports = class Range extends Nanocomponent {
@@ -60,10 +70,12 @@ module.exports = class Range extends Nanocomponent {
             ></div>
           </div>
           <input
-            type="text"
+            type="number"
             class="bl1-bg10 ff-mono fs1 px1-5 tac"
             style="width: 6.5rem; outline: 0;"
             value="${this.state.value}"
+            min="${this.state.min}"
+            max="${this.state.max}"
             onfocus=${this.onFocus}
             onBlur=${this.onBlur}
             oninput=${this.onInput}
