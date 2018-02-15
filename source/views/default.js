@@ -167,11 +167,13 @@ function view (state, emit) {
       <div id="content-page" class="x xdc c12" style="padding-bottom: 7rem">
         <form class="x xw x1" onsubmit=${handleSavePage}>
           ${Fields({
+            handleFieldUpdate: handleFieldUpdate,
+            content: state.content,
             blueprint: blueprint,
-            draft: draftPage,
-            page: state.page,
             values: state.page,
-            handleFieldUpdate: handleFieldUpdate
+            draft: draftPage,
+            site: state.site,
+            page: state.page
           })}
           <div class="psf b0 l0 r0 p1 pen z2">
             ${ActionBar({

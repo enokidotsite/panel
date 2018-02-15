@@ -14,6 +14,7 @@ function Fields (props) {
   props.blueprint.fields = props.blueprint.fields || blueprintDefault.fields
   props.draft = props.draft || { }
   props.fields = props.fields || { }
+  props.content = props.content || { }
   props.site = props.site || { }
   props.page = props.page || { }
   props.values = props.values || { }
@@ -80,6 +81,7 @@ function Fields (props) {
 
     return Field({
       page: props.page,
+      content: props.content,
       site: props.site,
       fields: props.fields,
       field: mergeDraftandState()
