@@ -31,6 +31,7 @@ module.exports = class Checkbox extends Nanocomponent {
 
   createElement (props, emit) {
     this.state = xtend(this.state, props.field)
+    this.state.value = props.field.value || false
     this.emit = emit
 
     return html`
@@ -57,7 +58,6 @@ module.exports = class Checkbox extends Nanocomponent {
   }
 
   update (props) {
-    this.state.value = props.field.value || false
     return true
   }
 }

@@ -100,7 +100,6 @@ module.exports = class Color extends Nanocomponent {
 
   update (props, emit) {
     var shouldUpdate = this.state.value !== props.field.value
-    this.state = xtend(this.state, props.field)
 
     if (this.colorPicker) {
       this.colorPicker.setColor(props.field.value.toLowerCase())
