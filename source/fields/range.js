@@ -19,13 +19,24 @@ module.exports = class Range extends Nanocomponent {
     this.state = {
       min: 0,
       max: 100,
-      value: 0
+      value: 0,
+      focused: false
     }
+
+    this.onInput = this.onInput.bind(this)
+    this.onFocus = this.onFocus.bind(this)
+    this.onBlur = this.onBlur.bind(this)
   }
 
   createElement (props, emit) {
     this.state = xtend(this.state, props.field)
-    this.state.value = props.field.value || 0
+    this.emit = emit
+
+    if (this.state.focused) {
+      this.state.value = props.field.value
+    } else {
+      this.state.value = props.field.value || 0
+    }
 
     return html`
       <div class="${style}" style="--value: ${this.state.value}">
@@ -41,7 +52,7 @@ module.exports = class Range extends Nanocomponent {
               min="${this.state.min}"
               max="${this.state.max}"
               value="${this.state.value}"
-              oninput=${onInput}
+              oninput=${this.onInput}
             />
             <div
               style="height: 4rem;"
@@ -53,14 +64,30 @@ module.exports = class Range extends Nanocomponent {
             class="bl1-bg10 ff-mono fs1 px1-5 tac"
             style="width: 6.5rem; outline: 0;"
             value="${this.state.value}"
+            onfocus=${this.onFocus}
+            onBlur=${this.onBlur}
+            oninput=${this.onInput}
           />
         </div>
       </div>
     `
 
-    function onInput (event) {
-      emit({ value: event.target.value })
-    }
+  }
+
+  onInput (event) {
+    var value = event.target.value
+    if (isNaN(value)) value = min
+    if (value > this.state.max) value = this.state.max
+    if (value < this.state.min) value = this.state.min
+    this.emit({ value: event.target.value })
+  }
+
+  onFocus (event) {
+    this.state.focused = true
+  }
+
+  onBlur (event) {
+    this.state.focused = true
   }
 
   update (props) {
