@@ -17,6 +17,7 @@ module.exports = class Dropdown extends Nanocomponent {
   createElement (props, emit) {
     var self = this
     this.state = xtend(this.state, props.field)
+    this.oninput = props.oninput
 
     return html`
       <div>
@@ -45,7 +46,7 @@ module.exports = class Dropdown extends Nanocomponent {
     }
 
     function onInput (event) {
-      emit('change', event.target.value)
+      props.oninput('change', event.target.value)
     }
   }
 

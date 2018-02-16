@@ -1,0 +1,15 @@
+{
+  "title": "Home",
+  "layout": {
+    "all": {
+      "fields": ["pages"],
+      "width": "1/1"
+    }
+  },
+  "fields": {
+    "pages": {
+      "label": "Pages",
+      "type": "pages"
+    }
+  }
+}

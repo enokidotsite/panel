@@ -9,6 +9,8 @@ function Field (props, emit) {
   props = props || { }
   props.field = props.field || { }
   props.fields = props.fields || { }
+  props.content = props.content || { }
+  props.query = props.query || { }
   props.page = props.page || { }
   props.site = props.site || { }
 
@@ -39,7 +41,7 @@ function Field (props, emit) {
   function wrapper (props, emit) {
     if (!cache[props.field.id]) cache[props.field.id] = new input()
     var hasState = typeof cache[props.field.id].state === 'object'
-    var hasLabel = hasState && cache[props.field.id].wrapperLabel !== false
+    var hasLabel = cache[props.field.id].label !== false
 
     return [
       hasLabel ? label() : '',

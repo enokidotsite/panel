@@ -4,8 +4,11 @@ view: log
 ----
 text: ## 0.1.0
 
-- Simplified how data is passed to fields from fieldsets
 - New checkbox field
 - New color field
-- Added support for selecting a design when creating a site
-- Created the new **System** design, the most basic functional design
+- New range field
+- Simplified how data is passed to fields from fieldsets, enabling the migration of the from the existing fixed format to a display field convention.
+- Added `layouts` to blueprints, enabling positioning of fields.
+- Added display fields (pages/files)
+- Added support for selecting a design when creating a site.
+- Created the new **System** design, the most basic functional design.

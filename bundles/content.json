@@ -1,41 +1,4 @@
 {
-  "/docs": {
-    "title": "Docs",
-    "view": "docs",
-    "text": "## Alpha Release\n\nYou’re here early—everything is extremely unstable. Consider this a modestly functional sketch. A starting point with clear limitations, leaning on existing and familiar convention to form a foundation for spanning the gap between here and there.\n\nHow do we save the future? With another CMS, of course.\n\nHoping you find this immediately useful as a basic tool for creating experimental personal sites in the short term.\n\n## Features\n\n- **No database**: there is only a filesystem\n- **Data ownership**: your data remains with you\n- **Offline accessible**: manage your site without a connection\n- **Hackable**: fork the panel and sites to customize as you see fit\n- **Extendable**: easily define custom fieldsets with blueprints\n- **Free**: publish to the web for free without any intermediaries\n- **Fun**: uses [Choo](https://choo.io) as a front-end framework\n\n## Philosophy\n\nYou are your data, your data is you. You should own your tools, your tools should not own you. Culture wants to be free. Platforms are dead. Universal knowledge for everyone.\n\n## Getting Started\n\nEnoki is an ultralight set of tools for publishing on the decentralized web. Simply open [Beaker Browser](https://beakerbrowser.com) and navigate to [https://panel.enoki.site](https://panel.enoki.site).\n\n## Sites\n\nCreating a site is as simple as navigating to **Sites** → **Create a New Site**. Choose a design, enter some basic information, and authorize Beaker to fork the design. Your site is now loaded into Enoki and will remain accessible in the **Sites** area.\n\nSay you manually created an Archive with Beaker, or forked a site some other way. Simply click **Load an Existing Site** and select your Archive. Note that you must be the owner of the Archive, and it must contain a `/content` directory.\n\n## Editor\n\nThe **Editor** is where you make edits to your Site’s content.\n\n### Pages\n\nTo create a new page navigate to **Editor** → **Pages** → **Create**. When creating a page you’ll see a few options.\n\n- **Title** is self explanatory.\n- **Pathname** is the `/what-you-see-in-the-url`.\n- **View** defines how the content is displayed on your Site, and what fields you see in the Panel.\n\n### Coming soon\n\n- Change page location after creation\n- Adjust view after creation\n\n## Files\n\nFiles are pretty dumb at the moment.\n\n## Blueprints\n\nWhen viewing Pages and Files in the Panel you’re presented with a set of fields representing the content. What fields should appear are defined by creating **Blueprints**. \n\nFor now, take a look at a blueprint associated with one of the Designs. It’s pretty self-explanatory.\n\n## Customization and Development\n\nThis version of Enoki is highly experimental! Certain things are going to change quite quickly, so please tread lightly.\n\n### Front-end\n\nEnoki uses [Choo](https://choo.io) as a front-end framework. It’s like React, but fun. Fork the Panel or any Design, then navigate to `/source` and run `npm install` and `npm start`. Working to document this better, but should give you a starting point.\n\n### Fields\n\nFields are constructed using [`nanocomponent`](https://github.com/choojs/nanocomponent). For now, take a look at a simple field such as `text`. For a more advanced example which depends on a 3rd party library, look at `textarea`.\n\n### Idiosyncrasies\n\n- Shit is messy right now, please watch your step.\n- When creating a View, be sure to add it to `/views/index.js`.\n- Also be sure to create a Blueprint so the correct fields appear in the Panel.",
-    "name": "docs",
-    "path": "/content/docs",
-    "url": "/docs",
-    "files": {},
-    "pages": {
-      "fields": {
-        "name": "fields",
-        "path": "/content/docs/fields",
-        "url": "/docs/fields",
-        "source": "/content/docs/fields"
-      }
-    }
-  },
-  "/faq": {
-    "title": "FAQ",
-    "view": "faq",
-    "text": "## Who is this for?\n\nCurrently, for people who probably spend most of their time making websites to learn more about the peer-to-peer web. In the future? Hmm…\n\n## What about access over HTTP?\n\nYeah, this is important. For now, Enoki uses Beaker’s web API to read your site’s Dat archive into one big javascript object. This object loaded into Choo’s state.\n\nOne way to do this is to write `state.content` to a JSON file saving from the Panel. Then, depending upon dat/http use the web API or request the JSON file. Actually, this happens now, it’s just not documented as there are interesting things which could be done by reading multiple archives into a site, and writing to static JSON prevents that from happening.\n\nAnyway, with that static JSON in place you can use a service like [Hashbase](https://hashbase.io) to persistently sync your app. Just copy the `dat://` url of your site to Hashbase. Alternatively, install [`dathttpd`](https://github.com/beakerbrowser/dathttpd) on your own server.\n\n## This looks like a wireframe\n\nYeah, it sort of is a functional wireframe—a representation of the expected basics for a CMS today. Consider it a starting point meant to progressively evolve into an interface for peer-to-peer publishing as we collectively develop the language.\n\n## My Sites sometime dissapear\n\nThis is because sites are currently using localstorage, which associates data with domain. If you load a site at `https://panel.enoki.site`, it will not appear in the Sites section when at `dat://panel.enoki.site`. This will be resolved in the future.\n\n## Shouldn’t this output static HTML for pre-rendered routes?\n\nYeah, this would be great. Found a few difficult questions about how to do this without cluttering up the content directory with a bunch of `index.html` files.\n\n## How does pagination work?\n\nEnoki currently reads your entire `/content` directory into one big object. For smaller sites, this is fine. For larger sites, that can become an issue. For now, just manually fake paginate by converting an object of content into an array, then using array methods.\n\n## What about image resizing?\n\nThis will probably be handled with Canvas in the future. Nothing yet.\n\n## I want _______________\n\nYeah, chances are this has been thought about. Honestly, there are so many solid and mature CMS solutions that can output static sites. Just use one of those and publish the contents inside a Dat Archive if your’re looking for all the classic stuff. This project is looking to expand upon much more than just making sites.",
-    "name": "faq",
-    "path": "/content/faq",
-    "url": "/faq",
-    "files": {},
-    "pages": {}
-  },
-  "/community": {
-    "title": "Community",
-    "view": "community",
-    "text": "Coming soon",
-    "name": "community",
-    "path": "/content/community",
-    "url": "/community",
-    "files": {},
-    "pages": {}
-  },
   "/issues": {
     "title": "Issues",
     "view": "issues",
@@ -81,12 +44,6 @@
         "url": "/issues/page-functionality",
         "source": "/content/issues/page-functionality"
       },
-      "panel-layouts": {
-        "name": "panel-layouts",
-        "path": "/content/issues/panel-layouts",
-        "url": "/issues/panel-layouts",
-        "source": "/content/issues/panel-layouts"
-      },
       "sites": {
         "name": "sites",
         "path": "/content/issues/sites",
@@ -98,12 +55,29 @@
   "/log": {
     "title": "Log",
     "view": "log",
-    "text": "## 0.1.0\n\n- Simplified how data is passed to fields from fieldsets\n- New checkbox field\n- New color field\n- Added support for selecting a design when creating a site\n- Created the new **System** design, the most basic functional design",
+    "text": "## 0.1.0\n\n- New checkbox field\n- New color field\n- New range field\n- Simplified how data is passed to fields from fieldsets, enabling the migration of the from the existing fixed format to a display field convention.\n- Added `layouts` to blueprints, enabling positioning of fields.\n- Added display fields (pages/files)\n- Added support for selecting a design when creating a site.\n- Created the new **System** design, the most basic functional design.",
     "name": "log",
     "path": "/content/log",
     "url": "/log",
     "files": {},
     "pages": {}
+  },
+  "/docs": {
+    "title": "Docs",
+    "view": "docs",
+    "text": "## Alpha Release\n\nYou’re here early—everything is extremely unstable. Consider this a modestly functional sketch. A starting point with clear limitations, leaning on existing and familiar convention to form a foundation for spanning the gap between here and there.\n\nHow do we save the future? With another CMS, of course.\n\nHoping you find this immediately useful as a basic tool for creating experimental personal sites in the short term.\n\n## Features\n\n- **No database**: there is only a filesystem\n- **Data ownership**: your data remains with you\n- **Offline accessible**: manage your site without a connection\n- **Hackable**: fork the panel and sites to customize as you see fit\n- **Extendable**: easily define custom fieldsets with blueprints\n- **Free**: publish to the web for free without any intermediaries\n- **Fun**: uses [Choo](https://choo.io) as a front-end framework\n\n## Philosophy\n\nYou are your data, your data is you. You should own your tools, your tools should not own you. Culture wants to be free. Platforms are dead. Universal knowledge for everyone.\n\n## Getting Started\n\nEnoki is an ultralight set of tools for publishing on the decentralized web. Simply open [Beaker Browser](https://beakerbrowser.com) and navigate to [https://panel.enoki.site](https://panel.enoki.site).\n\n## Sites\n\nCreating a site is as simple as navigating to **Sites** → **Create a New Site**. Choose a design, enter some basic information, and authorize Beaker to fork the design. Your site is now loaded into Enoki and will remain accessible in the **Sites** area.\n\nSay you manually created an Archive with Beaker, or forked a site some other way. Simply click **Load an Existing Site** and select your Archive. Note that you must be the owner of the Archive, and it must contain a `/content` directory.\n\n## Editor\n\nThe **Editor** is where you make edits to your Site’s content.\n\n### Pages\n\nTo create a new page navigate to **Editor** → **Pages** → **Create**. When creating a page you’ll see a few options.\n\n- **Title** is self explanatory.\n- **Pathname** is the `/what-you-see-in-the-url`.\n- **View** defines how the content is displayed on your Site, and what fields you see in the Panel.\n\n### Coming soon\n\n- Change page location after creation\n- Adjust view after creation\n\n## Files\n\nFiles are pretty dumb at the moment.\n\n## Blueprints\n\nWhen viewing Pages and Files in the Panel you’re presented with a set of fields representing the content. What fields should appear are defined by creating **Blueprints**. \n\nFor now, take a look at a blueprint associated with one of the Designs. It’s pretty self-explanatory.\n\n## Customization and Development\n\nThis version of Enoki is highly experimental! Certain things are going to change quite quickly, so please tread lightly.\n\n### Front-end\n\nEnoki uses [Choo](https://choo.io) as a front-end framework. It’s like React, but fun. Fork the Panel or any Design, then navigate to `/source` and run `npm install` and `npm start`. Working to document this better, but should give you a starting point.\n\n### Fields\n\nFields are constructed using [`nanocomponent`](https://github.com/choojs/nanocomponent). For now, take a look at a simple field such as `text`. For a more advanced example which depends on a 3rd party library, look at `textarea`.\n\n### Idiosyncrasies\n\n- Shit is messy right now, please watch your step.\n- When creating a View, be sure to add it to `/views/index.js`.\n- Also be sure to create a Blueprint so the correct fields appear in the Panel.",
+    "name": "docs",
+    "path": "/content/docs",
+    "url": "/docs",
+    "files": {},
+    "pages": {
+      "fields": {
+        "name": "fields",
+        "path": "/content/docs/fields",
+        "url": "/docs/fields",
+        "source": "/content/docs/fields"
+      }
+    }
   },
   "/docs/fields": {
     "title": "Fields",
@@ -122,82 +96,23 @@
     "files": {},
     "pages": {}
   },
-  "/issues/cleanup-codebase": {
-    "title": "Cleanup codebase",
-    "view": "issue",
-    "text": "Gotta refactor a little bit, it’s getting messy in here.\n\n- [ ] Switch from gr8 for layout to CSS grid/variables.\n- [ ] Try to make the DOM as representational as possible.\n- [ ] Simple `sheetify` css-in-js for most things.",
-    "tags": [
-      "todo"
-    ],
-    "name": "cleanup-codebase",
-    "path": "/content/issues/cleanup-codebase",
-    "url": "/issues/cleanup-codebase",
+  "/community": {
+    "title": "Community",
+    "view": "community",
+    "text": "Coming soon",
+    "name": "community",
+    "path": "/content/community",
+    "url": "/community",
     "files": {},
     "pages": {}
   },
-  "/issues/fields": {
-    "title": "Fields",
-    "view": "issue",
-    "text": "## Cleanup\n\nCurrently, fields are a bit sloppy. Some immediate improvements.\n\n- [x] Store everything within an internal `state` object\n- [X] Output a single object to `emit` containing `.value`\n- [ ] Autoscroll textarea when at bottom\n- [ ] Add html5 validation\n\n## New fields\n\n- [X] Checkbox\n- [X] Range\n- [ ] Radio selector\n- [ ] Structured data\n- [x] Color\n- [ ] Help (description sort of thing)",
-    "tags": [
-      "1.0.0",
-      "todo"
-    ],
-    "name": "fields",
-    "path": "/content/issues/fields",
-    "url": "/issues/fields",
-    "files": {},
-    "pages": {}
-  },
-  "/issues/inline-editing": {
-    "title": "Inline editing",
-    "view": "issue",
-    "tags": [
-      "idea"
-    ],
-    "text": "Explore implimentation of inline-editing in a design.\n\n- Web API `isOwner` to enable `contenteditable`",
-    "name": "inline-editing",
-    "path": "/content/issues/inline-editing",
-    "url": "/issues/inline-editing",
-    "files": {},
-    "pages": {}
-  },
-  "/issues/library": {
-    "title": "Library",
-    "view": "issue",
-    "text": "Need to clean up some of the boundaries between things.\n\n- [ ] Localization support",
-    "tags": [
-      "todo"
-    ],
-    "name": "library",
-    "path": "/content/issues/library",
-    "url": "/issues/library",
-    "files": {},
-    "pages": {}
-  },
-  "/issues/page-functionality": {
-    "title": "Page functionality",
-    "view": "issue",
-    "text": "Need to improve some management issues with Pages.\n\n- [ ] Move **Delete** into **Settings**, which has similar interface to the Sites settings.\n- [ ] Field for `hidden` toggle\n- [ ] Field for adjusting `view` in Settings.\n- [ ] Field for adjusting `pathname` in Settings.",
-    "tags": [
-      "todo"
-    ],
-    "name": "page-functionality",
-    "path": "/content/issues/page-functionality",
-    "url": "/issues/page-functionality",
-    "files": {},
-    "pages": {}
-  },
-  "/issues/panel-layouts": {
-    "title": "Panel layouts",
-    "view": "issue",
-    "text": "Fields will be both **input** and **display**. An example of an input field is `text` and `textarea`. An an example of a display field is `pages` or `files` in the existing sidebar.\n\nNothing is needed to make display fields possible, however it should be possible to not only place custom fields in the sidebar, but be able to define custom columns an layouts from within blueprints.\n\nFor instance:\n\n```\n{\n  \"title\": \"hi\",\n\t\"layout\": {\n\t\t\"navigation\": {\n\t\t\t\"fields\": ['pages', 'files'],\n\t\t\t\"width\": \"1/3\"\n\t\t},\n\t\t\"fieldset\": {\n\t\t\t\"fields\": ['title', 'text'],\n\t\t\t\"width\": \"2/3\"\n\t\t}\n  },\n\t\"fields\": {\n\t\t\"pages\": {\n\t\t\t\"type\": \"pages\"\n\t\t},\n\t\t\"files\": {\n\t\t\t\"type\": \"files\"\n\t\t},\n\t\t\"title\": {\n\t\t\t\"label\": \"Title\",\n\t\t\t\"type\": \"text\"\n\t\t},\n\t\t\"text\": {\n\t\t\t\"label\": \"Text\",\n\t\t\t\"type\": \"textarea\"\n\t\t}\n\t}\n}\n```\n\n## Features\n\n- `sticky` option for columns to replicate sidebar functionality",
-    "tags": [
-      "todo"
-    ],
-    "name": "panel-layouts",
-    "path": "/content/issues/panel-layouts",
-    "url": "/issues/panel-layouts",
+  "/faq": {
+    "title": "FAQ",
+    "view": "faq",
+    "text": "## Who is this for?\n\nCurrently, for people who probably spend most of their time making websites to learn more about the peer-to-peer web. In the future? Hmm…\n\n## What about access over HTTP?\n\nYeah, this is important. For now, Enoki uses Beaker’s web API to read your site’s Dat archive into one big javascript object. This object loaded into Choo’s state.\n\nOne way to do this is to write `state.content` to a JSON file saving from the Panel. Then, depending upon dat/http use the web API or request the JSON file. Actually, this happens now, it’s just not documented as there are interesting things which could be done by reading multiple archives into a site, and writing to static JSON prevents that from happening.\n\nAnyway, with that static JSON in place you can use a service like [Hashbase](https://hashbase.io) to persistently sync your app. Just copy the `dat://` url of your site to Hashbase. Alternatively, install [`dathttpd`](https://github.com/beakerbrowser/dathttpd) on your own server.\n\n## This looks like a wireframe\n\nYeah, it sort of is a functional wireframe—a representation of the expected basics for a CMS today. Consider it a starting point meant to progressively evolve into an interface for peer-to-peer publishing as we collectively develop the language.\n\n## My Sites sometime dissapear\n\nThis is because sites are currently using localstorage, which associates data with domain. If you load a site at `https://panel.enoki.site`, it will not appear in the Sites section when at `dat://panel.enoki.site`. This will be resolved in the future.\n\n## Shouldn’t this output static HTML for pre-rendered routes?\n\nYeah, this would be great. Found a few difficult questions about how to do this without cluttering up the content directory with a bunch of `index.html` files.\n\n## How does pagination work?\n\nEnoki currently reads your entire `/content` directory into one big object. For smaller sites, this is fine. For larger sites, that can become an issue. For now, just manually fake paginate by converting an object of content into an array, then using array methods.\n\n## What about image resizing?\n\nThis will probably be handled with Canvas in the future. Nothing yet.\n\n## I want _______________\n\nYeah, chances are this has been thought about. Honestly, there are so many solid and mature CMS solutions that can output static sites. Just use one of those and publish the contents inside a Dat Archive if your’re looking for all the classic stuff. This project is looking to expand upon much more than just making sites.",
+    "name": "faq",
+    "path": "/content/faq",
+    "url": "/faq",
     "files": {},
     "pages": {}
   },
@@ -215,6 +130,46 @@
     "files": {},
     "pages": {}
   },
+  "/issues/cleanup-codebase": {
+    "title": "Cleanup codebase",
+    "view": "issue",
+    "text": "Gotta refactor a little bit, it’s getting messy in here.\n\n- [ ] Switch from gr8 for layout to CSS grid/variables.\n- [ ] Try to make the DOM as representational as possible.\n- [ ] Simple `sheetify` css-in-js for most things.\n- [ ] Support imports/require/window\n- [ ] Create a bundle.js which exposes over window\n- [ ] Create a super simple demo using no build system",
+    "tags": [
+      "todo"
+    ],
+    "name": "cleanup-codebase",
+    "path": "/content/issues/cleanup-codebase",
+    "url": "/issues/cleanup-codebase",
+    "files": {},
+    "pages": {}
+  },
+  "/issues/inline-editing": {
+    "title": "Inline editing",
+    "view": "issue",
+    "tags": [
+      "idea"
+    ],
+    "text": "Explore implimentation of inline-editing in a design.\n\n- Web API `isOwner` to enable `contenteditable`",
+    "name": "inline-editing",
+    "path": "/content/issues/inline-editing",
+    "url": "/issues/inline-editing",
+    "files": {},
+    "pages": {}
+  },
+  "/issues/fields": {
+    "title": "Fields",
+    "view": "issue",
+    "text": "## Cleanup\n\nCurrently, fields are a bit sloppy. Some immediate improvements.\n\n- [x] Store everything within an internal `state` object\n- [X] Output a single object to `emit` containing `.value`\n- [ ] Autoscroll textarea when at bottom\n- [ ] Wrap fieldset in `<form>`\n- [ ] Convert change to `button[type=\"submit\"]`\n- [ ] Add html5 validation\n\n## New fields\n\n- [X] Checkbox\n- [X] Range\n- [ ] Radio selector\n- [ ] Structured data\n- [x] Color\n- [ ] Help (description sort of thing)",
+    "tags": [
+      "1.0.0",
+      "todo"
+    ],
+    "name": "fields",
+    "path": "/content/issues/fields",
+    "url": "/issues/fields",
+    "files": {},
+    "pages": {}
+  },
   "/issues/sites": {
     "title": "Sites",
     "view": "issue",
@@ -229,8 +184,22 @@
     "files": {},
     "pages": {}
   },
+  "/issues/library": {
+    "title": "Library",
+    "view": "issue",
+    "text": "Need to clean up some of the boundaries between things.\n\n- [ ] Localization support",
+    "tags": [
+      "todo"
+    ],
+    "name": "library",
+    "path": "/content/issues/library",
+    "url": "/issues/library",
+    "files": {},
+    "pages": {}
+  },
   "/": {
     "title": "Hub",
+    "view": "home",
     "text:": "",
     "name": "content",
     "path": "/content",
@@ -268,5 +237,18 @@
         "source": "/content/log"
       }
     }
+  },
+  "/issues/page-functionality": {
+    "title": "Page functionality",
+    "view": "issue",
+    "text": "Need to improve some management issues with Pages.\n\n- [ ] Move **Delete** into **Settings**, which has similar interface to the Sites settings.\n- [ ] Field for `hidden` toggle\n- [ ] Field for adjusting `view` in Settings.\n- [ ] Field for adjusting `pathname` in Settings.",
+    "tags": [
+      "todo"
+    ],
+    "name": "page-functionality",
+    "path": "/content/issues/page-functionality",
+    "url": "/issues/page-functionality",
+    "files": {},
+    "pages": {}
   }
 }

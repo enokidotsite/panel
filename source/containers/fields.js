@@ -3,49 +3,114 @@ var xtend = require('xtend')
 var html = require('choo/html')
 
 var Field = require('../components/field')
+var blueprintDefault = require('../blueprints/default.json')
+
+/**
+ * todo
+ * - create `fields` component for array of fields
+ * - create `page-fields` container for layout logic
+ */
 
 module.exports = Fields
 
-function Fields (props) {
-  props = props || { }
-  props.blueprint = props.blueprint || { }
-  props.blueprint.fields = props.blueprint.fields || { }
-  props.draft = props.draft || { }
-  props.fields = props.fields || { }
-  props.site = props.site || { }
-  props.page = props.page || { }
-  props.values = props.values || { }
+function Fields (state, emit) {
+  state = state || { }
+  state.blueprint = state.blueprint || blueprintDefault
+  state.content = state.content || { }
+  state.values = state.values || { }
+  state.fields = state.fields || { }
+  state.draft = state.draft || { }
+  state.query = state.query || { }
+  state.site = state.site || { }
+  state.page = state.page || { }
 
-  props.handleFieldUpdate = (props.handleFieldUpdate === undefined)
-    ? function () { }
-    : props.handleFieldUpdate
+  // if no layout return unwrapped fields
+  if (state.blueprint.layout === false) {
+    return objectKeys(state.blueprint.fields || { }).map(createField)
+  }
 
-  // TODO: clean this up
-  return objectKeys(props.blueprint.fields).map(function (key) {
-    return Field({
-      page: props.page,
-      site: props.site,
-      fields: props.fields,
-      field: mergeDraftandState()
-    }, handleFieldUpdate)
+  // field and layout fallback
+  state.blueprint.fields = state.blueprint.fields || blueprintDefault.fields
+  state.blueprint.layout = state.blueprint.layout || blueprintDefault.layout
 
-    function mergeDraftandState () {
-      return xtend(props.blueprint.fields[key], {
-        id: props.values.url + ':' + key,
-        key: key,
-        value: (props.draft && props.draft[key] !== undefined)
-          ? props.draft[key]
-          : props.values[key]
-      })
-    }
+  // fields wrapped in layout
+  return objectKeys(state.blueprint.layout).map(function (key) {
+    var column = state.blueprint.layout[key]
+    var widths = { '1/1': 'c12', '1/2': 'c6', '1/3': 'c4', '2/3': 'c8' }
+    var width = widths[column.width || '1/2']
+    var fields = getFields()
 
-    function handleFieldUpdate (data) {
-      if (
-        typeof data === 'object' &&
-        typeof data.value !== 'undefined'
-      ) {
-        props.handleFieldUpdate(key, data.value)
+    return html`
+      <div class="psr p1 c12 sm-${width}">
+        <div class="x xw w100 ${column.sticky ? 'psst t0-75' : ''}">
+          ${fields}
+        </div>
+      </div>
+    `
+
+    function getFields () {
+      // show all unsorted fields
+      if (column.fields === true) {
+        return objectKeys(state.blueprint.fields)
+          .filter(function (key) {
+            // does the field not appear in a column?
+            return objectKeys(state.blueprint.layout)
+              .reduce(function (result, active) {
+                var fields = state.blueprint.layout[active].fields
+                if (result && typeof fields === 'object') {
+                  result = fields.indexOf(key) < 0
+                }
+                return result
+              }, true)
+          })
+          .map(createField)
+      // custom fields
+      } else if (typeof column === 'object') {
+        return column.fields.map(createField)
       }
     }
   })
+
+  function createField (key) {
+    var fieldProps = state.blueprint.fields[key]
+    var defaultProps = blueprintDefault.fields[key]
+
+    if (!fieldProps) {
+      if (
+        !defaultProps ||
+        state.blueprint[key] === false
+      ) {
+        return
+      } else {
+        fieldProps = defaultProps
+      }
+    }
+
+    return Field({
+      content: state.content,
+      events: state.events,
+      fields: state.fields,
+      query: state.query,
+      page: state.page,
+      site: state.site,
+      field: mergeDraftandState(),
+      oninput: oninput
+    }, emit)
+
+    function mergeDraftandState () {
+      return xtend(fieldProps, {
+        id: state.values.url + ':' + key,
+        key: key,
+        value: (state.draft && state.draft[key] !== undefined)
+          ? state.draft[key]
+          : state.values[key]
+      })
+    }
+
+    function oninput (data) {
+      if (typeof data !== 'object') return
+      if (typeof data.value === 'undefined') return
+      state.oninput(key, data.value)
+    }
+  }
 }

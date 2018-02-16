@@ -8,7 +8,6 @@ var path = require('path')
 // components
 var ActionBar = require('../components/actionbar')
 var Breadcrumbs = require('../components/breadcrumbs')
-var Sidebar = require('../components/sidebar')
 var Split = require('../components/split')
 var Publish = require('../components/publish')
 
@@ -59,7 +58,7 @@ function view (state, emit) {
           ${editorActive ? breadcrumbs() : html`<div class="py2 px4">Enoki</div>`}
         </div>
         <div class="x">
-          <div class="bl1-bg10 ${state.sites.active ? '' : 'pen'}">
+          <div class="bl1-bg10 ${state.sites.active ? '' : 'dn'}">
             <a href="/?url=/" class="${editorActive ? 'fc-fg' : 'fc-bg25 fch-fg bb1-bg10'} tfcm db p2">Editor</a>
           </div>
           <div class="bl1-bg10">
@@ -94,21 +93,6 @@ function view (state, emit) {
     `
   }
 
-  function sidebar () {
-    return Sidebar({
-      site: state.site,
-      page: state.page,
-      content: state.content,
-      query: state.query,
-      uploadActive: state.ui.dragActive,
-      pagesActive: !(blueprint.pages === false),
-      filesActive: !(blueprint.files === false),
-      handleFiles: handleFilesUpload,
-      handleRemovePage: handleRemovePage,
-      handleFilesUpload: handleFilesUpload
-    }, emit)
-  }
-
   // TODO: clean this up
   function content () {
     if (!state.sites.p2p && state.sites.loaded) {
@@ -130,7 +114,7 @@ function view (state, emit) {
       // files
       return [
         PageHeader(),
-        Split(sidebar(), [FileNew(state, emit), Page()])
+        [FileNew(state, emit), Page()]
       ]
     }
 
@@ -146,7 +130,7 @@ function view (state, emit) {
       // create page
       return [
         PageHeader(),
-        Split(sidebar(), [PageNew(state, emit), Page()])
+        [PageNew(state, emit), Page()]
       ]
     }
 
@@ -158,35 +142,34 @@ function view (state, emit) {
     return [
       // default fields
       PageHeader(),
-      Split(sidebar(), Page())
+      Page()
     ]
   }
 
   function Page () {
     return html`
       <div id="content-page" class="x xdc c12" style="padding-bottom: 7rem">
-        <div class="x1">
-          <div class="x xw">
-            ${Fields({
-              blueprint: blueprint,
-              draft: draftPage,
-              page: state.page,
-              values: state.page,
-              handleFieldUpdate: handleFieldUpdate
+        <form class="x xw p2 x1" onsubmit=${handleSavePage}>
+          ${Fields({
+            oninput: handleFieldUpdate,
+            content: state.content,
+            blueprint: blueprint,
+            events: state.events,
+            query: state.query,
+            values: state.page,
+            draft: draftPage,
+            site: state.site,
+            page: state.page
+          }, emit)}
+          <div class="psf b0 l0 r0 p1 pen z2">
+            ${ActionBar({
+              disabled: draftPage === undefined || search.page,
+              saveLarge: true,
+              handleCancel: handleCancelPage,
+              handleRemove: handleRemovePage
             })}
           </div>
-          <div class="psf b0 l0 r0 p1 pen z2">
-            <div class="c12 pea">
-              ${ActionBar({
-                disabled: draftPage === undefined || search.page,
-                saveLarge: true,
-                handleSave: handleSavePage,
-                handleCancel: handleCancelPage,
-                handleRemove: handleRemovePage
-              })}
-            </div>
-          </div>
-        </div>
+        </form>
       </div>
     `
   }
@@ -246,8 +229,9 @@ function view (state, emit) {
     })
   }
 
-  function handleSavePage () {
+  function handleSavePage (event) {
     if (!draftPage) return
+    if (typeof event === 'object' && event.preventDefault) event.preventDefault()
 
     emit(state.events.PANEL_SAVE, {
       file: state.page.file,

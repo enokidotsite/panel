@@ -10,8 +10,8 @@ function ActionBar (props) {
   var disabledClass = props.disabled ? 'pen dn' : 'x xjc'
 
   return html`
-    <div id="action-bar" class="psr c12 lh1 usn ${disabledClass}">
-      ${props.handleSave ? save() : ''} 
+    <div id="action-bar" class="pea psr c12 lh1 usn ${disabledClass}">
+      ${save()} 
       ${props.handleCancel ? cancel() : ''}
     </div>
   `
@@ -19,10 +19,10 @@ function ActionBar (props) {
   function save () {
     return html`
       <div class="p1 x1" id="save">
-        <div
+        <button
           class="bgc-fg button-large"
-          onclick=${props.handleSave}
-        >${saveText}</div>
+          type="submit"
+        >${saveText}</button>
       </div>
     `
   }

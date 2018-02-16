@@ -1,5 +1,6 @@
 {
   "title": "Create Site",
+  "layout": false,
   "fields": {
     "title": {
       "label": "Title",

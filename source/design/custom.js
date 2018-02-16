@@ -295,6 +295,8 @@ function extensions () {
     .psst { position: sticky; position: -webkit-sticky; }
     .br1 { border-radius: 3px }
     .br2 { border-radius: 2rem }
+    
+    .t0-75 { top: 0.75rem }
 
     .tom { transition: opacity 150ms ease-out }
     .tfcm { transition: color 150ms ease-out }

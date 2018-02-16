@@ -13,6 +13,7 @@ module.exports = class Text extends Nanocomponent {
   createElement (props, emit) {
     this.state = xtend(this.state, props.field)
     this.state.value = this.state.value || ''
+    this.oninput = props.oninput
 
     return html`
       <div>
@@ -28,13 +29,11 @@ module.exports = class Text extends Nanocomponent {
     `
 
     function onInput (event) {
-      emit({ value: event.target.value })
+      props.oninput({ value: event.target.value })
     }
   }
 
   update (props) {
-    this.state = xtend(this.state, props.field)
-    this.state.value = props.field.value || ''
     return true
   }
 }

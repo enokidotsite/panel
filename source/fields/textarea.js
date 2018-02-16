@@ -28,7 +28,7 @@ module.exports = class Textarea extends Nanocomponent {
       toolbar: ''
     }
 
-    this.wrapperLabel = false
+    this.label = false
     this.toolbar = { }
   }
 
@@ -36,6 +36,7 @@ module.exports = class Textarea extends Nanocomponent {
     this.state = xtend(this.state, props.field)
     this.state.value = this.state.value || ''
     this.toolbar = getToolbar(this.state.toolbar)
+    this.oninput = props.oninput
     this.emit = emit
 
     return html`
@@ -52,14 +53,14 @@ module.exports = class Textarea extends Nanocomponent {
         <div class="input lh1-5" style="margin-top: -5rem">
           <textarea
             class="c12"
-            oninput=${emit ? onInput : ''}
+            oninput=${props.oninput ? onInput : ''}
           ></textarea>
         </div>
       </div>
     `
 
     function onInput (event) {
-      emit({ value: event.target.value })
+      props.oninput({ value: event.target.value })
     }
   }
 
@@ -102,7 +103,7 @@ module.exports = class Textarea extends Nanocomponent {
     this.simplemde.codemirror.on('change', function () {
       var value = self.simplemde.value() || ''
       if (self.state.value !== value) {
-        self.emit({ value: value })
+        self.oninput({ value: value })
       }
     }, false)
   }
