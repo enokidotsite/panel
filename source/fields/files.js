@@ -48,10 +48,10 @@ module.exports = class Files extends Nanocomponent {
           <div>
             <a
               href="?${urlFileNew}"
-              class="button-inline"
+              class="button-inline green"
               onclick=${this.handleFilesAdd}
             >Upload</a>
-            <a href="?${urlFilesAll}" class="button-inline">All</a>
+            <a href="?${urlFilesAll}" class="button-inline blue">All</a>
           </div>
         </div>
         ${emit ? elUploadContainer() : ''}

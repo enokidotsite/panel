@@ -118,7 +118,7 @@ class PageNew extends Nanocomponent {
         <div class="p1 xx x">
           <button
             type="submit"
-            class="xx button-medium bgc-fg"
+            class="xx button-medium bgc-green bgch-fg"
             onclick=${this.handleSave.bind(self)}
           >Create Page</button>
         </div>

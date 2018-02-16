@@ -33,12 +33,12 @@ module.exports = class Pages extends Nanocomponent {
             <a href="?${urlPagesAll}" class="fc-bg25 fch-fg">Pages</a>
           </div>
           <div>
-            <a href="?${urlPageNew}" class="button-inline">Create</a>
-            <a href="?${urlPagesAll}" class="button-inline">All</a>
+            <a href="?${urlPageNew}" class="button-inline green">Create</a>
+            <a href="?${urlPagesAll}" class="button-inline blue">All</a>
           </div>
         </div>
         <ul class="c12 myc1 lsn">
-          ${elsChildren(pages)}
+          ${this.elsChildren(pages)}
         </ul>
       </div>
     `
@@ -47,35 +47,35 @@ module.exports = class Pages extends Nanocomponent {
   update (props) {
     return true
   }
-}
 
-function elsChildren (children) {
-  children = children || [ ]
+  elsChildren (children) {
+    children = children || [ ]
 
-  if (children.length <= 0) {
-    return html`
-      <li class="m0 py1 fc-bg25">
-        No sub-pages
-      </li>
-    `
-  }
-
-  return children
-    .slice(0, 6)
-    .map(function (child) {
-      if (!child.url) return
+    if (children.length <= 0) {
       return html`
-        <li id="page-${child.url}" class="m0">
-          <a
-            href="?url=${child.url}"
-            class="db py1 truncate"
-            ondragstart=${handleDragStart}
-          >${child.title || child.name}</a>
+        <li class="m0 py1 fc-bg25">
+          No sub-pages
         </li>
       `
-
-    function handleDragStart (event) {
-      event.dataTransfer.setData('text/plain', `[${child.title}](${child.url})`)
     }
-  })
+
+    return children
+      .slice(0, this.state.limit)
+      .map(function (child) {
+        if (!child.url) return
+        return html`
+          <li id="page-${child.url}" class="m0">
+            <a
+              href="?url=${child.url}"
+              class="db py1 truncate"
+              ondragstart=${handleDragStart}
+            >${child.title || child.name}</a>
+          </li>
+        `
+
+      function handleDragStart (event) {
+        event.dataTransfer.setData('text/plain', `[${child.title}](${child.url})`)
+      }
+    })
+  }
 }

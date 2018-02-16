@@ -1,7 +1,6 @@
 var css = require('sheetify')
 
 css('nanoreset')
-
 css('./simplecolorpicker.css')
 css('./simplemde.css')
 

@@ -34,7 +34,7 @@ function renderNavigation (state, emit) {
   return html`
     <div class="px2">
       <div class="x xjb py1">
-        <div class="x py1 fs2 fw500">
+        <div class="x py1 fs2 fwb">
           ${links.map(renderLink)}
         </div>
         <div class="py1 px2">

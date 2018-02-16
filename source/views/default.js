@@ -177,7 +177,7 @@ function view (state, emit) {
     return html`
       <div class="px3">
         <div class="x xw py1 xjb">
-          <div class="fs2 px1 py2 toe wsnw oxh c12 sm-xx fw500">
+          <div class="fs2 px1 py2 toe wsnw oxh c12 sm-xx fwb">
             <a href="?url=${state.page.url}">${state.page.title || state.page.name || raw('&nbsp;')}</a>
           </div>
           ${elMeta()}
@@ -203,7 +203,7 @@ function view (state, emit) {
         <a
           href="${state.site.info.url}${state.page.url}"
           target="_blank"
-          class="tac bgch-fg bgc-bg25 button-medium external"
+          class="tac bgch-fg bgc-blue button-medium external"
         >Open</a>
       </div>
     `
@@ -213,7 +213,7 @@ function view (state, emit) {
     return html`
       <div class="p1 xx">
         <span
-          class="tac bgch-fg bgc-bg25 button-medium"
+          class="tac bgch-fg bgc-red button-medium"
           onclick=${handleRemovePage}
         >Delete</span>
       </div>
