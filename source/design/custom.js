@@ -38,19 +38,24 @@ function typography () {
     ::-moz-selection { background: rgba(127, 127, 127, 0.5) }
     ::selection { background: rgba(127, 127, 127, 0.5) }
 
-    .nav-active { position: relative }
-    .nav-active:before {
+    .nav-link { position: relative }
+    .nav-link:before {
+      box-shadow: 0 0 3rem #ddd;
       content: '';
       display: block;
       position: absolute;
       bottom: 0;
       left: 50%;
       margin-left: -0.75rem;
-      width: 0;
-      height: 0;
-      border-style: solid;
-      border-width: 0 1rem 1rem 1rem;
-      border-color: transparent transparent #fff transparent; 
+      height: 1.5rem;
+      width: 1.5rem;
+      background: #fff;
+      transform: translateY(4.5rem) rotate(45deg);
+      transition: transform ease-out 250ms;
+    }
+
+    .nav-active:before {
+      transform: translateY(0.75rem) rotate(45deg);
     }
 
     @font-face {
@@ -85,8 +90,8 @@ function copy () {
       line-height: 1.5;
     }
 
-    .copy h2 { font-size: 3.6rem; font-weight: 500; line-height: 1.25; }
-    .copy h3 { font-size: 2.7rem; font-weight: 300; color: ${options.colors.bg25}; }
+    .copy h2 { font-size: 3.6rem; font-weight: 600; line-height: 1.25; }
+    .copy h3 { font-size: 2.7rem; }
 
     .copy code {
       font-family: ${options.typography.mono};

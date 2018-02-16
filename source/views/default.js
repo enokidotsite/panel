@@ -1,107 +1,50 @@
 var queryString = require('query-string')
+var objectKeys = require('object-keys')
 var raw = require('choo/html/raw')
 var html = require('choo/html')
-var ok = require('object-keys')
-var xtend = require('xtend')
-var path = require('path')
-
-// components
-var ActionBar = require('../components/actionbar')
-var Breadcrumbs = require('../components/breadcrumbs')
-var Split = require('../components/split')
-var Publish = require('../components/publish')
 
 // containers
 var Fields = require('../containers/fields')
-var blueprintDefault = require('../blueprints/default')
+
+// components
+var Header = require('../components/header')
+var ActionBar = require('../components/actionbar')
+var Publish = require('../components/publish')
+var Split = require('../components/split')
 
 // views
-var File = require('./file')
 var FilesAll = require('./files-all')
-var FileNew = require('./file-new')
 var PagesAll = require('./pages-all')
+var FileNew = require('./file-new')
 var PageNew = require('./page-new')
 var Sites = require('./sites')
-var Hub = require('./hub')
+var File = require('./file')
 
 // methods
 var methodsFile = require('../methods/file')
 var methodsPage = require('../methods/page')
 var methodsSite = require('../methods/site')
 
-module.exports = wrapper(view)
+// misc
+var blueprintDefault = require('../blueprints/default')
+
+module.exports = view
 
 function view (state, emit) {
   var search = queryString.parse(location.search)
   var draftPage = getDraftPage()
   var blueprint = getBlueprint()
 
-  return html`
-    <body class="fs1 ff-sans x xdc vhmn100">
-      ${header()}
-      ${content()}
-      ${loading()}
-    </body>
-  `
-
-  function header () {
-    var editorActive = typeof search.url !== 'undefined' && state.sites.active
-    var sitesActive = typeof search.sites !== 'undefined'
-    var hubActive = typeof search.hub !== 'undefined'
-
-    // non p2p
-    if (!state.sites.p2p) return ''
-
-    return html`
-      <div id="header" class="x xjb usn z2 psr oxh bgc-bg2-5">
-        <div class="x xx oxh">
-          ${editorActive ? breadcrumbs() : html`<div class="py2 px4 fwb">enoki</div>`}
-        </div>
-        <div class="x px2 fs0-8 ttu fwb">
-          <div class="${state.sites.active ? '' : 'dn'}">
-            <a href="/?url=/" class="${editorActive ? 'fc-fg nav-active' : 'fc-bg25 fch-fg'} tfcm db p2">Editor</a>
-          </div>
-          <div class="psr">
-            <a href="/?sites=all" class="${sitesActive ? 'fc-fg nav-active' : 'fc-bg25 fch-fg'} tfcm db p2">Sites</a>
-          </div>
-          <div class="psr">
-            <a href="/?hub=docs" class="${hubActive ? 'fc-fg nav-active' : 'fc-bg25 fch-fg'} tfcm db p2">Hub</a>
-          </div>
-        </div>
-      </div>
-    `
-  }
-
-  function breadcrumbs () {
-    return html`
-      <div class="x oxh px3">
-        <a href="?url=/" class="bgc-bg2-5 db px1 nbb py2 breadcrumb fc-bg25 fch-fg">home</a>
-        <div class="oxh xx breadcrumbs wsnw drtl">
-          ${Breadcrumbs({ page: state.page })}
-        </div>
-      </div>
-    `
-  }
-
-  function loading () {
-    if (!state.panel.loading) return
-    return html`
-      <div class="psf z2 t0 r0">
-        <div class="loader"></div>
-      </div>
-    `
-  }
+  return [
+    Header(state, emit),
+    content()
+  ]
 
   // TODO: clean this up
   function content () {
     if (!state.sites.p2p && state.sites.loaded) {
       // non p2p
       return nonDat(state, emit)
-    }
-
-    if (search.hub) {
-      // docs
-      return Hub(state, emit)
     }
 
     if (search.sites || !state.sites.active) {
@@ -139,7 +82,6 @@ function view (state, emit) {
     }
 
     return [
-      // default fields
       PageHeader(),
       Page()
     ]
@@ -236,7 +178,7 @@ function view (state, emit) {
       file: state.page.file,
       path: state.page.path,
       url: state.page.url,
-      page: ok(blueprint.fields)
+      page: objectKeys(blueprint.fields)
         .reduce(function (result, field) {
           result[field] = draftPage[field] === undefined
             ? state.page[field]
@@ -314,12 +256,4 @@ function nonDat (state, emit) {
       </div>
     </div>
   `
-}
-
-function wrapper (view) {
-  return function (state, emit) {
-    var href = state.query.url || '/'
-    var page = state.content[href] || { }
-    return view(xtend(state, { page: page }), emit)
-  }
 }

@@ -1,0 +1,22 @@
+{
+  "title": "Guide",
+  "pages": false,
+  "fields": {
+    "title": {
+      "label": "Title",
+      "type": "text"
+    },
+    "color": {
+      "label": "Color",
+      "type": "color"
+    },
+    "excerpt": {
+      "label": "Excerpt",
+      "type": "textarea"
+    },
+    "text": {
+      "label": "Text",
+      "type": "textarea"
+    }
+  }
+}

@@ -4,11 +4,32 @@ view: log
 ----
 text: ## 0.1.0
 
+This is the first release of Enoki to run in Beaker following the Alpha period. Too many changes to list, but a quick summarization follows.
+
+### Fields
+
+- Added display fields (pages/files)
 - New checkbox field
 - New color field
 - New range field
-- Simplified how data is passed to fields from fieldsets, enabling the migration of the from the existing fixed format to a display field convention.
-- Added `layouts` to blueprints, enabling positioning of fields.
-- Added display fields (pages/files)
-- Added support for selecting a design when creating a site.
-- Created the new **System** design, the most basic functional design.
+- Simplified how data is passed to fields from fieldsets
+
+### Interface
+
+- Added `layouts` to blueprints, enabling positioning of fields
+- Added support for selecting a design when creating a site
+- Created the **Guides** section in Hub
+- Modularized navigational elements into composable wrappers
+
+### Designs
+
+- Cleaned up the existing Enoki Starterkit design
+- Created the new **System** design, the most basic functional design
+
+### Functionality
+
+- Created the `smarkt` module for reading files
+- Created the `hypha` modules for reading folders
+- Updated the `enoki` module with these new dependencies
+- Added async/promises to the API for easy use with Beaker’s Web Api
+- Implimented early HTTP support with `content.json` fallback
