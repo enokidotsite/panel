@@ -38,6 +38,21 @@ function typography () {
     ::-moz-selection { background: rgba(127, 127, 127, 0.5) }
     ::selection { background: rgba(127, 127, 127, 0.5) }
 
+    .nav-active { position: relative }
+    .nav-active:before {
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      margin-left: -0.75rem;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 1rem 1rem 1rem;
+      border-color: transparent transparent #fff transparent; 
+    }
+
     @font-face {
       font-family: 'Inter UI';
       font-style:  normal;
@@ -187,6 +202,7 @@ function inputs () {
       top: 0;
       right: 0;
       padding: 1.2rem 1.5rem 0.8rem;
+      pointer-events: none;
       font-family: ${options.typography.mono};
     }
 
