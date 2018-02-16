@@ -22,7 +22,8 @@ exports.typography = {
 exports.fontSize = {
   '0-8': 1.4,
   '1': 1.8, 
-  '2': 3.6
+  '2': 3.6,
+  '3': 7.2
 }
 
 exports.spacing = [0, 1, 1.5, 2, 3, 4, 5, 6]

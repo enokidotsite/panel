@@ -90,8 +90,8 @@ function copy () {
       line-height: 1.5;
     }
 
-    .copy h2 { font-size: 3.6rem; font-weight: 500; line-height: 1.25; }
-    .copy h3 { font-size: 2.7rem; font-weight: 300; color: ${options.colors.bg25}; }
+    .copy h2 { font-size: 3.6rem; font-weight: 600; line-height: 1.25; }
+    .copy h3 { font-size: 2.7rem; }
 
     .copy code {
       font-family: ${options.typography.mono};

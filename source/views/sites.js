@@ -87,14 +87,19 @@ function renderEmpty (props) {
           <div class="p1">
             <a
               href="?sites=create"
-              class="bgc-fg button-large"
+              class="bgc-green bgch-fg button-large"
             >Create a New Site</a>
           </div>
           <div class="p1">
             <button
-              class="button-large bgc-fg"
+              class="button-large bgc-blue bgch-fg"
               onclick=${props.handleAdd}
             >Load an Existing Site</button>
+          </div>
+        </div>
+        <div class="x xjc c12">
+          <div class="p1 pt3">
+            <a href="/#hub/guides" class="fc-bg25 tfcm fch-fg">Need some help getting started?</a>
           </div>
         </div>
       </div>

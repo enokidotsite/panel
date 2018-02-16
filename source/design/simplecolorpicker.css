@@ -30,6 +30,7 @@
 .Scp-saturation {
   position: relative;
   height: 100%;
+  cursor: crosshair;
   background: linear-gradient(to right, #fff, #f00);
 }
 
@@ -56,6 +57,7 @@
   height: 100%;
   position: relative;
   background: linear-gradient(#f00 0%, #f0f 17%, #00f 34%, #0ff 50%, #0f0 67%, #ff0 84%, #f00 100%);
+  cursor: ns-resize;
 }
 .Scp-hSelector {
   position: absolute;

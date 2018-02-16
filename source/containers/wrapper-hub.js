@@ -1,24 +1,36 @@
 var html = require('choo/html')
-var wrapper = require('../containers/wrapper-hub')
-var format = require('../components/format')
 
-module.exports = wrapper(hub)
+var Header = require('../components/header')
 
-function hub (state, emit) {
-  return html`
-    <div class="xx x xdc">
-      <div class="p2 x xjc">
-        <div class="copy c12 sm-c10 md-c8 p2">
-          ${format(state.page.text)}
-        </div>
-      </div>
-    </div>
-  `
+module.exports = wrapper
+
+function wrapper (view) {
+  return function (state, emit) {
+
+    // extend state
+    var href = state.href.replace('/hub/', '')
+    state.page = state.docs.content['/' + href] || { }
+
+    return [
+      Header(state, emit),
+      renderNavigation(state, emit),
+      renderContent() 
+    ]
+
+    function renderContent () {
+      // async load content
+      if (!state.docs.loaded) {
+        emit(state.events.DOCS_LOAD)
+        return
+      }
+      return view(state, emit)
+    }
+  }
 }
 
 function renderNavigation (state, emit) {
-  var links = ['guides', 'docs', 'faq', 'log']
-  
+  var hrefActive = state.href.replace('/hub/', '')
+  var links = ['guides', 'docs', 'log']
   return html`
     <div class="px2">
       <div class="x xjb py1">
@@ -35,7 +47,7 @@ function renderNavigation (state, emit) {
 
   function renderLink (href) {
     var hrefPage = state.docs.content['/' + href] || { }
-    var colorClass = state.params.page === href ? '' : 'fc-bg25 fch-fg'
+    var colorClass = hrefActive.indexOf(href) >= 0 ? '' : 'fc-bg25 fch-fg'
     return html`
       <div class="px2 py1">
         <a href="/#hub/${href}" class="${colorClass} tfcm">${hrefPage.title}</a>
