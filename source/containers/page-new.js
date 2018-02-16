@@ -62,6 +62,7 @@ class PageNew extends Nanocomponent {
 
   elTitle () {
     var titleProps = {
+      oninput: this.handleTitle,
       field: {
         id: 'pageAdd',
         key: 'title',
@@ -73,13 +74,14 @@ class PageNew extends Nanocomponent {
         <div class="c12 fwb usn fs0-8 ttu fc-bg25 mb1">
           Title
         </div>
-        ${Title.render(titleProps, this.handleTitle)}
+        ${Title.render(titleProps, this.emit)}
       </div>
     `
   }
 
   elView () {
     var viewProps = {
+      oninput: this.handleView,
       field: {
         key: 'dropdown',
         options: this.views,
@@ -92,21 +94,22 @@ class PageNew extends Nanocomponent {
         <div class="c12 fwb usn fs0-8 ttu fc-bg25 mb1">
           View
         </div>
-        ${View.render(viewProps, this.handleView)}
+        ${View.render(viewProps, this.emit)}
       </div>
     `
   }
 
   elUri () {
     var uriProps = {
-      field: { id: 'pageAdd', key: 'uri', value: this.value.uri || '' }
+      field: { id: 'pageAdd', key: 'uri', value: this.value.uri || '' },
+      oninput: this.handleUri
     }
     return html`
       <div class="p1">
         <div class="c12 fwb usn fs0-8 ttu fc-bg25 mb1">
           Pathname
         </div>
-        ${Uri.render(uriProps, this.handleUri)}
+        ${Uri.render(uriProps, this.emit)}
       </div>
     `
   }
