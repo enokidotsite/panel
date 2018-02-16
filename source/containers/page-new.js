@@ -82,10 +82,8 @@ class PageNew extends Nanocomponent {
     var viewProps = {
       field: {
         key: 'dropdown',
-        value: {
-          options: this.views,
-          selected: this.value.view
-        }
+        options: this.views,
+        value: this.value.view
       }
     }
 
