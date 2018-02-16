@@ -14,7 +14,7 @@ function SitesCreate (state, emit) {
     <div class="c12 psr">
       <div class="px3">
         <div class="x xw py1 xjb">
-          <div class="fs2 px1 py2 toe wsnw oxh c12 sm-xx fw500">
+          <div class="fs2 px1 py2 toe wsnw oxh c12 sm-xx fwb">
             Create a New Site
           </div>
         </div>
@@ -50,7 +50,7 @@ function SitesCreate (state, emit) {
           <button
             type="submit"
             onclick=${handleCreate}
-            class="bgc-fg button-large"
+            class="bgch-fg bgc-green button-large"
           >Generate Your New Site</button>
         </div>
       </div>

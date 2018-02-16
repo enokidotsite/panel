@@ -8,7 +8,9 @@ exports.colors = {
   bg90: '#333',
   hg: '#50f',
   fg: '#000',
-  red: '#f33'
+  red: '#f52',
+  blue: '#3ae',
+  green: '#0b5'
 }
 
 exports.typography = {

@@ -20,7 +20,7 @@ function pagesAll (state, emit) {
           Pages
         </div>
         <div>
-          <a href="?${urlPageNew}" class="button-inline">Add</a>
+          <a href="?${urlPageNew}" class="button-inline green">Create</a>
         </div>
       </div>
       <ul class="c12 myc1 lsn">

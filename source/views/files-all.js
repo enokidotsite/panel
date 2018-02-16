@@ -29,9 +29,9 @@ function FilesAll (state, emit) {
           <div>
             <a
               href="?file=new"
-              class="button-inline"
+              class="button-inline green"
               onclick=${handleFilesAdd}
-            >Add</a>
+            >Upload</a>
           </div>
         </div>
         ${handleFilesUpload ? elUploadContainer() : ''}

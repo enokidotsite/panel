@@ -228,7 +228,8 @@ function inputs () {
     button:focus { outline: 0 }
 
     .focused {
-      box-shadow: 0 0 0 2px #ddd;
+      box-shadow: 0 0 0 2px ${options.colors.blue};
+      border: 1px solid ${options.colors.blue};
     }
 
     .button-large {
@@ -296,6 +297,16 @@ function inputs () {
       position: relative;
       z-index: 2;
       transition: background 150ms ease-out, color 150ms ease-out, border 150ms ease-out;
+    }
+
+    .button-inline.green {
+      border: 1px solid ${options.colors.green};
+      color: ${options.colors.green};
+    }
+
+    .button-inline.blue {
+      border: 1px solid ${options.colors.blue};
+      color: ${options.colors.blue};
     }
 
     .button-inline:hover {
