@@ -1,0 +1,22 @@
+{
+  "title": "Guides",
+  "pages": {
+    "view": "guide"
+  },
+  "layout": {
+    "all": {
+      "fields": true,
+      "width": "1/1"
+    }
+  },
+  "fields": {
+    "pages": {
+      "label": "Pages",
+      "type": "pages"
+    },
+    "title": {
+      "label": "Title",
+      "type": "text"
+    }
+  }
+}

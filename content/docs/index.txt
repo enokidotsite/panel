@@ -2,15 +2,13 @@ title: Docs
 ----
 view: docs
 ----
-text:
-
-## Alpha Release
+text: ## Alpha Release
 
 You’re here early—everything is extremely unstable. Consider this a modestly functional sketch. A starting point with clear limitations, leaning on existing and familiar convention to form a foundation for spanning the gap between here and there.
 
 How do we save the future? With another CMS, of course.
 
-Hoping you find this immediately useful as a basic tool for creating experimental personal sites in the short term.
+Hoping you find this immediately useful as a basic tool for creating experimental personal sites in the short term. If you have any questions please [see the FAQ](/#hub/faq), or feel free to send an email.
 
 ## Features
 

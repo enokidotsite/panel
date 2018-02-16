@@ -1,0 +1,13 @@
+title: Saving
+----
+view: issue
+----
+tags:
+  - 0.1.1
+  - todo
+
+----
+text: How to handle static output?
+
+- [ ] Saving title change saves to index.html, too
+- [ ] Meta tags in index.html
