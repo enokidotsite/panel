@@ -145,7 +145,7 @@ function renderSite (props) {
             Additional settings and p2p stats coming soon
           </div>
           <div class="p1">
-            <button class="bgch-fg bgc-red button-medium" onclick=${handleRemove}>Remove from Hub</button>
+            <button class="bgch-fg bgc-red button-medium" onclick=${handleRemove}>Remove from Sites</button>
           </div>
         </div>
       </div>
