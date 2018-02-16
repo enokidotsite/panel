@@ -3,7 +3,24 @@
   "pages": {
     "view": "issue"
   },
+  "files": false,
+  "layout": {
+    "pages": {
+      "sticky": true,
+      "width": "1/2",
+      "fields": ["pages"]
+    },
+    "all": {
+      "width": "1/2",
+      "fields": true
+    }
+  },
   "fields": {
+    "pages": {
+      "label": "Pages",
+      "type": "pages",
+      "limit": 20
+    },
     "title": {
       "label": "Title",
       "type": "text"
