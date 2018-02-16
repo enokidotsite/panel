@@ -53,19 +53,19 @@ function view (state, emit) {
     if (!state.sites.p2p) return ''
 
     return html`
-      <div id="header" class="x xjb usn z2 psr oxh bgc-bg2-5">
+      <div id="header" class="x xjb usn z2 psr oh bgc-bg2-5">
         <div class="x xx oxh">
           ${editorActive ? breadcrumbs() : html`<div class="py2 px4 fwb">enoki</div>`}
         </div>
         <div class="x px2 fs0-8 ttu fwb">
           <div class="${state.sites.active ? '' : 'dn'}">
-            <a href="/?url=/" class="${editorActive ? 'fc-fg nav-active' : 'fc-bg25 fch-fg'} tfcm db p2">Editor</a>
+            <a href="/?url=/" class="nav-link ${editorActive ? 'fc-fg nav-active' : 'fc-bg25 fch-fg'} tfcm db p2">Editor</a>
           </div>
           <div class="psr">
-            <a href="/?sites=all" class="${sitesActive ? 'fc-fg nav-active' : 'fc-bg25 fch-fg'} tfcm db p2">Sites</a>
+            <a href="/?sites=all" class="nav-link ${sitesActive ? 'fc-fg nav-active' : 'fc-bg25 fch-fg'} tfcm db p2">Sites</a>
           </div>
           <div class="psr">
-            <a href="/?hub=docs" class="${hubActive ? 'fc-fg nav-active' : 'fc-bg25 fch-fg'} tfcm db p2">Hub</a>
+            <a href="/?hub=docs" class="nav-link ${hubActive ? 'fc-fg nav-active' : 'fc-bg25 fch-fg'} tfcm db p2">Hub</a>
           </div>
         </div>
       </div>

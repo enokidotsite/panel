@@ -10,7 +10,8 @@ exports.colors = {
   fg: '#000',
   red: '#f52',
   blue: '#3ae',
-  green: '#0b5'
+  green: '#0b5',
+  yellow: '#eb2'
 }
 
 exports.typography = {
