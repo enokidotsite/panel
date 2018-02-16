@@ -20,6 +20,10 @@ function File (state, emit) {
   var blueprint = getBlueprint()
   var draftFile = state.panel.changes[file.url]
 
+  // blueprint layout fix
+  blueprint.layout = false
+
+  // display in columns
   return Split(
     [sidebar(), actionbarWrapper()],
     content()
@@ -52,7 +56,7 @@ function File (state, emit) {
             blueprint: blueprint,
             draft: draftFile,
             values: file,
-            handleFieldUpdate: handleFieldUpdate
+            oninput: handleFieldUpdate
           })}
           <div class="p1">
             <span

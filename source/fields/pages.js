@@ -27,7 +27,7 @@ module.exports = class Pages extends Nanocomponent {
       })
 
     return html`
-      <div id="sidebar-pages" class="mb2">
+      <div id="sidebar-pages">
         <div class="x xjb c12 py1 fs0-8 ttu usn">
           <div class="fwb">
             <a href="?${urlPagesAll}" class="fc-bg25 fch-fg">Pages</a>

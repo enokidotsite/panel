@@ -32,7 +32,7 @@ module.exports = class Checkbox extends Nanocomponent {
   createElement (props, emit) {
     this.state = xtend(this.state, props.field)
     this.state.value = props.field.value || false
-    this.emit = emit
+    this.oninput = props.oninput
 
     return html`
       <div class="input curp ${style}" onclick=${this.onChange}>
@@ -54,7 +54,7 @@ module.exports = class Checkbox extends Nanocomponent {
   }
 
   onChange (event) {
-    this.emit({ value: !this.state.value })
+    this.oninput({ value: !this.state.value })
   }
 
   update (props) {

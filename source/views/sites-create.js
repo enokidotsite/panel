@@ -27,8 +27,8 @@ function SitesCreate (state, emit) {
             draft: { },
             page: state.sites.create,
             values: state.sites.create,
-            handleFieldUpdate: handleFieldUpdate
-          })}
+            oninput: handleFieldUpdate
+          }, emit)}
         </div>
         <div class="c12 sm-c6">
           <div class="c12 px1 x xjb pt3 usn fs0-8 ttu fc-bg25">

@@ -151,15 +151,16 @@ function view (state, emit) {
       <div id="content-page" class="x xdc c12" style="padding-bottom: 7rem">
         <form class="x xw p2 x1" onsubmit=${handleSavePage}>
           ${Fields({
-            handleFieldUpdate: handleFieldUpdate,
+            oninput: handleFieldUpdate,
             content: state.content,
             blueprint: blueprint,
+            events: state.events,
             query: state.query,
             values: state.page,
             draft: draftPage,
             site: state.site,
             page: state.page
-          })}
+          }, emit)}
           <div class="psf b0 l0 r0 p1 pen z2">
             ${ActionBar({
               disabled: draftPage === undefined || search.page,

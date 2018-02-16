@@ -9,6 +9,10 @@ module.exports = function Wrapper () {
 class Uploader extends Nanocomponent {
   constructor () {
     super()
+    this.state = {
+
+    }
+    
     this.open = this.open.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.handleDragEnter = this.handleDragEnter.bind(this)

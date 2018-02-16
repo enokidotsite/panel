@@ -77,6 +77,7 @@ module.exports = class Tags extends Nanocomponent {
   createElement (props, emit) {
     var self = this
     this.state = xtend(this.state, props.field)
+    this.oninput = props.oninput
 
     return html`
       <div class="${style}">
@@ -93,7 +94,7 @@ module.exports = class Tags extends Nanocomponent {
     function onChange (event) {
       var value = event.target.value.split(',') 
       if (!arraysEqual(self.state.value, value)) {
-        emit({ value: value })
+        props.oninput({ value: value })
       }
     }
   }

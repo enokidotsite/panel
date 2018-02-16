@@ -9,6 +9,8 @@ function Field (props, emit) {
   props = props || { }
   props.field = props.field || { }
   props.fields = props.fields || { }
+  props.content = props.content || { }
+  props.query = props.query || { }
   props.page = props.page || { }
   props.site = props.site || { }
 

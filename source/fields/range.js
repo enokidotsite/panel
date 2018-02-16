@@ -40,6 +40,7 @@ module.exports = class Range extends Nanocomponent {
 
   createElement (props, emit) {
     this.state = xtend(this.state, props.field)
+    this.oninput = props.oninput
     this.emit = emit
 
     if (this.state.focused) {
@@ -91,7 +92,7 @@ module.exports = class Range extends Nanocomponent {
     if (isNaN(value)) value = min
     if (value > this.state.max) value = this.state.max
     if (value < this.state.min) value = this.state.min
-    this.emit({ value: event.target.value })
+    this.oninput({ value: event.target.value })
   }
 
   onFocus (event) {
