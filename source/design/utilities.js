@@ -73,7 +73,7 @@ utils.push({
 
 utils.push({
   prop: 'font-weight',
-  vals: ['normal', 500, { b: '600' }]
+  vals: ['normal', { b: 600 }]
 })
 
 module.exports = gr8({

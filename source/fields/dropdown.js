@@ -7,10 +7,8 @@ module.exports = class Dropdown extends Nanocomponent {
   constructor () {
     super()
     this.state = {
-      value: {
-        selected:  '',
-        options: { }
-      }
+      options: { },
+      value: ''
     }
   }
 
@@ -33,13 +31,13 @@ module.exports = class Dropdown extends Nanocomponent {
     `
 
     function options () {
-      return objectKeys(self.state.value.options).map(function (option) {
+      return objectKeys(self.state.options).map(function (option) {
         return html`
           <option
             value="${option}"
-            ${self.state.value.selected === option ? 'selected' : ''}
+            ${self.state.value === option ? 'selected' : ''}
           >
-            ${self.state.value.options[option].title || option}
+            ${self.state.options[option].title || option}
           </option>
         `
       })
@@ -51,8 +49,8 @@ module.exports = class Dropdown extends Nanocomponent {
   }
 
   update (props) {
-    if (props.field.value && props.field.value.selected !== this.state.value.selected) {
-      this.value.selected = props.value.selected
+    if (props.field.value && props.field.value !== this.state.value) {
+      this.value = props.value
     }
     return true
   }

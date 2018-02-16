@@ -31,6 +31,18 @@
       "text": "Descriptive text",
       "type": "range",
       "start": 20
+    },
+    "dropdown": {
+      "label": "Dropdown",
+      "type": "dropdown",
+      "options": {
+        "one": {
+          "title": "One"
+        },
+        "two": {
+          "title": "Two"
+        }
+      }
     }
   }
 }

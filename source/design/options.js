@@ -1,5 +1,6 @@
 exports.colors = {
   bg: '#fff',
+  'bg2-5': '#f9f9f9',
   bg5: '#eee',
   bg10: '#ddd',
   bg25: '#999',
@@ -7,7 +8,9 @@ exports.colors = {
   bg90: '#333',
   hg: '#50f',
   fg: '#000',
-  red: '#f33'
+  red: '#f52',
+  blue: '#3ae',
+  green: '#0b5'
 }
 
 exports.typography = {

@@ -53,21 +53,20 @@ function view (state, emit) {
     if (!state.sites.p2p) return ''
 
     return html`
-      <div id="header" class="x xjb usn z2 psr oxh">
-        <div class="x xx bb1-bg10 oxh">
-          ${editorActive ? breadcrumbs() : html`<div class="py2 px4">Enoki</div>`}
+      <div id="header" class="x xjb usn z2 psr oxh bgc-bg2-5">
+        <div class="x xx oxh">
+          ${editorActive ? breadcrumbs() : html`<div class="py2 px4 fwb">enoki</div>`}
         </div>
-        <div class="x">
-          <div class="bl1-bg10 ${state.sites.active ? '' : 'dn'}">
-            <a href="/?url=/" class="${editorActive ? 'fc-fg' : 'fc-bg25 fch-fg bb1-bg10'} tfcm db p2">Editor</a>
+        <div class="x px2 fs0-8 ttu fwb">
+          <div class="${state.sites.active ? '' : 'dn'}">
+            <a href="/?url=/" class="${editorActive ? 'fc-fg nav-active' : 'fc-bg25 fch-fg'} tfcm db p2">Editor</a>
           </div>
-          <div class="bl1-bg10">
-            <a href="/?sites=all" class="${sitesActive ? 'fc-fg' : 'fc-bg25 fch-fg bb1-bg10'} tfcm db p2">Sites</a>
+          <div class="psr">
+            <a href="/?sites=all" class="${sitesActive ? 'fc-fg nav-active' : 'fc-bg25 fch-fg'} tfcm db p2">Sites</a>
           </div>
-          <div class="bl1-bg10 br1-bg10">
-            <a href="/?hub=docs" class="${hubActive ? 'fc-fg' : 'fc-bg25 fch-fg bb1-bg10'} tfcm db p2">Hub</a>
+          <div class="psr">
+            <a href="/?hub=docs" class="${hubActive ? 'fc-fg nav-active' : 'fc-bg25 fch-fg'} tfcm db p2">Hub</a>
           </div>
-          <div class="bb1-bg10" style="height: 6.1rem; width: 6.1rem"></div>
         </div>
       </div>
     `
@@ -76,7 +75,7 @@ function view (state, emit) {
   function breadcrumbs () {
     return html`
       <div class="x oxh px3">
-        <a href="?url=/" class="bgc-bg db px1 nbb py2 breadcrumb fc-bg25 fch-fg">home</a>
+        <a href="?url=/" class="bgc-bg2-5 db px1 nbb py2 breadcrumb fc-bg25 fch-fg">home</a>
         <div class="oxh xx breadcrumbs wsnw drtl">
           ${Breadcrumbs({ page: state.page })}
         </div>
@@ -178,7 +177,7 @@ function view (state, emit) {
     return html`
       <div class="px3">
         <div class="x xw py1 xjb">
-          <div class="fs2 px1 py2 toe wsnw oxh c12 sm-xx fw500">
+          <div class="fs2 px1 py2 toe wsnw oxh c12 sm-xx fwb">
             <a href="?url=${state.page.url}">${state.page.title || state.page.name || raw('&nbsp;')}</a>
           </div>
           ${elMeta()}
@@ -204,7 +203,7 @@ function view (state, emit) {
         <a
           href="${state.site.info.url}${state.page.url}"
           target="_blank"
-          class="tac bgch-fg bgc-bg25 button-medium external"
+          class="tac bgch-fg bgc-blue button-medium external"
         >Open</a>
       </div>
     `
@@ -214,7 +213,7 @@ function view (state, emit) {
     return html`
       <div class="p1 xx">
         <span
-          class="tac bgch-fg bgc-bg25 button-medium"
+          class="tac bgch-fg bgc-red button-medium"
           onclick=${handleRemovePage}
         >Delete</span>
       </div>

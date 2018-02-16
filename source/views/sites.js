@@ -61,12 +61,12 @@ function renderSites (props) {
           <div class="p1">
             <a
               href="?sites=create"
-              class="bgc-fg button-large"
+              class="bgc-green bgch-fg button-large"
             >Create a New Site</a>
           </div>
           <div class="p1">
             <div
-              class="bgc-fg button-large"
+              class="bgc-blue bgch-fg button-large"
               onclick=${props.handleAdd}
             >Load an Existing Site</div>
           </div>
@@ -109,17 +109,17 @@ function renderSite (props) {
     <div class="w100 fc-fg ${props.active ? '' : 'ophc100'}">
       <div class="x xw xac py1">
         <div class="c12 sm-xx oh p1 curp" onclick=${handleSiteClick}>
-          <div class="fs2 wsnw toe fw500">${props.title}</div>
-        </div>
-        <div class="p1 ${props.active ? '' : 'sm-op0'} oph tom">
-          <a href="${props.url}" target="_blank" class="db bgc-bg25 bgch-fg button-medium external">Open</a>
+          <div class="fs2 wsnw toe fwb">${props.title}</div>
         </div>
         <div class="p1 ${props.active ? '' : 'sm-op0'} oph tom">
           <a href="${settingsUrl}" class="db ${settingsClass} button-medium">Settings</a>
         </div>
         <div class="p1 ${props.active ? '' : 'sm-op0'} oph tom">
+          <a href="${props.url}" target="_blank" class="db bgc-blue bgch-fg button-medium external">Open</a>
+        </div>
+        <div class="p1 ${props.active ? '' : 'sm-op0'} oph tom">
           <button
-            class="bgc-fg button-medium"
+            class="bgc-green bgch-fg button-medium"
             onclick=${handleSiteClick}
           >Edit this Site</button>
         </div>
@@ -145,7 +145,7 @@ function renderSite (props) {
             Additional settings and p2p stats coming soon
           </div>
           <div class="p1">
-            <button class="bgch-fg bgc-bg25 button-medium" onclick=${handleRemove}>Remove from Hub</button>
+            <button class="bgch-fg bgc-red button-medium" onclick=${handleRemove}>Remove from Hub</button>
           </div>
         </div>
       </div>
