@@ -13,7 +13,7 @@
   "license": "MIT",
   "dependencies": {
     "choo": "^6.6.1",
-    "enoki": "^2.0.0",
+    "enoki": "^2.0.1",
     "gr8": "^3.1.4",
     "hypha": "^0.1.3",
     "markdown-it": "^8.4.0",
