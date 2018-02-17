@@ -1,0 +1,15 @@
+title: Creating Custom Pages
+----
+view: guide
+----
+tags:
+  - beginner
+
+----
+color: #000000
+----
+featured: 
+----
+excerpt: 
+----
+text: 
