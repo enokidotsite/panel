@@ -146,12 +146,10 @@ class PageNew extends Nanocomponent {
   }
 
   handleUri (data) {
-    if (data.event === 'input') {
-      var el = this.element.querySelector('input[name="uri"]')
-      this.value.uri = methodsFile.sanitizeName(data.value)
-      this.customUri = true
-      if (el) el.value = this.value.uri
-    }
+    var el = this.element.querySelector('input[name="uri"]')
+    this.value.uri = methodsFile.sanitizeName(data.value)
+    this.customUri = true
+    if (el) el.value = this.value.uri
   }
 
   handleView (name, data) {

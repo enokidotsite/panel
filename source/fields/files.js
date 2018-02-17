@@ -12,6 +12,7 @@ module.exports = class Files extends Nanocomponent {
     super()
     this.label = false
     this.state = {
+      limit: 6,
       value: ''
     }
 
@@ -56,7 +57,7 @@ module.exports = class Files extends Nanocomponent {
         </div>
         ${emit ? elUploadContainer() : ''}
         <ul class="c12 myc1 lsn">
-          ${elsFiles(pageFiles)}
+          ${this.elsFiles(pageFiles)}
         </div>
       </div>
     `
@@ -99,6 +100,36 @@ module.exports = class Files extends Nanocomponent {
     }
   }
 
+  elsFiles (files) {
+    files = files || [ ]
+
+    // Hide if there is nothing
+    if (files.length <= 0) return html`
+      <li class="m0 py1 fc-bg25">
+        No files
+      </li>
+    `
+
+    return files
+      .slice(0, this.state.limit)
+      .map(function (child) {
+        if (!child.url) return
+        return html`
+          <li id="${child.url}" class="m0">
+            <a
+              href="?${child.urlPanel}"
+              class="db py1 truncate"
+              ondragstart=${handleDragStart}
+            >${child.filename}</a>
+          </li>
+        `
+
+      function handleDragStart (event) {
+        event.dataTransfer.setData('text/plain', '![](' +child.source + ')')
+      }
+    })
+  }
+
   update (props) {
     return true
   }
@@ -107,34 +138,4 @@ module.exports = class Files extends Nanocomponent {
     this.uploader.open()
     event.preventDefault()
   }
-}
-
-function elsFiles (files) {
-  files = files || [ ]
-
-  // Hide if there is nothing
-  if (files.length <= 0) return html`
-    <li class="m0 py1 fc-bg25">
-      No files
-    </li>
-  `
-
-  return files
-    .slice(0, 6)
-    .map(function (child) {
-      if (!child.url) return
-      return html`
-        <li id="${child.url}" class="m0">
-          <a
-            href="?${child.urlPanel}"
-            class="db py1 truncate"
-            ondragstart=${handleDragStart}
-          >${child.filename}</a>
-        </li>
-      `
-
-    function handleDragStart (event) {
-      event.dataTransfer.setData('text/plain', '![](' +child.source + ')')
-    }
-  })
 }
