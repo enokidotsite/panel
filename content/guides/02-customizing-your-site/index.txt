@@ -1,4 +1,4 @@
-title: Customizing your sites
+title: Customizing Your Sites
 ----
 view: guide
 ----
@@ -16,7 +16,7 @@ Suspendisse sed libero dolor. Vestibulum sit amet elit nec purus pulvinar ullamc
 ----
 color: #33aaee
 ----
-featured: false
+featured: 
 ----
 tags:
   - beginner

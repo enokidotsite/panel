@@ -1,0 +1,23 @@
+title: How to Leave Enoki
+----
+view: guide
+----
+tags:
+  - beginner
+
+----
+color: #666666
+----
+featured: false
+----
+excerpt: Technology moves fast. Enoki knows it won’t always be the best tool for you. Rest easy knowing that you own your data and content. It exists on your computer, and not only on a server owned by a platform.
+----
+text: ## Ideas
+
+- One
+- Two
+- Three
+
+## Draft
+
+Technology moves fast. Enoki won’t always be the best tool for you. Rest easy knowing that you own your data and content. It exists on your computer, and not only on a server owned by a platform.

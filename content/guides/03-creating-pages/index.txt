@@ -6,10 +6,13 @@ tags:
   - beginner
 
 ----
-color: #000000
+color: #00bb55
 ----
-featured: 
+featured: false
 ----
-excerpt: 
+excerpt: Most importantly, reading a book is active, unlike most of the passive consumption we do in front of screens. I think a lot of the anxiety we can feel from technology comes from that passive relationship alongside its speed. Look at cable news or your social media feeds. All day long, we’re having absurd novelty, enviable affluence, and sincere tragedy and distress sandwiched together and railgunned into our face. A book offers some necessary composure and consistency to help find our bearings in a world oriented toward violent delivery.
 ----
-text: 
+text: ## Notes
+
+- Overview of fields
+- Overview of blueprints
