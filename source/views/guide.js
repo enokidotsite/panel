@@ -7,7 +7,7 @@ module.exports = wrapper(view)
 function view (state, emit) {
   var tags = state.page.tags || [ ]
   return html`
-    <div class="p2 x xjc xw">
+    <div class="p2">
       <div class="p2 c12">
         <h2
           class="fs3 lh1-25 tac"
@@ -19,7 +19,7 @@ function view (state, emit) {
           return html`<span class="button-inline">${tag}</span>`
         })}
       </div>
-      <div class="p2">
+      <div class="p2 c12 x xjc">
         <div class="copy">
           ${format(state.page.text)}
         </div>

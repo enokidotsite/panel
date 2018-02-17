@@ -89,6 +89,7 @@ function copy () {
     .copy {
       line-height: 1.5;
       max-width: 60rem;
+      width: 100%;
     }
 
     .copy h2 { font-size: 3.6rem; font-weight: 600; line-height: 1.25; }
