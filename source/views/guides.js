@@ -24,10 +24,11 @@ function renderGuide (props) {
     <div class="p1 c6 x ${props.featured ? 'sm-c8' : 'sm-c4'}">
       <a
         href="/#hub${props.url}"
-        class="w100 oh x xdc xjb p2 bgc-bg2-5 fc-bg25 fch-fg  ${props.featured ? 'fs2' : ''} br2 tfyh"
+        class="w100 oh x xdc xjb p2 fc-bg ${props.featured ? 'fs2' : ''} br2 tfyh"
+       style="background-color: ${props.color}"
       >
-        <h2 class="fwb lh1-25 mb2 fc-fg" style="color: ${props.color}">${props.title}</h2>
-        <div class="copy ${props.featured ? 'fs1' : 'fs0-8'}" style="${props.featured ? 'max-height: 10.5rem; max-width: 50rem;' : 'max-height: 5.5rem; max-width: 30rem;'}">
+        <h2 class="fwb lh1-25 mb2">${props.title}</h2>
+        <div class="copy op75 ${props.featured ? 'fs1' : 'fs0-8'}" style="${props.featured ? 'max-height: 10.5rem; max-width: 50rem;' : 'max-height: 5.5rem; max-width: 30rem;'}">
           <p>${props.excerpt}</p>
         </div>
       </a>
