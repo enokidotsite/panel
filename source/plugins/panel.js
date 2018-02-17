@@ -90,11 +90,13 @@ async function panel (state, emitter) {
       delete page.name
       delete page.path
 
+      // create the file
       await archive.writeFile(
         path.join(data.path, file),
         smarkt.stringify(page)
       )
 
+      // save
       await archive.commit()
 
       // very messy

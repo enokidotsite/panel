@@ -88,6 +88,8 @@ function copy () {
   return `
     .copy {
       line-height: 1.5;
+      max-width: 60rem;
+      width: 100%;
     }
 
     .copy h2 { font-size: 3.6rem; font-weight: 600; line-height: 1.25; }
@@ -251,10 +253,16 @@ function inputs () {
       transition: background 150ms ease-out, transform 150ms ease-out;
     }
 
+    .tfyh {
+      transition: background 150ms ease-out, color 150ms ease-out, transform 150ms ease-out;
+    }
+
+    .tfyh:hover,
     .button-large:hover {
       transform: translateY(-0.2rem) ;
     }
 
+    .tfyh:active,
     .button-large:active {
       transform: translateY(0.2rem) ;
       transition: transform 50ms ease-out;

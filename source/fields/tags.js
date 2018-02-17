@@ -77,6 +77,7 @@ module.exports = class Tags extends Nanocomponent {
   createElement (props, emit) {
     var self = this
     this.state = xtend(this.state, props.field)
+    this.state.value = this.state.value || ''
     this.oninput = props.oninput
 
     return html`

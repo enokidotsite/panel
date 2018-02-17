@@ -38,6 +38,8 @@ function PageNewView (state, emit) {
         if (!data.value.title || !data.value.uri || !data.value.view) {
           return alert('Missing data')
         }
+        console.log(data)
+        return 
         emit(state.events.PANEL_PAGE_ADD, {
           title: data.value.title,
           view: data.value.view || 'default',

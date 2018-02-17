@@ -1,14 +1,4 @@
 {
-  "/community": {
-    "title": "Community",
-    "view": "community",
-    "text": "Coming soon",
-    "name": "community",
-    "path": "/content/community",
-    "url": "/community",
-    "files": {},
-    "pages": {}
-  },
   "/docs": {
     "title": "Docs",
     "view": "docs",
@@ -26,6 +16,16 @@
       }
     }
   },
+  "/community": {
+    "title": "Community",
+    "view": "community",
+    "text": "Coming soon",
+    "name": "community",
+    "path": "/content/community",
+    "url": "/community",
+    "files": {},
+    "pages": {}
+  },
   "/faq": {
     "title": "FAQ",
     "view": "faq",
@@ -35,6 +35,41 @@
     "url": "/faq",
     "files": {},
     "pages": {}
+  },
+  "/guides": {
+    "title": "Guides",
+    "view": "guides",
+    "text": "Working on this :)",
+    "name": "guides",
+    "path": "/content/guides",
+    "url": "/guides",
+    "files": {},
+    "pages": {
+      "01-creating-your-first-site": {
+        "name": "01-creating-your-first-site",
+        "path": "/content/guides/01-creating-your-first-site",
+        "url": "/guides/01-creating-your-first-site",
+        "source": "/content/guides/01-creating-your-first-site"
+      },
+      "02-customizing-your-site": {
+        "name": "02-customizing-your-site",
+        "path": "/content/guides/02-customizing-your-site",
+        "url": "/guides/02-customizing-your-site",
+        "source": "/content/guides/02-customizing-your-site"
+      },
+      "03-creating-pages": {
+        "name": "03-creating-pages",
+        "path": "/content/guides/03-creating-pages",
+        "url": "/guides/03-creating-pages",
+        "source": "/content/guides/03-creating-pages"
+      },
+      "04-how-to-leave-enoki": {
+        "name": "04-how-to-leave-enoki",
+        "path": "/content/guides/04-how-to-leave-enoki",
+        "url": "/guides/04-how-to-leave-enoki",
+        "source": "/content/guides/04-how-to-leave-enoki"
+      }
+    }
   },
   "/issues": {
     "title": "Issues",
@@ -95,28 +130,96 @@
       }
     }
   },
-  "/guides": {
-    "title": "Guides",
-    "view": "guides",
-    "text": "Working on this :)",
-    "name": "guides",
-    "path": "/content/guides",
-    "url": "/guides",
+  "/guides/01-creating-your-first-site": {
+    "title": "Creating Your First Site",
+    "view": "guide",
+    "text": "Welcome to Enoki!\n\n## How is this different from other website making tools?\n\n- Data ownership\n- Offline access\n- Customizability",
+    "excerpt": "Choosing to take the first step is always the most difficult. Fortunately, Enoki is as simple for beginners with little understanding of creating sites as it is for seasoned experts.",
+    "color": "#ff5522",
+    "featured": true,
+    "tags": [
+      "beginner"
+    ],
+    "name": "01-creating-your-first-site",
+    "path": "/content/guides/01-creating-your-first-site",
+    "url": "/guides/01-creating-your-first-site",
     "files": {},
-    "pages": {
-      "creating-your-first-site": {
-        "name": "creating-your-first-site",
-        "path": "/content/guides/creating-your-first-site",
-        "url": "/guides/creating-your-first-site",
-        "source": "/content/guides/creating-your-first-site"
-      },
-      "customizing-your-site": {
-        "name": "customizing-your-site",
-        "path": "/content/guides/customizing-your-site",
-        "url": "/guides/customizing-your-site",
-        "source": "/content/guides/customizing-your-site"
-      }
-    }
+    "pages": {}
+  },
+  "/guides/04-how-to-leave-enoki": {
+    "title": "How to Leave Enoki",
+    "view": "guide",
+    "tags": [
+      "beginner"
+    ],
+    "color": "#666666",
+    "featured": false,
+    "excerpt": "Technology moves fast. Enoki knows it won’t always be the best tool for you. Rest easy knowing that you own your data and content. It exists on your computer, and not only on a server owned by a platform.",
+    "text": "## Ideas\n\n- One\n- Two\n- Three\n\n## Draft\n\nTechnology moves fast. Enoki won’t always be the best tool for you. Rest easy knowing that you own your data and content. It exists on your computer, and not only on a server owned by a platform.",
+    "name": "04-how-to-leave-enoki",
+    "path": "/content/guides/04-how-to-leave-enoki",
+    "url": "/guides/04-how-to-leave-enoki",
+    "files": {},
+    "pages": {}
+  },
+  "/guides/03-creating-pages": {
+    "title": "Creating Custom Pages",
+    "view": "guide",
+    "tags": [
+      "beginner"
+    ],
+    "color": "#00bb55",
+    "featured": false,
+    "excerpt": "Most importantly, reading a book is active, unlike most of the passive consumption we do in front of screens. I think a lot of the anxiety we can feel from technology comes from that passive relationship alongside its speed. Look at cable news or your social media feeds. All day long, we’re having absurd novelty, enviable affluence, and sincere tragedy and distress sandwiched together and railgunned into our face. A book offers some necessary composure and consistency to help find our bearings in a world oriented toward violent delivery.",
+    "text": "## Notes\n\n- Overview of fields\n- Overview of blueprints",
+    "name": "03-creating-pages",
+    "path": "/content/guides/03-creating-pages",
+    "url": "/guides/03-creating-pages",
+    "files": {},
+    "pages": {}
+  },
+  "/guides/02-customizing-your-site": {
+    "title": "Customizing Your Sites",
+    "view": "guide",
+    "excerpt": "The digital landscape has an influence on our lives, but we are more directly affected by our personal choices. We must fend for ourselves, whether or not the technology industry chooses to deal with the implications of their work.",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eleifend risus tellus, at venenatis massa dapibus at. Quisque bibendum a velit vitae aliquet. Quisque id metus et lectus placerat molestie. Nullam ullamcorper lacinia eros, a facilisis lorem placerat nec.\n\nMauris egestas metus ac velit sodales tincidunt. Donec vehicula turpis quis ultrices hendrerit. Suspendisse feugiat tellus nec fermentum consequat. Nunc vulputate posuere enim, vel pulvinar eros imperdiet tincidunt. Sed dignissim neque vel dui eleifend pellentesque. Curabitur lobortis tristique arcu, sed gravida nisi. Sed elementum dignissim maximus.\n\n## Nice really great\n\nVivamus et arcu porttitor, scelerisque velit eget, ullamcorper mauris. Praesent eleifend porttitor pellentesque. Fusce ultrices purus vel tellus ultrices, vitae efficitur risus facilisis. Sed hendrerit consectetur tortor, at volutpat arcu lobortis ut. Vivamus sollicitudin enim at mi faucibus finibus. Sed nunc nunc, varius id molestie quis, gravida ut augue. Vivamus nunc risus, convallis ut pharetra eget, iaculis vel lacus. Praesent eu urna felis. Maecenas vehicula ante lorem. In rhoncus orci eget purus luctus condimentum. Nulla finibus, leo in gravida suscipit, ante enim sodales elit, sit amet vestibulum elit diam nec eros. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec non libero eget nisl pellentesque auctor. Nullam tempor dapibus eros nec blandit.\n\nSuspendisse sed libero dolor. Vestibulum sit amet elit nec purus pulvinar ullamcorper in vel velit. Sed a scelerisque est, ac ornare ante. In sagittis est condimentum velit iaculis, id semper ante posuere. Mauris at ultrices ante, vel ultrices dolor. Quisque ac eros a libero euismod euismod. Donec purus nulla, auctor sit amet interdum nec, fermentum porta ex. Nullam facilisis sapien tincidunt, semper dolor eu, scelerisque quam. Integer commodo elit sed vehicula ultrices. Suspendisse ullamcorper erat eget hendrerit consequat. Ut a eleifend libero, lobortis egestas libero. Maecenas sapien lacus, placerat nec arcu in, tempus sollicitudin tellus.",
+    "color": "#33aaee",
+    "featured": "",
+    "tags": [
+      "beginner"
+    ],
+    "name": "02-customizing-your-site",
+    "path": "/content/guides/02-customizing-your-site",
+    "url": "/guides/02-customizing-your-site",
+    "files": {},
+    "pages": {}
+  },
+  "/issues/fields": {
+    "title": "Fields",
+    "view": "issue",
+    "text": "## Cleanup\n\nCurrently, fields are a bit sloppy. Some immediate improvements.\n\n- [x] Store everything within an internal `state` object\n- [X] Output a single object to `emit` containing `.value`\n- [ ] Autoscroll textarea when at bottom\n- [ ] Wrap fieldset in `<form>`\n- [ ] Convert change to `button[type=\"submit\"]`\n- [ ] Add html5 validation\n\n## New fields\n\n- [X] Checkbox\n- [X] Range\n- [ ] Radio selector\n- [ ] Structured data\n- [x] Color\n- [ ] Help (description sort of thing)",
+    "tags": [
+      "1.0.0",
+      "todo"
+    ],
+    "name": "fields",
+    "path": "/content/issues/fields",
+    "url": "/issues/fields",
+    "files": {},
+    "pages": {}
+  },
+  "/issues/cleanup-codebase": {
+    "title": "Cleanup codebase",
+    "view": "issue",
+    "text": "Gotta refactor a little bit, it’s getting messy in here.\n\n- [ ] Switch from gr8 for layout to CSS grid/variables.\n- [ ] Try to make the DOM as representational as possible.\n- [ ] Simple `sheetify` css-in-js for most things.\n- [ ] Support imports/require/window\n- [ ] Create a bundle.js which exposes over window\n- [ ] Create a super simple demo using no build system",
+    "tags": [
+      "todo"
+    ],
+    "name": "cleanup-codebase",
+    "path": "/content/issues/cleanup-codebase",
+    "url": "/issues/cleanup-codebase",
+    "files": {},
+    "pages": {}
   },
   "/log": {
     "title": "Log",
@@ -125,6 +228,19 @@
     "name": "log",
     "path": "/content/log",
     "url": "/log",
+    "files": {},
+    "pages": {}
+  },
+  "/issues/inline-editing": {
+    "title": "Inline editing",
+    "view": "issue",
+    "tags": [
+      "idea"
+    ],
+    "text": "Explore implimentation of inline-editing in a design.\n\n- Web API `isOwner` to enable `contenteditable`",
+    "name": "inline-editing",
+    "path": "/content/issues/inline-editing",
+    "url": "/issues/inline-editing",
     "files": {},
     "pages": {}
   },
@@ -145,43 +261,6 @@
     "files": {},
     "pages": {}
   },
-  "/guides/creating-your-first-site": {
-    "title": "Creating your First Site",
-    "view": "guide",
-    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eleifend risus tellus, at venenatis massa dapibus at. Quisque bibendum a velit vitae aliquet. Quisque id metus et lectus placerat molestie. Nullam ullamcorper lacinia eros, a facilisis lorem placerat nec. Mauris egestas metus ac velit sodales tincidunt. Donec vehicula turpis quis ultrices hendrerit. Suspendisse feugiat tellus nec fermentum consequat. Nunc vulputate posuere enim, vel pulvinar eros imperdiet tincidunt. Sed dignissim neque vel dui eleifend pellentesque. Curabitur lobortis tristique arcu, sed gravida nisi. Sed elementum dignissim maximus.\n\nVivamus et arcu porttitor, scelerisque velit eget, ullamcorper mauris. Praesent eleifend porttitor pellentesque. Fusce ultrices purus vel tellus ultrices, vitae efficitur risus facilisis. Sed hendrerit consectetur tortor, at volutpat arcu lobortis ut. Vivamus sollicitudin enim at mi faucibus finibus. Sed nunc nunc, varius id molestie quis, gravida ut augue. Vivamus nunc risus, convallis ut pharetra eget, iaculis vel lacus. Praesent eu urna felis. Maecenas vehicula ante lorem. In rhoncus orci eget purus luctus condimentum. Nulla finibus, leo in gravida suscipit, ante enim sodales elit, sit amet vestibulum elit diam nec eros. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec non libero eget nisl pellentesque auctor. Nullam tempor dapibus eros nec blandit.\n\nSuspendisse sed libero dolor. Vestibulum sit amet elit nec purus pulvinar ullamcorper in vel velit. Sed a scelerisque est, ac ornare ante. In sagittis est condimentum velit iaculis, id semper ante posuere. Mauris at ultrices ante, vel ultrices dolor. Quisque ac eros a libero euismod euismod. Donec purus nulla, auctor sit amet interdum nec, fermentum porta ex. Nullam facilisis sapien tincidunt, semper dolor eu, scelerisque quam. Integer commodo elit sed vehicula ultrices. Suspendisse ullamcorper erat eget hendrerit consequat. Ut a eleifend libero, lobortis egestas libero. Maecenas sapien lacus, placerat nec arcu in, tempus sollicitudin tellus.",
-    "excerpt": "Different measuring sticks are also in order. If commercial networks on the web measure success by reach and profit, cultural endeavors need to see their successes in terms of resonance and significance. This is the new game, one that elevates both the people who make the work and those who see, use, and enjoy it.",
-    "color": "#f52",
-    "name": "creating-your-first-site",
-    "path": "/content/guides/creating-your-first-site",
-    "url": "/guides/creating-your-first-site",
-    "files": {},
-    "pages": {}
-  },
-  "/guides/customizing-your-site": {
-    "title": "Customizing your sites",
-    "view": "guide",
-    "excerpt": "The digital landscape has an influence on our lives, but we are more directly affected by our personal choices. We must fend for ourselves, whether or not the technology industry chooses to deal with the implications of their work.",
-    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eleifend risus tellus, at venenatis massa dapibus at. Quisque bibendum a velit vitae aliquet. Quisque id metus et lectus placerat molestie. Nullam ullamcorper lacinia eros, a facilisis lorem placerat nec. Mauris egestas metus ac velit sodales tincidunt. Donec vehicula turpis quis ultrices hendrerit. Suspendisse feugiat tellus nec fermentum consequat. Nunc vulputate posuere enim, vel pulvinar eros imperdiet tincidunt. Sed dignissim neque vel dui eleifend pellentesque. Curabitur lobortis tristique arcu, sed gravida nisi. Sed elementum dignissim maximus.\n\nVivamus et arcu porttitor, scelerisque velit eget, ullamcorper mauris. Praesent eleifend porttitor pellentesque. Fusce ultrices purus vel tellus ultrices, vitae efficitur risus facilisis. Sed hendrerit consectetur tortor, at volutpat arcu lobortis ut. Vivamus sollicitudin enim at mi faucibus finibus. Sed nunc nunc, varius id molestie quis, gravida ut augue. Vivamus nunc risus, convallis ut pharetra eget, iaculis vel lacus. Praesent eu urna felis. Maecenas vehicula ante lorem. In rhoncus orci eget purus luctus condimentum. Nulla finibus, leo in gravida suscipit, ante enim sodales elit, sit amet vestibulum elit diam nec eros. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec non libero eget nisl pellentesque auctor. Nullam tempor dapibus eros nec blandit.\n\nSuspendisse sed libero dolor. Vestibulum sit amet elit nec purus pulvinar ullamcorper in vel velit. Sed a scelerisque est, ac ornare ante. In sagittis est condimentum velit iaculis, id semper ante posuere. Mauris at ultrices ante, vel ultrices dolor. Quisque ac eros a libero euismod euismod. Donec purus nulla, auctor sit amet interdum nec, fermentum porta ex. Nullam facilisis sapien tincidunt, semper dolor eu, scelerisque quam. Integer commodo elit sed vehicula ultrices. Suspendisse ullamcorper erat eget hendrerit consequat. Ut a eleifend libero, lobortis egestas libero. Maecenas sapien lacus, placerat nec arcu in, tempus sollicitudin tellus.",
-    "color": "#3ae",
-    "name": "customizing-your-site",
-    "path": "/content/guides/customizing-your-site",
-    "url": "/guides/customizing-your-site",
-    "files": {},
-    "pages": {}
-  },
-  "/issues/cleanup-codebase": {
-    "title": "Cleanup codebase",
-    "view": "issue",
-    "text": "Gotta refactor a little bit, it’s getting messy in here.\n\n- [ ] Switch from gr8 for layout to CSS grid/variables.\n- [ ] Try to make the DOM as representational as possible.\n- [ ] Simple `sheetify` css-in-js for most things.\n- [ ] Support imports/require/window\n- [ ] Create a bundle.js which exposes over window\n- [ ] Create a super simple demo using no build system",
-    "tags": [
-      "todo"
-    ],
-    "name": "cleanup-codebase",
-    "path": "/content/issues/cleanup-codebase",
-    "url": "/issues/cleanup-codebase",
-    "files": {},
-    "pages": {}
-  },
   "/issues/designs": {
     "title": "Designs",
     "view": "issue",
@@ -189,37 +268,10 @@
       "1.0.0",
       "todo"
     ],
-    "text": "Create some fresh designs.\n\n## Things to keep in mind\n\n- Super simple document / plain CSS\n\n## Streamer\n\n- [ ] A design for streams (vvatch style)\n- [ ] Vlog style?\n\n## Ripple\n\n- SVG warping sort of thing, text input to outlined shapes",
+    "text": "Create some fresh designs.\n\n## Todo\n\n- [ ] Update dependencies\n\n## Things to keep in mind\n\n- Super simple document / plain CSS\n\n## Streamer\n\n- [ ] A design for streams (vvatch style)\n- [ ] Vlog style?\n\n## Ripple\n\n- SVG warping sort of thing, text input to outlined shapes",
     "name": "designs",
     "path": "/content/issues/designs",
     "url": "/issues/designs",
-    "files": {},
-    "pages": {}
-  },
-  "/issues/inline-editing": {
-    "title": "Inline editing",
-    "view": "issue",
-    "tags": [
-      "idea"
-    ],
-    "text": "Explore implimentation of inline-editing in a design.\n\n- Web API `isOwner` to enable `contenteditable`",
-    "name": "inline-editing",
-    "path": "/content/issues/inline-editing",
-    "url": "/issues/inline-editing",
-    "files": {},
-    "pages": {}
-  },
-  "/issues/fields": {
-    "title": "Fields",
-    "view": "issue",
-    "text": "## Cleanup\n\nCurrently, fields are a bit sloppy. Some immediate improvements.\n\n- [x] Store everything within an internal `state` object\n- [X] Output a single object to `emit` containing `.value`\n- [ ] Autoscroll textarea when at bottom\n- [ ] Wrap fieldset in `<form>`\n- [ ] Convert change to `button[type=\"submit\"]`\n- [ ] Add html5 validation\n\n## New fields\n\n- [X] Checkbox\n- [X] Range\n- [ ] Radio selector\n- [ ] Structured data\n- [x] Color\n- [ ] Help (description sort of thing)",
-    "tags": [
-      "1.0.0",
-      "todo"
-    ],
-    "name": "fields",
-    "path": "/content/issues/fields",
-    "url": "/issues/fields",
     "files": {},
     "pages": {}
   },
@@ -249,20 +301,6 @@
     "files": {},
     "pages": {}
   },
-  "/issues/sites": {
-    "title": "Sites",
-    "view": "issue",
-    "tags": [
-      "todo",
-      "1.0.1"
-    ],
-    "text": "## Todo\n\n- [x] Settings → Remove\n- [ ] Settings → HTTP fallback\n- [ ] Reordering\n- [ ] Persist across domains (ditch localstorage?)\n\n## Ideas\n\n- Some sort of p2p stats, such as how many peers, etc…\n- A simple way of deploying to a service like Hashbase",
-    "name": "sites",
-    "path": "/content/issues/sites",
-    "url": "/issues/sites",
-    "files": {},
-    "pages": {}
-  },
   "/issues/saving": {
     "title": "Saving",
     "view": "issue",
@@ -280,7 +318,7 @@
   "/": {
     "title": "Hub",
     "view": "home",
-    "text:": "",
+    "text": "",
     "name": "content",
     "path": "/content",
     "url": "/",
@@ -323,5 +361,19 @@
         "source": "/content/log"
       }
     }
+  },
+  "/issues/sites": {
+    "title": "Sites",
+    "view": "issue",
+    "tags": [
+      "todo",
+      "1.0.1"
+    ],
+    "text": "## Todo\n\n- [x] Settings → Remove\n- [ ] Settings → HTTP fallback\n- [ ] Reordering\n- [ ] Persist across domains (ditch localstorage?)\n\n## Ideas\n\n- Some sort of p2p stats, such as how many peers, etc…\n- A simple way of deploying to a service like Hashbase",
+    "name": "sites",
+    "path": "/content/issues/sites",
+    "url": "/issues/sites",
+    "files": {},
+    "pages": {}
   }
 }

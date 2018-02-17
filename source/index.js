@@ -1,6 +1,6 @@
 require('./design')
 
-// dependncies
+// dependencies
 var wrapper = require('./containers/wrapper-site')
 var choo = require('choo')
 

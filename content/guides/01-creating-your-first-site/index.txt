@@ -1,0 +1,20 @@
+title: Creating Your First Site
+----
+view: guide
+----
+text: Welcome to Enoki!
+
+## How is this different from other website making tools?
+
+- Data ownership
+- Offline access
+- Customizability
+----
+excerpt: Choosing to take the first step is always the most difficult. Fortunately, Enoki is as simple for beginners with little understanding of creating sites as it is for seasoned experts.
+----
+color: #ff5522
+----
+featured: true
+----
+tags:
+  - beginner

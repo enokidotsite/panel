@@ -74,7 +74,7 @@ module.exports = class Textarea extends Nanocomponent {
 
     // cancel
     if (value === this.state.valueStart) {
-      this.simplemde.value(this.state.value)
+      this.simplemde.value(value)
     }
 
     return false

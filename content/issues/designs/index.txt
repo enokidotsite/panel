@@ -9,6 +9,10 @@ tags:
 ----
 text: Create some fresh designs.
 
+## Todo
+
+- [ ] Update dependencies
+
 ## Things to keep in mind
 
 - Super simple document / plain CSS

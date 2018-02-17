@@ -23,7 +23,7 @@ module.exports = class Checkbox extends Nanocomponent {
     this.state = {
       id: '',
       text: '',
-      value: ''
+      value: false
     }
 
     this.onChange = this.onChange.bind(this)

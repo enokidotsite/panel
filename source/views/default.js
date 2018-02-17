@@ -2,6 +2,7 @@ var queryString = require('query-string')
 var objectKeys = require('object-keys')
 var raw = require('choo/html/raw')
 var html = require('choo/html')
+var xtend = require('xtend')
 
 // containers
 var Fields = require('../containers/fields')
@@ -124,40 +125,43 @@ function view (state, emit) {
           </div>
           ${elMeta()}
         </div>
+        ${search.settings && state.page.url && state.page.url ? PageSettings() : ''}
         <div class="px1"><div class="bb1-bg10"></div></div>
       </div>
     `
   }
 
+  function PageSettings () {
+    return html`
+      <div class="x xje xw pb1">
+        <div class="px1 pb1 w100">
+          <div style="border-top: 1px dashed #ddd"></div>
+        </div>
+        <div class="p1">
+          <span
+            class="tac bgch-fg bgc-red button-medium"
+            onclick=${handleRemovePage}
+          >Delete Page</span>
+        </div>
+      </div>
+    `
+  }
 
   function elMeta () {
+    var settingsUrl = search.settings ? unescape(queryString.stringify({ url: state.page.url })) : unescape(queryString.stringify(xtend(state.query, { settings: 'active' })))
+    var settingsClass = search.settings ? 'bgc-fg' : 'bgc-bg25 bgch-fg'
     return html`
       <div class="x">
-        ${state.site.info ? elView() : ''}
-        ${state.page.url && state.page.url !== '/' ? elRemove() : ''}
-      </div>
-    `
-  }
-
-  function elView () {
-    return html`
-      <div class="p1 xx">
-        <a
-          href="${state.site.info.url}${state.page.url}"
-          target="_blank"
-          class="tac bgch-fg bgc-blue button-medium external"
-        >Open</a>
-      </div>
-    `
-  }
-
-  function elRemove () {
-    return html`
-      <div class="p1 xx">
-        <span
-          class="tac bgch-fg bgc-red button-medium"
-          onclick=${handleRemovePage}
-        >Delete</span>
+        <div class="p1 tom ${state.page.url && state.page.url !== '/' ? 'db' : 'dn'}">
+          <a href="?${settingsUrl}" class="db ${settingsClass} button-medium">Settings</a>
+        </div>
+        <div class="p1 xx">
+          <a
+            href="${state.site.info.url}${state.page.url}"
+            target="_blank"
+            class="tac bgch-fg bgc-blue button-medium external"
+          >Open</a>
+        </div>
       </div>
     `
   }
