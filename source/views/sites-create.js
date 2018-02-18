@@ -50,7 +50,7 @@ function SitesCreate (state, emit) {
           <button
             type="submit"
             onclick=${handleCreate}
-            class="bgch-fg bgc-green button-large"
+            class="bgch-fg bgc-blue button-large"
           >Generate Your New Site</button>
         </div>
       </div>
@@ -82,8 +82,8 @@ function SitesCreate (state, emit) {
 function renderDesign (props) {
   return html`
     <div class="c6 p1" onclick=${handleSelect}>
-      <div class="br2 ${props.active ? 'focused' : ''} b1-bg10 curp oh">
-        <img src="${props.thumbnail}" class="db">
+      <div class="br2 psr ${props.active ? 'focused' : ''} b1-bg10 curp oh" style="padding-bottom: 75%">
+        <img src="${props.thumbnail}" class="psa t0 l0 h100 w100 db">
       </div>
       <div class="py1 fs0-8 ttu">
         <a

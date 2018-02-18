@@ -1,17 +1,17 @@
 exports.colors = {
   bg: '#fff',
-  'bg2-5': '#f9f9f9',
+  'bg2-5': '#f5f5f5',
   bg5: '#eee',
   bg10: '#ddd',
   bg25: '#999',
   bg70: '#666',
   bg90: '#333',
   hg: '#50f',
-  fg: '#000',
-  red: '#f52',
-  blue: '#3ae',
-  green: '#0b5',
-  yellow: '#eb2'
+  fg: '#1a1a1a',
+  red: '#F21307',
+  blue: '#005FD2',
+  green: '#00907A',
+  yellow: '#F8BE15'
 }
 
 exports.typography = {

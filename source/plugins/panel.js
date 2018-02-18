@@ -83,7 +83,7 @@ async function panel (state, emitter) {
       var page = xtend(state.content[data.url], data.page)
       var file = data.file || state.site.config.file
 
-      // cleanup
+      // TODO: create reserved keys
       delete page.files
       delete page.pages
       delete page.url

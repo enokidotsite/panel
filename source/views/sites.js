@@ -49,7 +49,7 @@ function view (state, emit) {
 function renderSites (props) {
   return html`
     <div class="w100">
-      <div class="px3" style="padding-bottom: 10rem">
+      <div style="padding-bottom: 10rem">
         ${props.sites.map(function (site) {
           return renderSite(xtend(site, {
             active: props.active === site.url,
@@ -61,12 +61,12 @@ function renderSites (props) {
           <div class="p1">
             <a
               href="?sites=create"
-              class="bgc-green bgch-fg button-large"
+              class="bgc-blue bgch-fg button-large"
             >Create a New Site</a>
           </div>
           <div class="p1">
             <div
-              class="bgc-blue bgch-fg button-large"
+              class="bgc-yellow bgch-fg button-large"
               onclick=${props.handleAdd}
             >Load an Existing Site</div>
           </div>
@@ -87,19 +87,19 @@ function renderEmpty (props) {
           <div class="p1">
             <a
               href="?sites=create"
-              class="bgc-green bgch-fg button-large"
+              class="bgc-blue bgch-fg button-large"
             >Create a New Site</a>
           </div>
           <div class="p1">
             <button
-              class="button-large bgc-blue bgch-fg"
+              class="button-large bgc-yellow bgch-fg"
               onclick=${props.handleAdd}
             >Load an Existing Site</button>
           </div>
         </div>
         <div class="x xjc c12">
           <div class="p1 pt3">
-            <a href="/#hub/guides" class="fc-bg25 tfcm fch-fg">Need some help getting started?</a>
+            <a href="/#hub/guides/01-creating-your-first-site" class="fc-bg25 tfcm fch-fg">Need some help getting started?</a>
           </div>
         </div>
       </div>
@@ -111,7 +111,7 @@ function renderSite (props) {
   var settingsUrl = props.active ? '?sites=all' : ('?sites=' + props.url)
   var settingsClass = props.active ? 'bgc-fg' : 'bgc-bg25 bgch-fg'
   return html`
-    <div class="w100 fc-fg ${props.active ? '' : 'ophc100'}">
+    <div class="w100 px3 fc-fg bb1-bg10 ${props.active ? '' : 'ophc100'}">
       <div class="x xw xac py1">
         <div class="c12 sm-xx oh p1 curp" onclick=${handleSiteClick}>
           <div class="fs2 wsnw toe fwb">${props.title}</div>
@@ -120,18 +120,17 @@ function renderSite (props) {
           <a href="${settingsUrl}" class="db ${settingsClass} button-medium">Settings</a>
         </div>
         <div class="p1 ${props.active ? '' : 'sm-op0'} oph tom">
-          <a href="${props.url}" target="_blank" class="db bgc-blue bgch-fg button-medium external">Open</a>
+          <a href="${props.url}" target="_blank" class="db bgc-yellow bgch-fg button-medium external">Open</a>
         </div>
         <div class="p1 ${props.active ? '' : 'sm-op0'} oph tom">
           <button
-            class="bgc-green bgch-fg button-medium"
+            class="bgc-blue bgch-fg button-medium"
             onclick=${handleSiteClick}
           >Edit this Site</button>
         </div>
       </div>
       ${props.error ? renderError() : ''}
       ${props.active ? renderSettings() : ''}
-      <div class="w100 px1"><div class="w100 bb1-bg10"></div></div>
     </div>
   `
 
@@ -143,7 +142,7 @@ function renderSite (props) {
     return html`
       <div class="c12">
         <div class="px1">
-          <div style="border-top: 1px dashed #ddd"></div>
+          <div style="border-top: 1px solid #ddd"></div>
         </div>
         <div class="x xjb py1">
           <div class="px1 py2 fc-bg25">

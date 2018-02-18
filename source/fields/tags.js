@@ -6,22 +6,24 @@ var xtend = require('xtend')
 
 var style = css`
   :host {
-    display: inline-block;
-    padding: 0 0.25rem;
+    display: block;
+    padding: 0.2rem 0.2rem;
     background: #fff;
     border: 1px solid #ddd;
     width: 100%;
     border-radius: 2rem;
+    min-height: 4rem;
     cursor: text;
-    line-height: 1;
   }
 
   :host .tag {
     display: inline-block;
     background: #eee;
     color: #000;
+    height: 3rem;
+    line-height: 3rem;
     padding: 0.5rem 1rem;
-    margin: 0.25rem 0.25rem;
+    margin: 0.2rem 0.2rem;
     border-radius: 2rem;
     font: inherit;
     -webkit-user-select: none;
@@ -29,6 +31,7 @@ var style = css`
     -ms-user-select: none;
     user-select: none;
     cursor: pointer;
+    vertical-align: middle;
   }
 
   :host .tag.selected {
@@ -50,14 +53,16 @@ var style = css`
     appearance: none!important;
     display: inline-block!important;
     padding: 0.5rem 1rem !important;
-    margin: 0.25rem 0.25rem !important;
-    background: 0 0!important;
+    margin: 0.2rem 0.2rem !important;
+    background: none!important;
     border: none!important;
-    height: 3.5rem !important;
+    height: 2.8rem !important;
     box-shadow: none!important;
+    line-height: 2.8rem!important;
     font: inherit!important;
-    font-size: 100%!important;
+    font-size: 1.8rem!important;
     outline: 0!important;
+    vertical-align: middle;
   }
 
   :host .selected~input {
@@ -79,6 +84,7 @@ module.exports = class Tags extends Nanocomponent {
     this.state = xtend(this.state, props.field)
     this.state.value = this.state.value || ''
     this.oninput = props.oninput
+    if (!this.state.valueStart) this.state.valueStart = this.state.value
 
     return html`
       <div class="${style}">
@@ -113,6 +119,7 @@ module.exports = class Tags extends Nanocomponent {
         tagsInput(this.element.querySelector('input'))
       }
     }
+
     return false
   }
 

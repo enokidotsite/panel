@@ -44,14 +44,29 @@ module.exports = class Dropdown extends Nanocomponent {
     }
 
     function onInput (event) {
-      props.oninput('change', event.target.value)
+      props.oninput({ value: event.target.value })
     }
   }
 
   update (props) {
-    if (props.field.value && props.field.value !== this.state.value) {
-      this.value = props.value
+    var shouldUpdate = false
+
+    // new value
+    if (props.field.value !== this.state.value) {
+      shouldUpdate = true
     }
-    return true
+
+    // new options
+    if (
+      objectKeys(props.field.options).length !==
+      objectKeys(this.state.options).length
+    ) {
+      shouldUpdate = true
+    }
+
+    if (props.field.value && props.field.value !== this.state.value) {
+      this.state.value = props.value
+    }
+    return shouldUpdate
   }
 }

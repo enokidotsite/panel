@@ -7,23 +7,38 @@ module.exports = wrapper(view)
 function view (state, emit) {
   var tags = state.page.tags || [ ]
   return html`
-    <div class="p2">
-      <div class="p2 c12">
-        <h2
-          class="fs3 lh1-25 tac"
-          style="color: ${state.page.color}"
-        >${state.page.title}</h2>
+    <div>
+      <div
+        class="oh psr x xjc xac p4 c12 bgpc bgsct bgrn ${state.page.color ? 'fc-bg' : 'fc-fg'}"
+        style="
+          min-height: 50vh;
+          background-color: ${state.page.background};
+        "
+      >
+        ${state.page.files['image.svg'] ? renderImage() : ''}
+        <div class="psr z3">
+          <h2 class="c12 sm-c10 co0 sm-co1 fs3 lh1-25 tac">${state.page.title}</h2>
+          <div class="p2 sm-pt4 c12 tac fs0-8 dn">
+            ${tags.map(function (tag) {
+              return html`<span class="mx0-5 button-inline white">${tag}</span>`
+            })}
+          </div>
+        </div>
       </div>
-      <div class="p2 sm-pt4 c12 tac fs0-8">
-        ${tags.map(function (tag) {
-          return html`<span class="button-inline">${tag}</span>`
-        })}
-      </div>
-      <div class="p2 c12 x xjc">
-        <div class="copy">
+      <div class="p4 c12 x xjc bgc-fg">
+        <div class="copy fc-bg25">
           ${format(state.page.text)}
         </div>
       </div>
     </div>
   `
+
+  function renderImage () {
+    return html`
+      <div
+        class="psa t0 l0 r0 b0 bgsc bgpc bgrn"
+        style="${!state.page.color ? 'filter: invert(1);' : ''} opacity: 0.25; background-image: url(${state.page.files['image.svg'].path}">
+      ></div>
+    `
+  }
 }

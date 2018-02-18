@@ -1,10 +1,10 @@
 var queryString = require('query-string')
 var objectKeys = require('object-keys')
-var raw = require('choo/html/raw')
 var html = require('choo/html')
 var xtend = require('xtend')
 
 // containers
+var PageHeader = require('../containers/page-header')
 var Fields = require('../containers/fields')
 
 // components
@@ -18,6 +18,7 @@ var FilesAll = require('./files-all')
 var PagesAll = require('./pages-all')
 var FileNew = require('./file-new')
 var PageNew = require('./page-new')
+var Changes = require('./changes')
 var Sites = require('./sites')
 var File = require('./file')
 
@@ -53,11 +54,21 @@ function view (state, emit) {
       return Sites(state, emit)
     }
 
+    if (search.changes) {
+      // files
+      return [
+        PageHeader(state, emit),
+        Page(),
+        Changes(state, emit)
+      ]
+    }
+
     if (search.file === 'new') {
       // files
       return [
-        PageHeader(),
-        [FileNew(state, emit), Page()]
+        PageHeader(state, emit),
+        Page(),
+        FileNew(state, emit)
       ]
     }
 
@@ -66,24 +77,25 @@ function view (state, emit) {
 
     // pages
     if (search.pages === 'all') {
-      return [PageHeader(), PagesAll(state, emit)]
+      return [PageHeader(state, emit), PagesAll(state, emit)]
     }
 
     if (search.page === 'new') {
       // create page
       return [
-        PageHeader(),
-        [PageNew(state, emit), Page()]
+        PageHeader(state, emit),
+        Page(),
+        PageNew(state, emit)
       ]
     }
 
     if (search.files === 'all') {
       // all files
-      return [PageHeader(), FilesAll(state, emit)]
+      return [PageHeader(state, emit), FilesAll(state, emit)]
     }
 
     return [
-      PageHeader(),
+      PageHeader(state, emit),
       Page()
     ]
   }
@@ -107,8 +119,7 @@ function view (state, emit) {
             ${ActionBar({
               disabled: draftPage === undefined || search.page,
               saveLarge: true,
-              handleCancel: handleCancelPage,
-              handleRemove: handleRemovePage
+              handleCancel: handleCancelPage
             })}
           </div>
         </form>
@@ -116,61 +127,11 @@ function view (state, emit) {
     `
   }
 
-  function PageHeader () {
-    return html`
-      <div class="px3">
-        <div class="x xw py1 xjb">
-          <div class="fs2 px1 py2 toe wsnw oxh c12 sm-xx fwb">
-            <a href="?url=${state.page.url}">${state.page.title || state.page.name || raw('&nbsp;')}</a>
-          </div>
-          ${elMeta()}
-        </div>
-        ${search.settings && state.page.url && state.page.url ? PageSettings() : ''}
-        <div class="px1"><div class="bb1-bg10"></div></div>
-      </div>
-    `
-  }
-
-  function PageSettings () {
-    return html`
-      <div class="x xje xw pb1">
-        <div class="px1 pb1 w100">
-          <div style="border-top: 1px dashed #ddd"></div>
-        </div>
-        <div class="p1">
-          <span
-            class="tac bgch-fg bgc-red button-medium"
-            onclick=${handleRemovePage}
-          >Delete Page</span>
-        </div>
-      </div>
-    `
-  }
-
-  function elMeta () {
-    var settingsUrl = search.settings ? unescape(queryString.stringify({ url: state.page.url })) : unescape(queryString.stringify(xtend(state.query, { settings: 'active' })))
-    var settingsClass = search.settings ? 'bgc-fg' : 'bgc-bg25 bgch-fg'
-    return html`
-      <div class="x">
-        <div class="p1 tom ${state.page.url && state.page.url !== '/' ? 'db' : 'dn'}">
-          <a href="?${settingsUrl}" class="db ${settingsClass} button-medium">Settings</a>
-        </div>
-        <div class="p1 xx">
-          <a
-            href="${state.site.info.url}${state.page.url}"
-            target="_blank"
-            class="tac bgch-fg bgc-blue button-medium external"
-          >Open</a>
-        </div>
-      </div>
-    `
-  }
-
-  function handleFieldUpdate (event, data) {
+  function handleFieldUpdate (key, data) {
     emit(state.events.PANEL_UPDATE, {
       path: state.page.path,
       url: state.page.url,
-      data: { [event]: data }
+      data: { [key]: data }
     })
   }
 
@@ -182,13 +143,7 @@ function view (state, emit) {
       file: state.page.file,
       path: state.page.path,
       url: state.page.url,
-      page: objectKeys(blueprint.fields)
-        .reduce(function (result, field) {
-          result[field] = draftPage[field] === undefined
-            ? state.page[field]
-            : draftPage[field]
-          return result
-        }, { })
+      page: xtend(state.page, draftPage)
     })
   }
 
@@ -197,24 +152,7 @@ function view (state, emit) {
       url: state.page.url
     })
   }
-
-  function handleRemovePage () {
-    emit(state.events.PANEL_REMOVE, {
-      confirm: true,
-      title: state.page.title,
-      path: state.page.path,
-      url: state.page.url
-    })
-  }
-
-  function handleFilesUpload (event, data) {
-    emit(state.events.PANEL_FILES_ADD, {
-      path: state.page.path,
-      url: state.page.url,
-      files: data.files
-    })
-  }
-
+  
   function getBlueprint () {
     if (!state.page || !state.site.loaded) {
       return { }

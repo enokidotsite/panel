@@ -20,7 +20,7 @@ function ActionBar (props) {
     return html`
       <div class="p1 x1" id="save">
         <button
-          class="bgc-green button-large"
+          class="bgc-blue button-large"
           type="submit"
         >${saveText}</button>
       </div>

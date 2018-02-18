@@ -1,5 +1,5 @@
-var html = require('choo/html')
 var objectValues = require('object-values')
+var html = require('choo/html')
 
 var Modal = require('../components/modal')
 var Uploader = require('../components/uploader')

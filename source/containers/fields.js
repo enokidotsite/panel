@@ -80,7 +80,7 @@ function Fields (state, emit) {
         !defaultProps ||
         state.blueprint[key] === false
       ) {
-        return
+        return // nothing to see here
       } else {
         fieldProps = defaultProps
       }
@@ -99,7 +99,7 @@ function Fields (state, emit) {
 
     function mergeDraftandState () {
       return xtend(fieldProps, {
-        id: state.values.url + ':' + key,
+        id: [state.values.url, state.page.view, key].filter(function (str) { return str }).join(':'),
         key: key,
         value: (state.draft && state.draft[key] !== undefined)
           ? state.draft[key]

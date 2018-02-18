@@ -121,7 +121,7 @@ class PageNew extends Nanocomponent {
         <div class="p1 xx x">
           <button
             type="submit"
-            class="xx button-medium bgc-green bgch-fg"
+            class="xx button-medium bgc-blue bgch-fg"
             onclick=${this.handleSave.bind(self)}
           >Create Page</button>
         </div>
@@ -152,8 +152,8 @@ class PageNew extends Nanocomponent {
     if (el) el.value = this.value.uri
   }
 
-  handleView (name, data) {
-    this.value.view = data
+  handleView (data) {
+    this.value.view = data.value
   }
 
   handleSave (event) {
