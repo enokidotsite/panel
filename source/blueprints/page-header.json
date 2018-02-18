@@ -1,7 +1,7 @@
 {
   "layout": false,
   "fields": {
-    "pathname": {
+    "name": {
       "label": "Pathname",
       "type": "text",
       "width": "1/4"

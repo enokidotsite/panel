@@ -12,13 +12,10 @@ function SitesCreate (state, emit) {
 
   return html`
     <div class="c12 psr">
-      <div class="px3">
-        <div class="x xw py1 xjb">
-          <div class="fs2 px1 py2 toe wsnw oxh c12 sm-xx fwb">
-            Create a New Site
-          </div>
+      <div class="x xw py1 xjb px3 bb1-bg10">
+        <div class="fs2 px1 py2 toe wsnw oxh c12 sm-xx fwb">
+          Create a New Site
         </div>
-        <div class="px1"><div class="bb1-bg10"></div></div>
       </div>
       <div class="x xw c12 p2" style="padding-bottom: 8rem">
         <div class="c12 sm-c6 p1">

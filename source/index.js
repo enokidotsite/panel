@@ -21,6 +21,7 @@ app.route('#hub', wrapper(require('./views/hub')))
 app.route('#hub/:page', wrapper(require('./views/hub')))
 app.route('#hub/guides', wrapper(require('./views/guides')))
 app.route('#hub/guides/:page', wrapper(require('./views/guide')))
+app.route('#hub/log', wrapper(require('./views/log')))
 
 // init
 if (!module.parent) app.mount('body')

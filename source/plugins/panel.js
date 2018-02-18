@@ -80,6 +80,8 @@ async function panel (state, emitter) {
 
     // todo: cleanup
     try {
+      var contentPage = state.content[data.url]
+      var shouldMove = contentPage.name !== data.page.name
       var page = xtend(state.content[data.url], data.page)
       var file = data.file || state.site.config.file
 

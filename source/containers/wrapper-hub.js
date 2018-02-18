@@ -22,8 +22,9 @@ function wrapper (view) {
       // async load content
       if (!state.docs.loaded) {
         emit(state.events.DOCS_LOAD)
-        return
+        return html`<div class="bgc-fg xx"></div>`
       }
+
       return view(state, emit)
     }
   }

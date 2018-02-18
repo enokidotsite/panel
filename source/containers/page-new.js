@@ -38,7 +38,7 @@ class PageNew extends Nanocomponent {
     this.emit = emit
 
     return html`
-      <div class="bgc-bg br2">
+      <div class="bgc-bg br1">
         <form onsubmit={this.handleSave}>
           <div class="p1">
             ${this.elTitle()}

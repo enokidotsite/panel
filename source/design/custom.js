@@ -276,7 +276,7 @@ function inputs () {
 
     .tfyh:active,
     .button-large:active {
-      transform: translateY(0.2rem) ;
+      transform: translateY(0.1rem) ;
       transition: transform 50ms ease-out;
     }
 
@@ -299,7 +299,7 @@ function inputs () {
     }
 
     .button-medium:active {
-      transform: translateY(0.2rem) ;
+      transform: translateY(0.1rem) ;
       transition: transform 50ms ease-out;
     }
 
@@ -335,6 +335,20 @@ function inputs () {
     .button-inline:active {
       transition: background 50ms ease-out, color 50ms ease-out, border 50ms ease-out, transform 50ms ease-out;
       transform: translateY(0.1rem);
+    }
+
+    .indicator {
+      color: ${options.colors.bg};
+      font-size: 1.4rem;
+      font-weight: 600;
+      text-align: center;
+      display: block;
+      cursor: pointer;
+      font-family: ${options.typography.mono};
+      border-radius: 1rem;
+      line-height: 2rem;
+      height: 2rem;
+      width: 2rem;
     }
   `
 }

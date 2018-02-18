@@ -71,7 +71,7 @@ function pageHeader (state, emit) {
     var settingsUrl = search.settings ? unescape(queryString.stringify({ url: state.page.url })) : unescape(queryString.stringify(xtend(state.query, { settings: 'active' })))
     var settingsClass = search.settings ? 'bgc-fg' : 'bgc-bg25 bgch-fg'
     return html`
-      <div class="x">
+      <div class="x xw">
         <div class="p1 tom ${state.page.url && state.page.url !== '/' ? 'db' : 'dn'}">
           <a href="?${settingsUrl}" class="db ${settingsClass} button-medium">Settings</a>
         </div>

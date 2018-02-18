@@ -19,7 +19,7 @@ function header (state, emit) {
   return html`
     <div id="header" class="x xjb usn z2 psr oh bgc-bg2-5">
       <div class="x xx oxh">
-        ${editorActive ? breadcrumbs() : html`<div class="py2 px4 fwb">enoki</div>`}
+        ${editorActive ? breadcrumbs() : html`<div class="py2 px4 fwb"><a href="/#hub/guides">enoki</a></div>`}
       </div>
       <div class="x px2 fs0-8 ttu fwb">
         ${renderChanges()}
@@ -49,16 +49,16 @@ function header (state, emit) {
 
   function renderChanges () {
     var changes = objectKeys(state.panel.changes)
+    var isActive = changes.length > 0 && editorActive
     var urlChanges = unescape(queryString.stringify(
       xtend({ changes: 'all' }, state.query)
     ))
-    if (changes.length <= 0) return
+
     return html`
-      <div class="p2">
+      <div class="p2 ${isActive ? 'db' : 'dn'}">
         <a
-          href="?${urlChanges}"
-          class="db curp bgc-green tac fc-bg"
-          style="line-height: 2rem; height: 2rem; width: 2rem; border-radius: 1rem;"
+          href="/?${urlChanges}"
+          class="indicator curp bgc-green"
         >${changes.length}</a>
       </div>
     `

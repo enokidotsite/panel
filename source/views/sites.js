@@ -10,6 +10,7 @@ module.exports = view
 function view (state, emit) {
   var sites = objectValues(state.sites.archives)
 
+  // not loaded
   if (!state.sites.loaded) return
 
   // create
@@ -111,7 +112,7 @@ function renderSite (props) {
   var settingsUrl = props.active ? '?sites=all' : ('?sites=' + props.url)
   var settingsClass = props.active ? 'bgc-fg' : 'bgc-bg25 bgch-fg'
   return html`
-    <div class="w100 px3 fc-fg bb1-bg10 ${props.active ? '' : 'ophc100'}">
+    <div id="${props.title}" class="w100 px3 fc-fg bb1-bg10 ${props.active ? '' : 'ophc100'}">
       <div class="x xw xac py1">
         <div class="c12 sm-xx oh p1 curp" onclick=${handleSiteClick}>
           <div class="fs2 wsnw toe fwb">${props.title}</div>

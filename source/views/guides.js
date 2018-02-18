@@ -9,17 +9,35 @@ var styles = css`
   
   :host .guides-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
     grid-column-gap: 1rem;
     grid-row-gap: 1rem;
   }
 
-  :host .guides-grid > div {
-    grid-column-end: span 1;
+  :host .grid-column {
+    grid-column-end: span 1
   }
 
-  :host .guides-grid >.grid-featured {
+  :host .grid-featured {
     grid-column-end: span 2;
+  }
+
+  :host .grid-featured h2 {
+    font-size: 3.6rem;
+  }
+
+  :host .grid-featured .copy {
+    font-size: 1.8rem;
+  }
+
+  :host .copy {
+    font-size: 1.4rem;
+    max-height: 9.75rem;
+  }
+
+  :host .grid-featured .copy {
+    max-height: 10.5rem;
+    max-width: 50rem;
   }
 
   :host .guides-grid a {
@@ -35,6 +53,15 @@ var styles = css`
   :host .guides-grid a:active {
     transform: translateY(0rem);
     transition: 50ms ease-out transform;
+  }
+
+  @media (max-width: 38rem) {
+    :host .grid-featured {
+      grid-column-end: span 1;
+    }
+
+    :host h2 { font-size: 3.6rem }
+    :host .copy { font-size: 1.8rem }
   }
 `
 
@@ -59,16 +86,18 @@ function view (state, emit) {
 function renderGuide (props) {
   return html`
     <div
-      class="psr x bgc-bg oh br1 ${props.featured ? 'grid-featured' : ''}"
+      class="psr x bgc-bg oh br1 grid-column ${props.featured ? 'grid-featured' : ''}"
       style="background: ${props.background}"
     >
       ${props.files['image.svg'] ? renderImage() : ''}
       <a
         href="/#hub${props.url}"
-        class="psr z2 w100 x xdc xje p3 ${props.color ? 'fc-bg' : 'fc-fg'} ${props.featured ? 'fs2' : ''}"
+        class="psr z2 w100 x xdc xje p3 ${props.color ? 'fc-bg' : 'fc-fg'}"
       >
-        <h2 class="fwb lh1-25 mb2">${props.title}</h2>
-        <div class="copy ${props.featured ? 'fs1' : 'fs0-8'}" style="${props.featured ? 'max-height: 10.5rem; max-width: 50rem;' : 'max-height: 7.75rem; max-width: 30rem;'}">
+        <h2 class="fwb lh1-25 mb2">
+          ${props.title}
+        </h2>
+        <div class="copy">
           <p>${props.excerpt}</p>
         </div>
       </a>
