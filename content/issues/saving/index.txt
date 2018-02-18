@@ -11,3 +11,4 @@ text: How to handle static output?
 
 - [ ] Saving title change saves to index.html, too
 - [ ] Meta tags in index.html
+- [ ] How to speed things up (static output / reload all state)

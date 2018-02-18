@@ -6,7 +6,7 @@ tags:
   - beginner
 
 ----
-color: #00bb55
+color: true
 ----
 featured: false
 ----
@@ -16,3 +16,5 @@ text: ## Notes
 
 - Overview of fields
 - Overview of blueprints
+----
+background: #f21006

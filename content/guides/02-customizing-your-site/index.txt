@@ -14,9 +14,12 @@ Vivamus et arcu porttitor, scelerisque velit eget, ullamcorper mauris. Praesent 
 
 Suspendisse sed libero dolor. Vestibulum sit amet elit nec purus pulvinar ullamcorper in vel velit. Sed a scelerisque est, ac ornare ante. In sagittis est condimentum velit iaculis, id semper ante posuere. Mauris at ultrices ante, vel ultrices dolor. Quisque ac eros a libero euismod euismod. Donec purus nulla, auctor sit amet interdum nec, fermentum porta ex. Nullam facilisis sapien tincidunt, semper dolor eu, scelerisque quam. Integer commodo elit sed vehicula ultrices. Suspendisse ullamcorper erat eget hendrerit consequat. Ut a eleifend libero, lobortis egestas libero. Maecenas sapien lacus, placerat nec arcu in, tempus sollicitudin tellus.
 ----
-color: #33aaee
+color: true
 ----
 featured: 
 ----
 tags:
   - beginner
+
+----
+background: #00917b

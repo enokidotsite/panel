@@ -11,7 +11,7 @@ text: Create some fresh designs.
 
 ## Todo
 
-- [ ] Update dependencies
+- [ ] Update dependencies before release
 
 ## Things to keep in mind
 
