@@ -68,8 +68,11 @@ function sites (state, emitter, app) {
 
   async function handleCreate (data) {
     try {
-      // download and fork the design archive
-      await DatArchive.download('/')
+      // download the source archive
+      var archiveSource = await new DatArchive(state.sites.create.url)
+      await archiveSource.download('/')
+
+      // fork it
       var archiveCreate = await DatArchive.fork(
         state.sites.create.url,
         state.sites.create
