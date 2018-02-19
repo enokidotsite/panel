@@ -77,6 +77,23 @@
       }
     }
   },
+  "/docs/fields": {
+    "title": "Fields",
+    "view": "fields",
+    "text": "An overview of the available fields.",
+    "tags": [
+      "technopastoral",
+      "extra-statecraft"
+    ],
+    "checkbox": true,
+    "color": "#fffb00",
+    "range": "70",
+    "name": "fields",
+    "path": "/content/docs/fields",
+    "url": "/docs/fields",
+    "files": {},
+    "pages": {}
+  },
   "/issues": {
     "title": "Issues",
     "view": "issues",
@@ -152,27 +169,37 @@
     "files": {},
     "pages": {}
   },
-  "/docs/fields": {
+  "/issues/fields": {
     "title": "Fields",
-    "view": "fields",
-    "text": "An overview of the available fields.",
+    "view": "issue",
+    "text": "## Cleanup\n\nCurrently, fields are a bit sloppy. Some immediate improvements.\n\n- [x] Store everything within an internal `state` object\n- [X] Output a single object to `emit` containing `.value`\n- [ ] Autoscroll textarea when at bottom\n- [ ] Wrap fieldset in `<form>`\n- [ ] Convert change to `button[type=\"submit\"]`\n- [ ] Add html5 validation\n\n## New fields\n\n- [X] Checkbox\n- [X] Range\n- [ ] Radio selector\n- [ ] Structured data\n- [ ] Font (copy font files to site?)\n- [x] Color\n- [ ] Help (description sort of thing)",
     "tags": [
-      "technopastoral",
-      "extra-statecraft"
+      "1.0.0",
+      "todo"
     ],
-    "checkbox": true,
-    "color": "#fffb00",
-    "range": "70",
     "name": "fields",
-    "path": "/content/docs/fields",
-    "url": "/docs/fields",
+    "path": "/content/issues/fields",
+    "url": "/issues/fields",
+    "files": {},
+    "pages": {}
+  },
+  "/guides/05-starting-from-scratch": {
+    "title": "Starting From Scratch",
+    "view": "guide",
+    "background": "#5a2da8",
+    "color": true,
+    "excerpt": "Purely random networks do not obey power laws, so when the early proponents of the scale-free paradigm started seeing power laws in real-world networks in the late 1990s, they viewed them as evidence of a universal organizing principle underlying the formation of these diverse networks. The architecture of scale-freeness, researchers argued, could provide insight into fundamental questions such as how likely a virus is to cause an epidemic, or how easily hackers can disable a network.",
+    "text": "Purely random networks do not obey power laws, so when the early proponents of the scale-free paradigm started seeing power laws in real-world networks in the late 1990s, they viewed them as evidence of a universal organizing principle underlying the formation of these diverse networks. The architecture of scale-freeness, researchers argued, could provide insight into fundamental questions such as how likely a virus is to cause an epidemic, or how easily hackers can disable a network.",
+    "name": "05-starting-from-scratch",
+    "path": "/content/guides/05-starting-from-scratch",
+    "url": "/guides/05-starting-from-scratch",
     "files": {},
     "pages": {}
   },
   "/issues/cleanup-codebase": {
     "title": "Cleanup codebase",
     "view": "issue",
-    "text": "Gotta refactor a little bit, it’s getting messy in here.\n\n- [ ] Switch from gr8 for layout to CSS grid/variables.\n- [ ] Try to make the DOM as representational as possible.\n- [ ] Simple `sheetify` css-in-js for most things.\n- [ ] Support imports/require/window\n- [ ] Create a bundle.js which exposes over window\n- [ ] Create a super simple demo using no build system",
+    "text": "Gotta refactor a little bit, it’s getting messy in here.\n\n## Structure\n\n- [ ] Try to make the DOM as representational as possible.\n- [ ] Support imports/require/window\n- [ ] Create a bundle.js which exposes over window\n- [ ] Create a super simple demo using no build system\n\n## Styles\n\n- [ ] Switch from gr8 for layout to CSS grid/variables.\n- [ ] Create `.copy` styles for dark/light\n- [ ] Simple `sheetify` css-in-js for most things.",
     "tags": [
       "todo"
     ],
@@ -196,17 +223,16 @@
     "files": {},
     "pages": {}
   },
-  "/issues/fields": {
-    "title": "Fields",
+  "/issues/library": {
+    "title": "Library",
     "view": "issue",
-    "text": "## Cleanup\n\nCurrently, fields are a bit sloppy. Some immediate improvements.\n\n- [x] Store everything within an internal `state` object\n- [X] Output a single object to `emit` containing `.value`\n- [ ] Autoscroll textarea when at bottom\n- [ ] Wrap fieldset in `<form>`\n- [ ] Convert change to `button[type=\"submit\"]`\n- [ ] Add html5 validation\n\n## New fields\n\n- [X] Checkbox\n- [X] Range\n- [ ] Radio selector\n- [ ] Structured data\n- [x] Color\n- [ ] Help (description sort of thing)",
+    "text": "Need to clean up some of the boundaries between things.\n\n- [ ] Localization support\n- [ ] `require('enoki/tools')` for handy methods",
     "tags": [
-      "1.0.0",
       "todo"
     ],
-    "name": "fields",
-    "path": "/content/issues/fields",
-    "url": "/issues/fields",
+    "name": "library",
+    "path": "/content/issues/library",
+    "url": "/issues/library",
     "files": {},
     "pages": {}
   },
@@ -234,73 +260,6 @@
     "name": "inline-editing",
     "path": "/content/issues/inline-editing",
     "url": "/issues/inline-editing",
-    "files": {},
-    "pages": {}
-  },
-  "/issues/library": {
-    "title": "Library",
-    "view": "issue",
-    "text": "Need to clean up some of the boundaries between things.\n\n- [ ] Localization support\n- [ ] `require('enoki/tools')` for handy methods",
-    "tags": [
-      "todo"
-    ],
-    "name": "library",
-    "path": "/content/issues/library",
-    "url": "/issues/library",
-    "files": {},
-    "pages": {}
-  },
-  "/issues/page-functionality": {
-    "title": "Page functionality",
-    "view": "issue",
-    "text": "Need to improve some management issues with Pages.\n\n- [ ] Field for `hidden` toggle\n- [ ] Field for adjusting `view` in Settings.\n- [ ] Field for adjusting `pathname` in Settings.",
-    "tags": [
-      "todo"
-    ],
-    "name": "page-functionality",
-    "path": "/content/issues/page-functionality",
-    "url": "/issues/page-functionality",
-    "files": {},
-    "pages": {}
-  },
-  "/issues/saving": {
-    "title": "Saving",
-    "view": "issue",
-    "tags": [
-      "0.1.1",
-      "todo"
-    ],
-    "text": "How to handle static output?\n\n- [ ] Local storage for changes?\n- [ ] Saving title change saves to index.html, too\n- [ ] Meta tags in index.html\n- [ ] How to speed things up (static output / reload all state)",
-    "name": "saving",
-    "path": "/content/issues/saving",
-    "url": "/issues/saving",
-    "files": {},
-    "pages": {}
-  },
-  "/issues/sites": {
-    "title": "Sites",
-    "view": "issue",
-    "tags": [
-      "todo",
-      "1.0.1"
-    ],
-    "text": "## Todo\n\n- [x] Settings → Remove\n- [ ] Settings → HTTP fallback\n- [ ] Reordering\n- [ ] Persist across domains (ditch localstorage?)\n\n## Ideas\n\n- Some sort of p2p stats, such as how many peers, etc…\n- A simple way of deploying to a service like Hashbase",
-    "name": "sites",
-    "path": "/content/issues/sites",
-    "url": "/issues/sites",
-    "files": {},
-    "pages": {}
-  },
-  "/guides/05-starting-from-scratch": {
-    "title": "Starting From Scratch",
-    "view": "guide",
-    "background": "#5a2da8",
-    "color": true,
-    "excerpt": "Purely random networks do not obey power laws, so when the early proponents of the scale-free paradigm started seeing power laws in real-world networks in the late 1990s, they viewed them as evidence of a universal organizing principle underlying the formation of these diverse networks. The architecture of scale-freeness, researchers argued, could provide insight into fundamental questions such as how likely a virus is to cause an epidemic, or how easily hackers can disable a network.",
-    "text": "Purely random networks do not obey power laws, so when the early proponents of the scale-free paradigm started seeing power laws in real-world networks in the late 1990s, they viewed them as evidence of a universal organizing principle underlying the formation of these diverse networks. The architecture of scale-freeness, researchers argued, could provide insight into fundamental questions such as how likely a virus is to cause an epidemic, or how easily hackers can disable a network.",
-    "name": "05-starting-from-scratch",
-    "path": "/content/guides/05-starting-from-scratch",
-    "url": "/guides/05-starting-from-scratch",
     "files": {},
     "pages": {}
   },
@@ -350,6 +309,47 @@
         "source": "/content/log"
       }
     }
+  },
+  "/issues/page-functionality": {
+    "title": "Page functionality",
+    "view": "issue",
+    "text": "Need to improve some management issues with Pages.\n\n- [ ] Field for `hidden` toggle\n- [ ] Field for adjusting `view` in Settings.\n- [ ] Field for adjusting `pathname` in Settings.",
+    "tags": [
+      "todo"
+    ],
+    "name": "page-functionality",
+    "path": "/content/issues/page-functionality",
+    "url": "/issues/page-functionality",
+    "files": {},
+    "pages": {}
+  },
+  "/issues/saving": {
+    "title": "Saving",
+    "view": "issue",
+    "tags": [
+      "0.1.1",
+      "todo"
+    ],
+    "text": "How to handle static output?\n\n- [ ] Local storage for changes?\n- [ ] Saving title change saves to index.html, too\n- [ ] Meta tags in index.html\n- [ ] How to speed things up (static output / reload all state)",
+    "name": "saving",
+    "path": "/content/issues/saving",
+    "url": "/issues/saving",
+    "files": {},
+    "pages": {}
+  },
+  "/issues/sites": {
+    "title": "Sites",
+    "view": "issue",
+    "tags": [
+      "todo",
+      "1.0.1"
+    ],
+    "text": "## Todo\n\n- [x] Settings → Remove\n- [ ] Settings → HTTP fallback\n- [ ] Reordering\n- [ ] Persist across domains (ditch localstorage?)\n\n## Ideas\n\n- Some sort of p2p stats, such as how many peers, etc…\n- A simple way of deploying to a service like Hashbase",
+    "name": "sites",
+    "path": "/content/issues/sites",
+    "url": "/issues/sites",
+    "files": {},
+    "pages": {}
   },
   "/guides/01-creating-your-first-site": {
     "title": "Creating Your First Site (or not)",
