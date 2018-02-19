@@ -5,7 +5,6 @@ var css = require('sheetify')
 var wrapper = require('../containers/wrapper-hub')
 var format = require('../components/format')
 
-
 var styles = css`
   :host {
     padding: 2rem;
@@ -47,7 +46,7 @@ function view (state, emit) {
 
 function renderIssue (props) {
   return html`
-    <li class="x xjb br1 mb2 p2 b1-bg25">
+    <li class="x xjb br1 mb2 p2 bgc-bg90 fc-bg25">
       <div class="fwb">
         ${props.title}
       </div>

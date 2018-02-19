@@ -113,6 +113,19 @@ function copy () {
       padding: 0.2rem;
     }
 
+    .bgc-fg .copy code{
+      background: ${options.colors.bg90};
+    }
+
+    .fc-bg25 .copy a {
+      color: ${options.colors.bg25};
+    }
+
+    .fc-bg25 .copy h2,
+    .fc-bg25 .copy h3 {
+      color: ${options.colors.bg};
+    }
+
     .copy > *,
     .editor-preview-side > *,
     .editor-preview > * {
