@@ -8,17 +8,25 @@
     },
     "tags": {
       "label": "Tags",
-      "type": "tags"
-    },
-    "color": {
-      "label": "Color",
-      "type": "color",
+      "type": "tags",
       "width": "1/2"
     },
     "featured": {
       "label": "Featured",
       "type": "checkbox",
       "text": "Featured guide?",
+      "width": "1/2"
+    },
+    "background": {
+      "label": "Background Color",
+      "type": "color",
+      "width": "1/2"
+    },
+    "color": {
+      "label": "Inverted",
+      "true": "Is inverted",
+      "false": "Is not inverted",
+      "type": "checkbox",
       "width": "1/2"
     },
     "excerpt": {

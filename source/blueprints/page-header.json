@@ -1,0 +1,26 @@
+{
+  "layout": false,
+  "fields": {
+    "name": {
+      "label": "Pathname",
+      "type": "text",
+      "width": "1/4"
+    },
+    "view": {
+      "label": "View",
+      "type": "dropdown",
+      "width": "1/4",
+      "options": {
+        "one": "Hey there",
+        "two": "Sick job"
+      }
+    },
+    "visible": {
+      "label": "Visible",
+      "true": "Is visible",
+      "false": "Is not visible",
+      "type": "checkbox",
+      "width": "1/4"
+    }
+  }
+}

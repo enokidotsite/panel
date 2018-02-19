@@ -40,7 +40,6 @@ function typography () {
 
     .nav-link { position: relative }
     .nav-link:before {
-      box-shadow: 0 0 3rem #ddd;
       content: '';
       display: block;
       position: absolute;
@@ -49,13 +48,25 @@ function typography () {
       margin-left: -0.75rem;
       height: 1.5rem;
       width: 1.5rem;
-      background: #fff;
       transform: translateY(4.5rem) rotate(45deg);
       transition: transform ease-out 250ms;
     }
 
+    .nav-link.light:before {
+      box-shadow: 0 0 3rem #ddd;
+      background: ${options.colors.bg};
+    }
+
+    .nav-link.dark:before {
+      background: var(--highlight);
+    }
+
     .nav-active:before {
       transform: translateY(0.75rem) rotate(45deg);
+    }
+
+    .nav-active.dark:before {
+      transform: translateY(1.75rem) rotate(45deg);
     }
 
     @font-face {
@@ -100,6 +111,19 @@ function copy () {
       background: ${options.colors.bg5};
       border-radius: 3px;
       padding: 0.2rem;
+    }
+
+    .bgc-fg .copy code{
+      background: ${options.colors.bg90};
+    }
+
+    .fc-bg25 .copy a {
+      color: ${options.colors.bg25};
+    }
+
+    .fc-bg25 .copy h2,
+    .fc-bg25 .copy h3 {
+      color: ${options.colors.bg};
     }
 
     .copy > *,
@@ -162,7 +186,7 @@ function media () {
       max-height: 100vh;
       margin: -3rem -3rem -3rem 2rem;
       width: calc(100% + 2rem);
-      background-image: url('data:image/svg+xml;utf8,<svg height="10" width="10" viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg"><rect height="5" width="5" x="0" y="0" fill="rgba(127, 127, 127, 0.15)" /><rect height="5" width="5" x="5" y="5" fill="rgba(127, 127, 127, 0.15)" /></svg>');
+      background-image: url('data:image/svg+xml;utf8,<svg height="10" width="10" viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg"><rect height="5" width="5" x="0" y="0" fill="#f9f9f9" /><rect height="5" width="5" x="5" y="5" fill="#f9f9f9" /></svg>');
       background-repeat: repeat;
     }
 
@@ -192,7 +216,7 @@ function inputs () {
       background: ${options.colors.bg};
       border: 1px solid ${options.colors.bg10};
       line-height: 4rem;
-      padding: 0 1.5rem;
+      padding: 0 3.5rem 0 1.5rem;
       border-radius: 2rem;
       font-family: ${options.typography.sans};
       line-height: 4rem;
@@ -235,8 +259,8 @@ function inputs () {
     button:focus { outline: 0 }
 
     .focused {
-      box-shadow: 0 0 0 2px ${options.colors.blue};
-      border: 1px solid ${options.colors.blue};
+      box-shadow: 0 0 0 2px ${options.colors.yellow};
+      border: 1px solid ${options.colors.yellow};
     }
 
     .button-large {
@@ -246,10 +270,11 @@ function inputs () {
       border-radius: 3rem;
       display: block;
       cursor: pointer;
-      color: #fff;
+      color: ${options.colors.bg};
       font-size: 1.8rem;
       text-align: center;
       white-space: nowrap;
+      font-weight: 600;
       transition: background 150ms ease-out, transform 150ms ease-out;
     }
 
@@ -264,18 +289,19 @@ function inputs () {
 
     .tfyh:active,
     .button-large:active {
-      transform: translateY(0.2rem) ;
+      transform: translateY(0.1rem) ;
       transition: transform 50ms ease-out;
     }
 
     .button-medium {
       user-select: none;
       line-height: 4rem;
+      font-weight: 600;
       padding: 0 2rem;
       border-radius: 2rem;
       display: block;
       cursor: pointer;
-      color: #fff;
+      color: ${options.colors.bg};
       font-size: 1.8rem;
       white-space: nowrap;
       transition: background 150ms ease-out, transform 150ms ease-out;
@@ -286,18 +312,19 @@ function inputs () {
     }
 
     .button-medium:active {
-      transform: translateY(0.2rem) ;
+      transform: translateY(0.1rem) ;
       transition: transform 50ms ease-out;
     }
 
     .button-inline {
+      display: inline-block;
+      vertical-align: center;
       user-select: none;
-      background: ${options.colors.bg};
-      border: 1px solid ${options.colors.bg10};
-      color: ${options.colors.bg25};
+      border: 1px solid ${options.colors.yellow};
+      color: ${options.colors.yellow};
       margin: 0 0 0 0.5rem;
-      padding: 0 1rem 0.1rem;
-      line-height: 2rem;
+      padding: 0 1rem;
+      line-height: 1.8rem;
       height: 2rem;
       border-radius: 1rem;
       text-transform: uppercase;
@@ -309,23 +336,32 @@ function inputs () {
       cursor: pointer;
       position: relative;
       z-index: 2;
-      transition: background 150ms ease-out, color 150ms ease-out, border 150ms ease-out;
-    }
-
-    .button-inline.green {
-      border: 1px solid ${options.colors.green};
-      color: ${options.colors.green};
-    }
-
-    .button-inline.blue {
-      border: 1px solid ${options.colors.blue};
-      color: ${options.colors.blue};
+      transition: background 150ms ease-out, color 150ms ease-out, border 150ms ease-out, transform 150ms ease-out;
     }
 
     .button-inline:hover {
-      background: #000;
       border: 1px solid ${options.colors.fg};
-      color: #fff;
+      color: ${options.colors.fg};
+      transform: translateY(-0.1rem);
+    }
+
+    .button-inline:active {
+      transition: background 50ms ease-out, color 50ms ease-out, border 50ms ease-out, transform 50ms ease-out;
+      transform: translateY(0.1rem);
+    }
+
+    .indicator {
+      color: ${options.colors.bg};
+      font-size: 1.4rem;
+      font-weight: 600;
+      text-align: center;
+      display: block;
+      cursor: pointer;
+      font-family: ${options.typography.mono};
+      border-radius: 1rem;
+      line-height: 2rem;
+      height: 2rem;
+      width: 2rem;
     }
   `
 }
@@ -434,10 +470,10 @@ function loader () {
       font-size: 3rem;
       position: relative;
       text-indent: -9999em;
-      border-top: 2px solid #fff;
-      border-right: 2px solid #fff;
-      border-bottom: 2px solid #000;
-      border-left: 2px solid #000;
+      border-top: 2px solid ${options.colors.bg};
+      border-right: 2px solid ${options.colors.bg};
+      border-bottom: 2px solid ${options.colors.fg};
+      border-left: 2px solid ${options.colors.fg};
       animation: load 1s infinite linear;
     }
 

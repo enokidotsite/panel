@@ -1,0 +1,15 @@
+title: Files
+----
+view: issue
+----
+tags:
+  - todo
+  - 1.0.1
+
+----
+text: ## Todo
+
+- [ ] Meta data support (api/panel)
+- [ ] Video preview
+- [ ] Audio preview
+- [ ] Image zooming

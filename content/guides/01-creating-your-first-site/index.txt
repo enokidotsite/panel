@@ -1,4 +1,4 @@
-title: Creating Your First Site
+title: Creating Your First Site (or not)
 ----
 view: guide
 ----
@@ -10,11 +10,14 @@ text: Welcome to Enoki!
 - Offline access
 - Customizability
 ----
-excerpt: Choosing to take the first step is always the most difficult. Fortunately, Enoki is as simple for beginners with little understanding of creating sites as it is for seasoned experts.
+excerpt: Ok, you’ve stumbled across Enoki. What are you getting yourself into? Let’s look at how is this different from existing platforms, and expand upon both the pros and cons. Is Enoki right for you? Maybe, but hopefully you can take the knowledge with you regardless of it’s a match.
 ----
-color: #ff5522
+color: true
 ----
 featured: true
 ----
 tags:
   - beginner
+
+----
+background: #045bc1

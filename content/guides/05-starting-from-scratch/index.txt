@@ -1,0 +1,11 @@
+title: Starting From Scratch
+----
+view: guide
+----
+background: #5a2da8
+----
+color: true
+----
+excerpt: Purely random networks do not obey power laws, so when the early proponents of the scale-free paradigm started seeing power laws in real-world networks in the late 1990s, they viewed them as evidence of a universal organizing principle underlying the formation of these diverse networks. The architecture of scale-freeness, researchers argued, could provide insight into fundamental questions such as how likely a virus is to cause an epidemic, or how easily hackers can disable a network.
+----
+text: Purely random networks do not obey power laws, so when the early proponents of the scale-free paradigm started seeing power laws in real-world networks in the late 1990s, they viewed them as evidence of a universal organizing principle underlying the formation of these diverse networks. The architecture of scale-freeness, researchers argued, could provide insight into fundamental questions such as how likely a virus is to cause an epidemic, or how easily hackers can disable a network.

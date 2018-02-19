@@ -6,7 +6,7 @@ tags:
   - beginner
 
 ----
-color: #666666
+color: false
 ----
 featured: false
 ----
@@ -21,3 +21,5 @@ text: ## Ideas
 ## Draft
 
 Technology moves fast. Enoki won’t always be the best tool for you. Rest easy knowing that you own your data and content. It exists on your computer, and not only on a server owned by a platform.
+----
+background: #fbc200

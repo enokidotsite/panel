@@ -14,6 +14,12 @@ One way to do this is to write `state.content` to a JSON file saving from the Pa
 
 Anyway, with that static JSON in place you can use a service like [Hashbase](https://hashbase.io) to persistently sync your app. Just copy the `dat://` url of your site to Hashbase. Alternatively, install [`dathttpd`](https://github.com/beakerbrowser/dathttpd) on your own server.
 
+## What inspired this
+
+- Kirby
+- Teenage Engineering
+- etc
+
 ## This looks like a wireframe
 
 Yeah, it sort of is a functional wireframe—a representation of the expected basics for a CMS today. Consider it a starting point meant to progressively evolve into an interface for peer-to-peer publishing as we collectively develop the language.

@@ -23,6 +23,8 @@ module.exports = class Checkbox extends Nanocomponent {
     this.state = {
       id: '',
       text: '',
+      true: '',
+      false: '',
       value: false
     }
 
@@ -38,7 +40,7 @@ module.exports = class Checkbox extends Nanocomponent {
       <div class="input curp ${style}" onclick=${this.onChange}>
         <div class="x xjb usn">
           <div class="py1 px1-5 fc-bg25">
-            ${this.state.text}
+            ${this.getText()}
           </div>
           <input
             name="${this.state.key}"
@@ -51,6 +53,11 @@ module.exports = class Checkbox extends Nanocomponent {
         </div>
       </div>
     `
+  }
+
+  getText () {
+    if (!this.state.true || !this.state.false) return this.state.text
+    return this.state.value === true ? this.state.true : this.state.false
   }
 
   onChange (event) {

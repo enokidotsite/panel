@@ -19,6 +19,7 @@ Currently, fields are a bit sloppy. Some immediate improvements.
 - [X] Range
 - [ ] Radio selector
 - [ ] Structured data
+- [ ] Font (copy font files to site?)
 - [x] Color
 - [ ] Help (description sort of thing)
 ----

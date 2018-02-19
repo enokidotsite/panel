@@ -12,23 +12,25 @@ function Modal () {
 Modal.prototype = Object.create(Nanocomponent.prototype)
 
 Modal.prototype.createElement = function (props) {
-  this.content = props.content || ''
+  this.content = props.content
   this.handleContainerClick = props.handleContainerClick || this.handleContainerClick
   this.className = props.className || ''
 
   return html`
     <div
       id="modal"
-      class="p1 psf t0 l0 r0 b0 x xjc xac z3 curp"
-      style="background: rgba(127, 127, 127, 0.5)"
-      onclick=${this.handleContainerClick}
+      class="p1 psf t0 l0 r0 b0 x xjc xac z3"
     >
       <div
-        onclick=${this.handleContentClick}
-        class="curd ${this.className}"
+        class="psr z2 ${this.className}"
       >
-        ${this.content || ''} 
+        ${this.content} 
       </div>
+      <div
+        class="psa t0 l0 r0 b0 z1 curp"
+        style="background: rgba(127, 127, 127, 0.5)"
+        onclick=${this.handleContainerClick}
+      ></div>
     </div>
   `
 }
@@ -39,8 +41,4 @@ Modal.prototype.update = function (state) {
 
 Modal.prototype.handleContainerClick = function(event) {
 
-}
-
-Modal.prototype.handleContentClick = function(event) {
-  event.stopPropagation()
 }

@@ -12,13 +12,10 @@ function SitesCreate (state, emit) {
 
   return html`
     <div class="c12 psr">
-      <div class="px3">
-        <div class="x xw py1 xjb">
-          <div class="fs2 px1 py2 toe wsnw oxh c12 sm-xx fwb">
-            Create a New Site
-          </div>
+      <div class="x xw py1 xjb px3 bb1-bg10">
+        <div class="fs2 px1 py2 toe wsnw oxh c12 sm-xx fwb">
+          Create a New Site
         </div>
-        <div class="px1"><div class="bb1-bg10"></div></div>
       </div>
       <div class="x xw c12 p2" style="padding-bottom: 8rem">
         <div class="c12 sm-c6 p1">
@@ -50,7 +47,7 @@ function SitesCreate (state, emit) {
           <button
             type="submit"
             onclick=${handleCreate}
-            class="bgch-fg bgc-green button-large"
+            class="bgch-fg bgc-blue button-large"
           >Generate Your New Site</button>
         </div>
       </div>
@@ -82,8 +79,8 @@ function SitesCreate (state, emit) {
 function renderDesign (props) {
   return html`
     <div class="c6 p1" onclick=${handleSelect}>
-      <div class="br2 ${props.active ? 'focused' : ''} b1-bg10 curp oh">
-        <img src="${props.thumbnail}" class="db">
+      <div class="br2 psr ${props.active ? 'focused' : ''} b1-bg10 curp oh" style="padding-bottom: 75%">
+        <img src="${props.thumbnail}" class="psa t0 l0 h100 w100 db">
       </div>
       <div class="py1 fs0-8 ttu">
         <a

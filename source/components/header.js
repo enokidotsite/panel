@@ -1,5 +1,7 @@
 var queryString = require('query-string')
+var objectKeys = require('object-keys')
 var html = require('choo/html')
+var xtend = require('xtend')
 
 var Breadcrumbs = require('./breadcrumbs')
 
@@ -17,17 +19,18 @@ function header (state, emit) {
   return html`
     <div id="header" class="x xjb usn z2 psr oh bgc-bg2-5">
       <div class="x xx oxh">
-        ${editorActive ? breadcrumbs() : html`<div class="py2 px4 fwb">enoki</div>`}
+        ${editorActive ? breadcrumbs() : html`<div class="py2 px4 fwb"><a href="/#hub/guides">enoki</a></div>`}
       </div>
       <div class="x px2 fs0-8 ttu fwb">
+        ${renderChanges()}
         <div class="${state.sites.active ? '' : 'dn'}">
-          <a href="/?url=/" class="nav-link ${editorActive ? 'fc-fg nav-active' : 'fc-bg25 fch-fg'} tfcm db p2">Editor</a>
+          <a href="/?url=/" class="nav-link light ${editorActive ? 'fc-fg nav-active' : 'fc-bg25 fch-fg'} tfcm db p2">Editor</a>
         </div>
         <div class="psr">
-          <a href="/?sites=all" class="nav-link ${sitesActive ? 'fc-fg nav-active' : 'fc-bg25 fch-fg'} tfcm db p2">Sites</a>
+          <a href="/?sites=all" class="nav-link light ${sitesActive ? 'fc-fg nav-active' : 'fc-bg25 fch-fg'} tfcm db p2">Sites</a>
         </div>
         <div class="psr">
-          <a href="/#hub/guides" class="nav-link ${hubActive ? 'fc-fg nav-active' : 'fc-bg25 fch-fg'} tfcm db p2">Hub</a>
+          <a href="/#hub/guides" class="nav-link light ${hubActive ? 'fc-fg nav-active' : 'fc-bg25 fch-fg'} tfcm db p2">Hub</a>
         </div>
       </div>
     </div>
@@ -40,6 +43,23 @@ function header (state, emit) {
         <div class="oxh xx breadcrumbs wsnw drtl">
           ${Breadcrumbs({ page: state.page })}
         </div>
+      </div>
+    `
+  }
+
+  function renderChanges () {
+    var changes = objectKeys(state.panel.changes)
+    var isActive = changes.length > 0 && editorActive
+    var urlChanges = unescape(queryString.stringify(
+      xtend({ changes: 'all' }, state.query)
+    ))
+
+    return html`
+      <div class="p2 ${isActive ? 'db' : 'dn'}">
+        <a
+          href="/?${urlChanges}"
+          class="indicator curp bgc-green"
+        >${changes.length}</a>
       </div>
     `
   }
