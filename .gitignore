@@ -5,3 +5,4 @@ node_modules
 bundle.js
 bundle.css
 dat.json
+package-lock.json
