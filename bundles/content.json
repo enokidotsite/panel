@@ -1,4 +1,14 @@
 {
+  "/community": {
+    "title": "Community",
+    "view": "community",
+    "text": "Coming soon",
+    "name": "community",
+    "path": "/content/community",
+    "url": "/community",
+    "files": {},
+    "pages": {}
+  },
   "/docs": {
     "title": "Docs",
     "view": "docs",
@@ -26,13 +36,13 @@
     "files": {},
     "pages": {}
   },
-  "/community": {
-    "title": "Community",
-    "view": "community",
-    "text": "Coming soon",
-    "name": "community",
-    "path": "/content/community",
-    "url": "/community",
+  "/log": {
+    "title": "Log",
+    "view": "log",
+    "text": "## 0.1.0\n\nThis is the first release of Enoki to run in Beaker following the Alpha period. Too many changes to list, but a quick summarization follows.\n\n### Fields\n\n- Added display fields (pages/files)\n- New checkbox field\n- New color field\n- New range field\n- Simplified how data is passed to fields from fieldsets\n\n### Interface\n\n- Added `layouts` to blueprints, enabling positioning of fields\n- Added support for selecting a design when creating a site\n- Created the **Guides** section in Hub\n- Modularized navigational elements into composable wrappers\n\n### Designs\n\n- Cleaned up the existing Enoki Starterkit design\n- Created the new **System** design, the most basic functional design\n\n### Functionality\n\n- Created the `smarkt` module for reading files\n- Created the `hypha` modules for reading folders\n- Updated the `enoki` module with these new dependencies\n- Added async/promises to the API for easy use with Beaker’s Web Api\n- Implimented early HTTP support with `content.json` fallback",
+    "name": "log",
+    "path": "/content/log",
+    "url": "/log",
     "files": {},
     "pages": {}
   },
@@ -100,16 +110,6 @@
         "source": "/content/issues/sites"
       }
     }
-  },
-  "/log": {
-    "title": "Log",
-    "view": "log",
-    "text": "## 0.1.0\n\nThis is the first release of Enoki to run in Beaker following the Alpha period. Too many changes to list, but a quick summarization follows.\n\n### Fields\n\n- Added display fields (pages/files)\n- New checkbox field\n- New color field\n- New range field\n- Simplified how data is passed to fields from fieldsets\n\n### Interface\n\n- Added `layouts` to blueprints, enabling positioning of fields\n- Added support for selecting a design when creating a site\n- Created the **Guides** section in Hub\n- Modularized navigational elements into composable wrappers\n\n### Designs\n\n- Cleaned up the existing Enoki Starterkit design\n- Created the new **System** design, the most basic functional design\n\n### Functionality\n\n- Created the `smarkt` module for reading files\n- Created the `hypha` modules for reading folders\n- Updated the `enoki` module with these new dependencies\n- Added async/promises to the API for easy use with Beaker’s Web Api\n- Implimented early HTTP support with `content.json` fallback",
-    "name": "log",
-    "path": "/content/log",
-    "url": "/log",
-    "files": {},
-    "pages": {}
   },
   "/docs/fields": {
     "title": "Fields",
@@ -322,7 +322,7 @@
         "name": "drafts",
         "path": "/content/guides/drafts.txt",
         "url": "/guides/drafts.txt",
-        "source": "dat://1833e7b021745e0bbdba55b7ce08ba364f5d26d8559055605a18a8b5d2fdc50f/content/guides/drafts.txt",
+        "source": "dat://e87b59368258cbc0941d85909dd421bcefe1b79b82f8cdffbf6cb187d260ba01/content/guides/drafts.txt",
         "extension": ".txt",
         "filename": "drafts.txt"
       }
@@ -360,37 +360,10 @@
       }
     }
   },
-  "/guides/01-creating-your-first-site": {
-    "title": "Creating Your First Site (or not!)",
-    "view": "guide",
-    "text": "Enoki is currently an *experimental* CMS (content management system) for the peer-to-peer web. It’s intended for those familiar with making websites to gain exposure to the unique affordances of the peer-to-peer web.\n\n- Platforms should be free, and not treat attention as a resource to be extracted from users and sold to advertisers.\n- Users should own their data, and grant permission to platforms to read and write locally *by default*. Interfaces are simply *views* for data which exist with the user.\n- Data should be shared openly; the tools should be fungible. Anyone can create applications with instant access to all public data, avoiding limitations implimented by proprietary APIs.\n\n## Creating a Site\n\n1. Navigate to **Sites** and click *Create a New Site*\n2. Enter your site’s Title, and a quick Description\n3. Browse the design, and select one which looks right for you\n4. Authorize Beaker to **fork** the design\n5. Begin editing your content!\n\nYou might be asking, what is **forking**? Simply put, it’s creating your own unique copy of the site. Unlike other platforms, your site’s files exist on your computer! This means *you* own and control your site. There is no risk of your site dissapearing if Enoki ceases to exist.\n\nThis is a *super critical thing*. Platforms today are designed to make you dependant upon them as a way to sell advertising. By giving you control over your own content and data, you are not bound to Enoki!\n\n## Managing your Content\n\nYou can manage your content in a few different ways.\n\n1. With the Enoki Panel\n2. By editing the files directly using whatever tool you’d like\n3. Using any application which can read your content\n\nUnlike platforms, your data is human readable. Enoki just creates folders and text files! You can edit your site with any application which can edit text files. Not only that, you can easily use other applications (or create your own) to manage your site.\n\nThis is possible because you own your content and data!\n\n## Accessing Your Site\n\nYou’ll notice that URLs look funny in Beaker. Remember torrents? You’ve probably downloaded music or movies this way. Beaker Browser is an experiment built on the entire internet working like that. You don’t have to pay any one for your site to appear online! This is *truely free*, and not dependant upon advertising.\n\nThis is called peer-to-peer networking. When using a tool like SquareSpace, your site exists on a server they own. Anyone visiting your site must connect through SquareSpace. Now, imagine them instead connected directly to you, and not only that, but any one else who happens to be visiting your site. Crazy, right?!\n\nBecause there is no central provider, like SquareSpace, someone (either you or someone else) must be providing your site for others to access it. Fortunately, you can simply enter your site’s `dat` URL somewhere like [Hashbase](https://hashbase.com) which ensure your site will always be accessible! Not only that, you can also access your site over `http` in a normal browser like Chrome or Firefox!\n\nYou might be thinking, *Shit! This makes a lot of sense!* Yeah, it does! If not, don’t worry—it’s still early and the tools will get there.\n\n## Cutomizing Your Site\n\nEnoki builds *real websites*. Not only do you get all the files for the site, you also get the entire source. You can take this source and choose to never use Enoki again, if you’d like. Not only this, you are learning how to *actually program*, and not just use proprietary tools.",
-    "excerpt": "Ok, you’ve stumbled across Enoki. What are you getting yourself into? Let’s look at how is this different from existing platforms, and expand upon both the pros and cons. Is Enoki right for you? Maybe, but hopefully you can take the knowledge with you regardless of it’s a match.",
-    "color": true,
-    "featured": true,
-    "tags": [
-      "beginner"
-    ],
-    "background": "#045bc1",
-    "name": "01-creating-your-first-site",
-    "path": "/content/guides/01-creating-your-first-site",
-    "url": "/guides/01-creating-your-first-site",
-    "files": {
-      "image.svg": {
-        "name": "image",
-        "path": "/content/guides/01-creating-your-first-site/image.svg",
-        "url": "/guides/01-creating-your-first-site/image.svg",
-        "source": "dat://1833e7b021745e0bbdba55b7ce08ba364f5d26d8559055605a18a8b5d2fdc50f/content/guides/01-creating-your-first-site/image.svg",
-        "extension": ".svg",
-        "filename": "image.svg",
-        "type": "image"
-      }
-    },
-    "pages": {}
-  },
   "/guides/02-customizing-your-site": {
     "title": "Customizing Your Sites",
     "view": "guide",
-    "excerpt": "Unlike other platforms, which provide interfaces to enter data into centralized databases and render that data with proprietary source, Enoki generates actual websites! When creating a site, you are given the actual source code for the site, providing infinite customization.",
+    "excerpt": "Unlike other platforms, which provide interfaces to enter data into centralized databases and render that data with proprietary source, Enoki generates actual websites! When creating a site, you are given the actual source code for the site, providing infinite customization possibility.",
     "text": "Unlike other platforms, which provide interfaces to enter data into centralized databases and render that data with proprietary source, Enoki generates actual websites! When creating a site, you are given the actual source code for the site, providing infinite customization possibility.\n\nNot a developer? Don’t worry, creating lessons and guides on how to start learning is one of the top priorities. In the meantime please feel free to poke around!\n\n## Installation\n\n1. Open the `source` directory of your site in terminal\n2. Run `npm install`\n3. Run `npm start` to watch files during development\n4. Run `npm build` to bundle for production\n\n## Development and Dependencies\n\nBecause there is no difference between server and client on the peer-to-peer web, everything is client-side. In practice, this feels like the conveniences of an API like Firebase’s, but native to the browser and data is saved locally to static files.\n\nEnoki has some preferences in default tooling, but everything is swappable. The most notable is [Choo](https://choo.io), a little front-end framework. Think of it as React or Vue, but without the fluff.",
     "color": true,
     "featured": "",
@@ -406,7 +379,34 @@
         "name": "image",
         "path": "/content/guides/02-customizing-your-site/image.svg",
         "url": "/guides/02-customizing-your-site/image.svg",
-        "source": "dat://1833e7b021745e0bbdba55b7ce08ba364f5d26d8559055605a18a8b5d2fdc50f/content/guides/02-customizing-your-site/image.svg",
+        "source": "dat://e87b59368258cbc0941d85909dd421bcefe1b79b82f8cdffbf6cb187d260ba01/content/guides/02-customizing-your-site/image.svg",
+        "extension": ".svg",
+        "filename": "image.svg",
+        "type": "image"
+      }
+    },
+    "pages": {}
+  },
+  "/guides/01-creating-your-first-site": {
+    "title": "Creating Your First Site (or not!)",
+    "view": "guide",
+    "text": "Enoki is currently an *experimental* CMS (content management system) for the peer-to-peer web. It’s intended for those familiar with making websites to gain exposure to the unique affordances of the peer-to-peer web.\n\n1. Platforms should be free, and not treat attention as a resource to be extracted from users and sold to advertisers.\n2. Users should own their data, and grant permission to platforms to read and write locally *by default*. Interfaces are simply *views* for data which exist with the user.\n3. Data should be shared openly; the tools should be fungible. Anyone can create applications with instant access to all public data, avoiding limitations implimented by proprietary APIs.\n4. Our tools should be ultralight and understandable, not heavy and complex!\n\n## Creating a Site\n\n1. Navigate to **Sites** and click *Create a New Site*\n2. Enter your site’s Title, and a quick Description\n3. Browse the design, and select one which looks right for you\n4. Authorize Beaker to **fork** the design\n5. Begin editing your content!\n\nYou might be asking, what is **forking**? Simply put, it’s creating your own unique copy of the site. Unlike other platforms, your site’s files exist on your computer! This means *you* own and control your site. There is no risk of your site dissapearing if Enoki ceases to exist.\n\nThis is a *super critical thing*. Platforms today are designed to make you dependant upon them as a way to sell advertising. By giving you control over your own content and data, you are not bound to Enoki!\n\n## Managing your Content\n\nYou can manage your content in a few different ways.\n\n1. With the Enoki Panel\n2. By editing the files directly using whatever tool you’d like\n3. Using any application which can read your content\n\nUnlike platforms, your data is human readable. Enoki just creates folders and text files! You can edit your site with any application which can edit text files. Not only that, you can easily use other applications (or create your own) to manage your site.\n\nThis is possible because you own your content and data!\n\n## Accessing Your Site\n\nYou’ll notice that URLs look funny in Beaker. Remember torrents? You’ve probably downloaded music or movies this way. Beaker Browser is an experiment built on the entire internet working like that. You don’t have to pay any one for your site to appear online! This is *truely free*, and not dependant upon advertising.\n\nThis is called peer-to-peer networking. When using a tool like SquareSpace, your site exists on a server they own. Anyone visiting your site must connect through SquareSpace. Now, imagine them instead connected directly to you, and not only that, but any one else who happens to be visiting your site. Crazy, right?!\n\nBecause there is no central provider, like SquareSpace, someone (either you or someone else) must be providing your site for others to access it. Fortunately, you can simply enter your site’s `dat` URL somewhere like [Hashbase](https://hashbase.com) which ensure your site will always be accessible! Not only that, you can also access your site over `http` in a normal browser like Chrome or Firefox!\n\nYou might be thinking, *Shit! This makes a lot of sense!* Yeah, it does! If not, don’t worry—it’s still early and the tools will get there.\n\n## Cutomizing Your Site\n\nEnoki builds *real websites*. Not only do you get all the files for the site, you also get the entire source. You can take this source and choose to never use Enoki again, if you’d like. Remember; you are learning how to *actually program*, and not just use proprietary tools.",
+    "excerpt": "Ok, you’ve stumbled across Enoki. What are you getting yourself into? Let’s look at how is this different from existing platforms, and expand upon both the pros and cons. Is Enoki right for you? Maybe, but hopefully you can take the knowledge with you regardless of it’s a match.",
+    "color": true,
+    "featured": true,
+    "tags": [
+      "beginner"
+    ],
+    "background": "#045bc1",
+    "name": "01-creating-your-first-site",
+    "path": "/content/guides/01-creating-your-first-site",
+    "url": "/guides/01-creating-your-first-site",
+    "files": {
+      "image.svg": {
+        "name": "image",
+        "path": "/content/guides/01-creating-your-first-site/image.svg",
+        "url": "/guides/01-creating-your-first-site/image.svg",
+        "source": "dat://e87b59368258cbc0941d85909dd421bcefe1b79b82f8cdffbf6cb187d260ba01/content/guides/01-creating-your-first-site/image.svg",
         "extension": ".svg",
         "filename": "image.svg",
         "type": "image"
@@ -433,7 +433,7 @@
         "name": "image",
         "path": "/content/guides/03-creating-pages/image.svg",
         "url": "/guides/03-creating-pages/image.svg",
-        "source": "dat://1833e7b021745e0bbdba55b7ce08ba364f5d26d8559055605a18a8b5d2fdc50f/content/guides/03-creating-pages/image.svg",
+        "source": "dat://e87b59368258cbc0941d85909dd421bcefe1b79b82f8cdffbf6cb187d260ba01/content/guides/03-creating-pages/image.svg",
         "extension": ".svg",
         "filename": "image.svg",
         "type": "image"
@@ -460,7 +460,7 @@
         "name": "image",
         "path": "/content/guides/04-how-to-leave-enoki/image.svg",
         "url": "/guides/04-how-to-leave-enoki/image.svg",
-        "source": "dat://1833e7b021745e0bbdba55b7ce08ba364f5d26d8559055605a18a8b5d2fdc50f/content/guides/04-how-to-leave-enoki/image.svg",
+        "source": "dat://e87b59368258cbc0941d85909dd421bcefe1b79b82f8cdffbf6cb187d260ba01/content/guides/04-how-to-leave-enoki/image.svg",
         "extension": ".svg",
         "filename": "image.svg",
         "type": "image"

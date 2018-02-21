@@ -45,7 +45,7 @@ You might be thinking, *Shit! This makes a lot of sense!* Yeah, it does! If not,
 
 ## Cutomizing Your Site
 
-Enoki builds *real websites*. Not only do you get all the files for the site, you also get the entire source. You can take this source and choose to never use Enoki again, if you’d like. Not only this, you are learning how to *actually program*, and not just use proprietary tools.
+Enoki builds *real websites*. Not only do you get all the files for the site, you also get the entire source. You can take this source and choose to never use Enoki again, if you’d like. Remember; you are learning how to *actually program*, and not just use proprietary tools.
 ----
 excerpt: Ok, you’ve stumbled across Enoki. What are you getting yourself into? Let’s look at how is this different from existing platforms, and expand upon both the pros and cons. Is Enoki right for you? Maybe, but hopefully you can take the knowledge with you regardless of it’s a match.
 ----

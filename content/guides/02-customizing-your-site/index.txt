@@ -2,7 +2,7 @@ title: Customizing Your Sites
 ----
 view: guide
 ----
-excerpt: Unlike other platforms, which provide interfaces to enter data into centralized databases and render that data with proprietary source, Enoki generates actual websites! When creating a site, you are given the actual source code for the site, providing infinite customization.
+excerpt: Unlike other platforms, which provide interfaces to enter data into centralized databases and render that data with proprietary source, Enoki generates actual websites! When creating a site, you are given the actual source code for the site, providing infinite customization possibility.
 ----
 text: Unlike other platforms, which provide interfaces to enter data into centralized databases and render that data with proprietary source, Enoki generates actual websites! When creating a site, you are given the actual source code for the site, providing infinite customization possibility.
 
