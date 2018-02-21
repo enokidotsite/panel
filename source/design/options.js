@@ -5,6 +5,7 @@ exports.colors = {
   bg10: '#ddd',
   bg25: '#999',
   bg70: '#666',
+  bg80: '#444',
   bg90: '#333',
   hg: '#50f',
   fg: '#1a1a1a',
