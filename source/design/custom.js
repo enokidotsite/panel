@@ -126,6 +126,10 @@ function copy () {
       color: ${options.colors.bg};
     }
 
+    .fc-bg25 .copy ol li:before {
+      color: ${options.colors.bg70};
+    }
+
     .copy > *,
     .editor-preview-side > *,
     .editor-preview > * {
@@ -165,6 +169,25 @@ function copy () {
       padding-left: 2rem;
       margin-left: 2rem;
     }
+
+    .copy ol li {
+      position: relative;
+      padding-left: 4rem;
+      margin-left: 0;
+    }
+
+    .copy ol li:before {
+      position: absolute;
+      left: 0;
+      font-family: ${options.typography.mono};
+    }
+
+    .copy ol li:nth-child(1):before { content: '1' }
+    .copy ol li:nth-child(2):before { content: '2' }
+    .copy ol li:nth-child(3):before { content: '3' }
+    .copy ol li:nth-child(4):before { content: '4' }
+    .copy ol li:nth-child(5):before { content: '5' }
+    .copy ol li:nth-child(6):before { content: '6' }
   `
 }
 

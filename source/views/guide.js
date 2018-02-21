@@ -25,8 +25,8 @@ function view (state, emit) {
           </div>
         </div>
       </div>
-      <div class="p4 c12 x xjc bgc-fg">
-        <div class="copy fc-bg25">
+      <div class="p4 c12 x xjc bgc-fg fc-bg25">
+        <div class="copy">
           ${format(state.page.text)}
         </div>
       </div>
