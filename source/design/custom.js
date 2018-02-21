@@ -113,7 +113,7 @@ function copy () {
       padding: 0.2rem;
     }
 
-    .bgc-fg .copy code{
+    .bgc-fg .copy code {
       background: ${options.colors.bg90};
     }
 
@@ -178,7 +178,7 @@ function copy () {
     .copy input {
       margin: 0;
       line-height: 1;
-      height: 1.6rem;
+      height: 1.8rem;
     }
 
     .copy-small > * {
@@ -207,6 +207,16 @@ function copy () {
       list-style: disc;
       padding-left: 0;
       margin-left: 2rem;
+    }
+
+    .copy-small ul li.task-list-item {
+      list-style: none;
+      padding-left: 0;
+      margin-left: 0;
+    }
+
+    .copy-small ul li.task-list-item input {
+      width: 2rem; 
     }
 
     .bgc-fg .copy-small code {

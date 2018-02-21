@@ -28,8 +28,8 @@ function view (state, emit) {
   if (!parent) return
   var pages = objectKeys(parent.pages)
   var pageIndex = pages.indexOf(state.page.name)
-  var pagePrev = parent.pages[pages[pageIndex - 1]]
-  var pageNext = parent.pages[pages[pageIndex + 1]]
+  var pagePrev = parent.pages[pages[mod(pageIndex - 1, pages.length)]]
+  var pageNext = parent.pages[pages[mod(pageIndex + 1, pages.length)]]
 
   if (pagePrev) pagePrev = state.content[pagePrev.url]
   if (pageNext) pageNext = state.content[pageNext.url]
@@ -59,15 +59,19 @@ function view (state, emit) {
         </div>
       </div>
       <div class="guides-grid bgc-fg">
-        ${renderGuide(pagePrev)}
-        ${renderGuide(pageNext)}
+        ${renderGuide({ title: 'Previous Guide', page: pagePrev })}
+        ${renderGuide({ title: 'Next Guide', page: pageNext })}
       </div>
     </div>
   `
 
-  function renderGuide (guidePage) {
-    if (!guidePage) return
-    return guideThumbnail(xtend(guidePage, { featured: false }))
+  function renderGuide (props) {
+    return html`
+      <div class="x xw w100">
+        <div class="c12 fwb ttu fc-bg70 py1 px3 fs0-8">${props.title}</div>
+        ${guideThumbnail(xtend(props.page, { featured: false }))}
+      </div>
+    `
   }
 
   function renderImage () {
@@ -78,4 +82,9 @@ function view (state, emit) {
       ></div>
     `
   }
+}
+
+function mod (num, mod) {
+  var remain = num % mod
+  return Math.floor(remain >= 0 ? remain : remain + mod)
 }

@@ -15,7 +15,8 @@ function wrapper (view) {
     return [
       Header(state, emit),
       renderNavigation(state, emit),
-      renderContent() 
+      renderContent(),
+      renderFooter(state, emit)
     ]
 
     function renderContent () {
@@ -54,6 +55,33 @@ function renderNavigation (state, emit) {
     var colorClass = active ? '' : 'fc-bg25 fch-fg'
     return html`
       <div class="p2 nav-link ${active ? 'nav-active' : ''} dark">
+        <a href="/#hub/${href}" class="${colorClass} tfcm">${hrefPage.title}</a>
+      </div>
+    `
+  }
+}
+
+function renderFooter (state, emit) {
+  var hrefActive = state.href.replace('/hub/', '')
+  var links = ['guides', 'docs', 'log']
+
+  return html`
+    <div class="bgc-fg fc-bg70 bt1-bg90 px2 x xw xjb">
+      <div class="x p1">
+        ${links.map(renderLink)}
+      </div>
+      <div class="p2 fwb">
+        enoki 
+      </div>
+    </div>
+  `
+
+  function renderLink (href) {
+    var hrefPage = state.docs.content['/' + href] || { }
+    var active = hrefActive.indexOf(href) >= 0
+    var colorClass = active ? 'fc-bg' : 'fc-bg70 fch-bg'
+    return html`
+      <div class="p1">
         <a href="/#hub/${href}" class="${colorClass} tfcm">${hrefPage.title}</a>
       </div>
     `

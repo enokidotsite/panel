@@ -7,7 +7,8 @@
 }
 
 .grid-column {
-  grid-column-end: span 1
+  grid-column-end: span 1;
+  width: 100%;
 }
 
 .grid-featured {
@@ -24,11 +25,12 @@
 
 .guides-grid .copy {
   font-size: 1.4rem;
-  max-height: 9.75rem;
+  height: 9.75rem;
+  max-width: 40rem;
 }
 
 .grid-featured .copy {
-  max-height: 10.5rem;
+  height: 10.5rem;
   max-width: 50rem;
 }
 
