@@ -1,14 +1,46 @@
-title: Creating Your First Site (or not)
+title: Creating Your First Site (or not!)
 ----
 view: guide
 ----
-text: Welcome to Enoki!
+text: Welcome to Enoki! Getting started is super easy.
 
-## How is this different from other website making tools?
+## Creating a Site
 
-- Data ownership
-- Offline access
-- Customizability
+1. Navigate to **Sites** and click *Create a New Site*
+2. Enter your site’s Title, and a quick Description
+3. Browse the design, and select one which looks right for you
+4. Authorize Beaker to **fork** the design
+5. Begin editing your content!
+
+You might be asking, what is **forking**? Simply put, it’s creating your own unique copy of the site. Unlike other platforms, your site’s files exist on your computer! This means *you* own and control your site. There is no risk of your site dissapearing if Enoki ceases to exist.
+
+This is a *super critical thing*. Platforms today are designed to make you dependant upon them as a way to sell advertising. By giving you control over your own content and data, you are not bound to Enoki!
+
+## Managing your Content
+
+You can manage your content in a few different ways.
+
+1. With the Enoki Panel
+2. By editing the files directly using whatever tool you’d like
+3. Using any application which can read your content
+
+Unlike platforms, your data is human readable. Enoki just creates folders and text files! You can edit your site with any application which can edit text files. Not only that, you can easily use other applications (or create your own) to manage your site.
+
+This is possible because you own your content and data!
+
+## Accessing Your Site
+
+You’ll notice that URLs look funny in Beaker. Remember torrents? You’ve probably downloaded music or movies this way. Beaker Browser is an experiment built on the entire internet working like that. You don’t have to pay any one for your site to appear online! This is *truely free*, and not dependant upon advertising.
+
+This is called peer-to-peer networking. When using a tool like SquareSpace, your site exists on a server they own. Anyone visiting your site must connect through SquareSpace. Now, imagine them instead connected directly to you, and not only that, but any one else who happens to be visiting your site. Crazy, right?!
+
+Because there is no central provider, like SquareSpace, someone (either you or someone else) must be providing your site for others to access it. Fortunately, you can simply enter your site’s `dat` URL somewhere like [Hashbase](https://hashbase.com) which ensure your site will always be accessible! Not only that, you can also access your site over `http` in a normal browser like Chrome or Firefox!
+
+You might be thinking, *Shit! This makes a lot of sense!* Yeah, it does!
+
+## Cutomizing Your Site
+
+Enoki builds *real websites*. Not only do you get all the files for the site, you also get the entire source. You can take this source and choose to never use Enoki again, if you’d like. Not only this, you are learning how to *actually program*, and not just use proprietary tools.
 ----
 excerpt: Ok, you’ve stumbled across Enoki. What are you getting yourself into? Let’s look at how is this different from existing platforms, and expand upon both the pros and cons. Is Enoki right for you? Maybe, but hopefully you can take the knowledge with you regardless of it’s a match.
 ----

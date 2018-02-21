@@ -2,17 +2,28 @@ title: Customizing Your Sites
 ----
 view: guide
 ----
-excerpt: The digital landscape has an influence on our lives, but we are more directly affected by our personal choices. We must fend for ourselves, whether or not the technology industry chooses to deal with the implications of their work.
+excerpt: Unlike other platforms, which provide interfaces to enter data into centralized databases and render that data with proprietary source, Enoki generates actual websites! When creating a site, you are given the actual source code for the site, providing infinite customization.
 ----
-text: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eleifend risus tellus, at venenatis massa dapibus at. Quisque bibendum a velit vitae aliquet. Quisque id metus et lectus placerat molestie. Nullam ullamcorper lacinia eros, a facilisis lorem placerat nec.
+text: Unlike other platforms, which provide interfaces to enter data into centralized databases and render that data with proprietary source, Enoki generates actual websites! When creating a site, you are given the actual source code for the site, providing infinite customization possibility.
 
-Mauris egestas metus ac velit sodales tincidunt. Donec vehicula turpis quis ultrices hendrerit. Suspendisse feugiat tellus nec fermentum consequat. Nunc vulputate posuere enim, vel pulvinar eros imperdiet tincidunt. Sed dignissim neque vel dui eleifend pellentesque. Curabitur lobortis tristique arcu, sed gravida nisi. Sed elementum dignissim maximus.
+Not a developer? Don’t worry, creating lessons and guides on how to start learning is one of the top priorities. In the meantime please feel free to poke around!
 
-## Nice really great
+## Installation
 
-Vivamus et arcu porttitor, scelerisque velit eget, ullamcorper mauris. Praesent eleifend porttitor pellentesque. Fusce ultrices purus vel tellus ultrices, vitae efficitur risus facilisis. Sed hendrerit consectetur tortor, at volutpat arcu lobortis ut. Vivamus sollicitudin enim at mi faucibus finibus. Sed nunc nunc, varius id molestie quis, gravida ut augue. Vivamus nunc risus, convallis ut pharetra eget, iaculis vel lacus. Praesent eu urna felis. Maecenas vehicula ante lorem. In rhoncus orci eget purus luctus condimentum. Nulla finibus, leo in gravida suscipit, ante enim sodales elit, sit amet vestibulum elit diam nec eros. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec non libero eget nisl pellentesque auctor. Nullam tempor dapibus eros nec blandit.
+1. Open the `source` directory of your site in terminal
+2. Run `npm install`
+3. Run `npm start` to watch files during development
+4. Run `npm build` to bundle for production
 
-Suspendisse sed libero dolor. Vestibulum sit amet elit nec purus pulvinar ullamcorper in vel velit. Sed a scelerisque est, ac ornare ante. In sagittis est condimentum velit iaculis, id semper ante posuere. Mauris at ultrices ante, vel ultrices dolor. Quisque ac eros a libero euismod euismod. Donec purus nulla, auctor sit amet interdum nec, fermentum porta ex. Nullam facilisis sapien tincidunt, semper dolor eu, scelerisque quam. Integer commodo elit sed vehicula ultrices. Suspendisse ullamcorper erat eget hendrerit consequat. Ut a eleifend libero, lobortis egestas libero. Maecenas sapien lacus, placerat nec arcu in, tempus sollicitudin tellus.
+That’s it!
+
+## Dependencies
+
+Because there is no difference between server and client on the peer-to-peer web, everything is clientside.
+
+## Dependencies
+
+Enoki has some preferenaces in tooling, but everything is swappable. The most notable is [Choo](https://choo.io), a little front-end framework. Think of it as React or Vue, but without the fluff.
 ----
 color: true
 ----

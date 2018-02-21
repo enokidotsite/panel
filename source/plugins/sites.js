@@ -70,7 +70,9 @@ function sites (state, emitter, app) {
     try {
       // download the source archive
       var archiveSource = await new DatArchive(state.sites.create.url)
+      emitter.emit(state.events.PANEL_LOADING, { loading: true, render: true })
       await archiveSource.download('/')
+      emitter.emit(state.events.PANEL_LOADING, { loading: false, render: true })
 
       // fork it
       var archiveCreate = await DatArchive.fork(

@@ -1,0 +1,18 @@
+# Creating Your First Site (or not!)
+
+## Overview
+
+- What is Enoki?
+- Create a new site
+- Enter your title and description
+- Select a design (more coming soon)
+- Click “Fork”
+- Explain what forking is and data ownership
+- Talk about content editing
+- Lead into customization
+
+# Customizing Your Sites
+
+- How Enoki exposes the real tools to you
+- What tooling looks like today
+- Introduction to Choo
