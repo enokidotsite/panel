@@ -1,0 +1,57 @@
+.guides-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+  grid-column-gap: 1rem;
+  grid-row-gap: 1rem;
+  padding: 1rem;
+}
+
+.grid-column {
+  grid-column-end: span 1
+}
+
+.grid-featured {
+  grid-column-end: span 2;
+}
+
+.grid-featured h2 {
+  font-size: 3.6rem;
+}
+
+.grid-featured .copy {
+  font-size: 1.8rem;
+}
+
+.guides-grid .copy {
+  font-size: 1.4rem;
+  max-height: 9.75rem;
+}
+
+.grid-featured .copy {
+  max-height: 10.5rem;
+  max-width: 50rem;
+}
+
+.guides-grid a {
+  transition: 250ms ease-out transform;
+  overflow: hidden;
+  margin-bottom: -1rem;
+}
+
+.guides-grid a:hover {
+  transform: translateY(-0.3rem);
+}
+
+.guides-grid a:active {
+  transform: translateY(0rem);
+  transition: 50ms ease-out transform;
+}
+
+@media (max-width: 38rem) {
+  .grid-featured {
+    grid-column-end: span 1;
+  }
+
+  .guides-grid h2 { font-size: 3.6rem }
+  .guides-grid .copy { font-size: 1.8rem }
+}

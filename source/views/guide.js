@@ -1,13 +1,35 @@
+var objectKeys = require('object-keys')
 var html = require('choo/html')
+var css = require('sheetify')
+var xtend = require('xtend')
+var path = require('path')
+
+var guideThumbnail = require('../components/guide-thumbnail')
 var wrapper = require('../containers/wrapper-hub')
 var format = require('../components/format')
+
+var styles = css`
+  :host .guides-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+`
 
 module.exports = wrapper(view)
 
 function view (state, emit) {
   var tags = state.page.tags || [ ]
+  var parent = state.content[path.resolve(state.page.url, '../')]
+  if (!parent) return
+  var pages = objectKeys(parent.pages)
+  var pageIndex = pages.indexOf(state.page.name)
+  var pagePrev = parent.pages[pages[pageIndex - 1]]
+  var pageNext = parent.pages[pages[pageIndex + 1]]
+
+  if (pagePrev) pagePrev = state.content[pagePrev.url]
+  if (pageNext) pageNext = state.content[pageNext.url]
+
   return html`
-    <div>
+    <div class="${styles}">
       <div
         class="oh psr x xjc xac p4 c12 bgpc bgsct bgrn ${state.page.color ? 'fc-bg' : 'fc-fg'}"
         style="
@@ -30,8 +52,17 @@ function view (state, emit) {
           ${format(state.page.text)}
         </div>
       </div>
+      <div class="guides-grid bgc-fg">
+        ${renderGuide(pagePrev)}
+        ${renderGuide(pageNext)}
+      </div>
     </div>
   `
+
+  function renderGuide (guidePage) {
+    if (!guidePage) return
+    return guideThumbnail(xtend(guidePage, { featured: false }))
+  }
 
   function renderImage () {
     return html`
