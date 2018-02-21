@@ -4,9 +4,10 @@ view: guide
 ----
 text: Enoki is currently an *experimental* CMS (content management system) for the peer-to-peer web. It’s intended for those familiar with making websites to gain exposure to the unique affordances of the peer-to-peer web.
 
-- Platforms should be free, and not treat attention as a resource to be extracted from users and sold to advertisers.
-- Users should own their data, and grant permission to platforms to read and write locally *by default*. Interfaces are simply *views* for data which exist with the user.
-- Data should be shared openly; the tools should be fungible. Anyone can create applications with instant access to all public data, avoiding limitations implimented by proprietary APIs.
+1. Platforms should be free, and not treat attention as a resource to be extracted from users and sold to advertisers.
+2. Users should own their data, and grant permission to platforms to read and write locally *by default*. Interfaces are simply *views* for data which exist with the user.
+3. Data should be shared openly; the tools should be fungible. Anyone can create applications with instant access to all public data, avoiding limitations implimented by proprietary APIs.
+4. Our tools should be ultralight and understandable, not heavy and complex!
 
 ## Creating a Site
 
