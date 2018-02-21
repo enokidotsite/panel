@@ -10,6 +10,7 @@ var app = choo()
 // plugins / stores
 app.use(require('./plugins/interface'))
 app.use(require('./plugins/designs'))
+app.use(require('./plugins/scroll'))
 app.use(require('./plugins/sites'))
 app.use(require('./plugins/panel'))
 app.use(require('./plugins/docs'))

@@ -18,6 +18,13 @@ var styles = css`
     grid-column-end: span 1;
     padding: 2rem;
   }
+
+  :host summary { outline: 0 }
+  :host details[open] summary { color: #fff }
+
+  :host summary::-webkit-details-marker {
+    display: none;
+  }
 `
 
 module.exports = wrapper(view)
@@ -46,15 +53,24 @@ function view (state, emit) {
 
 function renderIssue (props) {
   return html`
-    <li class="x xjb br1 mb2 p2 bgc-bg90 fc-bg25">
-      <div class="fwb">
-        ${props.title}
-      </div>
-      <div class="fs0-8">
-        ${props.tags.map(function (tag) {
-          return html`<span class="button-inline">${tag}</span>`
-        })}
-      </div>
+    <li class="br1 mb2 bgc-bg90 fc-bg25 usn">
+      <details class="c12">
+        <summary class="c12 curp fc-bg25 tfcm fch-bg x xjb xac m0 tal p2">
+          <div class="fwb">
+            ${props.title}
+          </div>
+          <div class="fs0-8">
+            ${props.tags.map(function (tag) {
+              return html`<span class="button-inline">${tag}</span>`
+            })}
+          </div>
+        </summary>
+        <div class="bt1-fg p2 fs0-8 usa">
+          <div class="copy copy-small">
+            ${format(props.text)}
+          </div>
+        </div>
+      </details>
     </li>
   `
 }

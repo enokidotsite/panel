@@ -7,3 +7,4 @@ css('./simplemde.css')
 
 css('./utilities.js')
 css('./custom.js')
+css('./guides.css')

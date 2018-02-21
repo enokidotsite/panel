@@ -36,61 +36,13 @@
     "files": {},
     "pages": {}
   },
-  "/guides": {
-    "title": "Guides",
-    "view": "guides",
-    "text": "Working on this :)",
-    "name": "guides",
-    "path": "/content/guides",
-    "url": "/guides",
-    "files": {},
-    "pages": {
-      "01-creating-your-first-site": {
-        "name": "01-creating-your-first-site",
-        "path": "/content/guides/01-creating-your-first-site",
-        "url": "/guides/01-creating-your-first-site",
-        "source": "/content/guides/01-creating-your-first-site"
-      },
-      "02-customizing-your-site": {
-        "name": "02-customizing-your-site",
-        "path": "/content/guides/02-customizing-your-site",
-        "url": "/guides/02-customizing-your-site",
-        "source": "/content/guides/02-customizing-your-site"
-      },
-      "03-creating-pages": {
-        "name": "03-creating-pages",
-        "path": "/content/guides/03-creating-pages",
-        "url": "/guides/03-creating-pages",
-        "source": "/content/guides/03-creating-pages"
-      },
-      "04-how-to-leave-enoki": {
-        "name": "04-how-to-leave-enoki",
-        "path": "/content/guides/04-how-to-leave-enoki",
-        "url": "/guides/04-how-to-leave-enoki",
-        "source": "/content/guides/04-how-to-leave-enoki"
-      },
-      "05-starting-from-scratch": {
-        "name": "05-starting-from-scratch",
-        "path": "/content/guides/05-starting-from-scratch",
-        "url": "/guides/05-starting-from-scratch",
-        "source": "/content/guides/05-starting-from-scratch"
-      }
-    }
-  },
-  "/docs/fields": {
-    "title": "Fields",
-    "view": "fields",
-    "text": "An overview of the available fields.",
-    "tags": [
-      "technopastoral",
-      "extra-statecraft"
-    ],
-    "checkbox": true,
-    "color": "#fffb00",
-    "range": "70",
-    "name": "fields",
-    "path": "/content/docs/fields",
-    "url": "/docs/fields",
+  "/log": {
+    "title": "Log",
+    "view": "log",
+    "text": "## 0.1.0\n\nThis is the first release of Enoki to run in Beaker following the Alpha period. Too many changes to list, but a quick summarization follows.\n\n### Fields\n\n- Added display fields (pages/files)\n- New checkbox field\n- New color field\n- New range field\n- Simplified how data is passed to fields from fieldsets\n\n### Interface\n\n- Added `layouts` to blueprints, enabling positioning of fields\n- Added support for selecting a design when creating a site\n- Created the **Guides** section in Hub\n- Modularized navigational elements into composable wrappers\n\n### Designs\n\n- Cleaned up the existing Enoki Starterkit design\n- Created the new **System** design, the most basic functional design\n\n### Functionality\n\n- Created the `smarkt` module for reading files\n- Created the `hypha` modules for reading folders\n- Updated the `enoki` module with these new dependencies\n- Added async/promises to the API for easy use with Beaker’s Web Api\n- Implimented early HTTP support with `content.json` fallback",
+    "name": "log",
+    "path": "/content/log",
+    "url": "/log",
     "files": {},
     "pages": {}
   },
@@ -159,27 +111,20 @@
       }
     }
   },
-  "/log": {
-    "title": "Log",
-    "view": "log",
-    "text": "## 0.1.0\n\nThis is the first release of Enoki to run in Beaker following the Alpha period. Too many changes to list, but a quick summarization follows.\n\n### Fields\n\n- Added display fields (pages/files)\n- New checkbox field\n- New color field\n- New range field\n- Simplified how data is passed to fields from fieldsets\n\n### Interface\n\n- Added `layouts` to blueprints, enabling positioning of fields\n- Added support for selecting a design when creating a site\n- Created the **Guides** section in Hub\n- Modularized navigational elements into composable wrappers\n\n### Designs\n\n- Cleaned up the existing Enoki Starterkit design\n- Created the new **System** design, the most basic functional design\n\n### Functionality\n\n- Created the `smarkt` module for reading files\n- Created the `hypha` modules for reading folders\n- Updated the `enoki` module with these new dependencies\n- Added async/promises to the API for easy use with Beaker’s Web Api\n- Implimented early HTTP support with `content.json` fallback",
-    "name": "log",
-    "path": "/content/log",
-    "url": "/log",
-    "files": {},
-    "pages": {}
-  },
-  "/issues/fields": {
+  "/docs/fields": {
     "title": "Fields",
-    "view": "issue",
-    "text": "## Cleanup\n\nCurrently, fields are a bit sloppy. Some immediate improvements.\n\n- [x] Store everything within an internal `state` object\n- [X] Output a single object to `emit` containing `.value`\n- [ ] Autoscroll textarea when at bottom\n- [ ] Wrap fieldset in `<form>`\n- [ ] Convert change to `button[type=\"submit\"]`\n- [ ] Add html5 validation\n\n## New fields\n\n- [X] Checkbox\n- [X] Range\n- [ ] Radio selector\n- [ ] Structured data\n- [ ] Font (copy font files to site?)\n- [x] Color\n- [ ] Help (description sort of thing)",
+    "view": "fields",
+    "text": "An overview of the available fields.",
     "tags": [
-      "1.0.0",
-      "todo"
+      "technopastoral",
+      "extra-statecraft"
     ],
+    "checkbox": true,
+    "color": "#fffb00",
+    "range": "70",
     "name": "fields",
-    "path": "/content/issues/fields",
-    "url": "/issues/fields",
+    "path": "/content/docs/fields",
+    "url": "/docs/fields",
     "files": {},
     "pages": {}
   },
@@ -223,16 +168,17 @@
     "files": {},
     "pages": {}
   },
-  "/issues/library": {
-    "title": "Library",
+  "/issues/fields": {
+    "title": "Fields",
     "view": "issue",
-    "text": "Need to clean up some of the boundaries between things.\n\n- [ ] Localization support\n- [ ] `require('enoki/tools')` for handy methods",
+    "text": "## Cleanup\n\nCurrently, fields are a bit sloppy. Some immediate improvements.\n\n- [x] Store everything within an internal `state` object\n- [X] Output a single object to `emit` containing `.value`\n- [ ] Autoscroll textarea when at bottom\n- [ ] Wrap fieldset in `<form>`\n- [ ] Convert change to `button[type=\"submit\"]`\n- [ ] Add html5 validation\n\n## New fields\n\n- [X] Checkbox\n- [X] Range\n- [ ] Radio selector\n- [ ] Structured data\n- [ ] Font (copy font files to site?)\n- [x] Color\n- [ ] Help (description sort of thing)",
     "tags": [
+      "1.0.0",
       "todo"
     ],
-    "name": "library",
-    "path": "/content/issues/library",
-    "url": "/issues/library",
+    "name": "fields",
+    "path": "/content/issues/fields",
+    "url": "/issues/fields",
     "files": {},
     "pages": {}
   },
@@ -260,6 +206,60 @@
     "name": "inline-editing",
     "path": "/content/issues/inline-editing",
     "url": "/issues/inline-editing",
+    "files": {},
+    "pages": {}
+  },
+  "/issues/library": {
+    "title": "Library",
+    "view": "issue",
+    "text": "Need to clean up some of the boundaries between things.\n\n- [ ] Localization support\n- [ ] `require('enoki/tools')` for handy methods",
+    "tags": [
+      "todo"
+    ],
+    "name": "library",
+    "path": "/content/issues/library",
+    "url": "/issues/library",
+    "files": {},
+    "pages": {}
+  },
+  "/issues/page-functionality": {
+    "title": "Page functionality",
+    "view": "issue",
+    "text": "Need to improve some management issues with Pages.\n\n- [ ] Field for `hidden` toggle\n- [ ] Field for adjusting `view` in Settings.\n- [ ] Field for adjusting `pathname` in Settings.",
+    "tags": [
+      "todo"
+    ],
+    "name": "page-functionality",
+    "path": "/content/issues/page-functionality",
+    "url": "/issues/page-functionality",
+    "files": {},
+    "pages": {}
+  },
+  "/issues/saving": {
+    "title": "Saving",
+    "view": "issue",
+    "tags": [
+      "0.1.1",
+      "todo"
+    ],
+    "text": "How to handle static output?\n\n- [ ] Local storage for changes?\n- [ ] Saving title change saves to index.html, too\n- [ ] Meta tags in index.html\n- [ ] How to speed things up (static output / reload all state)",
+    "name": "saving",
+    "path": "/content/issues/saving",
+    "url": "/issues/saving",
+    "files": {},
+    "pages": {}
+  },
+  "/issues/sites": {
+    "title": "Sites",
+    "view": "issue",
+    "tags": [
+      "todo",
+      "1.0.1"
+    ],
+    "text": "## Todo\n\n- [x] Settings → Remove\n- [ ] Settings → HTTP fallback\n- [ ] Reordering\n- [ ] Persist across domains (ditch localstorage?)\n\n## Ideas\n\n- Some sort of p2p stats, such as how many peers, etc…\n- A simple way of deploying to a service like Hashbase",
+    "name": "sites",
+    "path": "/content/issues/sites",
+    "url": "/issues/sites",
     "files": {},
     "pages": {}
   },
@@ -310,51 +310,87 @@
       }
     }
   },
-  "/issues/page-functionality": {
-    "title": "Page functionality",
-    "view": "issue",
-    "text": "Need to improve some management issues with Pages.\n\n- [ ] Field for `hidden` toggle\n- [ ] Field for adjusting `view` in Settings.\n- [ ] Field for adjusting `pathname` in Settings.",
-    "tags": [
-      "todo"
-    ],
-    "name": "page-functionality",
-    "path": "/content/issues/page-functionality",
-    "url": "/issues/page-functionality",
-    "files": {},
-    "pages": {}
+  "/guides": {
+    "title": "Guides",
+    "view": "guides",
+    "text": "Working on this :)",
+    "name": "guides",
+    "path": "/content/guides",
+    "url": "/guides",
+    "files": {
+      "drafts.txt": {
+        "name": "drafts",
+        "path": "/content/guides/drafts.txt",
+        "url": "/guides/drafts.txt",
+        "source": "dat://e87b59368258cbc0941d85909dd421bcefe1b79b82f8cdffbf6cb187d260ba01/content/guides/drafts.txt",
+        "extension": ".txt",
+        "filename": "drafts.txt"
+      }
+    },
+    "pages": {
+      "01-creating-your-first-site": {
+        "name": "01-creating-your-first-site",
+        "path": "/content/guides/01-creating-your-first-site",
+        "url": "/guides/01-creating-your-first-site",
+        "source": "/content/guides/01-creating-your-first-site"
+      },
+      "02-customizing-your-site": {
+        "name": "02-customizing-your-site",
+        "path": "/content/guides/02-customizing-your-site",
+        "url": "/guides/02-customizing-your-site",
+        "source": "/content/guides/02-customizing-your-site"
+      },
+      "03-creating-pages": {
+        "name": "03-creating-pages",
+        "path": "/content/guides/03-creating-pages",
+        "url": "/guides/03-creating-pages",
+        "source": "/content/guides/03-creating-pages"
+      },
+      "04-how-to-leave-enoki": {
+        "name": "04-how-to-leave-enoki",
+        "path": "/content/guides/04-how-to-leave-enoki",
+        "url": "/guides/04-how-to-leave-enoki",
+        "source": "/content/guides/04-how-to-leave-enoki"
+      },
+      "05-starting-from-scratch": {
+        "name": "05-starting-from-scratch",
+        "path": "/content/guides/05-starting-from-scratch",
+        "url": "/guides/05-starting-from-scratch",
+        "source": "/content/guides/05-starting-from-scratch"
+      }
+    }
   },
-  "/issues/saving": {
-    "title": "Saving",
-    "view": "issue",
+  "/guides/02-customizing-your-site": {
+    "title": "Customizing Your Sites",
+    "view": "guide",
+    "excerpt": "Unlike other platforms, which provide interfaces to enter data into centralized databases and render that data with proprietary source, Enoki generates actual websites! When creating a site, you are given the actual source code for the site, providing infinite customization possibility.",
+    "text": "Unlike other platforms, which provide interfaces to enter data into centralized databases and render that data with proprietary source, Enoki generates actual websites! When creating a site, you are given the actual source code for the site, providing infinite customization possibility.\n\nNot a developer? Don’t worry, creating lessons and guides on how to start learning is one of the top priorities. In the meantime please feel free to poke around!\n\n## Installation\n\n1. Open the `source` directory of your site in terminal\n2. Run `npm install`\n3. Run `npm start` to watch files during development\n4. Run `npm build` to bundle for production\n\n## Development and Dependencies\n\nBecause there is no difference between server and client on the peer-to-peer web, everything is client-side. In practice, this feels like the conveniences of an API like Firebase’s, but native to the browser and data is saved locally to static files.\n\nEnoki has some preferences in default tooling, but everything is swappable. The most notable is [Choo](https://choo.io), a little front-end framework. Think of it as React or Vue, but without the fluff.",
+    "color": true,
+    "featured": "",
     "tags": [
-      "0.1.1",
-      "todo"
+      "beginner"
     ],
-    "text": "How to handle static output?\n\n- [ ] Local storage for changes?\n- [ ] Saving title change saves to index.html, too\n- [ ] Meta tags in index.html\n- [ ] How to speed things up (static output / reload all state)",
-    "name": "saving",
-    "path": "/content/issues/saving",
-    "url": "/issues/saving",
-    "files": {},
-    "pages": {}
-  },
-  "/issues/sites": {
-    "title": "Sites",
-    "view": "issue",
-    "tags": [
-      "todo",
-      "1.0.1"
-    ],
-    "text": "## Todo\n\n- [x] Settings → Remove\n- [ ] Settings → HTTP fallback\n- [ ] Reordering\n- [ ] Persist across domains (ditch localstorage?)\n\n## Ideas\n\n- Some sort of p2p stats, such as how many peers, etc…\n- A simple way of deploying to a service like Hashbase",
-    "name": "sites",
-    "path": "/content/issues/sites",
-    "url": "/issues/sites",
-    "files": {},
+    "background": "#00917b",
+    "name": "02-customizing-your-site",
+    "path": "/content/guides/02-customizing-your-site",
+    "url": "/guides/02-customizing-your-site",
+    "files": {
+      "image.svg": {
+        "name": "image",
+        "path": "/content/guides/02-customizing-your-site/image.svg",
+        "url": "/guides/02-customizing-your-site/image.svg",
+        "source": "dat://e87b59368258cbc0941d85909dd421bcefe1b79b82f8cdffbf6cb187d260ba01/content/guides/02-customizing-your-site/image.svg",
+        "extension": ".svg",
+        "filename": "image.svg",
+        "type": "image"
+      }
+    },
     "pages": {}
   },
   "/guides/01-creating-your-first-site": {
-    "title": "Creating Your First Site (or not)",
+    "title": "Creating Your First Site (or not!)",
     "view": "guide",
-    "text": "Welcome to Enoki!\n\n## How is this different from other website making tools?\n\n- Data ownership\n- Offline access\n- Customizability",
+    "text": "Enoki is currently an *experimental* CMS (content management system) for the peer-to-peer web. It’s intended for those familiar with making websites to gain exposure to the unique affordances of the peer-to-peer web.\n\n1. Platforms should be free, and not treat attention as a resource to be extracted from users and sold to advertisers.\n2. Users should own their data, and grant permission to platforms to read and write locally *by default*. Interfaces are simply *views* for data which exist with the user.\n3. Data should be shared openly; the tools should be fungible. Anyone can create applications with instant access to all public data, avoiding limitations implimented by proprietary APIs.\n4. Our tools should be ultralight and understandable, not heavy and complex!\n\n## Creating a Site\n\n1. Navigate to **Sites** and click *Create a New Site*\n2. Enter your site’s Title, and a quick Description\n3. Browse the design, and select one which looks right for you\n4. Authorize Beaker to **fork** the design\n5. Begin editing your content!\n\nYou might be asking, what is **forking**? Simply put, it’s creating your own unique copy of the site. Unlike other platforms, your site’s files exist on your computer! This means *you* own and control your site. There is no risk of your site dissapearing if Enoki ceases to exist.\n\nThis is a *super critical thing*. Platforms today are designed to make you dependant upon them as a way to sell advertising. By giving you control over your own content and data, you are not bound to Enoki!\n\n## Managing your Content\n\nYou can manage your content in a few different ways.\n\n1. With the Enoki Panel\n2. By editing the files directly using whatever tool you’d like\n3. Using any application which can read your content\n\nUnlike platforms, your data is human readable. Enoki just creates folders and text files! You can edit your site with any application which can edit text files. Not only that, you can easily use other applications (or create your own) to manage your site.\n\nThis is possible because you own your content and data!\n\n## Accessing Your Site\n\nYou’ll notice that URLs look funny in Beaker. Remember torrents? You’ve probably downloaded music or movies this way. Beaker Browser is an experiment built on the entire internet working like that. You don’t have to pay any one for your site to appear online! This is *truely free*, and not dependant upon advertising.\n\nThis is called peer-to-peer networking. When using a tool like SquareSpace, your site exists on a server they own. Anyone visiting your site must connect through SquareSpace. Now, imagine them instead connected directly to you, and not only that, but any one else who happens to be visiting your site. Crazy, right?!\n\nBecause there is no central provider, like SquareSpace, someone (either you or someone else) must be providing your site for others to access it. Fortunately, you can simply enter your site’s `dat` URL somewhere like [Hashbase](https://hashbase.com) which ensure your site will always be accessible! Not only that, you can also access your site over `http` in a normal browser like Chrome or Firefox!\n\nYou might be thinking, *Shit! This makes a lot of sense!* Yeah, it does! If not, don’t worry—it’s still early and the tools will get there.\n\n## Cutomizing Your Site\n\nEnoki builds *real websites*. Not only do you get all the files for the site, you also get the entire source. You can take this source and choose to never use Enoki again, if you’d like. Remember; you are learning how to *actually program*, and not just use proprietary tools.",
     "excerpt": "Ok, you’ve stumbled across Enoki. What are you getting yourself into? Let’s look at how is this different from existing platforms, and expand upon both the pros and cons. Is Enoki right for you? Maybe, but hopefully you can take the knowledge with you regardless of it’s a match.",
     "color": true,
     "featured": true,
@@ -371,33 +407,6 @@
         "path": "/content/guides/01-creating-your-first-site/image.svg",
         "url": "/guides/01-creating-your-first-site/image.svg",
         "source": "dat://e87b59368258cbc0941d85909dd421bcefe1b79b82f8cdffbf6cb187d260ba01/content/guides/01-creating-your-first-site/image.svg",
-        "extension": ".svg",
-        "filename": "image.svg",
-        "type": "image"
-      }
-    },
-    "pages": {}
-  },
-  "/guides/02-customizing-your-site": {
-    "title": "Customizing Your Sites",
-    "view": "guide",
-    "excerpt": "The digital landscape has an influence on our lives, but we are more directly affected by our personal choices. We must fend for ourselves, whether or not the technology industry chooses to deal with the implications of their work.",
-    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eleifend risus tellus, at venenatis massa dapibus at. Quisque bibendum a velit vitae aliquet. Quisque id metus et lectus placerat molestie. Nullam ullamcorper lacinia eros, a facilisis lorem placerat nec.\n\nMauris egestas metus ac velit sodales tincidunt. Donec vehicula turpis quis ultrices hendrerit. Suspendisse feugiat tellus nec fermentum consequat. Nunc vulputate posuere enim, vel pulvinar eros imperdiet tincidunt. Sed dignissim neque vel dui eleifend pellentesque. Curabitur lobortis tristique arcu, sed gravida nisi. Sed elementum dignissim maximus.\n\n## Nice really great\n\nVivamus et arcu porttitor, scelerisque velit eget, ullamcorper mauris. Praesent eleifend porttitor pellentesque. Fusce ultrices purus vel tellus ultrices, vitae efficitur risus facilisis. Sed hendrerit consectetur tortor, at volutpat arcu lobortis ut. Vivamus sollicitudin enim at mi faucibus finibus. Sed nunc nunc, varius id molestie quis, gravida ut augue. Vivamus nunc risus, convallis ut pharetra eget, iaculis vel lacus. Praesent eu urna felis. Maecenas vehicula ante lorem. In rhoncus orci eget purus luctus condimentum. Nulla finibus, leo in gravida suscipit, ante enim sodales elit, sit amet vestibulum elit diam nec eros. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec non libero eget nisl pellentesque auctor. Nullam tempor dapibus eros nec blandit.\n\nSuspendisse sed libero dolor. Vestibulum sit amet elit nec purus pulvinar ullamcorper in vel velit. Sed a scelerisque est, ac ornare ante. In sagittis est condimentum velit iaculis, id semper ante posuere. Mauris at ultrices ante, vel ultrices dolor. Quisque ac eros a libero euismod euismod. Donec purus nulla, auctor sit amet interdum nec, fermentum porta ex. Nullam facilisis sapien tincidunt, semper dolor eu, scelerisque quam. Integer commodo elit sed vehicula ultrices. Suspendisse ullamcorper erat eget hendrerit consequat. Ut a eleifend libero, lobortis egestas libero. Maecenas sapien lacus, placerat nec arcu in, tempus sollicitudin tellus.",
-    "color": true,
-    "featured": "",
-    "tags": [
-      "beginner"
-    ],
-    "background": "#00917b",
-    "name": "02-customizing-your-site",
-    "path": "/content/guides/02-customizing-your-site",
-    "url": "/guides/02-customizing-your-site",
-    "files": {
-      "image.svg": {
-        "name": "image",
-        "path": "/content/guides/02-customizing-your-site/image.svg",
-        "url": "/guides/02-customizing-your-site/image.svg",
-        "source": "dat://e87b59368258cbc0941d85909dd421bcefe1b79b82f8cdffbf6cb187d260ba01/content/guides/02-customizing-your-site/image.svg",
         "extension": ".svg",
         "filename": "image.svg",
         "type": "image"
