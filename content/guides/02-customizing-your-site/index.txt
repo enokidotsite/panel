@@ -15,15 +15,11 @@ Not a developer? Don’t worry, creating lessons and guides on how to start lear
 3. Run `npm start` to watch files during development
 4. Run `npm build` to bundle for production
 
-That’s it!
+## Development and Dependencies
 
-## Dependencies
+Because there is no difference between server and client on the peer-to-peer web, everything is client-side. In practice, this feels like the conveniences of an API like Firebase’s, but native to the browser and data is saved locally to static files.
 
-Because there is no difference between server and client on the peer-to-peer web, everything is clientside.
-
-## Dependencies
-
-Enoki has some preferenaces in tooling, but everything is swappable. The most notable is [Choo](https://choo.io), a little front-end framework. Think of it as React or Vue, but without the fluff.
+Enoki has some preferences in default tooling, but everything is swappable. The most notable is [Choo](https://choo.io), a little front-end framework. Think of it as React or Vue, but without the fluff.
 ----
 color: true
 ----

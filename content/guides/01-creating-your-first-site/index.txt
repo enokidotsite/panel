@@ -2,7 +2,11 @@ title: Creating Your First Site (or not!)
 ----
 view: guide
 ----
-text: Welcome to Enoki! Getting started is super easy.
+text: Enoki is currently an *experimental* CMS (content management system) for the peer-to-peer web. It’s intended for those familiar with making websites to gain exposure to the unique affordances of the peer-to-peer web.
+
+- Platforms should be free, and not treat attention as a resource to be extracted from users and sold to advertisers.
+- Users should own their data, and grant permission to platforms to read and write locally *by default*. Interfaces are simply *views* for data which exist with the user.
+- Data should be shared openly; the tools should be fungible. Anyone can create applications with instant access to all public data, avoiding limitations implimented by proprietary APIs.
 
 ## Creating a Site
 
@@ -36,7 +40,7 @@ This is called peer-to-peer networking. When using a tool like SquareSpace, your
 
 Because there is no central provider, like SquareSpace, someone (either you or someone else) must be providing your site for others to access it. Fortunately, you can simply enter your site’s `dat` URL somewhere like [Hashbase](https://hashbase.com) which ensure your site will always be accessible! Not only that, you can also access your site over `http` in a normal browser like Chrome or Firefox!
 
-You might be thinking, *Shit! This makes a lot of sense!* Yeah, it does!
+You might be thinking, *Shit! This makes a lot of sense!* Yeah, it does! If not, don’t worry—it’s still early and the tools will get there.
 
 ## Cutomizing Your Site
 
