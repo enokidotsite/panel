@@ -66,7 +66,7 @@ function renderFooter (state, emit) {
   var links = ['guides', 'docs', 'log']
 
   return html`
-    <div class="bgc-fg fc-bg70 bt1-bg90 px2 x xw xjb">
+    <div class="bgc-fg fc-bg70 bt1-bg90 py0-5 px2 x xw xjb">
       <div class="x p1">
         ${links.map(renderLink)}
       </div>

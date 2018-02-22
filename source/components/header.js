@@ -13,7 +13,7 @@ var links = {
   },
   sites: {
     title: 'Sites',
-    icon: 'sitemap',
+    icon: 'clone',
     url: '/?sites=all'
   },
   editor: {
@@ -52,12 +52,13 @@ function header (state, emit) {
   function renderLink (props) {
     var activeClass = props.active ? 'bgc-fg fc-bg' : 'bgc-bg10 fc-bg70'
     return html`
-      <div class="x p0-5" style="font-size: 2.0rem; height: 6rem; width: 6rem; line-height: 5rem">
+      <div class="psr x p0-5" style="font-size: 2.0rem; height: 6rem; width: 6rem; line-height: 5rem">
         <a
           href="${props.url}"
-          class="db w100 tac br1 tfyh ${activeClass}"
+          class="nav-button db w100 tac br1 ${activeClass} nav-tooltip-c"
         >
           <span class="fa fa-${props.icon}"></span>
+          <div class="nav-tooltip">${props.title}</div>
         </a>
       </div>
     `

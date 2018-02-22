@@ -69,6 +69,51 @@ function typography () {
       transform: translateY(1.75rem) rotate(45deg);
     }
 
+    .nav-button {
+      transition: 250ms ease-out background, 250ms ease-out color;
+    }
+
+    .nav-tooltip {
+      background: rgba(127, 127, 127, 0.9);
+      color: ${options.colors.bg};
+      border-radius: 3px;
+      position: absolute;
+      font-weight: 500;
+      left: 100%;
+      top: 50%;
+      pointer-events: none;
+      margin-top: -2rem;
+      margin-left: 0.25rem;
+      height: 4rem;
+      line-height: 4rem;
+      padding: 0 1rem;
+      font-size: 1.4rem;
+      text-transform: uppercase;
+      opacity: 0;
+      transform: translateX(-0.5rem);
+      transition: transform 100ms ease-out, opacity 100ms ease-out;
+    }
+
+    .nav-tooltip:before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      margin-left: -0.5rem;
+      margin-top: -0.55rem;
+      width: 0; 
+      height: 0; 
+      border-top: 0.5rem solid transparent;
+      border-bottom: 0.5rem solid transparent; 
+      border-right: 0.5rem solid rgba(127, 127, 127, 0.9); 
+    }
+
+    .nav-tooltip-c:hover .nav-tooltip {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
     @font-face {
       font-family: 'Inter UI';
       font-style:  normal;
