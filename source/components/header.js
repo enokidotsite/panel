@@ -9,7 +9,7 @@ var links = {
   hub: {
     title: 'Hub',
     icon: 'home',
-    url: '/#hub'
+    url: '/#hub/guides'
   },
   sites: {
     title: 'Sites',
@@ -18,7 +18,7 @@ var links = {
   },
   editor: {
     title: 'Editor',
-    icon: 'edit',
+    icon: 'pencil',
     url: '/?url=/'
   }
 }
@@ -55,7 +55,7 @@ function header (state, emit) {
       <div class="x p0-5" style="font-size: 2.0rem; height: 6rem; width: 6rem; line-height: 5rem">
         <a
           href="${props.url}"
-          class="db w100 tac br1 ${activeClass}"
+          class="db w100 tac br1 tfyh ${activeClass}"
         >
           <span class="fa fa-${props.icon}"></span>
         </a>

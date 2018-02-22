@@ -8,12 +8,14 @@ module.exports = container
 
 function container (props) {
   return html`
-    <div class="psf l0 b0 r0 z3 px3 x oxh bgc-bg bt1-bg10 fs0-8 fwb ttu" style="margin-left: 7rem">
+    <div class="psf l0 b0 r0 z2 x xjb px3 oxh bgc-bg py1 bt1-bg10 fs0-8 ttu" style="margin-left: 7rem">
+      <div class="x">
         <a href="?url=/" class="bgc-bg db px1 nbb py1 breadcrumb fc-bg25 fch-fg">home</a>
-        <div class="oxh xx breadcrumbs wsnw drtl">
+        <div class="oxh breadcrumbs wsnw drtl">
           ${breadcrumbs({ page: props.page })}
         </div>
-      <div class="x1"></div>
+      </div>
+      <div></div>
     </div>
   `
 }

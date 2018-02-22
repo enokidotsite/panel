@@ -10,7 +10,7 @@ function ActionBar (props) {
   var disabledClass = props.disabled ? 'pen dn' : 'x xjc'
 
   return html`
-    <div id="action-bar" class="pea psr c12 lh1 usn ${disabledClass}">
+    <div id="action-bar" class="pea psr c12 lh1 usn ${disabledClass}" style="margin-bottom: 7rem;">
       ${save()} 
       ${props.handleCancel ? cancel() : ''}
     </div>

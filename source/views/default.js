@@ -40,8 +40,7 @@ function view (state, emit) {
 
   return [
     Header(state, emit),
-    content(),
-    Breadcrumbs(state, emit)
+    content()
   ]
 
   // TODO: clean this up
