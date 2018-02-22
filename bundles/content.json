@@ -36,16 +36,6 @@
     "files": {},
     "pages": {}
   },
-  "/log": {
-    "title": "Log",
-    "view": "log",
-    "text": "## 0.1.0\n\nThis is the first release of Enoki to run in Beaker following the Alpha period. Too many changes to list, but a quick summarization follows.\n\n### Fields\n\n- Added display fields (pages/files)\n- New checkbox field\n- New color field\n- New range field\n- Simplified how data is passed to fields from fieldsets\n\n### Interface\n\n- Added `layouts` to blueprints, enabling positioning of fields\n- Added support for selecting a design when creating a site\n- Created the **Guides** section in Hub\n- Modularized navigational elements into composable wrappers\n\n### Designs\n\n- Cleaned up the existing Enoki Starterkit design\n- Created the new **System** design, the most basic functional design\n\n### Functionality\n\n- Created the `smarkt` module for reading files\n- Created the `hypha` modules for reading folders\n- Updated the `enoki` module with these new dependencies\n- Added async/promises to the API for easy use with Beaker’s Web Api\n- Implimented early HTTP support with `content.json` fallback",
-    "name": "log",
-    "path": "/content/log",
-    "url": "/log",
-    "files": {},
-    "pages": {}
-  },
   "/issues": {
     "title": "Issues",
     "view": "issues",
@@ -111,6 +101,16 @@
       }
     }
   },
+  "/log": {
+    "title": "Log",
+    "view": "log",
+    "text": "## 0.1.0\n\nThis is the first release of Enoki to run in Beaker following the Alpha period. Too many changes to list, but a quick summarization follows.\n\n### Fields\n\n- Added display fields (pages/files)\n- New checkbox field\n- New color field\n- New range field\n- Simplified how data is passed to fields from fieldsets\n\n### Interface\n\n- Added `layouts` to blueprints, enabling positioning of fields\n- Added support for selecting a design when creating a site\n- Created the **Guides** section in Hub\n- Modularized navigational elements into composable wrappers\n\n### Designs\n\n- Cleaned up the existing Enoki Starterkit design\n- Created the new **System** design, the most basic functional design\n\n### Functionality\n\n- Created the `smarkt` module for reading files\n- Created the `hypha` modules for reading folders\n- Updated the `enoki` module with these new dependencies\n- Added async/promises to the API for easy use with Beaker’s Web Api\n- Implimented early HTTP support with `content.json` fallback",
+    "name": "log",
+    "path": "/content/log",
+    "url": "/log",
+    "files": {},
+    "pages": {}
+  },
   "/docs/fields": {
     "title": "Fields",
     "view": "fields",
@@ -171,7 +171,7 @@
   "/issues/fields": {
     "title": "Fields",
     "view": "issue",
-    "text": "## Cleanup\n\nCurrently, fields are a bit sloppy. Some immediate improvements.\n\n- [x] Store everything within an internal `state` object\n- [X] Output a single object to `emit` containing `.value`\n- [ ] Autoscroll textarea when at bottom\n- [ ] Wrap fieldset in `<form>`\n- [ ] Convert change to `button[type=\"submit\"]`\n- [ ] Add html5 validation\n\n## New fields\n\n- [X] Checkbox\n- [X] Range\n- [ ] Radio selector\n- [ ] Structured data\n- [ ] Font (copy font files to site?)\n- [x] Color\n- [ ] Help (description sort of thing)",
+    "text": "## Cleanup\n\nCurrently, fields are a bit sloppy. Some immediate improvements.\n\n- [x] Store everything within an internal `state` object\n- [X] Output a single object to `emit` containing `.value`\n- [ ] Autoscroll textarea when at bottom\n- [ ] Wrap fieldset in `<form>`\n- [ ] Convert change to `button[type=\"submit\"]`\n- [ ] Add html5 validation\n\n## New fields\n\n- [X] Checkbox\n- [X] Range\n- [ ] Date\n- [ ] Radio selector\n- [ ] Structured data\n- [ ] Font (copy font files to site?)\n- [x] Color\n- [ ] Help (description sort of thing)",
     "tags": [
       "1.0.0",
       "todo"
@@ -360,33 +360,6 @@
       }
     }
   },
-  "/guides/02-customizing-your-site": {
-    "title": "Customizing Your Sites",
-    "view": "guide",
-    "excerpt": "Unlike other platforms, which provide interfaces to enter data into centralized databases and render that data with proprietary source, Enoki generates actual websites! When creating a site, you are given the actual source code for the site, providing infinite customization possibility.",
-    "text": "Unlike other platforms, which provide interfaces to enter data into centralized databases and render that data with proprietary source, Enoki generates actual websites! When creating a site, you are given the actual source code for the site, providing infinite customization possibility.\n\nNot a developer? Don’t worry, creating lessons and guides on how to start learning is one of the top priorities. In the meantime please feel free to poke around!\n\n## Installation\n\n1. Open the `source` directory of your site in terminal\n2. Run `npm install`\n3. Run `npm start` to watch files during development\n4. Run `npm build` to bundle for production\n\n## Development and Dependencies\n\nBecause there is no difference between server and client on the peer-to-peer web, everything is client-side. In practice, this feels like the conveniences of an API like Firebase’s, but native to the browser and data is saved locally to static files.\n\nEnoki has some preferences in default tooling, but everything is swappable. The most notable is [Choo](https://choo.io), a little front-end framework. Think of it as React or Vue, but without the fluff.",
-    "color": true,
-    "featured": "",
-    "tags": [
-      "beginner"
-    ],
-    "background": "#00917b",
-    "name": "02-customizing-your-site",
-    "path": "/content/guides/02-customizing-your-site",
-    "url": "/guides/02-customizing-your-site",
-    "files": {
-      "image.svg": {
-        "name": "image",
-        "path": "/content/guides/02-customizing-your-site/image.svg",
-        "url": "/guides/02-customizing-your-site/image.svg",
-        "source": "dat://e87b59368258cbc0941d85909dd421bcefe1b79b82f8cdffbf6cb187d260ba01/content/guides/02-customizing-your-site/image.svg",
-        "extension": ".svg",
-        "filename": "image.svg",
-        "type": "image"
-      }
-    },
-    "pages": {}
-  },
   "/guides/01-creating-your-first-site": {
     "title": "Creating Your First Site (or not!)",
     "view": "guide",
@@ -407,6 +380,33 @@
         "path": "/content/guides/01-creating-your-first-site/image.svg",
         "url": "/guides/01-creating-your-first-site/image.svg",
         "source": "dat://e87b59368258cbc0941d85909dd421bcefe1b79b82f8cdffbf6cb187d260ba01/content/guides/01-creating-your-first-site/image.svg",
+        "extension": ".svg",
+        "filename": "image.svg",
+        "type": "image"
+      }
+    },
+    "pages": {}
+  },
+  "/guides/02-customizing-your-site": {
+    "title": "Customizing Your Sites",
+    "view": "guide",
+    "excerpt": "Unlike other platforms, which provide interfaces to enter data into centralized databases and render that data with proprietary source, Enoki generates actual websites! When creating a site, you are given the actual source code for the site, providing infinite customization possibility.",
+    "text": "Unlike other platforms, which provide interfaces to enter data into centralized databases and render that data with proprietary source, Enoki generates actual websites! When creating a site, you are given the actual source code for the site, providing infinite customization possibility.\n\nNot a developer? Don’t worry, creating lessons and guides on how to start learning is one of the top priorities. In the meantime please feel free to poke around!\n\n## Installation\n\n1. Open the `source` directory of your site in terminal\n2. Run `npm install`\n3. Run `npm start` to watch files during development\n4. Run `npm build` to bundle for production\n\n## Development and Dependencies\n\nBecause there is no difference between server and client on the peer-to-peer web, everything is client-side. In practice, this feels like the conveniences of an API like Firebase’s, but native to the browser and data is saved locally to static files.\n\nEnoki has some preferences in default tooling, but everything is swappable. The most notable is [Choo](https://choo.io), a little front-end framework. Think of it as React or Vue, but without the fluff.",
+    "color": true,
+    "featured": "",
+    "tags": [
+      "beginner"
+    ],
+    "background": "#00917b",
+    "name": "02-customizing-your-site",
+    "path": "/content/guides/02-customizing-your-site",
+    "url": "/guides/02-customizing-your-site",
+    "files": {
+      "image.svg": {
+        "name": "image",
+        "path": "/content/guides/02-customizing-your-site/image.svg",
+        "url": "/guides/02-customizing-your-site/image.svg",
+        "source": "dat://e87b59368258cbc0941d85909dd421bcefe1b79b82f8cdffbf6cb187d260ba01/content/guides/02-customizing-your-site/image.svg",
         "extension": ".svg",
         "filename": "image.svg",
         "type": "image"

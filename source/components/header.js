@@ -5,44 +5,60 @@ var xtend = require('xtend')
 
 var Breadcrumbs = require('./breadcrumbs')
 
+var links = {
+  hub: {
+    title: 'Hub',
+    icon: 'home',
+    url: '/#hub/guides'
+  },
+  sites: {
+    title: 'Sites',
+    icon: 'sitemap',
+    url: '/?sites=all'
+  },
+  editor: {
+    title: 'Editor',
+    icon: 'pencil',
+    url: '/?url=/'
+  }
+}
+
 module.exports = header
 
 function header (state, emit) {
   var search = queryString.parse(location.search)
-  var editorActive = typeof search.url !== 'undefined' && state.sites.active
-  var sitesActive = typeof search.sites !== 'undefined'
-  var hubActive = state.route.indexOf('hub') >= 0
+
+  var activeStates = {
+    editor: typeof search.url !== 'undefined' && state.sites.active,
+    sites:  typeof search.sites !== 'undefined',
+    hub: state.route.indexOf('hub') >= 0
+  }
 
   // non p2p
   if (!state.sites.p2p) return ''
 
   return html`
-    <div id="header" class="x xjb usn z2 psr oh bgc-bg2-5">
-      <div class="x xx oxh">
-        ${editorActive ? breadcrumbs() : html`<div class="py2 px4 fwb"><a href="/#hub/guides">enoki</a></div>`}
+    <nav id="header" class="x xdc xjb bgc-bg5 psf t0 l0 b0 z4" style="width: 7rem">
+      <div class="p0-5">
+        ${objectKeys(links).map(function (key) {
+          var link = links[key]
+          link.active = activeStates[key]
+          return renderLink(link)
+        })}
       </div>
-      <div class="x px2 fs0-8 ttu fwb">
-        ${renderChanges()}
-        <div class="${state.sites.active ? '' : 'dn'}">
-          <a href="/?url=/" class="nav-link light ${editorActive ? 'fc-fg nav-active' : 'fc-bg25 fch-fg'} tfcm db p2">Editor</a>
-        </div>
-        <div class="psr">
-          <a href="/?sites=all" class="nav-link light ${sitesActive ? 'fc-fg nav-active' : 'fc-bg25 fch-fg'} tfcm db p2">Sites</a>
-        </div>
-        <div class="psr">
-          <a href="/#hub/guides" class="nav-link light ${hubActive ? 'fc-fg nav-active' : 'fc-bg25 fch-fg'} tfcm db p2">Hub</a>
-        </div>
-      </div>
-    </div>
+    </nav>
   `
 
-  function breadcrumbs () {
+  function renderLink (props) {
+    var activeClass = props.active ? 'bgc-fg fc-bg' : 'bgc-bg10 fc-bg70'
     return html`
-      <div class="x oxh px3">
-        <a href="?url=/" class="bgc-bg2-5 db px1 nbb py2 breadcrumb fc-bg25 fch-fg">home</a>
-        <div class="oxh xx breadcrumbs wsnw drtl">
-          ${Breadcrumbs({ page: state.page })}
-        </div>
+      <div class="x p0-5" style="font-size: 2.0rem; height: 6rem; width: 6rem; line-height: 5rem">
+        <a
+          href="${props.url}"
+          class="db w100 tac br1 tfyh ${activeClass}"
+        >
+          <span class="fa fa-${props.icon}"></span>
+        </a>
       </div>
     `
   }

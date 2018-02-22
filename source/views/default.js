@@ -8,6 +8,7 @@ var PageHeader = require('../containers/page-header')
 var Fields = require('../containers/fields')
 
 // components
+var Breadcrumbs = require('../components/breadcrumbs')
 var Header = require('../components/header')
 var ActionBar = require('../components/actionbar')
 var Publish = require('../components/publish')
@@ -59,6 +60,7 @@ function view (state, emit) {
       return [
         PageHeader(state, emit),
         Page(),
+        Breadcrumbs(state, emit),
         Changes(state, emit)
       ]
     }
@@ -68,16 +70,24 @@ function view (state, emit) {
       return [
         PageHeader(state, emit),
         Page(),
+        Breadcrumbs(state, emit),
         FileNew(state, emit)
       ]
     }
 
     // single file
-    if (search.file) return File(state, emit)
+    if (search.file) return [
+      File(state, emit),
+      Breadcrumbs(state, emit)
+    ]
 
     // pages
     if (search.pages === 'all') {
-      return [PageHeader(state, emit), PagesAll(state, emit)]
+      return [
+        PageHeader(state, emit),
+        Breadcrumbs(state, emit),
+        PagesAll(state, emit)
+      ]
     }
 
     if (search.page === 'new') {
@@ -85,18 +95,24 @@ function view (state, emit) {
       return [
         PageHeader(state, emit),
         Page(),
+        Breadcrumbs(state, emit),
         PageNew(state, emit)
       ]
     }
 
     if (search.files === 'all') {
       // all files
-      return [PageHeader(state, emit), FilesAll(state, emit)]
+      return [
+        PageHeader(state, emit),
+        FilesAll(state, emit),
+        Breadcrumbs(state, emit)
+      ]
     }
 
     return [
       PageHeader(state, emit),
-      Page()
+      Page(),
+      Breadcrumbs(state, emit)
     ]
   }
 
@@ -115,7 +131,7 @@ function view (state, emit) {
             site: state.site,
             page: state.page
           }, emit)}
-          <div class="psf b0 l0 r0 p1 pen z2">
+          <div class="psf b0 r0 py1 px3 pen z3">
             ${ActionBar({
               disabled: draftPage === undefined || search.page,
               saveLarge: true,

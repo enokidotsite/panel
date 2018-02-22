@@ -499,7 +499,7 @@ function extensions () {
       background: ${options.colors.bg10};
       content: '';
       display: block;
-      height: 4rem;
+      height: 2rem;
       width: 1px;
       position: absolute;
       top: 1rem;
@@ -523,7 +523,7 @@ function loader () {
     }
 
     .loader {
-      margin: 1.5rem;
+      margin: 2rem;
       font-size: 3rem;
       position: relative;
       text-indent: -9999em;

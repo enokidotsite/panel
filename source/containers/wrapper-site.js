@@ -13,7 +13,7 @@ function wrapper (view) {
     var page = state.content[href] || { }
     
     return html`
-      <body class="fs1 ff-sans x xdc vhmn100">
+      <body class="fs1 ff-sans x xdc vhmn100" style="padding-left: 7rem">
         ${view(xtend(state, { page: page }), emit)}
         ${state.panel.loading ? loading() : ''}
       </body>
@@ -24,7 +24,7 @@ function wrapper (view) {
 
 function loading () {
   return html`
-    <div class="psf z3 r0 b0">
+    <div class="psf l0 b0" style="z-index: 99;">
       <div class="loader"></div>
     </div>
   `

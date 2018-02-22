@@ -18,9 +18,9 @@ function ActionBar (props) {
 
   function save () {
     return html`
-      <div class="p1 x1" id="save">
+      <div class="p0-5 x1" id="save">
         <button
-          class="bgc-blue button-large"
+          class="bgc-blue button-medium"
           type="submit"
         >${saveText}</button>
       </div>
@@ -29,9 +29,9 @@ function ActionBar (props) {
 
   function cancel () {
     return html`
-      <div class="p1" id="cancel">
+      <div class="p0-5" id="cancel">
         <div
-          class="bgc-bg25 bgch-fg button-large"
+          class="bgc-bg25 bgch-fg button-medium"
           onclick=${props.handleCancel}
         >${cancelText}</div>
       </div>
