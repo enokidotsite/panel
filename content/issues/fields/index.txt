@@ -17,6 +17,7 @@ Currently, fields are a bit sloppy. Some immediate improvements.
 
 - [X] Checkbox
 - [X] Range
+- [ ] Date
 - [ ] Radio selector
 - [ ] Structured data
 - [ ] Font (copy font files to site?)
