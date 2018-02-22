@@ -11,8 +11,8 @@ function ActionBar (props) {
 
   return html`
     <div id="action-bar" class="pea psr c12 lh1 usn ${disabledClass}">
-      ${save()} 
       ${props.handleCancel ? cancel() : ''}
+      ${save()} 
     </div>
   `
 
