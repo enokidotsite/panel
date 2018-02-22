@@ -499,7 +499,7 @@ function extensions () {
       background: ${options.colors.bg10};
       content: '';
       display: block;
-      height: 4rem;
+      height: 2rem;
       width: 1px;
       position: absolute;
       top: 1rem;

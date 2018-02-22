@@ -4,7 +4,19 @@ var html = require('choo/html')
 
 var methodsFile = require('../methods/file')
 
-module.exports = breadcrumbs
+module.exports = container
+
+function container (props) {
+  return html`
+    <div class="psf l0 b0 r0 z3 px3 x oxh bgc-bg bt1-bg10 fs0-8 fwb ttu" style="margin-left: 7rem">
+        <a href="?url=/" class="bgc-bg db px1 nbb py1 breadcrumb fc-bg25 fch-fg">home</a>
+        <div class="oxh xx breadcrumbs wsnw drtl">
+          ${breadcrumbs({ page: props.page })}
+        </div>
+      <div class="x1"></div>
+    </div>
+  `
+}
 
 function breadcrumbs (props) {
   props = props || { }
@@ -19,7 +31,7 @@ function breadcrumbs (props) {
       var value = methodsFile.decodeFilename(search[key])
       result.push({
         path: '',
-        el: html`<a href="" class="db p1 nbb wsnw toe dltr">${value}</a>`
+        el: html`<a href="" class="db px1 nbb wsnw toe dltr">${value}</a>`
       })
       return result
     }, [ ])
@@ -31,7 +43,7 @@ function breadcrumbs (props) {
       var href = result.map(crumb => crumb.path).join('/') + '/' + path
       result.push({
         path: path,
-        el: html`<a href="?url=${href}" class="db p1 nbb wsnw toe dltr">${path}</a>`
+        el: html`<a href="?url=${href}" class="db px1 nbb wsnw toe dltr">${path}</a>`
       })
       return result
     }, [{ path: '', el: ''}])
