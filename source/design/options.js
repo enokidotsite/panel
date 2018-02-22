@@ -27,4 +27,4 @@ exports.fontSize = {
   '3': 7.2
 }
 
-exports.spacing = [0, 1, 1.5, 2, 3, 4, 5, 6]
+exports.spacing = [0, 0.5, 1, 1.5, 2, 3, 4, 5, 6]
