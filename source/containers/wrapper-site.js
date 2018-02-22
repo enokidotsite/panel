@@ -24,7 +24,7 @@ function wrapper (view) {
 
 function loading () {
   return html`
-    <div class="psf z3 r0 b0">
+    <div class="psf l0 b0" style="z-index: 99;">
       <div class="loader"></div>
     </div>
   `

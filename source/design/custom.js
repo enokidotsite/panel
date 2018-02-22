@@ -523,7 +523,7 @@ function loader () {
     }
 
     .loader {
-      margin: 1.5rem;
+      margin: 2rem;
       font-size: 3rem;
       position: relative;
       text-indent: -9999em;

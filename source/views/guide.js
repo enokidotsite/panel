@@ -24,15 +24,15 @@ module.exports = wrapper(view)
 
 function view (state, emit) {
   var tags = state.page.tags || [ ]
-  var parent = state.content[path.resolve(state.page.url, '../')]
+  var parent = state.docs.content[path.resolve(state.page.url, '../')]
   if (!parent) return
   var pages = objectKeys(parent.pages)
   var pageIndex = pages.indexOf(state.page.name)
   var pagePrev = parent.pages[pages[mod(pageIndex - 1, pages.length)]]
   var pageNext = parent.pages[pages[mod(pageIndex + 1, pages.length)]]
 
-  if (pagePrev) pagePrev = state.content[pagePrev.url]
-  if (pageNext) pageNext = state.content[pageNext.url]
+  if (pagePrev) pagePrev = state.docs.content[pagePrev.url]
+  if (pageNext) pageNext = state.docs.content[pageNext.url]
 
   return html`
     <div class="${styles}">

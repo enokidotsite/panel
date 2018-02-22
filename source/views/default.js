@@ -76,7 +76,10 @@ function view (state, emit) {
     }
 
     // single file
-    if (search.file) return File(state, emit)
+    if (search.file) return [
+      File(state, emit),
+      Breadcrumbs(state, emit)
+    ]
 
     // pages
     if (search.pages === 'all') {
@@ -128,7 +131,7 @@ function view (state, emit) {
             site: state.site,
             page: state.page
           }, emit)}
-          <div class="psf b0 l0 r0 p1 pen z2">
+          <div class="psf b0 r0 py1 px3 pen z3">
             ${ActionBar({
               disabled: draftPage === undefined || search.page,
               saveLarge: true,
