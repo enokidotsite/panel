@@ -70,7 +70,7 @@ function typography () {
     }
 
     .nav-button {
-      transition: 250ms ease-out background, 250ms ease-out color;
+      transition: 250ms ease-out background, 250ms ease-out color, 250ms ease-out border;
     }
 
     .nav-tooltip {
