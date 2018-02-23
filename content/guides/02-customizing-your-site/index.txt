@@ -20,6 +20,10 @@ Not a developer? Don’t worry, creating lessons and guides on how to start lear
 Because there is no difference between server and client on the peer-to-peer web, everything is client-side. In practice, this feels like the conveniences of an API like Firebase’s, but native to the browser and data is saved locally to static files.
 
 Enoki has some preferences in default tooling, but everything is swappable. The most notable is [Choo](https://choo.io), a little front-end framework. Think of it as React or Vue, but without the fluff.
+
+## Resources
+
+- A list of resources here?
 ----
 color: true
 ----
