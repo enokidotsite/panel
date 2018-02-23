@@ -8,7 +8,7 @@ module.exports = container
 
 function container (props) {
   return html`
-    <div class="psf l0 b0 r0 z2 x xjb px3 bgc-bg py1-5" style="margin-left: 7rem">
+    <div class="psf l0 b0 r0 z2 x xjb px3 bgc-bg py1" style="margin-left: 7rem">
       <div class="psa t0 l0 r0" style="margin-top: -1px; height: 1px; background: rgba(0, 0, 0, 0.15);"></div>
       <div class="x">
         <a href="?url=/" class="bgc-bg db px1 nbb py1 breadcrumb fc-bg25 fch-fg">home</a>

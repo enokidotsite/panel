@@ -42,8 +42,8 @@ module.exports = class Textarea extends Nanocomponent {
     return html`
       <div class="w100 rich-editor psr">
         <div class="psst l0 r0 z2 b0 pen" style="top: 2rem">
-          <div class="psa l0 r0" style="background: rgba(255, 255, 255, 0.9); top: -2rem; height: 2rem;"></div>
-          <div class="x xjb pea" style="background: linear-gradient(180deg,  rgba(255, 255, 255, 0.9),  rgba(255, 255, 255, 0.9) 75%,  rgba(255, 255, 255, 0));" data-editor-toolbar>
+          <div class="psa l0 r0" style="background: rgba(255, 255, 255, 0.98); top: -2rem; height: 2rem;"></div>
+          <div class="x xjb pea" style="background: linear-gradient(180deg,  rgba(255, 255, 255, 0.98),  rgba(255, 255, 255, 0.98) 75%,  rgba(255, 255, 255, 0));" data-editor-toolbar>
             <div class="py1 fwb usn fs0-8 ttu fc-bg25">
               ${this.state.label || this.state.key}
             </div>

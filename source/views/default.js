@@ -131,7 +131,7 @@ function view (state, emit) {
             site: state.site,
             page: state.page
           }, emit)}
-          <div class="psf b0 r0 py1 px3 pen z3">
+          <div class="psf b0 r0 py0-5 px3 pen z3">
             ${ActionBar({
               disabled: draftPage === undefined || search.page,
               saveLarge: true,
