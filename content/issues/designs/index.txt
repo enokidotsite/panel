@@ -19,7 +19,7 @@ text: Create some fresh designs.
 
 ## Streamer
 
-- [ ] A design for streams (vvatch style)
+- [ ] A design for streams
 - [ ] Vlog style?
 
 ## Ripple

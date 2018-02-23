@@ -7,10 +7,10 @@ text: ## Cleanup
 Currently, fields are a bit sloppy. Some immediate improvements.
 
 - [x] Store everything within an internal `state` object
-- [X] Output a single object to `emit` containing `.value`
+- [x] Output a single object to `emit` containing `.value`
 - [ ] Autoscroll textarea when at bottom
 - [ ] Wrap fieldset in `<form>`
-- [ ] Convert change to `button[type="submit"]`
+- [x] Convert change to `button[type="submit"]`
 - [ ] Add html5 validation
 
 ## New fields

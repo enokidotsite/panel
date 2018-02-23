@@ -1,14 +1,4 @@
 {
-  "/community": {
-    "title": "Community",
-    "view": "community",
-    "text": "Coming soon",
-    "name": "community",
-    "path": "/content/community",
-    "url": "/community",
-    "files": {},
-    "pages": {}
-  },
   "/docs": {
     "title": "Docs",
     "view": "docs",
@@ -25,6 +15,16 @@
         "source": "/content/docs/fields"
       }
     }
+  },
+  "/community": {
+    "title": "Community",
+    "view": "community",
+    "text": "Coming soon",
+    "name": "community",
+    "path": "/content/community",
+    "url": "/community",
+    "files": {},
+    "pages": {}
   },
   "/faq": {
     "title": "FAQ",
@@ -111,16 +111,34 @@
     "files": {},
     "pages": {}
   },
-  "/issues/cleanup-codebase": {
-    "title": "Cleanup codebase",
-    "view": "issue",
-    "text": "Gotta refactor a little bit, it’s getting messy in here.\n\n## Structure\n\n- [ ] Try to make the DOM as representational as possible.\n- [ ] Support imports/require/window\n- [ ] Create a bundle.js which exposes over window\n- [ ] Create a super simple demo using no build system\n\n## Styles\n\n- [ ] Switch from gr8 for layout to CSS grid/variables.\n- [ ] Create `.copy` styles for dark/light\n- [ ] Simple `sheetify` css-in-js for most things.",
+  "/docs/fields": {
+    "title": "Fields",
+    "view": "fields",
+    "text": "An overview of the available fields.",
     "tags": [
+      "technopastoral",
+      "extra-statecraft"
+    ],
+    "checkbox": true,
+    "color": "#fffb00",
+    "range": "70",
+    "name": "fields",
+    "path": "/content/docs/fields",
+    "url": "/docs/fields",
+    "files": {},
+    "pages": {}
+  },
+  "/issues/fields": {
+    "title": "Fields",
+    "view": "issue",
+    "text": "## Cleanup\n\nCurrently, fields are a bit sloppy. Some immediate improvements.\n\n- [x] Store everything within an internal `state` object\n- [x] Output a single object to `emit` containing `.value`\n- [ ] Autoscroll textarea when at bottom\n- [ ] Wrap fieldset in `<form>`\n- [x] Convert change to `button[type=\"submit\"]`\n- [ ] Add html5 validation\n\n## New fields\n\n- [X] Checkbox\n- [X] Range\n- [ ] Date\n- [ ] Radio selector\n- [ ] Structured data\n- [ ] Font (copy font files to site?)\n- [x] Color\n- [ ] Help (description sort of thing)",
+    "tags": [
+      "1.0.0",
       "todo"
     ],
-    "name": "cleanup-codebase",
-    "path": "/content/issues/cleanup-codebase",
-    "url": "/issues/cleanup-codebase",
+    "name": "fields",
+    "path": "/content/issues/fields",
+    "url": "/issues/fields",
     "files": {},
     "pages": {}
   },
@@ -131,24 +149,23 @@
       "1.0.0",
       "todo"
     ],
-    "text": "Create some fresh designs.\n\n## Todo\n\n- [ ] Update dependencies before release\n\n## Things to keep in mind\n\n- Super simple document / plain CSS\n\n## Streamer\n\n- [ ] A design for streams (vvatch style)\n- [ ] Vlog style?\n\n## Ripple\n\n- SVG warping sort of thing, text input to outlined shapes",
+    "text": "Create some fresh designs.\n\n## Todo\n\n- [ ] Update dependencies before release\n\n## Things to keep in mind\n\n- Super simple document / plain CSS\n\n## Streamer\n\n- [ ] A design for streams\n- [ ] Vlog style?\n\n## Ripple\n\n- SVG warping sort of thing, text input to outlined shapes",
     "name": "designs",
     "path": "/content/issues/designs",
     "url": "/issues/designs",
     "files": {},
     "pages": {}
   },
-  "/issues/fields": {
-    "title": "Fields",
+  "/issues/cleanup-codebase": {
+    "title": "Cleanup codebase",
     "view": "issue",
-    "text": "## Cleanup\n\nCurrently, fields are a bit sloppy. Some immediate improvements.\n\n- [x] Store everything within an internal `state` object\n- [X] Output a single object to `emit` containing `.value`\n- [ ] Autoscroll textarea when at bottom\n- [ ] Wrap fieldset in `<form>`\n- [ ] Convert change to `button[type=\"submit\"]`\n- [ ] Add html5 validation\n\n## New fields\n\n- [X] Checkbox\n- [X] Range\n- [ ] Date\n- [ ] Radio selector\n- [ ] Structured data\n- [ ] Font (copy font files to site?)\n- [x] Color\n- [ ] Help (description sort of thing)",
+    "text": "Gotta refactor a little bit, it’s getting messy in here.\n\n## Structure\n\n- [ ] Try to make the DOM as representational as possible.\n- [ ] Support imports/require/window\n- [ ] Create a bundle.js which exposes over window\n- [ ] Create a super simple demo using no build system\n\n## Styles\n\n- [ ] Switch from gr8 for layout to CSS grid/variables.\n- [ ] Create `.copy` styles for dark/light\n- [ ] Simple `sheetify` css-in-js for most things.",
     "tags": [
-      "1.0.0",
       "todo"
     ],
-    "name": "fields",
-    "path": "/content/issues/fields",
-    "url": "/issues/fields",
+    "name": "cleanup-codebase",
+    "path": "/content/issues/cleanup-codebase",
+    "url": "/issues/cleanup-codebase",
     "files": {},
     "pages": {}
   },
@@ -166,19 +183,6 @@
     "files": {},
     "pages": {}
   },
-  "/issues/inline-editing": {
-    "title": "Inline editing",
-    "view": "issue",
-    "tags": [
-      "idea"
-    ],
-    "text": "Explore implimentation of inline-editing in a design.\n\n- Web API `isOwner` to enable `contenteditable`",
-    "name": "inline-editing",
-    "path": "/content/issues/inline-editing",
-    "url": "/issues/inline-editing",
-    "files": {},
-    "pages": {}
-  },
   "/issues/library": {
     "title": "Library",
     "view": "issue",
@@ -192,61 +196,16 @@
     "files": {},
     "pages": {}
   },
-  "/issues/page-functionality": {
-    "title": "Page functionality",
-    "view": "issue",
-    "text": "Need to improve some management issues with Pages.\n\n- [ ] Field for `hidden` toggle\n- [ ] Field for adjusting `view` in Settings.\n- [ ] Field for adjusting `pathname` in Settings.",
-    "tags": [
-      "todo"
-    ],
-    "name": "page-functionality",
-    "path": "/content/issues/page-functionality",
-    "url": "/issues/page-functionality",
-    "files": {},
-    "pages": {}
-  },
-  "/issues/saving": {
-    "title": "Saving",
+  "/issues/inline-editing": {
+    "title": "Inline editing",
     "view": "issue",
     "tags": [
-      "0.1.1",
-      "todo"
+      "idea"
     ],
-    "text": "How to handle static output?\n\n- [ ] Local storage for changes?\n- [ ] Saving title change saves to index.html, too\n- [ ] Meta tags in index.html\n- [ ] How to speed things up (static output / reload all state)",
-    "name": "saving",
-    "path": "/content/issues/saving",
-    "url": "/issues/saving",
-    "files": {},
-    "pages": {}
-  },
-  "/issues/sites": {
-    "title": "Sites",
-    "view": "issue",
-    "tags": [
-      "todo",
-      "1.0.1"
-    ],
-    "text": "## Todo\n\n- [x] Settings → Remove\n- [ ] Settings → HTTP fallback\n- [ ] Reordering\n- [ ] Persist across domains (ditch localstorage?)\n\n## Ideas\n\n- Some sort of p2p stats, such as how many peers, etc…\n- A simple way of deploying to a service like Hashbase",
-    "name": "sites",
-    "path": "/content/issues/sites",
-    "url": "/issues/sites",
-    "files": {},
-    "pages": {}
-  },
-  "/docs/fields": {
-    "title": "Fields",
-    "view": "fields",
-    "text": "An overview of the available fields.",
-    "tags": [
-      "technopastoral",
-      "extra-statecraft"
-    ],
-    "checkbox": true,
-    "color": "#fffb00",
-    "range": "70",
-    "name": "fields",
-    "path": "/content/docs/fields",
-    "url": "/docs/fields",
+    "text": "Explore implimentation of inline-editing in a design.\n\n- Web API `isOwner` to enable `contenteditable`",
+    "name": "inline-editing",
+    "path": "/content/issues/inline-editing",
+    "url": "/issues/inline-editing",
     "files": {},
     "pages": {}
   },
@@ -297,6 +256,47 @@
       }
     }
   },
+  "/issues/page-functionality": {
+    "title": "Page functionality",
+    "view": "issue",
+    "text": "Need to improve some management issues with Pages.\n\n- [ ] Field for `hidden` toggle\n- [ ] Field for adjusting `view` in Settings.\n- [ ] Field for adjusting `pathname` in Settings.",
+    "tags": [
+      "todo"
+    ],
+    "name": "page-functionality",
+    "path": "/content/issues/page-functionality",
+    "url": "/issues/page-functionality",
+    "files": {},
+    "pages": {}
+  },
+  "/issues/saving": {
+    "title": "Saving",
+    "view": "issue",
+    "tags": [
+      "0.1.1",
+      "todo"
+    ],
+    "text": "How to handle static output?\n\n- [ ] Local storage for changes?\n- [ ] Saving title change saves to index.html, too\n- [ ] Meta tags in index.html\n- [ ] How to speed things up (static output / reload all state)",
+    "name": "saving",
+    "path": "/content/issues/saving",
+    "url": "/issues/saving",
+    "files": {},
+    "pages": {}
+  },
+  "/issues/sites": {
+    "title": "Sites",
+    "view": "issue",
+    "tags": [
+      "todo",
+      "1.0.1"
+    ],
+    "text": "## Todo\n\n- [x] Settings → Remove\n- [ ] Settings → HTTP fallback\n- [ ] Reordering\n- [ ] Persist across domains (ditch localstorage?)\n\n## Ideas\n\n- Some sort of p2p stats, such as how many peers, etc…\n- A simple way of deploying to a service like Hashbase",
+    "name": "sites",
+    "path": "/content/issues/sites",
+    "url": "/issues/sites",
+    "files": {},
+    "pages": {}
+  },
   "/guides": {
     "title": "Guides",
     "view": "guides",
@@ -346,33 +346,6 @@
         "source": "/content/guides/05-starting-from-scratch"
       }
     }
-  },
-  "/guides/02-customizing-your-site": {
-    "title": "Customizing Your Sites",
-    "view": "guide",
-    "excerpt": "Unlike other platforms, which provide interfaces to enter data into centralized databases and render that data with proprietary source, Enoki generates actual websites! When creating a site, you are given the actual source code for the site, providing infinite customization possibility.",
-    "text": "Unlike other platforms, which provide interfaces to enter data into centralized databases and render that data with proprietary source, Enoki generates actual websites! When creating a site, you are given the actual source code for the site, providing infinite customization possibility.\n\nNot a developer? Don’t worry, creating lessons and guides on how to start learning is one of the top priorities. In the meantime please feel free to poke around!\n\n## Installation\n\n1. Open the `source` directory of your site in terminal\n2. Run `npm install`\n3. Run `npm start` to watch files during development\n4. Run `npm build` to bundle for production\n\n## Development and Dependencies\n\nBecause there is no difference between server and client on the peer-to-peer web, everything is client-side. In practice, this feels like the conveniences of an API like Firebase’s, but native to the browser and data is saved locally to static files.\n\nEnoki has some preferences in default tooling, but everything is swappable. The most notable is [Choo](https://choo.io), a little front-end framework. Think of it as React or Vue, but without the fluff.\n\n## Resources\n\n- A list of resources here?",
-    "color": true,
-    "featured": "",
-    "tags": [
-      "beginner"
-    ],
-    "background": "#00917b",
-    "name": "02-customizing-your-site",
-    "path": "/content/guides/02-customizing-your-site",
-    "url": "/guides/02-customizing-your-site",
-    "files": {
-      "image.svg": {
-        "name": "image",
-        "path": "/content/guides/02-customizing-your-site/image.svg",
-        "url": "/guides/02-customizing-your-site/image.svg",
-        "source": "dat://e87b59368258cbc0941d85909dd421bcefe1b79b82f8cdffbf6cb187d260ba01/content/guides/02-customizing-your-site/image.svg",
-        "extension": ".svg",
-        "filename": "image.svg",
-        "type": "image"
-      }
-    },
-    "pages": {}
   },
   "/guides/01-creating-your-first-site": {
     "title": "Creating Your First Site (or not!)",
@@ -448,6 +421,33 @@
         "path": "/content/guides/04-how-to-leave-enoki/image.svg",
         "url": "/guides/04-how-to-leave-enoki/image.svg",
         "source": "dat://e87b59368258cbc0941d85909dd421bcefe1b79b82f8cdffbf6cb187d260ba01/content/guides/04-how-to-leave-enoki/image.svg",
+        "extension": ".svg",
+        "filename": "image.svg",
+        "type": "image"
+      }
+    },
+    "pages": {}
+  },
+  "/guides/02-customizing-your-site": {
+    "title": "Customizing Your Sites",
+    "view": "guide",
+    "excerpt": "Unlike other platforms, which provide interfaces to enter data into centralized databases and render that data with proprietary source, Enoki generates actual websites! When creating a site, you are given the actual source code for the site, providing infinite customization possibility.",
+    "text": "Unlike other platforms, which provide interfaces to enter data into centralized databases and render that data with proprietary source, Enoki generates actual websites! When creating a site, you are given the actual source code for the site, providing infinite customization possibility.\n\nNot a developer? Don’t worry, creating lessons and guides on how to start learning is one of the top priorities. In the meantime please feel free to poke around!\n\n## Installation\n\n1. Open the `source` directory of your site in terminal\n2. Run `npm install`\n3. Run `npm start` to watch files during development\n4. Run `npm build` to bundle for production\n\n## Development and Dependencies\n\nBecause there is no difference between server and client on the peer-to-peer web, everything is client-side. In practice, this feels like the conveniences of an API like Firebase’s, but native to the browser and data is saved locally to static files.\n\nEnoki has some preferences in default tooling, but everything is swappable. The most notable is [Choo](https://choo.io), a little front-end framework. Think of it as React or Vue, but without the fluff.\n\n## Resources\n\n- A list of resources here?",
+    "color": true,
+    "featured": "",
+    "tags": [
+      "beginner"
+    ],
+    "background": "#00917b",
+    "name": "02-customizing-your-site",
+    "path": "/content/guides/02-customizing-your-site",
+    "url": "/guides/02-customizing-your-site",
+    "files": {
+      "image.svg": {
+        "name": "image",
+        "path": "/content/guides/02-customizing-your-site/image.svg",
+        "url": "/guides/02-customizing-your-site/image.svg",
+        "source": "dat://e87b59368258cbc0941d85909dd421bcefe1b79b82f8cdffbf6cb187d260ba01/content/guides/02-customizing-your-site/image.svg",
         "extension": ".svg",
         "filename": "image.svg",
         "type": "image"
