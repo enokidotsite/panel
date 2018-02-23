@@ -13,7 +13,7 @@ var links = {
   },
   sites: {
     title: 'Sites',
-    icon: 'sitemap',
+    icon: 'clone',
     url: '/?sites=all'
   },
   editor: {
@@ -40,7 +40,12 @@ function header (state, emit) {
   return html`
     <nav id="header" class="x xdc xjb bgc-bg5 psf t0 l0 b0 z4" style="width: 7rem">
       <div class="p0-5">
-        ${objectKeys(links).map(function (key) {
+        ${objectKeys(links)
+        .filter(function (key) {
+          if (key === 'editor' && !state.sites.active) return false
+          else return true
+        })
+        .map(function (key) {
           var link = links[key]
           link.active = activeStates[key]
           return renderLink(link)
@@ -50,14 +55,15 @@ function header (state, emit) {
   `
 
   function renderLink (props) {
-    var activeClass = props.active ? 'bgc-fg fc-bg' : 'bgc-bg10 fc-bg70'
+    var activeClass = props.active ? 'bgc-fg fc-bg b1-fg' : 'bgc-bg5 fc-bg25 b1-bg10 bgch-bg'
     return html`
-      <div class="x p0-5" style="font-size: 2.0rem; height: 6rem; width: 6rem; line-height: 5rem">
+      <div class="psr x p0-5" style="font-size: 2.0rem; height: 6rem; width: 6rem; line-height: 5rem">
         <a
           href="${props.url}"
-          class="db w100 tac br1 tfyh ${activeClass}"
+          class="nav-button db w100 tac br1 ${activeClass} nav-tooltip-c"
         >
           <span class="fa fa-${props.icon}"></span>
+          <div class="nav-tooltip">${props.title}</div>
         </a>
       </div>
     `
