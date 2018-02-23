@@ -18,7 +18,7 @@ app.use(require('./plugins/hub'))
 
 // routes
 app.route('*', wrapper(require('./views/default')))
-app.route('#hub', wrapper(require('./views/hub')))
+app.route('#hub', wrapper(require('./views/network')))
 app.route('#hub/:page', wrapper(require('./views/hub')))
 app.route('#hub/guides', wrapper(require('./views/guides')))
 app.route('#hub/guides/:page', wrapper(require('./views/guide')))

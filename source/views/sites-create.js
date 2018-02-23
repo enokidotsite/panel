@@ -13,7 +13,7 @@ function SitesCreate (state, emit) {
   return html`
     <div class="c12 psr">
       <div class="x xw py1 xjb px3 bb1-bg10">
-        <div class="fs1 px1 py1-5 toe wsnw oxh c12 sm-xx fwb">
+        <div class="fs1 px1 py1 toe wsnw oxh c12 sm-xx fwb">
           Create a New Site
         </div>
       </div>

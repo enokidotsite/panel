@@ -39,10 +39,10 @@ function renderNavigation (state, emit) {
   return html`
     <div class="px3" style="--highlight: ${highlight}">
       <div class="x xjb oh">
-        <div class="x py1-5 fs1 fwb">
+        <div class="x py1 fs1 fwb">
           ${links.map(renderLink)}
         </div>
-        <div class="px1 py1-5">
+        <div class="px1 py1">
           <input type="text" class="input px1-5" placeholder="Search" onfocus=${handleFocus} />
         </div>
       </div>
@@ -66,7 +66,7 @@ function renderFooter (state, emit) {
   var links = ['guides', 'docs', 'log']
 
   return html`
-    <div class="bgc-fg fc-bg70 bt1-bg90 py0-5 px2 x xw xjb">
+    <div class="bgc-fg fc-bg70 bt1-bg90 px2 x xw xjb">
       <div class="x p1">
         ${links.map(renderLink)}
       </div>

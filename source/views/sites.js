@@ -49,9 +49,9 @@ function view (state, emit) {
 
 function renderSites (props) {
   return html`
-    <div class="w100">
+    <div class="w100 xx">
       <div class="x xw py1 xjb px3 bb1-bg10">
-        <div class="fs1 px1 py1-5 toe wsnw oxh c12 sm-xx fwb">
+        <div class="fs1 px1 py1 toe wsnw oxh c12 sm-xx fwb">
           Sites
         </div>
       </div>
@@ -67,12 +67,12 @@ function renderSites (props) {
           <div class="p1">
             <a
               href="?sites=create"
-              class="bgc-blue bgch-fg button-large"
+              class="bgc-blue button-large"
             >Create a New Site</a>
           </div>
           <div class="p1">
             <div
-              class="bgc-yellow bgch-fg button-large"
+              class="bgc-yellow button-large"
               onclick=${props.handleAdd}
             >Load an Existing Site</div>
           </div>
@@ -93,12 +93,12 @@ function renderEmpty (props) {
           <div class="p1">
             <a
               href="?sites=create"
-              class="bgc-blue bgch-fg button-large"
+              class="bgc-blue button-large"
             >Create a New Site</a>
           </div>
           <div class="p1">
             <button
-              class="button-large bgc-yellow bgch-fg"
+              class="button-large bgc-yellow"
               onclick=${props.handleAdd}
             >Load an Existing Site</button>
           </div>
@@ -115,10 +115,10 @@ function renderEmpty (props) {
 
 function renderSite (props) {
   var settingsUrl = props.active ? '?sites=all' : ('?sites=' + props.url)
-  var settingsClass = props.active ? 'bgc-fg' : 'bgc-bg25 bgch-fg'
+  var settingsClass = props.active ? 'bgc-fg' : 'bgc-bg70'
   return html`
     <div id="${props.title}" class="p0-5 w100">
-      <div class="w100 px2 fc-fg br1 b1-bg10 ${props.active ? '' : 'ophc100'}">
+      <div class="w100 px2 br1 b1-bg10 ${props.active ? 'bgc-bg' : 'ophc100'}">
         <div class="x xw xac py1">
           <div class="c12 sm-xx oh p1 curp" onclick=${handleSiteClick}>
             <div class="fs2 wsnw toe fwb">${props.title}</div>
@@ -127,11 +127,11 @@ function renderSite (props) {
             <a href="${settingsUrl}" class="db ${settingsClass} button-medium">Settings</a>
           </div>
           <div class="p1 ${props.active ? '' : 'sm-op0'} oph tom">
-            <a href="${props.url}" target="_blank" class="db bgc-yellow bgch-fg button-medium external">Open</a>
+            <a href="${props.url}" target="_blank" class="db bgc-yellow button-medium external">Open</a>
           </div>
           <div class="p1 ${props.active ? '' : 'sm-op0'} oph tom">
             <button
-              class="bgc-blue bgch-fg button-medium"
+              class="bgc-blue button-medium"
               onclick=${handleSiteClick}
             >Edit this Site</button>
           </div>
@@ -150,14 +150,14 @@ function renderSite (props) {
     return html`
       <div class="c12">
         <div class="px1">
-          <div style="border-top: 1px solid #ddd"></div>
+          <div class="bt1-bg10"></div>
         </div>
         <div class="x xjb py1">
           <div class="px1 py2 fc-bg25">
             Additional settings and p2p stats coming soon
           </div>
           <div class="p1">
-            <button class="bgch-fg bgc-red button-medium" onclick=${handleRemove}>Remove from Sites</button>
+            <button class="bgc-red button-medium" onclick=${handleRemove}>Remove from Sites</button>
           </div>
         </div>
       </div>
