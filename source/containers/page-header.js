@@ -28,7 +28,7 @@ function pageHeader (state, emit) {
   return html`
     <div class="px3 bb1-bg10">
       <div class="x xw py0-5 xjb">
-        <div class="fs1 py1-5 px0-5 toe wsnw oxh c12 sm-xx fwb">
+        <div class="fs1 py1-5 px1 toe wsnw oxh c12 sm-xx fwb">
           <a href="?url=${state.page.url}">${state.page.title || state.page.name || raw('&nbsp;')}</a>
         </div>
         ${elMeta()}

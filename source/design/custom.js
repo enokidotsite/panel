@@ -285,7 +285,7 @@ function media () {
     }
 
     .file-preview {
-      max-height: 100vh;
+      max-height: calc(100vh - 7rem);
       margin: -3rem -3rem -3rem 2rem;
       width: calc(100% + 2rem);
       background-image: url('data:image/svg+xml;utf8,<svg height="10" width="10" viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg"><rect height="5" width="5" x="0" y="0" fill="#f9f9f9" /><rect height="5" width="5" x="5" y="5" fill="#f9f9f9" /></svg>');
@@ -296,7 +296,7 @@ function media () {
       .file-preview {
         height: 100vh;
         width: 100vw;
-        margin: -0.75rem;
+        margin: 0 -3rem 4rem -3rem;
       }
 
       .action-gradient { width: 100% }
