@@ -11,10 +11,11 @@ function init () {
   // var version = localVersion
   //   ? JSON.parse(localVersion)
   //   : { selected: '0.1.0' }
-  var version = { selected: '0.1.1' }
+  var version = { selected: '0.1.0' }
+  var ran = Math.floor(Math.random() * 10000000)
 
-  elScript.setAttribute('src', '/bundles/' + version.selected + '/bundle.js?v=' + version.selected)
-  elLink.setAttribute('href', '/bundles/' + version.selected + '/bundle.css?v=' + version.selected)
+  elScript.setAttribute('src', '/bundles/' + version.selected + '/bundle.js?' + ran)
+  elLink.setAttribute('href', '/bundles/' + version.selected + '/bundle.css?' + ran)
   elLink.setAttribute('rel', 'stylesheet')
 
   elHead.appendChild(elScript)
