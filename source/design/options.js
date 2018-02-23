@@ -12,7 +12,8 @@ exports.colors = {
   red: '#F21307',
   blue: '#005FD2',
   green: '#00907A',
-  yellow: '#F8BE15'
+  yellow: '#F8BE15',
+  inherit: 'inherit'
 }
 
 exports.typography = {

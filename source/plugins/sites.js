@@ -14,11 +14,7 @@ function sites (state, emitter, app) {
     loaded: false,
     p2p: typeof DatArchive !== 'undefined',
     archives: { },
-    create: {
-      title: '',
-      description: '',
-      url: 'dat://57cb1b649045ab34d762e25a16fc08dbe8ea2006d4373e10719899d2ae7c6ff5'
-    },
+    create: getCreateDefaults(),
     active: '',
     error: ''
   }
@@ -92,7 +88,8 @@ function sites (state, emitter, app) {
         })
       })
 
-      // commit to loading
+      // reset defaults commit to loading
+      state.sites.create = getCreateDefaults()
       emitter.emit(state.events.SITE_LOAD, {
         url: archiveCreate.url,
         redirect: true
@@ -183,5 +180,13 @@ function sites (state, emitter, app) {
     storage.setItem('active', state.sites.active)
     storage.setItem('archives', JSON.stringify(state.sites.archives))
     emitter.emit(state.events.RENDER)
+  }
+}
+
+function getCreateDefaults() {
+  return {
+    title: '',
+    description: '',
+    url: 'dat://57cb1b649045ab34d762e25a16fc08dbe8ea2006d4373e10719899d2ae7c6ff5'
   }
 }

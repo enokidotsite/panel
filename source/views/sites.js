@@ -1,5 +1,5 @@
-var assert = require('assert')
 var objectValues = require('object-values')
+var assert = require('assert')
 var html = require('choo/html')
 var xtend = require('xtend')
 
@@ -14,7 +14,7 @@ function view (state, emit) {
   if (!state.sites.loaded) return
 
   // create
-  if (state.query.sites === 'create') {
+  if (state.query.sites === 'designs' || state.query.sites === 'meta') {
     return RenderSiteCreate(state, emit)
   }
 
@@ -63,10 +63,10 @@ function renderSites (props) {
             handleRemove: props.handleRemove
           }))
         })}
-        <div class="psf b0 l0 r0 w100 p1 p1 x xjc">
+        <div class="psf b0 l0 r0 w100 p1 p1 x xjc" style="margin-left: 7rem;">
           <div class="p1">
             <a
-              href="?sites=create"
+              href="?sites=designs"
               class="bgc-blue button-large"
             >Create a New Site</a>
           </div>
@@ -92,7 +92,7 @@ function renderEmpty (props) {
         <div class="x xjc c12">
           <div class="p1">
             <a
-              href="?sites=create"
+              href="?sites=designs"
               class="bgc-blue button-large"
             >Create a New Site</a>
           </div>
