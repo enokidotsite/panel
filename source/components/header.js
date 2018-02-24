@@ -19,7 +19,7 @@ var links = {
   editor: {
     name: 'editor',
     title: 'Editor',
-    icon: 'pencil'
+    icon: 'i-cursor'
   }
 }
 
@@ -44,7 +44,7 @@ function header (state, emit) {
   }
 
   // non p2p
-  if (!state.sites.p2p) return ''
+  if (!state.sites.p2p) return
 
   return html`
     <nav id="header" class="x xdc xjb bgc-bg10 psf t0 l0 b0 z4" style="width: 7rem">
@@ -65,7 +65,7 @@ function header (state, emit) {
   `
 
   function renderLink (props) {
-    var activeClass = props.active ? 'bgc-bg fc-fg' : 'fc-bg25 bgc-bg5 fch-fg'
+    var activeClass = props.active ? 'bgc-fg fc-bg' : 'fc-bg25 bgc-bg fch-fg'
     return html`
       <div class="psr x p0-5" style="font-size: 2.0rem; height: 6rem; width: 6rem; line-height: 5rem">
         <a

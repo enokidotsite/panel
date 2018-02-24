@@ -77,8 +77,9 @@ function renderFooter (state, emit) {
       <div class="x p1">
         ${links.map(renderLink)}
       </div>
-      <div class="p2">
-        <span>enoki</span> <span class="ff-mono">v${state.panel.version}</span>
+      <div class="p1 x">
+        <div class="p1 fwb">enoki</div>
+        <div class="p1 ff-mono">v${state.panel.version}</div>
       </div>
     </div>
   `
