@@ -329,10 +329,6 @@ function inputs () {
     button { outline: 0 }
     button:focus { outline: 0 }
 
-    .focused {
-      box-shadow: 0 0 0 2px ${options.colors.yellow};
-      border: 1px solid ${options.colors.yellow};
-    }
 
     .button-large {
       user-select: none;
@@ -367,7 +363,6 @@ function inputs () {
     .button-medium {
       user-select: none;
       line-height: 4rem;
-      font-weight: 600;
       padding: 0 2rem;
       border-radius: 2rem;
       display: block;
@@ -433,6 +428,14 @@ function inputs () {
       line-height: 2rem;
       height: 2rem;
       width: 2rem;
+    }
+
+    .indicator-medium {
+      font-size: 1.8rem;
+      height: 4rem;
+      width: 4rem;
+      line-height: 4rem;
+      border-radius: 2rem;
     }
   `
 }

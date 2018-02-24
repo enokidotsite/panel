@@ -57,13 +57,27 @@ function view (state, emit) {
 
 function renderSites (props) {
   return html`
-    <div class="w100 xx">
-      <div class="x xw py1 xjb px3 bb1-bg10">
-        <div class="fs1 px1 py1 toe wsnw oxh c12 sm-xx fwb">
+    <div class="w100 xx bgc-bg5">
+      <div class="x xw xjb py1 px3 bgc-bg">
+        <div class="fs2 px1 py2 toe wsnw oxh c12 sm-xx fwb">
           Sites
         </div>
+        <div class="x">
+          <div class="p1">
+            <div
+              class="bgc-bg25 bgch-fg button-medium"
+              onclick=${props.handleAdd}
+            >Load an Existing Site</div>
+          </div>
+          <div class="p1">
+            <a
+              href="?sites=designs"
+              class="bgc-blue button-medium"
+            >Create a New Site</a>
+          </div>
+        </div>
       </div>
-      <div class="" style="padding-bottom: 10rem">
+      <div class="p0-5">
         ${props.sites.map(function (site) {
           return renderSite(xtend(site, {
             active: props.active === site.url,
@@ -71,20 +85,6 @@ function renderSites (props) {
             handleRemove: props.handleRemove
           }))
         })}
-        <div class="psf b0 l0 r0 w100 p1 p1 x xjc" style="margin-left: 7rem;">
-          <div class="p1">
-            <a
-              href="?sites=designs"
-              class="bgc-blue button-large"
-            >Create a New Site</a>
-          </div>
-          <div class="p1">
-            <div
-              class="bgc-yellow button-large"
-              onclick=${props.handleAdd}
-            >Load an Existing Site</div>
-          </div>
-        </div>
       </div>
     </div>
   `
@@ -92,29 +92,27 @@ function renderSites (props) {
 
 function renderEmpty (props) {
   return html`
-    <div class="xx c12 x xac">
-      <div class="c12 p1 x xw xjc">
-        <div class="p1 pb3 fs2 lh1-25 tac c12">
-          Do you want to create a fresh new site,<br>or load a previously created site?
+    <div class="x xx xdc c12">
+      <div class="x xw xjb py1 px3 bgc-bg bb1-bg10">
+        <div class="fs2 px1 py2 toe wsnw oxh c12 sm-xx fwb">
+          enoki
         </div>
-        <div class="x xjc c12">
-          <div class="p1">
-            <a
-              href="?sites=designs"
-              class="bgc-blue button-large"
-            >Create a New Site</a>
-          </div>
-          <div class="p1">
-            <button
-              class="button-large bgc-yellow"
-              onclick=${props.handleAdd}
-            >Load an Existing Site</button>
-          </div>
+        <div class="p1">
+          <button
+            class="button-medium bgc-bg25 bgch-fg"
+            onclick=${props.handleAdd}
+          >Load an Existing Site</button>
         </div>
-        <div class="x xjc c12">
-          <div class="p1 pt3">
-            <a href="/#hub/guides/01-creating-your-first-site" class="fc-bg25 tfcm fch-fg">Need some help getting started?</a>
-          </div>
+      </div>
+      <div class="c12 p1 x xx xjc xac">
+        <a
+          href="?sites=designs"
+          class="bgc-blue bgch-fg button-large"
+        >Create a Fresh New Site</a>
+      </div>
+      <div class="psf l0 r0 b0 x xjc py1" style="margin-left: 7rem">
+        <div class="py2">
+          <a href="/#hub/guides/01-creating-your-first-site" class="fc-bg25 tfcm fch-fg">Need some help getting started?</a>
         </div>
       </div>
     </div>
@@ -123,13 +121,14 @@ function renderEmpty (props) {
 
 function renderSite (props) {
   var settingsUrl = props.active ? '?sites=all' : ('?sites=' + props.url)
-  var settingsClass = props.active ? 'bgc-fg' : 'bgc-bg70'
+  var settingsClass = props.active ? 'bgc-fg' : 'bgc-bg25'
+
   return html`
-    <div id="${props.title}" class="w100">
-      <div class="w100 br1 px3 ${props.active ? '' : 'ophc100'}">
+    <div id="${props.title}" class="p0-5 w100">
+      <div class="w100 br1 px2 bgc-bg ${props.active ? '' : 'ophc100'}">
         <div class="x xw xac py1">
           <div class="c12 sm-xx oh p1 curp" onclick=${handleSiteClick}>
-            <div class="fs2 wsnw toe fwb">${props.title}</div>
+            <div class="fs2 wsnw toe">${props.title}</div>
           </div>
           <div class="p1 ${props.active ? '' : 'sm-op0'} oph tom">
             <a href="${settingsUrl}" class="db ${settingsClass} button-medium">Settings</a>
@@ -146,9 +145,6 @@ function renderSite (props) {
         </div>
         ${props.error ? renderError() : ''}
         ${props.active ? renderSettings() : ''}
-      </div>
-      <div class="">
-        <div class="bt1-bg10"></div>
       </div>
     </div>
   `

@@ -25,16 +25,16 @@ function SitesCreate (state, emit) {
 
   return html`
     <div class="c12 psr xx xdc x">
-      <div class="x xw py1 xjb px3 bb1-bg10">
-        <div class="fs1 px1 py1 toe wsnw oxh c12 sm-xx">
-          <a href="/?sites=designs" class="fwb">Create a New Site</a> <span class="fc-bg25">→ ${subTitle[section]}</span>
+      <div class="x xw py1 xjb px3">
+        <div class="fs2 px1 py2 toe wsnw oxh c12 sm-xx fwb">
+          Select a Design
         </div>
-        <div class="p0-5 x">
-          <div class="p0-5">
-            <a href="/?sites=designs" class="indicator ${section === 'designs' ? 'bgc-blue' : 'bgc-bg10'}">1</a>
-          </div>
-          <div class="p0-5">
-            <a href="/?sites=meta" class="indicator ${section === 'meta' ? 'bgc-blue' : 'bgc-bg10'}">2</a>
+        <div class="x">
+          <div class="p1">
+            <a
+              class="bgch-fg bgc-bg25 button-medium"
+              href="/?sites=all"
+            >Cancel</a>
           </div>
         </div>
       </div>
@@ -62,8 +62,8 @@ function SitesCreate (state, emit) {
 
   function renderFields () {
     return html`
-      <div class="xx x xw xjc xac c12 p4" style="padding-bottom: 8rem">
-        <div class="c6">
+      <div class="xx x xw xjc xac c12 p4 bt1-bg10" style="padding-bottom: 10rem">
+        <div class="c6 bgc-bg p3 br1">
           ${Fields({
             blueprint: blueprint,
             draft: { },
@@ -78,7 +78,7 @@ function SitesCreate (state, emit) {
 
   function renderDesigns () {
     return html`
-      <div class="xx x xw c12 p4" style="padding-bottom: 8rem">
+      <div class="xx x xw c12 p0-5 bgc-bg5" style="padding-bottom: 8rem">
         ${designs.map(function (design) {
           var props = xtend({
             active: state.sites.create.url === design.url,
@@ -92,18 +92,26 @@ function SitesCreate (state, emit) {
 
   function renderButtonMeta () {
     return html`
-      <div class="psf b0 l0 r0 w100 p1 p1 x xjc" style="margin-left: 7rem;">
+      <div class="psf b0 l0 r0 p1 x xjc" style="margin-left: 7rem;">
+        <div class="p1">
+          <button
+            type="submit"
+            onclick=${handleCreate}
+            class="bgch-fg bgc-blue button-large"
+          >Start with the ${selected.title} Design</button>
+        </div>
+      </div>
+    `
+  }
+
+  function renderButtonMetaOld () {
+    return html`
+      <div class="psf b0 l0 r0 p1 p1 x xjc" style="margin-left: 7rem;">
         <div class="p1">
           <a
             class="bgch-fg bgc-blue button-large"
             href="/?sites=meta"
-          >Select the ${selected.title} Design</a>
-        </div>
-        <div class="p1">
-          <a
-            class="bgch-fg bgc-bg25 button-large"
-            href="/?sites=all"
-          >Cancel</a>
+          >Start with the ${selected.title} Design</a>
         </div>
       </div>
     `
@@ -111,19 +119,13 @@ function SitesCreate (state, emit) {
 
   function renderButtonGenerate () {
     return html`
-      <div class="psf b0 l0 r0 w100 p1 p1 x xjc" style="margin-left: 7rem;">
+      <div class="psf b0 l0 r0 p1 x xjc" style="margin-left: 7rem;">
         <div class="p1">
           <button
             type="submit"
             onclick=${handleCreate}
             class="bgch-fg bgc-blue button-large"
           >Generate Your New Site</button>
-        </div>
-        <div class="p1">
-          <a
-            class="bgch-fg bgc-bg25 button-large"
-            href="/?sites=all"
-          >Cancel</a>
         </div>
       </div>
     `
@@ -153,19 +155,17 @@ function SitesCreate (state, emit) {
 
 function renderDesign (props) {
   return html`
-    <div class="c4 p1">
+    <div class="c12 sm-c6 md-c4 p0-5">
       <div class="ophc100 ${props.active ? 'fc-fg' : 'fc-bg25'} fch-fg" onclick=${handleSelect}>
-        <div class="br1 psr ${props.active ? 'focused' : ''} b1-bg10 curp oh" style="padding-bottom: 75%">
-          <img src="${props.thumbnail}" class="psa t0 l0 h100 w100 db">
-        </div>
-        <div class="py1 x xjb">
-          <a
-            href="${props.url}"
-            class="fc-inherit ${props.active ? 'fwb' : ''}"
-            target="_blank"
-          >${props.title}</a>
-          <div class="op0 oph">
-            <a href="${props.url}" target="_blank" class="external fc-bg25 fch-fg">Preview</a>
+        <div class="br1 psr design-thumbnail ${props.active ? 'design-focused' : ''} curp oh">
+          <div class="psr bgc-bg" style="padding-bottom: 75%">
+            <img src="${props.thumbnail}" class="psa t0 l0 h100 w100 db">
+          </div>
+          <div class="py2 px3 x xjb bgc-bg bt1-bg5">
+            <span class="${props.active ? 'fwb fc-blue' : 'fc-fg'}">${props.title}</span>
+            <div class="op0 oph">
+              <a href="${props.url}" target="_blank" class="external fc-bg25 fch-fg">Preview</a>
+            </div>
           </div>
         </div>
       </div>

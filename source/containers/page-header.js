@@ -27,8 +27,8 @@ function pageHeader (state, emit) {
 
   return html`
     <div class="px3 bb1-bg10">
-      <div class="x xw py0-5 xjb">
-        <div class="fs1 py1-5 px1 toe wsnw oxh c12 sm-xx fwb">
+      <div class="x xw py1 xjb">
+        <div class="fs2 py2 px1 toe wsnw oxh c12 sm-xx fwb">
           <a href="?url=${state.page.url}">${state.page.title || state.page.name || raw('&nbsp;')}</a>
         </div>
         ${elMeta()}
@@ -72,10 +72,10 @@ function pageHeader (state, emit) {
     var settingsClass = search.settings ? 'bgc-fg' : 'bgc-bg25 bgch-fg'
     return html`
       <div class="x xw">
-        <div class="p0-5 tom ${state.page.url && state.page.url !== '/' ? 'db' : 'dn'}">
+        <div class="p1 tom ${state.page.url && state.page.url !== '/' ? 'db' : 'dn'}">
           <a href="?${settingsUrl}" class="db ${settingsClass} button-medium">Settings</a>
         </div>
-        <div class="p0-5 xx">
+        <div class="p1 xx">
           <a
             href="${state.site.info.url}${state.page.url}"
             target="_blank"
