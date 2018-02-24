@@ -109,6 +109,14 @@ function view (state, emit) {
       ]
     }
 
+    // store route history
+    if (state.ui.history.sites !== state.query.url || '/') {
+      emit(state.events.UI_HISTORY, {
+        route: 'editor',
+        path: state.query.url || '/'
+      })
+    }
+
     return [
       PageHeader(state, emit),
       Page(),

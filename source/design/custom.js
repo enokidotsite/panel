@@ -84,8 +84,8 @@ function typography () {
       pointer-events: none;
       margin-top: -2rem;
       margin-left: 0.25rem;
-      height: 4rem;
-      line-height: 4rem;
+      height: 3rem;
+      line-height: 3rem;
       padding: 0 1rem;
       font-size: 1.4rem;
       text-transform: uppercase;

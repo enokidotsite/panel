@@ -20,6 +20,7 @@ Modal.prototype.createElement = function (props) {
     <div
       id="modal"
       class="p1 psf t0 l0 r0 b0 x xjc xac z3"
+      style="margin-left: 7rem"
     >
       <div
         class="psr z2 ${this.className}"
@@ -28,7 +29,7 @@ Modal.prototype.createElement = function (props) {
       </div>
       <div
         class="psa t0 l0 r0 b0 z1 curp"
-        style="background: rgba(127, 127, 127, 0.5)"
+        style="background: rgba(20, 20, 20, 0.75)"
         onclick=${this.handleContainerClick}
       ></div>
     </div>

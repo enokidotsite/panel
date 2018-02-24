@@ -12,6 +12,13 @@ function wrapper (view) {
     var href = state.href.replace('/hub/', '')
     state.page = state.docs.content['/' + href] || { }
 
+    if (state.ui.history.hub !== href) {
+      emit(state.events.UI_HISTORY, {
+        route: 'hub',
+        path: href
+      })
+    }
+
     return [
       Header(state, emit),
       renderNavigation(state, emit),
@@ -23,7 +30,7 @@ function wrapper (view) {
       // async load content
       if (!state.docs.loaded) {
         emit(state.events.DOCS_LOAD)
-        return html`<div class="bgc-fg xx"></div>`
+        return html`<div class="bgc-bg xx"></div>`
       }
 
       return view(state, emit)

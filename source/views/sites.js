@@ -10,6 +10,14 @@ module.exports = view
 function view (state, emit) {
   var sites = objectValues(state.sites.archives)
 
+  // store route history
+  if (state.ui.history.sites !== state.query.sites) {
+    emit(state.events.UI_HISTORY, {
+      route: 'sites',
+      path: state.query.sites
+    })
+  }
+
   // not loaded
   if (!state.sites.loaded) return
 
@@ -55,7 +63,7 @@ function renderSites (props) {
           Sites
         </div>
       </div>
-      <div class="p0-5" style="padding-bottom: 10rem">
+      <div class="" style="padding-bottom: 10rem">
         ${props.sites.map(function (site) {
           return renderSite(xtend(site, {
             active: props.active === site.url,
@@ -117,8 +125,8 @@ function renderSite (props) {
   var settingsUrl = props.active ? '?sites=all' : ('?sites=' + props.url)
   var settingsClass = props.active ? 'bgc-fg' : 'bgc-bg70'
   return html`
-    <div id="${props.title}" class="p0-5 w100">
-      <div class="w100 px2 br1 b1-bg10 ${props.active ? 'bgc-bg' : 'ophc100'}">
+    <div id="${props.title}" class="w100">
+      <div class="w100 br1 px3 ${props.active ? '' : 'ophc100'}">
         <div class="x xw xac py1">
           <div class="c12 sm-xx oh p1 curp" onclick=${handleSiteClick}>
             <div class="fs2 wsnw toe fwb">${props.title}</div>
@@ -139,6 +147,9 @@ function renderSite (props) {
         ${props.error ? renderError() : ''}
         ${props.active ? renderSettings() : ''}
       </div>
+      <div class="">
+        <div class="bt1-bg10"></div>
+      </div>
     </div>
   `
 
@@ -150,7 +161,7 @@ function renderSite (props) {
     return html`
       <div class="c12">
         <div class="px1">
-          <div class="bt1-bg10"></div>
+          <div style="border-top: 1px dashed #ddd"></div>
         </div>
         <div class="x xjb py1">
           <div class="px1 py2 fc-bg25">

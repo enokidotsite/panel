@@ -7,19 +7,19 @@ var Breadcrumbs = require('./breadcrumbs')
 
 var links = {
   hub: {
+    name: 'hub',
     title: 'Hub',
-    icon: 'home',
-    url: '/#hub/guides'
+    icon: 'home'
   },
   sites: {
+    name: 'sites',
     title: 'Sites',
-    icon: 'clone',
-    url: '/?sites=all'
+    icon: 'clone'
   },
   editor: {
+    name: 'editor',
     title: 'Editor',
-    icon: 'pencil',
-    url: '/?url=/'
+    icon: 'pencil'
   }
 }
 
@@ -28,17 +28,26 @@ module.exports = header
 function header (state, emit) {
   var search = queryString.parse(location.search)
 
-  var activeStates = {
-    editor: typeof search.url !== 'undefined' && state.sites.active,
-    sites:  typeof search.sites !== 'undefined',
-    hub: state.route.indexOf('hub') >= 0
+  var linksState = {
+    editor: {
+      active: typeof search.url !== 'undefined' && state.sites.active,
+      url: '?url=' + state.ui.history.editor
+    },
+    sites: {
+      active: typeof search.sites !== 'undefined',
+      url: '?sites=' + state.ui.history.sites
+    },
+    hub: {
+      active: state.route.indexOf('hub') >= 0,
+      url: '/#hub/' + state.ui.history.hub
+    }
   }
 
   // non p2p
   if (!state.sites.p2p) return ''
 
   return html`
-    <nav id="header" class="x xdc xjb bgc-bg5 psf t0 l0 b0 z4" style="width: 7rem">
+    <nav id="header" class="x xdc xjb bgc-bg10 psf t0 l0 b0 z4" style="width: 7rem">
       <div class="p0-5">
         ${objectKeys(links)
         .filter(function (key) {
@@ -47,7 +56,8 @@ function header (state, emit) {
         })
         .map(function (key) {
           var link = links[key]
-          link.active = activeStates[key]
+          link.active = linksState[key].active
+          link.url = linksState[key].url
           return renderLink(link)
         })}
       </div>
@@ -55,7 +65,7 @@ function header (state, emit) {
   `
 
   function renderLink (props) {
-    var activeClass = props.active ? 'bgc-fg fc-bg b1-fg' : 'bgc-bg5 fc-bg25 b1-bg10 bgch-bg'
+    var activeClass = props.active ? 'bgc-bg fc-fg' : 'fc-bg25 bgc-bg5 fch-fg'
     return html`
       <div class="psr x p0-5" style="font-size: 2.0rem; height: 6rem; width: 6rem; line-height: 5rem">
         <a
@@ -65,19 +75,20 @@ function header (state, emit) {
           <span class="fa fa-${props.icon}"></span>
           <div class="nav-tooltip">${props.title}</div>
         </a>
+        ${props.name === 'editor' ? renderChanges() : ''}
       </div>
     `
   }
 
   function renderChanges () {
     var changes = objectKeys(state.panel.changes)
-    var isActive = changes.length > 0 && editorActive
+    var isActive = changes.length > 0
     var urlChanges = unescape(queryString.stringify(
       xtend({ changes: 'all' }, state.query)
     ))
 
     return html`
-      <div class="p2 ${isActive ? 'db' : 'dn'}">
+      <div class="psa t0 r0 z2 ${isActive ? 'db' : 'dn'}">
         <a
           href="/?${urlChanges}"
           class="indicator curp bgc-green"

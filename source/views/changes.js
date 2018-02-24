@@ -21,7 +21,7 @@ function changes (state, emit) {
       <div class="py1 px2 x ttu fs0-8 fc-bg25 fwb">
         <div class="c6">Title</div>
       </div>
-      <ul class="myc1">
+      <ul>
         ${activeChanges.map(renderRouteChanges)}
       </ul>
     </div>
@@ -39,15 +39,17 @@ function changes (state, emit) {
 function renderRouteChanges (props) {
   if (!props.state.url) return
   return html`
-    <li class="x py1 px2">
-      <div class="xx">
-        <a href="/?url=${props.state.url}">${props.state.title}</a>
-      </div>
-      <div class="x">
-        <div class="indicator bgc-green">
-          ${objectKeys(props.changes).length}
+    <li class="bt1-bg10">
+      <a href="/?url=${props.state.url}" class="py1 px2 x">
+        <div class="xx">
+          ${props.state.title}
         </div>
-      </div>
+        <div class="x">
+          <div class="indicator bgc-green">
+            ${objectKeys(props.changes).length}
+          </div>
+        </div>
+      </a>
     </li>
   `
 }

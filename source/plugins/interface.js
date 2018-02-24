@@ -6,10 +6,23 @@ module.exports = ui
 
 function ui (state, emitter) {
   state.ui = {
-    dragActive: false
+    dragActive: false,
+    history: {
+      hub: 'guides',
+      sites: 'all',
+      editor: '/'
+    }
   }
 
-  emitter.on(state.events.DOMCONTENTLOADED, handleLoad)
+  state.events.UI_HISTORY = 'ui:history'
+
+  emitter.on(state.events.UI_HISTORY, handleHistory)
+  // emitter.on(state.events.DOMCONTENTLOADED, handleLoad)
+
+  function handleHistory (data) {
+    if (!data.route || !data.path) return
+    state.ui.history[data.route] = data.path
+  }
 
   function handleLoad (data) {
     document.body.addEventListener('dragenter', handleDrag, false)
