@@ -13,6 +13,7 @@ text: ## Todo
 - [ ] Settings → HTTP fallback
 - [ ] Reordering
 - [ ] Persist across domains (ditch localstorage?)
+- [ ] Store references to designs inside of `/content` instead of the `designs.js` plugin
 
 ## Ideas
 

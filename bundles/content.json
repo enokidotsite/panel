@@ -1,4 +1,14 @@
 {
+  "/community": {
+    "title": "Community",
+    "view": "community",
+    "text": "Coming soon",
+    "name": "community",
+    "path": "/content/community",
+    "url": "/community",
+    "files": {},
+    "pages": {}
+  },
   "/docs": {
     "title": "Docs",
     "view": "docs",
@@ -15,16 +25,6 @@
         "source": "/content/docs/fields"
       }
     }
-  },
-  "/community": {
-    "title": "Community",
-    "view": "community",
-    "text": "Coming soon",
-    "name": "community",
-    "path": "/content/community",
-    "url": "/community",
-    "files": {},
-    "pages": {}
   },
   "/faq": {
     "title": "FAQ",
@@ -68,6 +68,12 @@
         "path": "/content/issues/files",
         "url": "/issues/files",
         "source": "/content/issues/files"
+      },
+      "hub": {
+        "name": "hub",
+        "path": "/content/issues/hub",
+        "url": "/issues/hub",
+        "source": "/content/issues/hub"
       },
       "inline-editing": {
         "name": "inline-editing",
@@ -128,17 +134,16 @@
     "files": {},
     "pages": {}
   },
-  "/issues/fields": {
-    "title": "Fields",
+  "/issues/cleanup-codebase": {
+    "title": "Cleanup codebase",
     "view": "issue",
-    "text": "## Cleanup\n\nCurrently, fields are a bit sloppy. Some immediate improvements.\n\n- [x] Store everything within an internal `state` object\n- [x] Output a single object to `emit` containing `.value`\n- [ ] Autoscroll textarea when at bottom\n- [ ] Wrap fieldset in `<form>`\n- [x] Convert change to `button[type=\"submit\"]`\n- [ ] Add html5 validation\n\n## New fields\n\n- [X] Checkbox\n- [X] Range\n- [ ] Date\n- [ ] Radio selector\n- [ ] Structured data\n- [ ] Font (copy font files to site?)\n- [x] Color\n- [ ] Help (description sort of thing)",
+    "text": "Gotta refactor a little bit, it’s getting messy in here.\n\n## Structure\n\n- [ ] Try to make the DOM as representational as possible.\n- [ ] Support imports/require/window\n- [ ] Create a bundle.js which exposes over window\n- [ ] Create a super simple demo using no build system\n\n## Styles\n\n- [ ] Switch from gr8 for layout to CSS grid/variables.\n- [ ] Create `.copy` styles for dark/light\n- [ ] Simple `sheetify` css-in-js for most things.",
     "tags": [
-      "1.0.0",
       "todo"
     ],
-    "name": "fields",
-    "path": "/content/issues/fields",
-    "url": "/issues/fields",
+    "name": "cleanup-codebase",
+    "path": "/content/issues/cleanup-codebase",
+    "url": "/issues/cleanup-codebase",
     "files": {},
     "pages": {}
   },
@@ -156,16 +161,17 @@
     "files": {},
     "pages": {}
   },
-  "/issues/cleanup-codebase": {
-    "title": "Cleanup codebase",
+  "/issues/fields": {
+    "title": "Fields",
     "view": "issue",
-    "text": "Gotta refactor a little bit, it’s getting messy in here.\n\n## Structure\n\n- [ ] Try to make the DOM as representational as possible.\n- [ ] Support imports/require/window\n- [ ] Create a bundle.js which exposes over window\n- [ ] Create a super simple demo using no build system\n\n## Styles\n\n- [ ] Switch from gr8 for layout to CSS grid/variables.\n- [ ] Create `.copy` styles for dark/light\n- [ ] Simple `sheetify` css-in-js for most things.",
+    "text": "## Cleanup\n\nCurrently, fields are a bit sloppy. Some immediate improvements.\n\n- [x] Store everything within an internal `state` object\n- [x] Output a single object to `emit` containing `.value`\n- [ ] Autoscroll textarea when at bottom\n- [ ] Wrap fieldset in `<form>`\n- [x] Convert change to `button[type=\"submit\"]`\n- [ ] Add html5 validation\n\n## New fields\n\n- [X] Checkbox\n- [X] Range\n- [ ] Date\n- [ ] Radio selector\n- [ ] Structured data\n- [ ] Font (copy font files to site?)\n- [x] Color\n- [ ] Help (description sort of thing)",
     "tags": [
+      "1.0.0",
       "todo"
     ],
-    "name": "cleanup-codebase",
-    "path": "/content/issues/cleanup-codebase",
-    "url": "/issues/cleanup-codebase",
+    "name": "fields",
+    "path": "/content/issues/fields",
+    "url": "/issues/fields",
     "files": {},
     "pages": {}
   },
@@ -183,16 +189,16 @@
     "files": {},
     "pages": {}
   },
-  "/issues/library": {
-    "title": "Library",
+  "/issues/hub": {
+    "title": "Hub",
     "view": "issue",
-    "text": "Need to clean up some of the boundaries between things.\n\n- [ ] Localization support\n- [ ] `require('enoki/tools')` for handy methods",
     "tags": [
       "todo"
     ],
-    "name": "library",
-    "path": "/content/issues/library",
-    "url": "/issues/library",
+    "text": "The hub contains the Network, Guides, Docs, and Log.\n\n- [ ] Sticky header (scroll)\n- [ ] Network coming soon splash",
+    "name": "hub",
+    "path": "/content/issues/hub",
+    "url": "/issues/hub",
     "files": {},
     "pages": {}
   },
@@ -206,6 +212,60 @@
     "name": "inline-editing",
     "path": "/content/issues/inline-editing",
     "url": "/issues/inline-editing",
+    "files": {},
+    "pages": {}
+  },
+  "/issues/library": {
+    "title": "Library",
+    "view": "issue",
+    "text": "Need to clean up some of the boundaries between things.\n\n- [ ] Localization support\n- [ ] `require('enoki/tools')` for handy methods",
+    "tags": [
+      "todo"
+    ],
+    "name": "library",
+    "path": "/content/issues/library",
+    "url": "/issues/library",
+    "files": {},
+    "pages": {}
+  },
+  "/issues/page-functionality": {
+    "title": "Page functionality",
+    "view": "issue",
+    "text": "Need to improve some management issues with Pages.\n\n- [ ] Field for `hidden` toggle\n- [ ] Field for adjusting `view` in Settings.\n- [ ] Field for adjusting `pathname` in Settings.",
+    "tags": [
+      "todo"
+    ],
+    "name": "page-functionality",
+    "path": "/content/issues/page-functionality",
+    "url": "/issues/page-functionality",
+    "files": {},
+    "pages": {}
+  },
+  "/issues/saving": {
+    "title": "Saving",
+    "view": "issue",
+    "tags": [
+      "0.1.1",
+      "todo"
+    ],
+    "text": "How to handle static output?\n\n- [ ] Local storage for changes?\n- [ ] Saving title change saves to index.html, too\n- [ ] Meta tags in index.html\n- [ ] How to speed things up (static output / reload all state)\n- [ ] Dont’t worry about static HTML output as the affordances of the p2p web mean initialization is less of an issue",
+    "name": "saving",
+    "path": "/content/issues/saving",
+    "url": "/issues/saving",
+    "files": {},
+    "pages": {}
+  },
+  "/issues/sites": {
+    "title": "Sites",
+    "view": "issue",
+    "tags": [
+      "todo",
+      "1.0.1"
+    ],
+    "text": "## Todo\n\n- [x] Settings → Remove\n- [ ] Settings → HTTP fallback\n- [ ] Reordering\n- [ ] Persist across domains (ditch localstorage?)\n- [ ] Store references to designs inside of `/content` instead of the `designs.js` plugin\n\n## Ideas\n\n- Some sort of p2p stats, such as how many peers, etc…\n- A simple way of deploying to a service like Hashbase",
+    "name": "sites",
+    "path": "/content/issues/sites",
+    "url": "/issues/sites",
     "files": {},
     "pages": {}
   },
@@ -256,47 +316,6 @@
       }
     }
   },
-  "/issues/page-functionality": {
-    "title": "Page functionality",
-    "view": "issue",
-    "text": "Need to improve some management issues with Pages.\n\n- [ ] Field for `hidden` toggle\n- [ ] Field for adjusting `view` in Settings.\n- [ ] Field for adjusting `pathname` in Settings.",
-    "tags": [
-      "todo"
-    ],
-    "name": "page-functionality",
-    "path": "/content/issues/page-functionality",
-    "url": "/issues/page-functionality",
-    "files": {},
-    "pages": {}
-  },
-  "/issues/saving": {
-    "title": "Saving",
-    "view": "issue",
-    "tags": [
-      "0.1.1",
-      "todo"
-    ],
-    "text": "How to handle static output?\n\n- [ ] Local storage for changes?\n- [ ] Saving title change saves to index.html, too\n- [ ] Meta tags in index.html\n- [ ] How to speed things up (static output / reload all state)",
-    "name": "saving",
-    "path": "/content/issues/saving",
-    "url": "/issues/saving",
-    "files": {},
-    "pages": {}
-  },
-  "/issues/sites": {
-    "title": "Sites",
-    "view": "issue",
-    "tags": [
-      "todo",
-      "1.0.1"
-    ],
-    "text": "## Todo\n\n- [x] Settings → Remove\n- [ ] Settings → HTTP fallback\n- [ ] Reordering\n- [ ] Persist across domains (ditch localstorage?)\n\n## Ideas\n\n- Some sort of p2p stats, such as how many peers, etc…\n- A simple way of deploying to a service like Hashbase",
-    "name": "sites",
-    "path": "/content/issues/sites",
-    "url": "/issues/sites",
-    "files": {},
-    "pages": {}
-  },
   "/guides": {
     "title": "Guides",
     "view": "guides",
@@ -309,7 +328,7 @@
         "name": "drafts",
         "path": "/content/guides/drafts.txt",
         "url": "/guides/drafts.txt",
-        "source": "dat://e87b59368258cbc0941d85909dd421bcefe1b79b82f8cdffbf6cb187d260ba01/content/guides/drafts.txt",
+        "source": "dat://1833e7b021745e0bbdba55b7ce08ba364f5d26d8559055605a18a8b5d2fdc50f/content/guides/drafts.txt",
         "extension": ".txt",
         "filename": "drafts.txt"
       }
@@ -366,61 +385,7 @@
         "name": "image",
         "path": "/content/guides/01-creating-your-first-site/image.svg",
         "url": "/guides/01-creating-your-first-site/image.svg",
-        "source": "dat://e87b59368258cbc0941d85909dd421bcefe1b79b82f8cdffbf6cb187d260ba01/content/guides/01-creating-your-first-site/image.svg",
-        "extension": ".svg",
-        "filename": "image.svg",
-        "type": "image"
-      }
-    },
-    "pages": {}
-  },
-  "/guides/03-creating-pages": {
-    "title": "Creating Custom Pages",
-    "view": "guide",
-    "tags": [
-      "beginner"
-    ],
-    "color": true,
-    "featured": false,
-    "excerpt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tempor consectetur urna eu mollis. Cras hendrerit sodales purus in euismod. Nulla ut tempus ex. Phasellus non neque vel mi faucibus convallis. Sed sit amet ligula quis ligula egestas finibus. Pellentesque nec eros vitae dolor eleifend condimentum non in leo. Nam elementum augue eu lacus sagittis, eu gravida ligula porta.",
-    "text": "## Notes\n\n- Overview of fields\n- Overview of blueprints\n\n## Filler content\n\n Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla congue volutpat lectus. Etiam vehicula convallis eros. Quisque semper venenatis risus. Morbi fermentum, est id commodo venenatis, dui ante pulvinar arcu, a tempus enim arcu id augue. Sed convallis ac velit sed interdum. Nam nec ante rhoncus sapien cursus dignissim eu vel arcu.\n\nAliquam quis magna felis. Sed ac magna dolor. Nunc nunc augue, tempus at eros tristique, convallis eleifend quam. Nam eget elementum quam. Nunc consequat, risus sit amet tincidunt malesuada, est nibh condimentum leo, quis laoreet velit tortor et lorem. Proin vitae sem urna. Proin pharetra justo mi, et volutpat urna hendrerit ac. Fusce volutpat ex ut nunc hendrerit, a placerat justo sollicitudin. Vestibulum sagittis justo ut nisi venenatis tincidunt porttitor nec dolor. Maecenas dui felis, efficitur a nibh vitae, tristique accumsan augue.\n\nSuspendisse varius nisl in sem lobortis, quis consectetur dui pharetra. In a dui vel dui scelerisque egestas. Curabitur rutrum enim metus, eget facilisis sem sagittis eget. Praesent interdum sem ullamcorper elementum ultrices. Nulla sit amet maximus dui, quis venenatis neque. Fusce dignissim porttitor efficitur. Nulla malesuada eleifend elementum. Nam malesuada consequat ex id ultricies.\n\nSed posuere consectetur ipsum, id dapibus orci fringilla at. Aliquam placerat et eros sed efficitur. Ut sapien diam, auctor sed lectus nec, sodales molestie turpis. Sed volutpat odio vel purus ultricies luctus. Fusce placerat, turpis non cursus rhoncus, massa eros lobortis diam, et malesuada mi purus bibendum ante. Vestibulum at tellus nulla. Praesent dolor mi, mollis sed felis ac, mollis porta magna. Morbi interdum imperdiet ex et ultrices. Curabitur luctus pharetra nunc, eget consequat risus vehicula at. Aenean finibus augue orci, ut scelerisque urna fringilla quis. Phasellus rutrum luctus enim eu tincidunt. Phasellus sagittis turpis eget ligula dignissim sodales. Nulla rutrum, neque sed eleifend efficitur, tellus elit fringilla augue, ut elementum ex magna sit amet est. Etiam eget est sed purus lobortis eleifend eu non dolor.",
-    "background": "#f21006",
-    "name": "03-creating-pages",
-    "path": "/content/guides/03-creating-pages",
-    "url": "/guides/03-creating-pages",
-    "files": {
-      "image.svg": {
-        "name": "image",
-        "path": "/content/guides/03-creating-pages/image.svg",
-        "url": "/guides/03-creating-pages/image.svg",
-        "source": "dat://e87b59368258cbc0941d85909dd421bcefe1b79b82f8cdffbf6cb187d260ba01/content/guides/03-creating-pages/image.svg",
-        "extension": ".svg",
-        "filename": "image.svg",
-        "type": "image"
-      }
-    },
-    "pages": {}
-  },
-  "/guides/04-how-to-leave-enoki": {
-    "title": "How to Leave Enoki",
-    "view": "guide",
-    "tags": [
-      "beginner"
-    ],
-    "color": false,
-    "featured": false,
-    "excerpt": "Technology moves fast. Enoki knows it won’t always be the best tool for you. Rest easy knowing that you own your data and content. It exists on your computer, and not only on a server owned by a platform.",
-    "text": "## Draft\n\nTechnology moves fast. Enoki won’t always be the best tool for you. Rest easy knowing that you own your data and content. It exists on your computer, and not only on a server owned by a platform.\n\n## Fillter content\n\n Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla congue volutpat lectus. Etiam vehicula convallis eros. Quisque semper venenatis risus. Morbi fermentum, est id commodo venenatis, dui ante pulvinar arcu, a tempus enim arcu id augue. Sed convallis ac velit sed interdum. Nam nec ante rhoncus sapien cursus dignissim eu vel arcu.\n\nAliquam quis magna felis. Sed ac magna dolor. Nunc nunc augue, tempus at eros tristique, convallis eleifend quam. Nam eget elementum quam. Nunc consequat, risus sit amet tincidunt malesuada, est nibh condimentum leo, quis laoreet velit tortor et lorem. Proin vitae sem urna. Proin pharetra justo mi, et volutpat urna hendrerit ac. Fusce volutpat ex ut nunc hendrerit, a placerat justo sollicitudin. Vestibulum sagittis justo ut nisi venenatis tincidunt porttitor nec dolor. Maecenas dui felis, efficitur a nibh vitae, tristique accumsan augue.\n\nSuspendisse varius nisl in sem lobortis, quis consectetur dui pharetra. In a dui vel dui scelerisque egestas. Curabitur rutrum enim metus, eget facilisis sem sagittis eget. Praesent interdum sem ullamcorper elementum ultrices. Nulla sit amet maximus dui, quis venenatis neque. Fusce dignissim porttitor efficitur. Nulla malesuada eleifend elementum. Nam malesuada consequat ex id ultricies.\n\nSed posuere consectetur ipsum, id dapibus orci fringilla at. Aliquam placerat et eros sed efficitur. Ut sapien diam, auctor sed lectus nec, sodales molestie turpis. Sed volutpat odio vel purus ultricies luctus. Fusce placerat, turpis non cursus rhoncus, massa eros lobortis diam, et malesuada mi purus bibendum ante. Vestibulum at tellus nulla. Praesent dolor mi, mollis sed felis ac, mollis porta magna. Morbi interdum imperdiet ex et ultrices. Curabitur luctus pharetra nunc, eget consequat risus vehicula at. Aenean finibus augue orci, ut scelerisque urna fringilla quis. Phasellus rutrum luctus enim eu tincidunt. Phasellus sagittis turpis eget ligula dignissim sodales. Nulla rutrum, neque sed eleifend efficitur, tellus elit fringilla augue, ut elementum ex magna sit amet est. Etiam eget est sed purus lobortis eleifend eu non dolor.",
-    "background": "#fbc200",
-    "name": "04-how-to-leave-enoki",
-    "path": "/content/guides/04-how-to-leave-enoki",
-    "url": "/guides/04-how-to-leave-enoki",
-    "files": {
-      "image.svg": {
-        "name": "image",
-        "path": "/content/guides/04-how-to-leave-enoki/image.svg",
-        "url": "/guides/04-how-to-leave-enoki/image.svg",
-        "source": "dat://e87b59368258cbc0941d85909dd421bcefe1b79b82f8cdffbf6cb187d260ba01/content/guides/04-how-to-leave-enoki/image.svg",
+        "source": "dat://1833e7b021745e0bbdba55b7ce08ba364f5d26d8559055605a18a8b5d2fdc50f/content/guides/01-creating-your-first-site/image.svg",
         "extension": ".svg",
         "filename": "image.svg",
         "type": "image"
@@ -447,7 +412,61 @@
         "name": "image",
         "path": "/content/guides/02-customizing-your-site/image.svg",
         "url": "/guides/02-customizing-your-site/image.svg",
-        "source": "dat://e87b59368258cbc0941d85909dd421bcefe1b79b82f8cdffbf6cb187d260ba01/content/guides/02-customizing-your-site/image.svg",
+        "source": "dat://1833e7b021745e0bbdba55b7ce08ba364f5d26d8559055605a18a8b5d2fdc50f/content/guides/02-customizing-your-site/image.svg",
+        "extension": ".svg",
+        "filename": "image.svg",
+        "type": "image"
+      }
+    },
+    "pages": {}
+  },
+  "/guides/03-creating-pages": {
+    "title": "Creating Custom Pages",
+    "view": "guide",
+    "tags": [
+      "beginner"
+    ],
+    "color": true,
+    "featured": false,
+    "excerpt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tempor consectetur urna eu mollis. Cras hendrerit sodales purus in euismod. Nulla ut tempus ex. Phasellus non neque vel mi faucibus convallis. Sed sit amet ligula quis ligula egestas finibus. Pellentesque nec eros vitae dolor eleifend condimentum non in leo. Nam elementum augue eu lacus sagittis, eu gravida ligula porta.",
+    "text": "## Notes\n\n- Overview of fields\n- Overview of blueprints\n\n## Filler content\n\n Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla congue volutpat lectus. Etiam vehicula convallis eros. Quisque semper venenatis risus. Morbi fermentum, est id commodo venenatis, dui ante pulvinar arcu, a tempus enim arcu id augue. Sed convallis ac velit sed interdum. Nam nec ante rhoncus sapien cursus dignissim eu vel arcu.\n\nAliquam quis magna felis. Sed ac magna dolor. Nunc nunc augue, tempus at eros tristique, convallis eleifend quam. Nam eget elementum quam. Nunc consequat, risus sit amet tincidunt malesuada, est nibh condimentum leo, quis laoreet velit tortor et lorem. Proin vitae sem urna. Proin pharetra justo mi, et volutpat urna hendrerit ac. Fusce volutpat ex ut nunc hendrerit, a placerat justo sollicitudin. Vestibulum sagittis justo ut nisi venenatis tincidunt porttitor nec dolor. Maecenas dui felis, efficitur a nibh vitae, tristique accumsan augue.\n\nSuspendisse varius nisl in sem lobortis, quis consectetur dui pharetra. In a dui vel dui scelerisque egestas. Curabitur rutrum enim metus, eget facilisis sem sagittis eget. Praesent interdum sem ullamcorper elementum ultrices. Nulla sit amet maximus dui, quis venenatis neque. Fusce dignissim porttitor efficitur. Nulla malesuada eleifend elementum. Nam malesuada consequat ex id ultricies.\n\nSed posuere consectetur ipsum, id dapibus orci fringilla at. Aliquam placerat et eros sed efficitur. Ut sapien diam, auctor sed lectus nec, sodales molestie turpis. Sed volutpat odio vel purus ultricies luctus. Fusce placerat, turpis non cursus rhoncus, massa eros lobortis diam, et malesuada mi purus bibendum ante. Vestibulum at tellus nulla. Praesent dolor mi, mollis sed felis ac, mollis porta magna. Morbi interdum imperdiet ex et ultrices. Curabitur luctus pharetra nunc, eget consequat risus vehicula at. Aenean finibus augue orci, ut scelerisque urna fringilla quis. Phasellus rutrum luctus enim eu tincidunt. Phasellus sagittis turpis eget ligula dignissim sodales. Nulla rutrum, neque sed eleifend efficitur, tellus elit fringilla augue, ut elementum ex magna sit amet est. Etiam eget est sed purus lobortis eleifend eu non dolor.",
+    "background": "#f21006",
+    "name": "03-creating-pages",
+    "path": "/content/guides/03-creating-pages",
+    "url": "/guides/03-creating-pages",
+    "files": {
+      "image.svg": {
+        "name": "image",
+        "path": "/content/guides/03-creating-pages/image.svg",
+        "url": "/guides/03-creating-pages/image.svg",
+        "source": "dat://1833e7b021745e0bbdba55b7ce08ba364f5d26d8559055605a18a8b5d2fdc50f/content/guides/03-creating-pages/image.svg",
+        "extension": ".svg",
+        "filename": "image.svg",
+        "type": "image"
+      }
+    },
+    "pages": {}
+  },
+  "/guides/04-how-to-leave-enoki": {
+    "title": "How to Leave Enoki",
+    "view": "guide",
+    "tags": [
+      "beginner"
+    ],
+    "color": false,
+    "featured": false,
+    "excerpt": "Technology moves fast. Enoki knows it won’t always be the best tool for you. Rest easy knowing that you own your data and content. It exists on your computer, and not only on a server owned by a platform.",
+    "text": "## Draft\n\nTechnology moves fast. Enoki won’t always be the best tool for you. Rest easy knowing that you own your data and content. It exists on your computer, and not only on a server owned by a platform.\n\n## Fillter content\n\n Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla congue volutpat lectus. Etiam vehicula convallis eros. Quisque semper venenatis risus. Morbi fermentum, est id commodo venenatis, dui ante pulvinar arcu, a tempus enim arcu id augue. Sed convallis ac velit sed interdum. Nam nec ante rhoncus sapien cursus dignissim eu vel arcu.\n\nAliquam quis magna felis. Sed ac magna dolor. Nunc nunc augue, tempus at eros tristique, convallis eleifend quam. Nam eget elementum quam. Nunc consequat, risus sit amet tincidunt malesuada, est nibh condimentum leo, quis laoreet velit tortor et lorem. Proin vitae sem urna. Proin pharetra justo mi, et volutpat urna hendrerit ac. Fusce volutpat ex ut nunc hendrerit, a placerat justo sollicitudin. Vestibulum sagittis justo ut nisi venenatis tincidunt porttitor nec dolor. Maecenas dui felis, efficitur a nibh vitae, tristique accumsan augue.\n\nSuspendisse varius nisl in sem lobortis, quis consectetur dui pharetra. In a dui vel dui scelerisque egestas. Curabitur rutrum enim metus, eget facilisis sem sagittis eget. Praesent interdum sem ullamcorper elementum ultrices. Nulla sit amet maximus dui, quis venenatis neque. Fusce dignissim porttitor efficitur. Nulla malesuada eleifend elementum. Nam malesuada consequat ex id ultricies.\n\nSed posuere consectetur ipsum, id dapibus orci fringilla at. Aliquam placerat et eros sed efficitur. Ut sapien diam, auctor sed lectus nec, sodales molestie turpis. Sed volutpat odio vel purus ultricies luctus. Fusce placerat, turpis non cursus rhoncus, massa eros lobortis diam, et malesuada mi purus bibendum ante. Vestibulum at tellus nulla. Praesent dolor mi, mollis sed felis ac, mollis porta magna. Morbi interdum imperdiet ex et ultrices. Curabitur luctus pharetra nunc, eget consequat risus vehicula at. Aenean finibus augue orci, ut scelerisque urna fringilla quis. Phasellus rutrum luctus enim eu tincidunt. Phasellus sagittis turpis eget ligula dignissim sodales. Nulla rutrum, neque sed eleifend efficitur, tellus elit fringilla augue, ut elementum ex magna sit amet est. Etiam eget est sed purus lobortis eleifend eu non dolor.",
+    "background": "#fbc200",
+    "name": "04-how-to-leave-enoki",
+    "path": "/content/guides/04-how-to-leave-enoki",
+    "url": "/guides/04-how-to-leave-enoki",
+    "files": {
+      "image.svg": {
+        "name": "image",
+        "path": "/content/guides/04-how-to-leave-enoki/image.svg",
+        "url": "/guides/04-how-to-leave-enoki/image.svg",
+        "source": "dat://1833e7b021745e0bbdba55b7ce08ba364f5d26d8559055605a18a8b5d2fdc50f/content/guides/04-how-to-leave-enoki/image.svg",
         "extension": ".svg",
         "filename": "image.svg",
         "type": "image"
@@ -470,7 +489,7 @@
         "name": "image",
         "path": "/content/guides/05-starting-from-scratch/image.svg",
         "url": "/guides/05-starting-from-scratch/image.svg",
-        "source": "dat://e87b59368258cbc0941d85909dd421bcefe1b79b82f8cdffbf6cb187d260ba01/content/guides/05-starting-from-scratch/image.svg",
+        "source": "dat://1833e7b021745e0bbdba55b7ce08ba364f5d26d8559055605a18a8b5d2fdc50f/content/guides/05-starting-from-scratch/image.svg",
         "extension": ".svg",
         "filename": "image.svg",
         "type": "image"
