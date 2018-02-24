@@ -7,21 +7,23 @@ module.exports = ui
 function ui (state, emitter) {
   state.ui = {
     dragActive: false,
-    history: {
-      hub: 'guides',
-      sites: 'all',
-      editor: '/'
-    }
+    history: getHistoryDefaults()
   }
 
   state.events.UI_HISTORY = 'ui:history'
+  state.events.UI_HISTORY_RESET = 'ui:history:reset'
 
+  emitter.on(state.events.UI_HISTORY_RESET, handleHistoryReset)
   emitter.on(state.events.UI_HISTORY, handleHistory)
   // emitter.on(state.events.DOMCONTENTLOADED, handleLoad)
 
   function handleHistory (data) {
     if (!data.route || !data.path) return
     state.ui.history[data.route] = data.path
+  }
+
+  function handleHistoryReset () {
+    state.history = getHistoryDefaults()
   }
 
   function handleLoad (data) {
@@ -47,5 +49,13 @@ function ui (state, emitter) {
     renderTimeout = setTimeout(function () {
       if (!state.ui.dragActive) emitter.emit(state.events.RENDER)
     }, 100)
+  }
+}
+
+function getHistoryDefaults () {
+  return {
+    hub: 'guides',
+    sites: 'all',
+    editor: '/'
   }
 }

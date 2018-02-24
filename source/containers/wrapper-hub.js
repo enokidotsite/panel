@@ -30,7 +30,7 @@ function wrapper (view) {
       // async load content
       if (!state.docs.loaded) {
         emit(state.events.DOCS_LOAD)
-        return html`<div class="bgc-bg xx"></div>`
+        return html`<div class="bgc-fg xx"></div>`
       }
 
       return view(state, emit)
@@ -73,12 +73,12 @@ function renderFooter (state, emit) {
   var links = ['guides', 'docs', 'log']
 
   return html`
-    <div class="bgc-fg fc-bg70 bt1-bg90 px2 x xw xjb">
+    <div class="bgc-fg fc-bg70 bt1-bg90 px2 x xw xjb usn">
       <div class="x p1">
         ${links.map(renderLink)}
       </div>
-      <div class="p2 fwb">
-        enoki 
+      <div class="p2">
+        <span>enoki</span> <span class="ff-mono">v${state.panel.version}</span>
       </div>
     </div>
   `

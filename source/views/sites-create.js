@@ -99,6 +99,12 @@ function SitesCreate (state, emit) {
             href="/?sites=meta"
           >Select the ${selected.title} Design</a>
         </div>
+        <div class="p1">
+          <a
+            class="bgch-fg bgc-bg25 button-large"
+            href="/?sites=all"
+          >Cancel</a>
+        </div>
       </div>
     `
   }
@@ -112,6 +118,12 @@ function SitesCreate (state, emit) {
             onclick=${handleCreate}
             class="bgch-fg bgc-blue button-large"
           >Generate Your New Site</button>
+        </div>
+        <div class="p1">
+          <a
+            class="bgch-fg bgc-bg25 button-large"
+            href="/?sites=all"
+          >Cancel</a>
         </div>
       </div>
     `

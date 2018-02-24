@@ -38,37 +38,6 @@ function typography () {
     ::-moz-selection { background: rgba(127, 127, 127, 0.5) }
     ::selection { background: rgba(127, 127, 127, 0.5) }
 
-    .nav-link { position: relative }
-    .nav-link:before {
-      content: '';
-      display: block;
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      margin-left: -0.75rem;
-      height: 1.5rem;
-      width: 1.5rem;
-      transform: translateY(4.5rem) rotate(45deg);
-      transition: transform ease-out 250ms;
-    }
-
-    .nav-link.light:before {
-      box-shadow: 0 0 3rem #ddd;
-      background: ${options.colors.bg};
-    }
-
-    .nav-link.dark:before {
-      background: var(--highlight);
-    }
-
-    .nav-active:before {
-      transform: translateY(0.75rem) rotate(45deg);
-    }
-
-    .nav-active.dark:before {
-      transform: translateY(1.75rem) rotate(45deg);
-    }
-
     .nav-button {
       transition: 250ms ease-out background, 250ms ease-out color, 250ms ease-out border;
     }
@@ -285,7 +254,7 @@ function media () {
     }
 
     .file-preview {
-      max-height: calc(100vh - 7rem);
+      max-height: calc(100vh - 6rem);
       margin: -3rem -3rem -3rem 2rem;
       width: calc(100% + 2rem);
       background-image: url('data:image/svg+xml;utf8,<svg height="10" width="10" viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg"><rect height="5" width="5" x="0" y="0" fill="#f9f9f9" /><rect height="5" width="5" x="5" y="5" fill="#f9f9f9" /></svg>');

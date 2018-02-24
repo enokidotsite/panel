@@ -138,6 +138,11 @@ function sites (state, emitter, app) {
         render: false
       })
 
+      emitter.emit(state.events.UI_HISTORY, {
+        route: 'editor',
+        path: '/'
+      })
+
       emitter.emit(state.events.PANEL_LOADING, { loading: false })
       emitter.emit(state.events.SITE_LOADED)
 
