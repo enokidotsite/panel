@@ -28,9 +28,7 @@ function view (state, emit) {
 
   // all
   if (sites.length === 0 || state.query.sites === 'empty') {
-    return renderEmpty({
-      handleAdd: handleAdd
-    })
+    return renderEmpty(state, emit)
   // empty
   } else {
     return renderSites({
@@ -90,7 +88,7 @@ function renderSites (props) {
   `
 }
 
-function renderEmpty (props) {
+function renderEmpty (state, emit) {
   return html`
     <div class="x xx xdc c12">
       <div class="x xw xjb py1 px3 bgc-bg bb1-bg10">
@@ -100,23 +98,36 @@ function renderEmpty (props) {
         <div class="p1">
           <button
             class="button-medium bgc-bg25 bgch-fg"
-            onclick=${props.handleAdd}
+            onclick=${handleAdd}
           >Load an Existing Site</button>
         </div>
       </div>
-      <div class="c12 p1 x xx xjc xac">
-        <a
-          href="?sites=designs"
-          class="bgc-blue bgch-fg button-large"
-        >Create a Fresh New Site</a>
-      </div>
       <div class="psf l0 r0 b0 x xjc py1" style="margin-left: 7rem">
-        <div class="py2">
-          <a href="/#hub/guides/01-creating-your-first-site" class="fc-bg25 tfcm fch-fg">Need some help getting started?</a>
+        <div class="p1" onclick=${handleTts}>Speak</div>
+        <div class="p1">
+          <a
+            href="?sites=designs"
+            class="bgc-blue bgch-fg button-large"
+          >Create a Fresh New Site</a>
         </div>
       </div>
     </div>
   `
+
+  function handleTts () {
+    emit('tts:set-voice', 'Samantha')
+    emit('tts:speak', {
+      id: 1,
+      text: 'Enoki is a publishing tool for the decentralized web',
+      rate: 0.65,
+      pitch: 0.1
+    })
+    console.log(state)
+  }
+
+  function handleAdd () {
+    emit(state.events.SITE_ADD)
+  }
 }
 
 function renderSite (props) {
@@ -157,7 +168,7 @@ function renderSite (props) {
     return html`
       <div class="c12">
         <div class="px1">
-          <div style="border-top: 1px dashed #ddd"></div>
+          <div class="bt1-bg10"></div>
         </div>
         <div class="x xjb py1">
           <div class="px1 py2 fc-bg25">

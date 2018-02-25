@@ -15,6 +15,7 @@ app.use(require('./plugins/sites'))
 app.use(require('./plugins/panel'))
 app.use(require('./plugins/docs'))
 app.use(require('./plugins/hub'))
+app.use(require('choo-tts')())
 
 // routes
 app.route('*', wrapper(require('./views/default')))

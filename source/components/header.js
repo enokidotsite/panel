@@ -43,6 +43,15 @@ function header (state, emit) {
     }
   }
 
+  // lame fallback
+  if (
+    !linksState.editor.active &&
+    !linksState.sites.active &&
+    !linksState.hub.active
+  ) {
+    linksState.editor.active = true
+  }
+
   // non p2p
   if (!state.sites.p2p) return
 
