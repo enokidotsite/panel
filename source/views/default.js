@@ -196,7 +196,7 @@ function view (state, emit) {
 
 function nonDat (state, emit) {
   return html`
-    <div class="xx c12 x xac">
+    <div class="xx c12 x xac psa t0 l0 r0 vhmn100">
       <div class="c12 p1 x xw xjc">
         <div class="p1 pb3 fs2 lh1-25 tac c12">
           Please open Enoki in Beaker, an<br class="dn sm-dib"> experimental peer-to-peer browser
