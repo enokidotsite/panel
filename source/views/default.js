@@ -203,7 +203,7 @@ function nonDat (state, emit) {
         </div>
         <div class="x xjc c12">
           <div class="p1">
-            <a href="https://beakerbrowser.com" target="_blank" class="button-large bgc-hg">
+            <a href="https://beakerbrowser.com" target="_blank" class="button-large bgc-blue">
               Download Beaker Browser
             </a>
           </div>
