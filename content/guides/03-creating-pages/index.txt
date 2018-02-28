@@ -10,21 +10,52 @@ color: true
 ----
 featured: false
 ----
-excerpt: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tempor consectetur urna eu mollis. Cras hendrerit sodales purus in euismod. Nulla ut tempus ex. Phasellus non neque vel mi faucibus convallis. Sed sit amet ligula quis ligula egestas finibus. Pellentesque nec eros vitae dolor eleifend condimentum non in leo. Nam elementum augue eu lacus sagittis, eu gravida ligula porta.
+excerpt: Creating websites can be fun! Updating websites can be a major drag. Like, a really major drag. Enoki is interested in trying to solve these issues around *updating websites* as a foundation for creating fresh and exciting ways of *creating websites*.
 ----
-text: ## Notes
+text: Creating websites can be fun! Updating websites can be a major drag. Like, a really major drag. Enoki is interested in trying to solve these issues around *updating websites* as a foundation for creating fresh and exciting ways of *creating websites*. There are a few primary interfaces for managing websites these days.
 
-- Overview of fields
-- Overview of blueprints
+1. Through a maze of fields for data entry.
+2. With a WYSIWYG (what you see is what you get)
+3. Some sort of broken thing between those two.
 
-## Filler content
+If you’ve ever used one of these WYSIWYG solutions to create a client site, you’ll know the dangers of handing over the keys.
 
- Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla congue volutpat lectus. Etiam vehicula convallis eros. Quisque semper venenatis risus. Morbi fermentum, est id commodo venenatis, dui ante pulvinar arcu, a tempus enim arcu id augue. Sed convallis ac velit sed interdum. Nam nec ante rhoncus sapien cursus dignissim eu vel arcu.
+Let’s take that third option and make it *significantly* less broken, and get there by first implimenting the pro functionality you’d expect in a more (capital letters) CMS solution constructed with collections of fields.
 
-Aliquam quis magna felis. Sed ac magna dolor. Nunc nunc augue, tempus at eros tristique, convallis eleifend quam. Nam eget elementum quam. Nunc consequat, risus sit amet tincidunt malesuada, est nibh condimentum leo, quis laoreet velit tortor et lorem. Proin vitae sem urna. Proin pharetra justo mi, et volutpat urna hendrerit ac. Fusce volutpat ex ut nunc hendrerit, a placerat justo sollicitudin. Vestibulum sagittis justo ut nisi venenatis tincidunt porttitor nec dolor. Maecenas dui felis, efficitur a nibh vitae, tristique accumsan augue.
+Of course, this is all a little boring now, but intended to create a truly robust foundation for building the next generation of interfaces for connecting and sharing both online *and offline*—and have fun while doing it.
 
-Suspendisse varius nisl in sem lobortis, quis consectetur dui pharetra. In a dui vel dui scelerisque egestas. Curabitur rutrum enim metus, eget facilisis sem sagittis eget. Praesent interdum sem ullamcorper elementum ultrices. Nulla sit amet maximus dui, quis venenatis neque. Fusce dignissim porttitor efficitur. Nulla malesuada eleifend elementum. Nam malesuada consequat ex id ultricies.
+## Views
 
-Sed posuere consectetur ipsum, id dapibus orci fringilla at. Aliquam placerat et eros sed efficitur. Ut sapien diam, auctor sed lectus nec, sodales molestie turpis. Sed volutpat odio vel purus ultricies luctus. Fusce placerat, turpis non cursus rhoncus, massa eros lobortis diam, et malesuada mi purus bibendum ante. Vestibulum at tellus nulla. Praesent dolor mi, mollis sed felis ac, mollis porta magna. Morbi interdum imperdiet ex et ultrices. Curabitur luctus pharetra nunc, eget consequat risus vehicula at. Aenean finibus augue orci, ut scelerisque urna fringilla quis. Phasellus rutrum luctus enim eu tincidunt. Phasellus sagittis turpis eget ligula dignissim sodales. Nulla rutrum, neque sed eleifend efficitur, tellus elit fringilla augue, ut elementum ex magna sit amet est. Etiam eget est sed purus lobortis eleifend eu non dolor. 
+When creating a new Page in the Panel you select a *view*. For instance, there could be `blog` or `about` views. When visiting your site, this let’s you say, “I’d like my about page to be formatted a certain way.” Inside the Panel, this let’s you say, “I’d like to see certain fields to let me easily input exactly the type of content I want on my about page.”
+
+This sort of specificity ensures your page doesn’t get super messy when updating content, as each type of content is defined seperately. This same cleanliness clearly implies a limitation in the *mesiness*, arguably the most critical part of any creative endevour. For now, this mesiness takes place during the creative process of determining what the site *should be*, not in when you are trying to simply update it. These lines are blurry, but for now let’s go with that.
+
+## Pages
+
+The interface of the *editor* in the Panel is always the same; a set of fields representing the data associated with that page. We define what sort of data is associated with a page by creating a *blueprint* located in `/blueprints`.
+
+There are all sorts of options associated with blueprints, but these guides are being written hastily as there is a lot to do, and this will be expanded on in the future!
+
+For now, just look around the example designs `/blueprints` directories to see what’s up. As an example, here is the default blueprint:
+
+```
+{
+  "title": "Default",
+  "fields": {
+    "title": {
+      "label": "Title",
+      "type": "text"
+    },
+    "text": {
+      "label": "Text",
+      "type": "textarea"
+    }
+  }
+}
+```
+
+## Getting messy
+
+As mentioned above, this somewhat strict field-based composition is a near-term strategy for creating a truly flexible future for Enoki. Certain sites feature inline-editable interface only visible to the site’s owner. This is endearingly called `self-mutation`, and will be rolling out in surprising ways across various designs soon!
 ----
 background: #f21006

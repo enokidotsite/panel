@@ -12,18 +12,18 @@ featured: false
 ----
 excerpt: Technology moves fast. Enoki knows it won’t always be the best tool for you. Rest easy knowing that you own your data and content. It exists on your computer, and not only on a server owned by a platform.
 ----
-text: ## Draft
+text: Technology moves fast. Enoki won’t always be the best tool for you. Rest easy knowing that you own your data and content. It exists on your computer, and not only on a server owned by a platform.
 
-Technology moves fast. Enoki won’t always be the best tool for you. Rest easy knowing that you own your data and content. It exists on your computer, and not only on a server owned by a platform.
+There is no option for exporting your content from Enoki because it already exists with you; there is nothing to export from.
 
-## Fillter content
+Simply, the Enoki Panel creates files in folders on your local machine instead of jumbled data in a database somewhere. Not only this, the methods for reading and writing these files have been abstracted out into discreet open source javascript modules ready for developers to integrate into any other open tool.
 
- Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla congue volutpat lectus. Etiam vehicula convallis eros. Quisque semper venenatis risus. Morbi fermentum, est id commodo venenatis, dui ante pulvinar arcu, a tempus enim arcu id augue. Sed convallis ac velit sed interdum. Nam nec ante rhoncus sapien cursus dignissim eu vel arcu.
+Those modules are:
 
-Aliquam quis magna felis. Sed ac magna dolor. Nunc nunc augue, tempus at eros tristique, convallis eleifend quam. Nam eget elementum quam. Nunc consequat, risus sit amet tincidunt malesuada, est nibh condimentum leo, quis laoreet velit tortor et lorem. Proin vitae sem urna. Proin pharetra justo mi, et volutpat urna hendrerit ac. Fusce volutpat ex ut nunc hendrerit, a placerat justo sollicitudin. Vestibulum sagittis justo ut nisi venenatis tincidunt porttitor nec dolor. Maecenas dui felis, efficitur a nibh vitae, tristique accumsan augue.
+- [**Smarkt**](https://github.com/jondashkyle/smarkt) for reading `.txt` files with `keys: and values` seperated by `----`.
+- [**Hypha**](https://github.com/jondashkyle/hypha) for creating flat JSON out of those files and the folders they’re contained within.
+- [**Enoki**](https://github.com/jondashkyle/enoki) for reading and writing Enoki formatted sites.
 
-Suspendisse varius nisl in sem lobortis, quis consectetur dui pharetra. In a dui vel dui scelerisque egestas. Curabitur rutrum enim metus, eget facilisis sem sagittis eget. Praesent interdum sem ullamcorper elementum ultrices. Nulla sit amet maximus dui, quis venenatis neque. Fusce dignissim porttitor efficitur. Nulla malesuada eleifend elementum. Nam malesuada consequat ex id ultricies.
-
-Sed posuere consectetur ipsum, id dapibus orci fringilla at. Aliquam placerat et eros sed efficitur. Ut sapien diam, auctor sed lectus nec, sodales molestie turpis. Sed volutpat odio vel purus ultricies luctus. Fusce placerat, turpis non cursus rhoncus, massa eros lobortis diam, et malesuada mi purus bibendum ante. Vestibulum at tellus nulla. Praesent dolor mi, mollis sed felis ac, mollis porta magna. Morbi interdum imperdiet ex et ultrices. Curabitur luctus pharetra nunc, eget consequat risus vehicula at. Aenean finibus augue orci, ut scelerisque urna fringilla quis. Phasellus rutrum luctus enim eu tincidunt. Phasellus sagittis turpis eget ligula dignissim sodales. Nulla rutrum, neque sed eleifend efficitur, tellus elit fringilla augue, ut elementum ex magna sit amet est. Etiam eget est sed purus lobortis eleifend eu non dolor. 
+It’s hoped that these modules will be useful to anyone who wants to create their own tools!
 ----
 background: #fbc200
