@@ -9,6 +9,7 @@ module.exports = class Pages extends Nanocomponent {
     super()
     this.label = false
     this.state = {
+      label: 'Pages',
       limit: 6,
       value: ''
     }
@@ -30,11 +31,11 @@ module.exports = class Pages extends Nanocomponent {
       <div id="sidebar-pages">
         <div class="x xjb c12 py1 fs0-8 ttu usn">
           <div class="fwb">
-            <a href="?${urlPagesAll}" class="fc-bg25 fch-fg">Pages</a>
+            <a href="?${urlPagesAll}" class="fc-bg25 fch-fg">${this.state.label}</a>
           </div>
           <div>
-            <a href="?${urlPageNew}" class="button-inline green">Create</a>
-            <a href="?${urlPagesAll}" class="button-inline blue">All</a>
+            <a href="?${urlPageNew}" class="button-inline">Create</a>
+            <a href="?${urlPagesAll}" class="button-inline">All</a>
           </div>
         </div>
         <ul class="c12 myc1 lsn">

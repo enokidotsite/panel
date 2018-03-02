@@ -102,8 +102,10 @@ function renderEmpty (state, emit) {
           >Load an Existing Site</button>
         </div>
       </div>
-      <div class="x xx w100 xjc xac fc-bg25">
-        <div>ONBOARDING INTERACTIVE VIDEO PLACEHOLDER</div>
+      <div class="x xx w100 xjc xac fs2">
+        <div>
+          It looks like you haven’t made any sites. 
+        </div>
       </div>
       <div class="psf l0 r0 b0 x xjc py1" style="margin-left: 7rem">
         <div class="p1 dn" onclick=${handleTts}>Speak</div>

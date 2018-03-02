@@ -308,6 +308,11 @@ function inputs () {
       font-family: ${options.typography.mono};
     }
 
+    input[type=date]::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      display: none;
+    }
+
     .input {
       background: ${options.colors.bg};
       border: 1px solid ${options.colors.bg10};

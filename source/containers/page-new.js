@@ -37,6 +37,8 @@ class PageNew extends Nanocomponent {
     this.value.view = state.view || 'default'
     this.emit = emit
 
+    console.log(this.views)
+
     return html`
       <div class="bgc-bg br1">
         <form onsubmit={this.handleSave}>

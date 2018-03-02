@@ -1,4 +1,5 @@
 var Nanocomponent = require('nanocomponent')
+var objectValues = require('object-values')
 var objectKeys = require('object-keys')
 var html = require('choo/html')
 var xtend = require('xtend')
@@ -9,6 +10,12 @@ module.exports = class Dropdown extends Nanocomponent {
     this.state = {
       options: { },
       value: ''
+    }
+  }
+
+  load (element) {
+    if (!this.state.value && this.state.default) {
+      this.oninput({ value: this.state.default })
     }
   }
 
@@ -37,7 +44,7 @@ module.exports = class Dropdown extends Nanocomponent {
             value="${option}"
             ${self.state.value === option ? 'selected' : ''}
           >
-            ${self.state.options[option].title || option}
+            ${self.state.options[option].title || self.state.options[option]}
           </option>
         `
       })
@@ -64,9 +71,10 @@ module.exports = class Dropdown extends Nanocomponent {
       shouldUpdate = true
     }
 
-    if (props.field.value && props.field.value !== this.state.value) {
-      this.state.value = props.value
-    }
+    // if (props.field.value && props.field.value !== this.state.value) {
+    //   this.state.value = props.value
+    // }
+
     return shouldUpdate
   }
 }

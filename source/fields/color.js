@@ -22,7 +22,7 @@ module.exports = class Color extends Nanocomponent {
     super()
     this.state = {
       id: '',
-      value: ''
+      value: '#ffffff'
     }
 
     this.onInput = this.onInput.bind(this)
@@ -56,7 +56,7 @@ module.exports = class Color extends Nanocomponent {
 
   createElement (props, emit) {
     this.state = xtend(this.state, props.field)
-    this.state.value = this.state.value || '#000'
+    this.state.value = this.state.value || '#ffffff'
     this.oninput = props.oninput
 
     return html`
@@ -101,7 +101,7 @@ module.exports = class Color extends Nanocomponent {
 
   update (props, emit) {
     var shouldUpdate = this.state.value !== props.field.value
-    var value = props.field.value || '#000'
+    var value = props.field.value || '#ffffff'
 
     if (this.colorPicker) {
       this.colorPicker.setColor(value.toLowerCase())
