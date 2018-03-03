@@ -156,20 +156,18 @@ function SitesCreate (state, emit) {
 function renderDesign (props) {
   return html`
     <div class="c12 sm-c6 md-c4 p0-5">
-      <div class="ophc100 tfyh ${props.active ? 'fc-fg' : 'fc-bg25'} fch-fg" onclick=${handleSelect}>
+      <div class="ophc100 ${props.active ? 'fc-fg' : 'fc-bg25'} fch-fg">
         <div class="br1 psr design-thumbnail ${props.active ? 'design-focused' : ''} curp oh">
-          <div class="psr">
-            <div class="psr bgc-bg" style="padding-bottom: 75%">
-              <img src="${props.thumbnail}" class="psa t0 l0 h100 w100 db">
-            </div>
-            <div class="x xjc xac psa t0 l0 r0 b0 op0 oph tom">
-              <div>
-                <a href="${props.url}" target="_blank" class="button-medium bgc-fg external">Preview</a>
-              </div>
-            </div>
+          <div class="psr bgc-bg" style="padding-bottom: 75%">
+            <img src="${props.thumbnail}" onclick=${handleSelect} class="psa t0 l0 h100 w100 db">
           </div>
-          <div class="py1 px3 bgc-bg bt1-bg5 tac fs0-8 ttu tbgcm ${props.active ? 'bgc-blue fc-bg' : ''}">
-            <span class="">${props.title}</span>
+          <div class="p1 pen x xjc xafe psa t0 l0 r0 b0 op0 oph tom">
+            <div class="pea p0-5">
+              <div class="button-medium bgc-fg" onclick=${handleSelect}>Select</div>
+            </div>
+            <div class="pea p0-5">
+              <a href="${props.url}" target="_blank" class="button-medium bgc-fg external">Preview</a>
+            </div>
           </div>
         </div>
       </div>

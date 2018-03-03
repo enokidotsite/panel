@@ -340,7 +340,6 @@ function inputs () {
     button { outline: 0 }
     button:focus { outline: 0 }
 
-
     .button-large {
       user-select: none;
       line-height: 6rem;
@@ -447,6 +446,16 @@ function inputs () {
       width: 4rem;
       line-height: 4rem;
       border-radius: 2rem;
+    }
+
+    .design-thumbnail {
+      border: 2px solid ${options.colors['bg2-5']};
+      transition: box-shadow 150ms ease-out;
+      box-shadow: 0 0 0 2px transparent;
+    }
+
+    .design-focused {
+      box-shadow: 0 0 0 2px ${options.colors.yellow};
     }
   `
 }
