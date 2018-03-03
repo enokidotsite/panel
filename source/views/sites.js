@@ -102,19 +102,20 @@ function renderEmpty (state, emit) {
           >Load an Existing Site</button>
         </div>
       </div>
-      <div class="x xx w100 xjc xac fs2">
-        <div>
-          It looks like you haven’t made any sites. 
+      <div class="x xx w100 xjc xac">
+        <div class="p1 tac">
+          <div class="mt3 p1 x xjc">
+            <a
+              href="?sites=designs"
+              class="bgc-blue bgch-fg button-large"
+            >Create a Fresh New Site</a>
+          </div>
+          <div class="p1 mt2">
+            <a href="/#hub/guides/01-creating-your-first-site" class="fc-bg25 fch-fg tfyh">Want some help?</a>
+          </div>
         </div>
       </div>
       <div class="psf l0 r0 b0 x xjc py1" style="margin-left: 7rem">
-        <div class="p1 dn" onclick=${handleTts}>Speak</div>
-        <div class="p1">
-          <a
-            href="?sites=designs"
-            class="bgc-blue bgch-fg button-large"
-          >Create a Fresh New Site</a>
-        </div>
       </div>
     </div>
   `
