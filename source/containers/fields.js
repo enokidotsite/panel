@@ -91,13 +91,17 @@ function Fields (state, emit) {
       events: state.events,
       fields: state.fields,
       query: state.query,
-      page: state.page,
+      page: mergeDraftAndState(),
       site: state.site,
-      field: mergeDraftandState(),
+      field: mergeFieldDraftAndState(),
       oninput: oninput
     }, emit)
 
-    function mergeDraftandState () {
+    function mergeDraftAndState () {
+      return xtend(state.page, state.draft)
+    }
+
+    function mergeFieldDraftAndState () {
       return xtend(fieldProps, {
         id: [state.values.url, state.page.view, key].filter(function (str) { return str }).join(':'),
         key: key,

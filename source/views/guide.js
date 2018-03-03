@@ -9,6 +9,10 @@ var wrapper = require('../containers/wrapper-hub')
 var format = require('../components/format')
 
 var styles = css`
+  :host {
+    margin-top: -1px;
+  }
+
   :host .guides-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -53,12 +57,12 @@ function view (state, emit) {
           </div>
         </div>
       </div>
-      <div class="p4 c12 x xjc bgc-fg fc-bg25">
+      <div class="p4 c12 x xjc bgc-fg fc-bg25 bl1-bg90">
         <div class="copy">
           ${format(state.page.text)}
         </div>
       </div>
-      <div class="guides-grid bgc-fg">
+      <div class="guides-grid bgc-fg bl1-bg90">
         ${renderGuide({ title: 'Previous Guide', page: pagePrev })}
         ${renderGuide({ title: 'Next Guide', page: pageNext })}
       </div>

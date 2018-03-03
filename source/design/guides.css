@@ -12,6 +12,7 @@
   width: 100%;
 }
 
+/*
 .grid-featured {
   grid-column-end: span 2;
 }
@@ -23,6 +24,7 @@
 .grid-featured .copy {
   font-size: 1.8rem;
 }
+*/
 
 .guides-grid .copy {
   font-size: 1.4rem;
@@ -30,10 +32,12 @@
   max-width: 40rem;
 }
 
+/*
 .grid-featured .copy {
   height: 10.5rem;
   max-width: 50rem;
 }
+*/
 
 .guides-grid a {
   transition: 250ms ease-out transform;

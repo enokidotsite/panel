@@ -30,10 +30,10 @@ function wrapper (view) {
       // async load content
       if (!state.docs.loaded) {
         emit(state.events.DOCS_LOAD)
-        return html`<div class="bgc-fg xx"></div>`
+        return html`<div class="bgc-fg xx bl1-bg90"></div>`
+      } else {
+        return view(state, emit)
       }
-
-      return view(state, emit)
     }
   }
 }
@@ -44,13 +44,18 @@ function renderNavigation (state, emit) {
   var highlight = state.page.background || designOptions.colors.fg
 
   return html`
-    <div class="px2" style="--highlight: ${highlight}">
+    <div class="px2 bgc-fg bl1-bg90" style="--highlight: ${highlight}">
       <div class="x xjb oh">
         <div class="x py1 fs2 fwb">
           ${links.map(renderLink)}
         </div>
         <div class="px2 py2">
-          <input type="text" class="input px1-5" placeholder="Search" onfocus=${handleFocus} />
+          <input
+            type="text"
+            class="input dark px1-5"
+            placeholder="Search"
+            onfocus=${handleFocus}
+          />
         </div>
       </div>
     </div>
@@ -59,7 +64,7 @@ function renderNavigation (state, emit) {
   function renderLink (href) {
     var hrefPage = state.docs.content['/' + href] || { }
     var active = hrefActive.indexOf(href) >= 0
-    var colorClass = active ? '' : 'fc-bg25 fch-fg'
+    var colorClass = active ? 'fc-bg' : 'fc-bg80 fch-bg'
     return html`
       <div class="p2 nav-link dark">
         <a href="/#hub/${href}" class="${colorClass} tfcm">${hrefPage.title}</a>
@@ -73,7 +78,7 @@ function renderFooter (state, emit) {
   var links = ['guides', 'docs', 'log']
 
   return html`
-    <div class="bgc-fg fc-bg70 bt1-bg90 px2 x xw xjb usn">
+    <div class="bgc-fg fc-bg70 bt1-bg90 bl1-bg90 px2 x xw xjb usn">
       <div class="x p1">
         ${links.map(renderLink)}
       </div>

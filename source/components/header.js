@@ -56,7 +56,7 @@ function header (state, emit) {
   if (!state.sites.p2p) return
 
   return html`
-    <nav id="header" class="x xdc xjb bgc-bg10 psf t0 l0 b0 z4" style="width: 7rem">
+    <nav id="header" class="x xdc xjb bgc-fg psf t0 l0 b0 z4" style="width: 7rem">
       <div class="p0-5">
         ${objectKeys(links)
         .filter(function (key) {
@@ -74,7 +74,7 @@ function header (state, emit) {
   `
 
   function renderLink (props) {
-    var activeClass = props.active ? 'bgc-fg fc-bg' : 'fc-bg25 bgc-bg fch-fg'
+    var activeClass = props.active ? 'bgc-bg fc-fg b1-bg' : 'fc-bg70 bgc-fg b1-bg90 fch-bg'
     return html`
       <div class="psr x p0-5" style="font-size: 2.0rem; height: 6rem; width: 6rem; line-height: 5rem">
         <a

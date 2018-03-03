@@ -35,7 +35,7 @@ function view (state, emit) {
     .map(function (props) { return state.docs.content[props.url] })
 
   return html`
-    <div class="xx bgc-fg fc-bg25 ${styles}">
+    <div class="xx bgc-fg fc-bg25 bl1-bg90 bt1-bg90 ${styles}">
       <div class="grid-column">
         <div class="copy">
           ${format(log.text)}

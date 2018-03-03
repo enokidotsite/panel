@@ -13,7 +13,7 @@ function view (state, emit) {
   })
 
   return html`
-    <div class="xx bgc-fg">
+    <div class="xx bgc-fg bt1-bg90 bl1-bg90">
       <div class="guides-grid">
         ${guides.map(guideThumbnail)}
       </div>

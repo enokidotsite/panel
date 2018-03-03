@@ -11,7 +11,7 @@ function guideThumbnail (props) {
       ${props.files['image.svg'] ? renderImage() : ''}
       <a
         href="/#hub${props.url}"
-        class="psr z2 w100 x xdc xje p3 ${props.color ? 'fc-bg' : 'fc-fg'}"
+        class="psr z2 w100 x xdc xjb p3 ${props.color ? 'fc-bg' : 'fc-fg'}"
       >
         <h2 class="fwb lh1-25 mb2">
           ${props.title}

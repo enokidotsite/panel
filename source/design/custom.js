@@ -325,6 +325,12 @@ function inputs () {
       width: 100%;
     }
 
+    .input.dark {
+      background: ${options.colors.fg};
+      border: 1px solid ${options.colors.bg90};
+      color: ${options.colors.bg};
+    }
+
     [tabindex] { outline: 0 }
     .input.lh1-5 { line-height: 1.5 }
     .input-disabled { color: #999 }
