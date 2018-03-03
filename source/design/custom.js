@@ -461,6 +461,7 @@ function extensions () {
 
     .tom { transition: opacity 150ms ease-out }
     .tfcm { transition: color 150ms ease-out }
+    .tbgcm { transition: color 150ms ease-out }
 
     .external:after {
       content: '→';
