@@ -449,7 +449,7 @@ function inputs () {
     }
 
     .design-thumbnail {
-      border: 2px solid ${options.colors['bg2-5']};
+      border: 2px solid ${options.colors.bg5};
       transition: box-shadow 150ms ease-out;
       box-shadow: 0 0 0 2px transparent;
     }
