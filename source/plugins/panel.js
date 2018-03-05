@@ -63,10 +63,15 @@ async function panel (state, emitter) {
   function onUpdate (data) {
     assert.equal(typeof data, 'object', 'enoki: data must be type object')
     assert.equal(typeof data.url, 'string', 'enoki: data.url must be type string')
+    assert.equal(typeof data.data, 'string', 'enoki: data.data must be type string')
+
     var changes = state.enoki.changes[data.url]
+    var shouldUpdate = data.render !== false
+
     state.enoki.changes[data.url] = xtend(changes, data.data)
+
     emitter.emit(state.events.ENOKI_UPDATED)
-    emitter.emit(state.events.RENDER)
+    if (shouldUpdate) emitter.emit(state.events.RENDER)
   }
 
   async function onSave (data) {
@@ -144,7 +149,8 @@ async function panel (state, emitter) {
     } else {
       state.enoki.loading = false
     }
-    if (data.render === true) emitter.emit(state.events.RENDER)
+
+    if (data.render !== false) emitter.emit(state.events.RENDER)
   }
 
   async function onPageAdd (data) {
@@ -155,10 +161,10 @@ async function panel (state, emitter) {
     assert.equal(typeof data.view, 'string', 'enoki: data.view must be type string')
 
     emitter.emit(state.events.ENOKI_LOADING, { loading: true })
-    emitter.emit(state.events.RENDER)
 
     try {
       var content = { title: data.title, view: data.view }
+
       await archive.mkdir(data.path)
       await archive.writeFile(
         path.join(data.path, 'index.txt'),
@@ -171,7 +177,7 @@ async function panel (state, emitter) {
       console.warn(err)
     }
 
-    emitter.emit(state.events.ENOKI_LOADING, { loading: false })
+    emitter.emit(state.events.ENOKI_LOADING, { loading: false, render: false })
     emitter.emit(state.events.REPLACESTATE, '?url=' + data.url)
   }
 
@@ -187,7 +193,6 @@ async function panel (state, emitter) {
     }
 
     emitter.emit(state.events.ENOKI_LOADING, { loading: true })
-    emitter.emit(state.events.RENDER)
 
     try {
       var isFile = path.extname(data.path)
@@ -209,7 +214,6 @@ async function panel (state, emitter) {
     }
 
     emitter.emit(state.events.ENOKI_LOADING, { loading: false })
-    emitter.emit(state.events.RENDER)
   }
 
   async function onFilesAdd (data) {
@@ -219,12 +223,10 @@ async function panel (state, emitter) {
     assert.equal(typeof data.files, 'object', 'enoki: data.files must be type object')
 
     emitter.emit(state.events.ENOKI_LOADING, { loading: true })
-    emitter.emit(state.events.RENDER)
 
     await Promise.all(objectKeys(data.files).map(saveFile))
 
     emitter.emit(state.events.ENOKI_LOADING, { loading: false })
-    emitter.emit(state.events.SITE_REFRESH)
 
     async function saveFile (key) {
       try {
