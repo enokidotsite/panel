@@ -32,7 +32,7 @@ function SitesCreate (state, emit) {
         <div class="x">
           <div class="p1">
             <a
-              class="b2-currentColor fch-fg fc-bg25 button-medium"
+              class="b2-currentColor fch-fg fc-bg25 bgc-bg button-medium"
               href="/?sites=all"
             >Cancel</a>
           </div>

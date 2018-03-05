@@ -51,7 +51,7 @@ function typography () {
       left: 100%;
       top: 50%;
       pointer-events: none;
-      margin-top: -2rem;
+      margin-top: -1.5rem;
       margin-left: 0.25rem;
       height: 3rem;
       line-height: 3rem;
@@ -632,10 +632,10 @@ function loader () {
       font-size: 3rem;
       position: relative;
       text-indent: -9999em;
-      border-top: 2px solid ${options.colors.bg};
-      border-right: 2px solid ${options.colors.bg};
-      border-bottom: 2px solid ${options.colors.fg};
-      border-left: 2px solid ${options.colors.fg};
+      border-top: 3px solid ${options.colors.bg};
+      border-right: 3px solid ${options.colors.bg};
+      border-bottom: 3px solid ${options.colors.bg};
+      border-left: 3px solid ${options.colors.fg};
       animation: load 1s infinite linear;
     }
 

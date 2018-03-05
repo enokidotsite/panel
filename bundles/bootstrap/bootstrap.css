@@ -1,18 +1,16 @@
 .bootstrap-load {
   box-sizing: border-box;
   border-radius: 50%;
-  width: 5vmin;
-  height: 5vmin;
+  width: 30px;
+  height: 30px;
   position: fixed;
-  top: 50%;
-  left: 50%;
-  margin: -2.5vmin;
-  font-size: 5vmin;
+  bottom: 20px;
+  left: 20px;
   text-indent: -9999em;
-  border-top: 0.5vmin solid #fff;
-  border-right: 0.5vmin solid #fff;
-  border-bottom: 0.5vmin solid #000;
-  border-left: 0.5vmin solid #000;
+  border-top: 3px solid #1a1a1a;
+  border-right: 3px solid #1a1a1a;
+  border-bottom: 3px solid #1a1a1a;
+  border-left: 3px solid #fff;
   animation: bootstrap_load 1s infinite linear;
 }
 
