@@ -101,7 +101,7 @@ function header (state, emit) {
         <a
           href="/?${urlChanges}"
           class="indicator curp bgc-green"
-        >${changes.length}</a>
+        >${changes.length || 1}</a>
       </div>
     `
   }

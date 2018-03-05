@@ -126,7 +126,7 @@ function view (state, emit) {
 
   function Page () {
     return html`
-      <div id="content-page" class="x xdc c12" style="padding-bottom: 7rem">
+      <div id="content-page" class="x xdc c12" style="padding-bottom: 6rem">
         <form class="x xw p2 x1" onsubmit=${handleSavePage}>
           ${Fields({
             oninput: handleFieldUpdate,

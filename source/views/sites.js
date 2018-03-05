@@ -32,6 +32,7 @@ function view (state, emit) {
   // empty
   } else {
     return renderSites({
+      selected: state.site.info ? state.site.info.url : '',
       handleRemove: handleRemove,
       handleLoad: handleLoad,
       handleAdd: handleAdd,
@@ -78,6 +79,7 @@ function renderSites (props) {
       <div>
         ${props.sites.map(function (site) {
           return renderSite(xtend(site, {
+            selected: props.selected === site.url,
             active: props.active === site.url,
             handleLoad: props.handleLoad,
             handleRemove: props.handleRemove
@@ -143,9 +145,9 @@ function renderSite (props) {
   return html`
     <div id="${props.title}" class="w100">
       <div class="w100 bgc-bg ${props.active ? '' : 'ophc100'}">
-        <div class="x xw xac py1 px3">
-          <div class="c12 sm-xx oh p1 curp" onclick=${handleSiteClick}>
-            <div class="fs2 wsnw toe">${props.title}</div>
+        <div class="x xw xac px3">
+          <div class="c12 sm-xx oh px1 py3 curp" onclick=${handleSiteClick}>
+            <div class="fs2 wsnw toe">${props.selected ? '→' : ''} ${props.title}</div>
           </div>
           <div class="p1 ${props.active ? '' : 'sm-op0'} oph tom">
             <a href="${settingsUrl}" class="db b2-currentColor ${settingsClass} button-medium">Settings</a>
