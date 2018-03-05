@@ -41,7 +41,7 @@ function Fields (state, emit) {
     var fields = getFields()
 
     return html`
-      <div class="psr p1 c12 sm-${width}">
+      <div class="psr p1 pt0 c12 sm-${width}">
         <div class="x xw w100 ${column.sticky ? 'psst t0-75' : ''}">
           ${fields}
         </div>

@@ -55,27 +55,27 @@ function view (state, emit) {
 
 function renderSites (props) {
   return html`
-    <div class="w100 xx bgc-bg5">
-      <div class="x xw xjb py1 px3 bgc-bg">
+    <div class="w100 xx">
+      <div id="header-sites" class="x xw xjb py1 px3 bgc-bg2-5">
         <div class="fs2 px1 py2 toe wsnw oxh c12 sm-xx fwb">
           Sites
         </div>
         <div class="x">
           <div class="p1">
             <div
-              class="bgc-bg25 bgch-fg button-medium"
+              class="b2-currentColor bgc-bg fc-bg25 fch-fg fc-bg button-medium"
               onclick=${props.handleAdd}
             >Load an Existing Site</div>
           </div>
           <div class="p1">
             <a
               href="?sites=designs"
-              class="bgc-blue button-medium"
+              class="bgc-blue fc-bg button-medium fwb"
             >Create a New Site</a>
           </div>
         </div>
       </div>
-      <div class="p0-5">
+      <div>
         ${props.sites.map(function (site) {
           return renderSite(xtend(site, {
             active: props.active === site.url,
@@ -91,7 +91,7 @@ function renderSites (props) {
 function renderEmpty (state, emit) {
   return html`
     <div class="x xx xdc c12">
-      <div class="x xw xjb py1 px3 bgc-bg bb1-bg10">
+      <div class="x xw xjb py1 px3 bgc-bg2-5">
         <div class="fs2 px1 py2 toe wsnw oxh c12 sm-xx fwb">
           enoki
         </div>
@@ -138,24 +138,24 @@ function renderEmpty (state, emit) {
 
 function renderSite (props) {
   var settingsUrl = props.active ? '?sites=all' : ('?sites=' + props.url)
-  var settingsClass = props.active ? 'bgc-fg' : 'bgc-bg25'
+  var settingsClass = props.active ? 'fc-fg' : 'fc-bg25 fch-fg'
 
   return html`
-    <div id="${props.title}" class="p0-5 w100">
-      <div class="w100 br1 px2 bgc-bg ${props.active ? '' : 'ophc100'}">
-        <div class="x xw xac py1">
+    <div id="${props.title}" class="w100">
+      <div class="w100 bgc-bg ${props.active ? '' : 'ophc100'}">
+        <div class="x xw xac py1 px3">
           <div class="c12 sm-xx oh p1 curp" onclick=${handleSiteClick}>
             <div class="fs2 wsnw toe">${props.title}</div>
           </div>
           <div class="p1 ${props.active ? '' : 'sm-op0'} oph tom">
-            <a href="${settingsUrl}" class="db ${settingsClass} button-medium">Settings</a>
+            <a href="${settingsUrl}" class="db b2-currentColor ${settingsClass} button-medium">Settings</a>
           </div>
           <div class="p1 ${props.active ? '' : 'sm-op0'} oph tom">
-            <a href="${props.url}" target="_blank" class="db bgc-yellow button-medium external">Open</a>
+            <a href="${props.url}" target="_blank" class="db fc-yellow fch-fg b2-currentColor button-medium external">Open</a>
           </div>
           <div class="p1 ${props.active ? '' : 'sm-op0'} oph tom">
             <button
-              class="bgc-blue button-medium"
+              class="bgc-bg fc-blue fch-fg b2-currentColor button-medium"
               onclick=${handleSiteClick}
             >Edit this Site</button>
           </div>
@@ -163,6 +163,9 @@ function renderSite (props) {
         ${props.error ? renderError() : ''}
         ${props.active ? renderSettings() : ''}
       </div>
+      <div>
+        <div class="bt2-bg5"></div>
+      </div>  
     </div>
   `
 
@@ -172,16 +175,16 @@ function renderSite (props) {
 
   function renderSettings () {
     return html`
-      <div class="c12">
+      <div class="c12 px3">
         <div class="px1">
-          <div class="bt1-bg10"></div>
+          <div style="border-top: 1px dashed #ddd"></div>
         </div>
         <div class="x xjb py1">
           <div class="px1 py2 fc-bg25">
             Additional settings and p2p stats coming soon
           </div>
           <div class="p1">
-            <button class="bgc-red button-medium" onclick=${handleRemove}>Remove from Sites</button>
+            <button class="fc-red fch-fg bgc-bg b2-currentColor button-medium" onclick=${handleRemove}>Remove from Sites</button>
           </div>
         </div>
       </div>

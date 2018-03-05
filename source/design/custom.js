@@ -43,7 +43,7 @@ function typography () {
     }
 
     .nav-tooltip {
-      background: rgba(127, 127, 127, 0.9);
+      background: rgba(80, 80, 80, 0.9);
       color: ${options.colors.bg};
       border-radius: 3px;
       position: absolute;
@@ -56,7 +56,7 @@ function typography () {
       height: 3rem;
       line-height: 3rem;
       padding: 0 1rem;
-      font-size: 1.4rem;
+      font-size: ${options.fontSize['0-8']}rem;
       text-transform: uppercase;
       opacity: 0;
       transform: translateX(-0.5rem);
@@ -75,7 +75,7 @@ function typography () {
       height: 0; 
       border-top: 0.5rem solid transparent;
       border-bottom: 0.5rem solid transparent; 
-      border-right: 0.5rem solid rgba(127, 127, 127, 0.9); 
+      border-right: 0.5rem solid rgba(80, 80, 80, 0.9); 
     }
 
     .nav-tooltip-c:hover .nav-tooltip {
@@ -117,8 +117,22 @@ function copy () {
       width: 100%;
     }
 
-    .copy h2 { font-size: 3.6rem; font-weight: 600; line-height: 1.25; }
-    .copy h3 { font-size: 2.7rem; }
+    .copy h2 {
+      font-size: ${options.fontSize['2']}rem;
+      font-weight: 600;
+      line-height: 1.25;
+    }
+
+    .copy h3 {
+      font-size: ${options.fontSize['1']}rem;
+      font-weight: 600;
+    }
+
+    .copy pre {
+      background: ${options.colors.bg5};
+      border-radius: 3px;
+      padding: 2rem;
+    }
 
     .copy code {
       font-family: ${options.typography.mono};
@@ -144,6 +158,19 @@ function copy () {
       color: ${options.colors.bg70};
     }
 
+    .fc-bg70 .copy a {
+      color: ${options.colors.bg70};
+    }
+
+    .fc-bg70 .copy h2,
+    .fc-bg70 .copy h3 {
+      color: ${options.colors.fg};
+    }
+
+    .fc-bg70 .copy ol li:before {
+      color: ${options.colors.bg70};
+    }
+
     .copy > *,
     .editor-preview-side > *,
     .editor-preview > * {
@@ -166,13 +193,13 @@ function copy () {
 
     .copy ul li {
       list-style: disc;
-      padding-left: 2rem;
+      padding-left: 0rem;
       margin-left: 2rem;
     }
 
     .copy ol li {
       position: relative;
-      padding-left: 4rem;
+      padding-left: 3rem;
       margin-left: 0;
     }
 
@@ -192,7 +219,7 @@ function copy () {
     .copy input {
       margin: 0;
       line-height: 1;
-      height: 1.8rem;
+      height: ${options.fontSize['1']}rem;
     }
 
     .copy-small > * {
@@ -200,10 +227,19 @@ function copy () {
       margin-bottom: 1rem;
     }
 
-    .copy-small h2 { font-size: 1.8rem; font-weight: 600; line-height: 1.25; }
-    .copy-small h3 { font-size: 1.4rem; }
+    .copy-small h2 {
+      font-size: ${options.fontSize['1']}rem;
+      font-weight: 600;
+      line-height: 1.25;
+    }
 
-    .copy > h2:not(:first-child) { margin-top: 2rem; }
+    .copy-small h3 {
+      font-size: ${options.fontSize['0-8']}rem;
+    }
+
+    .copy > h2:not(:first-child) {
+      margin-top: 2rem;
+    }
 
     .copy > *:first-child,
     .editor-preview-side > *:first-child,
@@ -291,7 +327,7 @@ function inputs () {
       border-radius: 2rem;
       font-family: ${options.typography.sans};
       line-height: 4rem;
-      font-size: 1.8rem;
+      font-size: ${options.fontSize['1']}rem;
       font-weight: 400;
       outline: 0;
       width: 100%;
@@ -300,7 +336,7 @@ function inputs () {
     .select:before {
       content: '↓';
       position: absolute;
-      font-size: 1.8rem;
+      font-size: ${options.fontSize['1']}rem;
       top: 0;
       right: 0;
       padding: 1.2rem 1.5rem 0.8rem;
@@ -319,7 +355,7 @@ function inputs () {
       border-radius: 2rem;
       font-family: ${options.typography.sans};
       line-height: 2rem;
-      font-size: 1.8rem;
+      font-size: ${options.fontSize['1']}rem;
       font-weight: 400;
       outline: 0;
       width: 100%;
@@ -348,7 +384,7 @@ function inputs () {
       display: block;
       cursor: pointer;
       color: ${options.colors.bg};
-      font-size: 1.8rem;
+      font-size: ${options.fontSize['1']}rem;
       text-align: center;
       white-space: nowrap;
       font-weight: 600;
@@ -373,23 +409,27 @@ function inputs () {
     .button-medium {
       user-select: none;
       line-height: 4rem;
+      height: 4rem;
       padding: 0 2rem;
       border-radius: 2rem;
       display: block;
       cursor: pointer;
-      color: ${options.colors.bg};
-      font-size: 1.8rem;
+      font-size: ${options.fontSize['1']}rem;
       white-space: nowrap;
-      transition: background 150ms ease-out, transform 150ms ease-out;
+      transition: background 150ms ease-out, color 150ms ease-out, border 150ms ease-out, transform 150ms ease-out;
     }
 
     .button-medium:hover {
-      transform: translateY(-0.2rem) ;
+      transform: translateY(-0.1rem) ;
     }
 
     .button-medium:active {
-      transform: translateY(0.1rem) ;
+      transform: translateY(0) ;
       transition: transform 50ms ease-out;
+    }
+
+    .button-medium.b2-currentColor {
+      line-height: 3.7rem;
     }
 
     .button-inline {
@@ -423,12 +463,12 @@ function inputs () {
 
     .button-inline:active {
       transition: background 50ms ease-out, color 50ms ease-out, border 50ms ease-out, transform 50ms ease-out;
-      transform: translateY(0.1rem);
+      transform: translateY(0);
     }
 
     .indicator {
       color: ${options.colors.bg};
-      font-size: 1.4rem;
+      font-size: ${options.fontSize['0-8']}rem;
       font-weight: 600;
       text-align: center;
       display: block;
@@ -449,13 +489,12 @@ function inputs () {
     }
 
     .design-thumbnail {
-      border: 2px solid ${options.colors.bg5};
       transition: box-shadow 150ms ease-out;
-      box-shadow: 0 0 0 2px transparent;
+      box-shadow: 0 0 2rem ${options.colors.bg5};
     }
 
     .design-focused {
-      box-shadow: 0 0 0 2px ${options.colors.yellow};
+      
     }
   `
 }
@@ -470,7 +509,7 @@ function extensions () {
 
     .tom { transition: opacity 150ms ease-out }
     .tfcm { transition: color 150ms ease-out }
-    .tbgcm { transition: color 150ms ease-out }
+    .tbgcm { transition: background 150ms ease-out }
 
     .external:after {
       content: '→';
@@ -479,15 +518,18 @@ function extensions () {
       margin-left: 0.5rem;
     }
 
-    .action-gradient {
-      background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 25%);
-      background: -webkit-linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 25%);
-      background: -moz-linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 25%);
+    .action-gradient:before {
+      content: '';
+      display: block;
+      background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.95) 25%);
+      background: -webkit-linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.95) 25%);
+      background: -moz-linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.95) 25%);
       position: absolute;
+      pointer-events: none;
       bottom: 0;
       left: 0;
+      right: 0;
       height: 7rem;
-      width: 33.3%;
     }
 
     .myc1 > * { position: relative; }
@@ -534,15 +576,40 @@ function extensions () {
 
     .breadcrumb:before,
     .breadcrumbs > a:not(:first-child):before {
-      background: ${options.colors.bg10};
+      background: ${options.colors.bg15};
       content: '';
       display: block;
-      height: 2rem;
+      height: 3rem;
       width: 1px;
       position: absolute;
-      top: 1rem;
+      top: 0.5rem;
       right: 0;
       transform: rotate(15deg);
+    }
+
+    summary {
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    summary:before {
+      color: ${options.colors.bg25};
+      font-family: ${options.typography.mono};
+      content: '→';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 1rem 0;
+      transition: 150ms ease-out transform;
+    }
+
+    summary:hover:before {
+      transform: rotate(45deg);
+    }
+
+    details[open] summary:before {
+      transform: rotate(90deg);
     }
 
     ::-webkit-input-placeholder { color: ${options.colors.bg25}; }

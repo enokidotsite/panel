@@ -88,7 +88,7 @@ module.exports = class Files extends Nanocomponent {
     }
 
     function handleFilesUpload (event, data) {
-      emit(props.events.PANEL_FILES_ADD, {
+      emit(props.events.ENOKI_FILES_ADD, {
         path: props.page.path,
         url: props.page.url,
         files: data.files

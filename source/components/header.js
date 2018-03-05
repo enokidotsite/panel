@@ -74,7 +74,7 @@ function header (state, emit) {
   `
 
   function renderLink (props) {
-    var activeClass = props.active ? 'bgc-bg fc-fg b1-bg' : 'fc-bg70 bgc-fg b1-bg90 fch-bg'
+    var activeClass = props.active ? 'bgc-bg fc-fg' : 'fc-bg25 bgc-bg90 fch-bg'
     return html`
       <div class="psr x p0-5" style="font-size: 2.0rem; height: 6rem; width: 6rem; line-height: 5rem">
         <a
@@ -90,14 +90,14 @@ function header (state, emit) {
   }
 
   function renderChanges () {
-    var changes = objectKeys(state.panel.changes)
-    var isActive = changes.length > 0
+    var changes = objectKeys(state.enoki.changes)
+    var isActive = changes.length > 0 && linksState.editor.active
     var urlChanges = unescape(queryString.stringify(
       xtend({ changes: 'all' }, state.query)
     ))
 
     return html`
-      <div class="psa t0 r0 z2 ${isActive ? 'db' : 'dn'}">
+      <div class="psa t0 r0 z2 tom ${isActive ? 'op1' : 'op0 pen'}">
         <a
           href="/?${urlChanges}"
           class="indicator curp bgc-green"

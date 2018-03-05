@@ -20,7 +20,6 @@ var styles = css`
   }
 
   :host summary { outline: 0 }
-  :host details[open] summary { color: #fff }
 
   :host summary::-webkit-details-marker {
     display: none;
@@ -35,15 +34,15 @@ function view (state, emit) {
     .map(function (props) { return state.docs.content[props.url] })
 
   return html`
-    <div class="xx bgc-fg fc-bg25 bl1-bg90 bt1-bg90 ${styles}">
+    <div class="xx fc-bg70 ${styles}">
       <div class="grid-column">
         <div class="copy">
           ${format(log.text)}
         </div>
       </div>
       <div class="lh1-5">
-        <h2 class="fs2 mb1 fc-bg">Issues</h2>
-        <ul>
+        <h2 class="fs2 mb1 fc-fg fwb">Issues</h2>
+        <ul class="myc1">
           ${issues.map(renderIssue)}
         </ul>
       </div>
@@ -53,10 +52,10 @@ function view (state, emit) {
 
 function renderIssue (props) {
   return html`
-    <li class="br1 mb2 bgc-bg90 fc-bg25 usn">
+    <li class="usn">
       <details class="c12">
-        <summary class="c12 curp fc-bg25 tfcm fch-bg x xjb xac m0 tal p2">
-          <div class="fwb">
+        <summary class="c12 curp tfcm fch-fg x xjb xac m0 tal py1">
+          <div class="fc-fg">
             ${props.title}
           </div>
           <div class="fs0-8">
@@ -65,7 +64,7 @@ function renderIssue (props) {
             })}
           </div>
         </summary>
-        <div class="bt1-fg p2 fs0-8 usa">
+        <div class="py2 fs0-8 usa" style="border-top: 1px dashed #ddd">
           <div class="copy copy-small">
             ${format(props.text)}
           </div>

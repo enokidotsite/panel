@@ -24,7 +24,7 @@ module.exports = class Textarea extends Nanocomponent {
       id: '',
       key: '',
       value: '',
-      valueStart: '',
+      valueStart: undefined,
       toolbar: ''
     }
 
@@ -67,6 +67,12 @@ module.exports = class Textarea extends Nanocomponent {
   update (props) {
     var value = props.field.value || ''
 
+    // reset
+    if (this.state.valueStart === undefined) {
+      this.state.valueStart = this.state.value
+    }
+
+    // update
     if (value !== this.state.value) {
       this.state.value = value
       this.element.querySelector('textarea').value = this.state.value

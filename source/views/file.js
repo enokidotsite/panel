@@ -18,7 +18,7 @@ function File (state, emit) {
   var file = state.page.files ? state.page.files[filename] : false
   if (!file) return notFound()
   var blueprint = getBlueprint()
-  var draftFile = state.panel.changes[file.url]
+  var draftFile = state.enoki.changes[file.url]
 
   // blueprint layout fix
   blueprint.layout = false
@@ -43,7 +43,7 @@ function File (state, emit) {
   function sidebar () {
     return html`
       <div id="sidebar-file" class="x xdc c12 psst t0">
-        <div class="x1">
+        <div class="x1 x xdc">
           <div class="p1 c12">
             <div class="c12 fwb usn py1 fs0-8 ttu fc-bg25">
               Filename
@@ -60,9 +60,9 @@ function File (state, emit) {
           })}
           <div class="p1">
             <span
-              class="tac bgch-fg bgc-bg25 button-medium"
+              class="tac bgch-fg bgc-bg25 fc-bg button-medium"
               onclick=${handleRemove}
-            >Delete file</span>
+            >Delete File</span>
           </div>
         </div>
       </div>
@@ -96,7 +96,7 @@ function File (state, emit) {
   }
 
   function handleFieldUpdate (event, data) {
-    emit(state.events.PANEL_UPDATE, {
+    emit(state.events.ENOKI_UPDATE, {
       url: file.url,
       path: file.path,
       data: { [event]: data }
@@ -105,7 +105,7 @@ function File (state, emit) {
 
   function handleSave () {
     alert('Image meta saving coming soon')
-    // emit(state.events.PANEL_SAVE, {
+    // emit(state.events.ENOKI_SAVE, {
     //   file: file.filename + '.txt',
     //   path: state.page.path,
     //   url: file.url,
@@ -117,14 +117,14 @@ function File (state, emit) {
   }
 
   function handleCancel () {
-    emit(state.events.PANEL_CANCEL, {
+    emit(state.events.ENOKI_CANCEL, {
       path: file.path,
       url: file.url
     })
   }
 
   function handleRemove () {
-    emit(state.events.PANEL_REMOVE, {
+    emit(state.events.ENOKI_REMOVE, {
       path: file.path,
       url: file.url
     })

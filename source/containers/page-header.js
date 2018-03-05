@@ -26,7 +26,7 @@ function pageHeader (state, emit) {
   }
 
   return html`
-    <div class="px3 bb1-bg10">
+    <div id="header-page" class="px3 bgc-bg2-5">
       <div class="x xw py1 xjb">
         <div class="fs2 py2 px1 toe wsnw oxh c12 sm-xx fwb">
           <a href="?url=${state.page.url}">${state.page.title || state.page.name || raw('&nbsp;')}</a>
@@ -41,7 +41,7 @@ function pageHeader (state, emit) {
     return html`
       <div class="x xje xw pb1">
         <div class="px1 w100">
-          <div class="bt1-bg10"></div>
+          <div style="border-top: 1px dashed #ddd"></div>
         </div>
         ${fields({
           oninput: handleFieldUpdate,
@@ -59,7 +59,7 @@ function pageHeader (state, emit) {
             Delete
           </div>
           <span
-            class="tac bgch-fg bgc-red button-medium"
+            class="tac bgc-bg fch-fg fc-red b2-currentColor button-medium"
             onclick=${handleRemovePage}
           >Delete Page</span>
         </div>
@@ -69,17 +69,17 @@ function pageHeader (state, emit) {
 
   function elMeta () {
     var settingsUrl = search.settings ? unescape(queryString.stringify({ url: state.page.url })) : unescape(queryString.stringify(xtend(state.query, { settings: 'active' })))
-    var settingsClass = search.settings ? 'bgc-fg' : 'bgc-bg25 bgch-fg'
+    var settingsClass = search.settings ? 'fc-fg' : 'fc-bg25 fch-fg'
     return html`
       <div class="x xw">
         <div class="p1 tom ${state.page.url && state.page.url !== '/' ? 'db' : 'dn'}">
-          <a href="?${settingsUrl}" class="db ${settingsClass} button-medium">Settings</a>
+          <a href="?${settingsUrl}" class="db bgc-bg b2-currentColor ${settingsClass} button-medium">Settings</a>
         </div>
         <div class="p1 xx">
           <a
             href="${state.site.info.url}${state.page.url}"
             target="_blank"
-            class="tac bgch-fg bgc-yellow button-medium external"
+            class="tac fch-fg fc-yellow bgc-bg button-medium b2-currentColor external"
           >Open</a>
         </div>
       </div>
@@ -87,7 +87,7 @@ function pageHeader (state, emit) {
   }
 
   function getDraftPage () {
-    return state.panel && state.page && state.panel.changes[state.page.url]
+    return state.enoki && state.page && state.enoki.changes[state.page.url]
   }
 
   function getParentBlueprint () {
@@ -107,7 +107,7 @@ function pageHeader (state, emit) {
   } 
 
   function handleFieldUpdate (key, data) {
-    emit(state.events.PANEL_UPDATE, {
+    emit(state.events.ENOKI_UPDATE, {
       path: state.page.path,
       url: state.page.url,
       data: { [key]: data }
@@ -115,7 +115,7 @@ function pageHeader (state, emit) {
   }
 
   function handleRemovePage () {
-    emit(state.events.PANEL_REMOVE, {
+    emit(state.events.ENOKI_REMOVE, {
       confirm: true,
       title: state.page.title,
       path: state.page.path,

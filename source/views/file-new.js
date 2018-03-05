@@ -36,7 +36,7 @@ function FileNew (state, emit) {
   }
 
   function handleUploadFile (event, data) {
-    emit(state.events.PANEL_FILE_ADD, {
+    emit(state.events.ENOKI_FILE_ADD, {
       filename: data.name,
       path: state.page.url,
       result: data.result

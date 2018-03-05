@@ -14,7 +14,7 @@ function pagesAll (state, emit) {
   })
 
   return html`
-    <div class="p4">
+    <div class="p4 pt3">
       <div class="x xjb py1 c12 usn fs0-8 fc-bg25 ttu">
         <div class="fwb">
           Pages
