@@ -26,8 +26,15 @@ function pageHeader (state, emit) {
   }
 
   return html`
-    <div id="header-page" class="px3 bgc-bg2-5">
+    <div id="header-page" class="psr px3 bgc-bg2-5 ophc100">
       <div class="x xw py1 xjb">
+        <div class="oph op0 tom psa t0 l0 ${state.page.url !== '/' ? 'db' : 'dn'}">
+          <a
+            href="?url=${path.resolve(state.page.url || '', '../')}"
+            class="db ff-mono tac fc-bg25 fch-fg tfcm fwn"
+            style="font-size: 2.5rem; line-height: 8rem; width: 4rem"
+          >←</a>
+        </div>
         <div class="fs2 py2 px1 toe wsnw oxh c12 sm-xx fwb">
           <a href="?url=${state.page.url}">${state.page.title || state.page.name || raw('&nbsp;')}</a>
         </div>

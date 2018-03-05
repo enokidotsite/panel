@@ -31,7 +31,7 @@ module.exports = wrapper(view)
 function view (state, emit) {
   var log = state.docs.content['/log']
   var issues = objectValues(state.docs.content['/issues'].pages || { })
-    .map(function (props) { return state.docs.content[props.url] })
+    .map(page => state.docs.content[page.url])
 
   return html`
     <div class="xx fc-bg70 ${styles}">

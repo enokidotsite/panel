@@ -143,11 +143,11 @@ function renderSite (props) {
   var settingsClass = props.active ? 'fc-fg' : 'fc-bg25 fch-fg'
 
   return html`
-    <div id="${props.title}" class="w100">
+    <div id="${props.key}" class="w100">
       <div class="w100 bgc-bg ${props.active ? '' : 'ophc100'}">
         <div class="x xw xac px3">
           <div class="c12 sm-xx oh px1 py3 curp" onclick=${handleSiteClick}>
-            <div class="fs2 wsnw toe">${props.selected ? '→' : ''} ${props.title}</div>
+            <div class="fs2 wsnw toe"><div class="ff-mono fc-bg25 ${props.selected ? 'dib' : 'dn'}" style="width: 4rem">→</div>${props.title}</div>
           </div>
           <div class="p1 ${props.active ? '' : 'sm-op0'} oph tom">
             <a href="${settingsUrl}" class="db b2-currentColor ${settingsClass} button-medium">Settings</a>

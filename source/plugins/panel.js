@@ -63,7 +63,6 @@ async function panel (state, emitter) {
   function onUpdate (data) {
     assert.equal(typeof data, 'object', 'enoki: data must be type object')
     assert.equal(typeof data.url, 'string', 'enoki: data.url must be type string')
-    assert.equal(typeof data.data, 'string', 'enoki: data.data must be type string')
 
     var changes = state.enoki.changes[data.url]
     var shouldUpdate = data.render !== false
@@ -128,7 +127,8 @@ async function panel (state, emitter) {
 
       emitter.emit(state.events.SITE_REFRESH)
     } catch (err) {
-      console.log(err)
+      alert(err.message)
+      console.warn(err)
     }
 
     emitter.emit(state.events.ENOKI_LOADING, { loading: false })
@@ -164,10 +164,11 @@ async function panel (state, emitter) {
 
     try {
       var content = { title: data.title, view: data.view }
+      var file = data.file || state.site.config.file
 
       await archive.mkdir(data.path)
       await archive.writeFile(
-        path.join(data.path, 'index.txt'),
+        path.join(data.path, file),
         smarkt.stringify(content)
       )
 

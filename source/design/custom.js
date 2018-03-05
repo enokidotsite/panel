@@ -124,8 +124,7 @@ function copy () {
     }
 
     .copy h3 {
-      font-size: ${options.fontSize['1']}rem;
-      font-weight: 600;
+      font-size: ${options.fontSize['2'] * 0.75}rem;
     }
 
     .copy pre {
