@@ -19,6 +19,7 @@
     "pages": {
       "label": "Pages",
       "type": "pages",
+      "sort": "alphabetical",
       "limit": 20
     },
     "title": {
