@@ -20,7 +20,7 @@ function FilesAll (state, emit) {
   })
 
   return html`
-    <div class="x xw p4 xx">
+    <div class="x xw p4 pt3 xx">
       <div class="w100 ">
         <div class="x xjb py1 c12 usn fs0-8 ttu fc-bg25">
           <div class="fwb">
@@ -72,7 +72,7 @@ function FilesAll (state, emit) {
   }
 
    function handleFilesUpload (event, data) {
-    emit(state.events.PANEL_FILES_ADD, {
+    emit(state.events.ENOKI_FILES_ADD, {
       path: state.page.path,
       url: state.page.url,
       files: data.files

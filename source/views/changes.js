@@ -8,11 +8,11 @@ var modal = Modal()
 module.exports = changes
 
 function changes (state, emit) {
-  var activeChanges = objectKeys(state.panel.changes)
+  var activeChanges = objectKeys(state.enoki.changes)
     .map(function (key) {
       return {
         state: state.content[key],
-        changes: state.panel.changes[key]
+        changes: state.enoki.changes[key]
       }
     })
 

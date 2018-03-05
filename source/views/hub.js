@@ -6,7 +6,7 @@ module.exports = wrapper(hub)
 
 function hub (state, emit) {
   return html`
-    <div class="xx x xdc p2 bgc-fg fc-bg25 bl1-bg90 bt1-bg90">
+    <div class="xx x xdc p2 bgc-wbg fc-bg70">
       <div class="p2 x xjc">
         <div class="copy">
           ${format(state.page.text)}

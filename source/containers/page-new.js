@@ -37,8 +37,6 @@ class PageNew extends Nanocomponent {
     this.value.view = state.view || 'default'
     this.emit = emit
 
-    console.log(this.views)
-
     return html`
       <div class="bgc-bg br1">
         <form onsubmit={this.handleSave}>
@@ -119,19 +117,19 @@ class PageNew extends Nanocomponent {
   elActions () {
     var self = this
     return html`
-      <div class="x c12 fs1 usn fs1 p1 bt1-bg10">
-        <div class="p1 xx x">
+      <div class="x xje c12 fs1 usn fs1 p1 bgc-bg2-5">
+        <div class="p1">
           <button
-            type="submit"
-            class="xx button-medium bgc-blue bgch-fg"
-            onclick=${this.handleSave.bind(self)}
-          >Create Page</button>
+            class="db button-medium b2-currentColor bgc-bg fc-bg25 fch-fg"
+            onclick=${this.handleCancel.bind(self)}
+          >Cancel</button>
         </div>
         <div class="p1">
           <button
-            class="db button-medium bgc-bg25 bgch-fg"
-            onclick=${this.handleCancel.bind(self)}
-          >Cancel</button>
+            type="submit"
+            class="xx button-medium fc-bg bgc-blue bgch-fg fwb"
+            onclick=${this.handleSave.bind(self)}
+          >Create</button>
         </div>
       </div>
     `

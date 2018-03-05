@@ -1,0 +1,9 @@
+title: Page functionality
+----
+view: default
+----
+text: Need to improve some management issues with Pages.
+
+- Move **Delete** into **Settings**, which has similar interface to the Sites settings.
+- Field for adjusting `view` in Settings.
+- Field for adjusting `pathname` in Settings.

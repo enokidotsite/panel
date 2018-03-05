@@ -41,15 +41,14 @@ function view (state, emit) {
   return html`
     <div class="${styles}">
       <div
-        class="oh psr x xjc xac p4 c12 bgpc bgsct bgrn ${state.page.color ? 'fc-bg' : 'fc-fg'}"
+        class="oh psr x xjc xac p4 c12 bgpc bgsct bgrn fc-bg"
         style="
           min-height: 50vh;
           background-color: ${state.page.background};
         "
       >
-        ${state.page.files['image.svg'] ? renderImage() : ''}
         <div class="psr z3">
-          <h2 class="c12 sm-c10 co0 sm-co1 fs3 lh1-25 tac">${state.page.title}</h2>
+          <h2 class="c12 fs3 lh1-25 tac">${state.page.title}</h2>
           <div class="p2 sm-pt4 c12 tac fs0-8 dn">
             ${tags.map(function (tag) {
               return html`<span class="mx0-5 button-inline white">${tag}</span>`
@@ -57,12 +56,12 @@ function view (state, emit) {
           </div>
         </div>
       </div>
-      <div class="p4 c12 x xjc bgc-fg fc-bg25 bl1-bg90">
+      <div class="p4 c12 x xjc fc-bg70">
         <div class="copy">
           ${format(state.page.text)}
         </div>
       </div>
-      <div class="guides-grid bgc-fg bl1-bg90">
+      <div class="guides-grid bgc-bg2-5">
         ${renderGuide({ title: 'Previous Guide', page: pagePrev })}
         ${renderGuide({ title: 'Next Guide', page: pageNext })}
       </div>
@@ -72,7 +71,6 @@ function view (state, emit) {
   function renderGuide (props) {
     return html`
       <div class="x xw w100">
-        <div class="c12 fwb ttu fc-bg70 py1 px3 fs0-8">${props.title}</div>
         ${guideThumbnail(xtend(props.page, { featured: false }))}
       </div>
     `
@@ -82,7 +80,7 @@ function view (state, emit) {
     return html`
       <div
         class="psa t0 l0 r0 b0 bgsc bgpc bgrn"
-        style="${!state.page.color ? 'filter: invert(1);' : ''} opacity: 0.25; background-image: url(${state.page.files['image.svg'].path}">
+        style="mix-blend-mode: overlay; opacity: 0.25; background-image: url(${state.page.files['image.svg'].path}"
       ></div>
     `
   }

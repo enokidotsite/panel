@@ -4,7 +4,7 @@ module.exports = ActionBar
 
 function ActionBar (props) {
   props = props || { }
-  var saveText = props.saveText || 'Save changes'
+  var saveText = props.saveText || 'Save Changes'
   var cancelText = props.cancelText || 'Cancel'
   var disabled = (props.disabled === undefined) ? false : props.disabled
   var disabledClass = props.disabled ? 'pen dn' : 'x xjc'
@@ -20,7 +20,7 @@ function ActionBar (props) {
     return html`
       <div class="p0-5 x1" id="save">
         <button
-          class="bgc-blue button-medium"
+          class="bgc-blue fc-bg button-medium fwb"
           type="submit"
         >${saveText}</button>
       </div>
@@ -31,7 +31,7 @@ function ActionBar (props) {
     return html`
       <div class="p0-5" id="cancel">
         <div
-          class="bgc-bg25 bgch-fg button-medium"
+          class="fc-bg25 fch-fg bgc-bg b2-currentColor button-medium"
           onclick=${props.handleCancel}
         >${cancelText}</div>
       </div>

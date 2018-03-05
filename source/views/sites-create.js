@@ -6,7 +6,7 @@ var Fields = require('../containers/fields')
 var blueprint = require('../blueprints/sites-create.json')
 
 var subTitle = {
-  designs: 'Select a design',
+  designs: 'Select a starting point',
   meta: 'Enter the details'
 }
 
@@ -25,14 +25,14 @@ function SitesCreate (state, emit) {
 
   return html`
     <div class="c12 psr xx xdc x">
-      <div class="x xw py1 xjb px3">
+      <div class="x xw py1 xjb px3 bgc-bg2-5">
         <div class="fs2 px1 py2 toe wsnw oxh c12 sm-xx fwb">
-          Select a Design
+          Select a starting point
         </div>
         <div class="x">
           <div class="p1">
             <a
-              class="bgch-fg bgc-bg25 button-medium"
+              class="b2-currentColor fch-fg fc-bg25 button-medium"
               href="/?sites=all"
             >Cancel</a>
           </div>
@@ -62,7 +62,7 @@ function SitesCreate (state, emit) {
 
   function renderFields () {
     return html`
-      <div class="xx x xw xjc xac c12 p4 bt1-bg10" style="padding-bottom: 10rem">
+      <div class="xx x xw xjc xac c12 p4" style="padding-bottom: 10rem">
         <div class="c6 bgc-bg p3 br1">
           ${Fields({
             blueprint: blueprint,
@@ -78,7 +78,7 @@ function SitesCreate (state, emit) {
 
   function renderDesigns () {
     return html`
-      <div class="xx x xw c12 p0-5 bgc-bg5" style="padding-bottom: 8rem">
+      <div class="xx x xw c12 p2" style="padding-bottom: 8rem">
         ${designs.map(function (design) {
           var props = xtend({
             active: state.sites.create.url === design.url,
@@ -155,19 +155,23 @@ function SitesCreate (state, emit) {
 
 function renderDesign (props) {
   return html`
-    <div class="c12 sm-c6 md-c4 p0-5">
+    <div class="c12 sm-c6 md-c4 p2 pb0">
       <div class="ophc100 ${props.active ? 'fc-fg' : 'fc-bg25'} fch-fg">
-        <div class="br1 psr design-thumbnail ${props.active ? 'design-focused' : ''} curp oh">
-          <div class="psr bgc-bg" style="padding-bottom: 75%">
+        <div class="br1 psr design-thumbnail ${props.active ? 'design-focused' : ''} curp">
+          <div
+            class="psa t0 r0 z2 indicator indicator-medium bgc-blue tom pen ${props.active ? 'op100' : 'op0'}"
+            style="margin: -1.5rem; font-weight: normal; font-size: 2.5rem;"
+          >✓</div>
+          <div class="br1 oh psr bgc-bg" style="padding-bottom: 75%">
             <img src="${props.thumbnail}" onclick=${handleSelect} class="psa t0 l0 h100 w100 db">
           </div>
-          <div class="p1 pen x xjc xafe psa t0 l0 r0 b0 op0 oph tom">
-            <div class="pea p0-5">
-              <div class="button-medium bgc-fg" onclick=${handleSelect}>Select</div>
-            </div>
-            <div class="pea p0-5">
-              <a href="${props.url}" target="_blank" class="button-medium bgc-fg external">Preview</a>
-            </div>
+        </div>
+        <div class="x xjb pt1 ttu fs0-8 tfcm">
+          <div>
+            <span class="fwb">${props.title}</span>
+          </div>
+          <div class="oph op0 tom">
+            <a href="${props.url}" target="_blank" class="oph button-inline">Preview</a>
           </div>
         </div>
       </div>

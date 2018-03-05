@@ -23,34 +23,34 @@ async function panel (state, emitter) {
     info: { }
   }
 
-  state.panel = {
+  state.enoki = {
     version: _package.version,
     changes: { },
     loading: false
   }
 
-  state.events.PANEL_FILES_ADD = 'panel:files:add'
-  state.events.PANEL_LOAD_SITE = 'panel:load:site'
-  state.events.PANEL_PAGE_ADD = 'panel:page:add'
-  state.events.PANEL_LOADING = 'panel:loading'
-  state.events.PANEL_UPGRADE = 'panel:upgrade'
-  state.events.PANEL_UPDATED = 'panel:updated'
-  state.events.PANEL_CANCEL = 'panel:cancel'
-  state.events.PANEL_UPDATE = 'panel:update'
-  state.events.PANEL_REMOVE = 'panel:remove'
-  state.events.PANEL_MOVE = 'panel:move'
-  state.events.PANEL_SAVE = 'panel:save'
+  state.events.ENOKI_FILES_ADD = 'enoki:files:add'
+  state.events.ENOKI_LOAD_SITE = 'enoki:load:site'
+  state.events.ENOKI_PAGE_ADD = 'enoki:page:add'
+  state.events.ENOKI_LOADING = 'enoki:loading'
+  state.events.ENOKI_UPGRADE = 'enoki:upgrade'
+  state.events.ENOKI_UPDATED = 'enoki:updated'
+  state.events.ENOKI_CANCEL = 'enoki:cancel'
+  state.events.ENOKI_UPDATE = 'enoki:update'
+  state.events.ENOKI_REMOVE = 'enoki:remove'
+  state.events.ENOKI_MOVE = 'enoki:move'
+  state.events.ENOKI_SAVE = 'enoki:save'
   
-  emitter.on(state.events.PANEL_FILES_ADD, onFilesAdd)
-  emitter.on(state.events.PANEL_LOAD_SITE, onLoadSite)
-  emitter.on(state.events.PANEL_PAGE_ADD, onPageAdd)
+  emitter.on(state.events.ENOKI_FILES_ADD, onFilesAdd)
+  emitter.on(state.events.ENOKI_LOAD_SITE, onLoadSite)
+  emitter.on(state.events.ENOKI_PAGE_ADD, onPageAdd)
   emitter.on(state.events.DOMCONTENTLOADED, onLoad)
-  emitter.on(state.events.PANEL_LOADING, onLoading)
-  emitter.on(state.events.PANEL_UPGRADE, onUpgrade)
-  emitter.on(state.events.PANEL_UPDATE, onUpdate)
-  emitter.on(state.events.PANEL_CANCEL, onCancel)
-  emitter.on(state.events.PANEL_REMOVE, onRemove)
-  emitter.on(state.events.PANEL_SAVE, onSave)
+  emitter.on(state.events.ENOKI_LOADING, onLoading)
+  emitter.on(state.events.ENOKI_UPGRADE, onUpgrade)
+  emitter.on(state.events.ENOKI_UPDATE, onUpdate)
+  emitter.on(state.events.ENOKI_CANCEL, onCancel)
+  emitter.on(state.events.ENOKI_REMOVE, onRemove)
+  emitter.on(state.events.ENOKI_SAVE, onSave)
 
   function onLoad () {
 
@@ -63,9 +63,9 @@ async function panel (state, emitter) {
   function onUpdate (data) {
     assert.equal(typeof data, 'object', 'enoki: data must be type object')
     assert.equal(typeof data.url, 'string', 'enoki: data.url must be type string')
-    var changes = state.panel.changes[data.url]
-    state.panel.changes[data.url] = xtend(changes, data.data)
-    emitter.emit(state.events.PANEL_UPDATED)
+    var changes = state.enoki.changes[data.url]
+    state.enoki.changes[data.url] = xtend(changes, data.data)
+    emitter.emit(state.events.ENOKI_UPDATED)
     emitter.emit(state.events.RENDER)
   }
 
@@ -75,7 +75,7 @@ async function panel (state, emitter) {
     assert.equal(typeof data.url, 'string', 'enoki: data.url must be type string')
     assert.equal(typeof data.page, 'object', 'enoki: data.page must be type object')
 
-    emitter.emit(state.events.PANEL_LOADING, { loading: true })
+    emitter.emit(state.events.ENOKI_LOADING, { loading: true })
     emitter.emit(state.events.RENDER)
 
     // todo: cleanup
@@ -102,8 +102,8 @@ async function panel (state, emitter) {
       await archive.commit()
 
       // very messy
-      state.content[data.url] = xtend(state.content[data.url], state.panel.changes[data.url])
-      delete state.panel.changes[data.url]
+      state.content[data.url] = xtend(state.content[data.url], state.enoki.changes[data.url])
+      delete state.enoki.changes[data.url]
 
       emitter.once(state.events.SITE_REFRESHED, async function () {
         // bundles directory
@@ -126,7 +126,7 @@ async function panel (state, emitter) {
       console.log(err)
     }
 
-    emitter.emit(state.events.PANEL_LOADING, { loading: false })
+    emitter.emit(state.events.ENOKI_LOADING, { loading: false })
     emitter.emit(state.events.RENDER)
   }
 
@@ -134,15 +134,15 @@ async function panel (state, emitter) {
     assert.equal(typeof data, 'object', 'enoki: data must be type object')
     assert.equal(typeof data.url, 'string', 'enoki: data.url must be type string')
 
-    delete state.panel.changes[data.url]
+    delete state.enoki.changes[data.url]
     emitter.emit(state.events.RENDER)
   }
 
   function onLoading (data) {
     if (data && data.loading !== undefined) {
-      state.panel.loading = data.loading
+      state.enoki.loading = data.loading
     } else {
-      state.panel.loading = false
+      state.enoki.loading = false
     }
     if (data.render === true) emitter.emit(state.events.RENDER)
   }
@@ -154,7 +154,7 @@ async function panel (state, emitter) {
     assert.equal(typeof data.title, 'string', 'enoki: data.title must be type string')
     assert.equal(typeof data.view, 'string', 'enoki: data.view must be type string')
 
-    emitter.emit(state.events.PANEL_LOADING, { loading: true })
+    emitter.emit(state.events.ENOKI_LOADING, { loading: true })
     emitter.emit(state.events.RENDER)
 
     try {
@@ -171,7 +171,7 @@ async function panel (state, emitter) {
       console.warn(err)
     }
 
-    emitter.emit(state.events.PANEL_LOADING, { loading: false })
+    emitter.emit(state.events.ENOKI_LOADING, { loading: false })
     emitter.emit(state.events.REPLACESTATE, '?url=' + data.url)
   }
 
@@ -186,7 +186,7 @@ async function panel (state, emitter) {
       }
     }
 
-    emitter.emit(state.events.PANEL_LOADING, { loading: true })
+    emitter.emit(state.events.ENOKI_LOADING, { loading: true })
     emitter.emit(state.events.RENDER)
 
     try {
@@ -208,7 +208,7 @@ async function panel (state, emitter) {
       console.warn(err)
     }
 
-    emitter.emit(state.events.PANEL_LOADING, { loading: false })
+    emitter.emit(state.events.ENOKI_LOADING, { loading: false })
     emitter.emit(state.events.RENDER)
   }
 
@@ -218,12 +218,12 @@ async function panel (state, emitter) {
     assert.equal(typeof data.path, 'string', 'enoki: data.path must be type string')
     assert.equal(typeof data.files, 'object', 'enoki: data.files must be type object')
 
-    emitter.emit(state.events.PANEL_LOADING, { loading: true })
+    emitter.emit(state.events.ENOKI_LOADING, { loading: true })
     emitter.emit(state.events.RENDER)
 
     await Promise.all(objectKeys(data.files).map(saveFile))
 
-    emitter.emit(state.events.PANEL_LOADING, { loading: false })
+    emitter.emit(state.events.ENOKI_LOADING, { loading: false })
     emitter.emit(state.events.SITE_REFRESH)
 
     async function saveFile (key) {
@@ -242,24 +242,24 @@ async function panel (state, emitter) {
   function onLoadSite (data) {
     // var siteKey = data.site.info.key
     // var localVersion = window.localStorage.getItem('version-' + siteKey)
-    // var fallbackVersion = data.site.config.version || state.panel.version
+    // var fallbackVersion = data.site.config.version || state.enoki.version
     // var activeVersion = localVersion ? JSON.parse(localVersion) : { selected: fallbackVersion }
-    // var canUpgrade = activeVersion.checked !== state.panel.version
+    // var canUpgrade = activeVersion.checked !== state.enoki.version
 
     if (data.content) state.content = data.content
     if (data.site) state.site = data.site
     if (data.archive) archive = data.archive
 
     // if (canUpgrade) {
-      // var shouldUpgrade = confirm(`Panel update (${activeVersion.selected} to ${state.panel.version}) available. Would you like to upgrade?`) 
+      // var shouldUpgrade = confirm(`Panel update (${activeVersion.selected} to ${state.enoki.version}) available. Would you like to upgrade?`) 
       // if (shouldUpgrade) {
 
-      //   window.localStorage.setItem('version-selected-' + siteKey, state.panel.version)
+      //   window.localStorage.setItem('version-selected-' + siteKey, state.enoki.version)
       // }
     // } else {
     //   window.localStorage.setItem(
     //     'version-' + siteKey,
-    //     JSON.stringify({ selected: state.panel.version, checked: state.panel.verison })
+    //     JSON.stringify({ selected: state.enoki.version, checked: state.enoki.verison })
     //   )
     // }
 

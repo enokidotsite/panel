@@ -66,9 +66,8 @@ function sites (state, emitter, app) {
     try {
       // download the source archive
       var archiveSource = await new DatArchive(state.sites.create.url)
-      emitter.emit(state.events.PANEL_LOADING, { loading: true, render: true })
+      emitter.emit(state.events.ENOKI_LOADING, { loading: true, render: true })
       await archiveSource.download('/')
-      emitter.emit(state.events.PANEL_LOADING, { loading: false, render: true })
 
       // fork it
       var archiveCreate = await DatArchive.fork(
@@ -76,25 +75,32 @@ function sites (state, emitter, app) {
         state.sites.create
       )
 
-      // reset create state
-      state.designs.create = { }
-
       // one time commit those changes
-      emitter.once(state.events.SITE_LOADED, function () {
-        emitter.emit(state.events.PANEL_SAVE, {
+      emitter.once(state.events.SITE_LOADED, async function () {
+        var archiveNew = await archiveCreate.getInfo()
+        emitter.emit(state.events.ENOKI_SAVE, {
           path: state.content['/'].path,
           url: '/',
-          page: { title: state.sites.create.title }
+          page: { title: archiveNew.title }
         })
+
+        // reset sites history
+        emitter.emit(state.events.UI_HISTORY, {
+          route: 'sites',
+          path: 'all'
+        })
+
+        // reset creator
+        state.sites.create = getCreateDefaults()
       })
 
       // reset defaults commit to loading
-      state.sites.create = getCreateDefaults()
       emitter.emit(state.events.SITE_LOAD, {
         url: archiveCreate.url,
         redirect: true
       })
     } catch (err) {
+      emitter.emit(state.events.ENOKI_LOADING, { loading: false, render: true })
       throw err
     }
   }
@@ -115,7 +121,7 @@ function sites (state, emitter, app) {
   }
 
   async function handleLoad (props) {
-    emitter.emit(state.events.PANEL_LOADING, { loading: true, render: true })
+    emitter.emit(state.events.ENOKI_LOADING, { loading: true, render: true })
 
     try {
       await enoki.load(props.url)
@@ -131,7 +137,7 @@ function sites (state, emitter, app) {
       storage.setItem('archives', JSON.stringify(state.sites.archives))
       storage.setItem('active', info.url)
 
-      emitter.emit(state.events.PANEL_LOAD_SITE, {
+      emitter.emit(state.events.ENOKI_LOAD_SITE, {
         archive: archives.content,
         content: content,
         site: site,
@@ -143,7 +149,7 @@ function sites (state, emitter, app) {
         path: '/'
       })
 
-      emitter.emit(state.events.PANEL_LOADING, { loading: false })
+      emitter.emit(state.events.ENOKI_LOADING, { loading: false })
       emitter.emit(state.events.SITE_LOADED)
 
       if (props.redirect === true) {
@@ -159,7 +165,7 @@ function sites (state, emitter, app) {
       }
       state.sites.error = err.message
       state.sites.loaded = true
-      emitter.emit(state.events.PANEL_LOADING, { loading: false })
+      emitter.emit(state.events.ENOKI_LOADING, { loading: false })
       emitter.emit(state.events.RENDER)
       throw err
     }

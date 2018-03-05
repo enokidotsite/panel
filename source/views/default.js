@@ -126,7 +126,7 @@ function view (state, emit) {
 
   function Page () {
     return html`
-      <div id="content-page" class="x xdc c12" style="padding-bottom: 7rem">
+      <div id="content-page" class="x xdc c12" style="padding-bottom: 6rem">
         <form class="x xw p2 x1" onsubmit=${handleSavePage}>
           ${Fields({
             oninput: handleFieldUpdate,
@@ -152,7 +152,7 @@ function view (state, emit) {
   }
 
   function handleFieldUpdate (key, data) {
-    emit(state.events.PANEL_UPDATE, {
+    emit(state.events.ENOKI_UPDATE, {
       path: state.page.path,
       url: state.page.url,
       data: { [key]: data }
@@ -163,7 +163,7 @@ function view (state, emit) {
     if (!draftPage) return
     if (typeof event === 'object' && event.preventDefault) event.preventDefault()
 
-    emit(state.events.PANEL_SAVE, {
+    emit(state.events.ENOKI_SAVE, {
       file: state.page.file,
       path: state.page.path,
       url: state.page.url,
@@ -172,7 +172,7 @@ function view (state, emit) {
   }
 
   function handleCancelPage () {
-    emit(state.events.PANEL_CANCEL, {
+    emit(state.events.ENOKI_CANCEL, {
       url: state.page.url
     })
   }
@@ -190,7 +190,7 @@ function view (state, emit) {
   }
 
   function getDraftPage () {
-    return state.panel && state.page && state.panel.changes[state.page.url]
+    return state.enoki && state.page && state.enoki.changes[state.page.url]
   }
 }
 
