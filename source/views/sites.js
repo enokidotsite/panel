@@ -99,7 +99,7 @@ function renderEmpty (state, emit) {
         </div>
         <div class="p1">
           <button
-            class="button-medium bgc-bg25 bgch-fg"
+            class="b2-currentColor bgc-bg fc-bg25 fch-fg fc-bg button-medium"
             onclick=${handleAdd}
           >Load an Existing Site</button>
         </div>
