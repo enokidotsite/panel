@@ -14,3 +14,7 @@ text: How to handle static output?
 - [ ] Meta tags in index.html
 - [ ] How to speed things up (static output / reload all state)
 - [ ] Dont’t worry about static HTML output as the affordances of the p2p web mean initialization is less of an issue
+----
+date: 2018-03-05
+----
+visible: true

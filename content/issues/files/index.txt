@@ -13,3 +13,7 @@ text: ## Todo
 - [ ] Video preview
 - [ ] Audio preview
 - [ ] Image zooming
+----
+date: 2018-03-05
+----
+visible: true

@@ -46,3 +46,8 @@ For instance:
 ----
 tags:
   - todo
+
+----
+date: 2018-03-05
+----
+visible: true

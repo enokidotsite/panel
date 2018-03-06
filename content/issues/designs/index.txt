@@ -25,3 +25,7 @@ text: Create some fresh designs.
 ## Ripple
 
 - SVG warping sort of thing, text input to outlined shapes
+----
+date: 2018-03-05
+----
+visible: true

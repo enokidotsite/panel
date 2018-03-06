@@ -10,3 +10,8 @@ text: Need to improve some management issues with Pages.
 ----
 tags:
   - todo
+
+----
+date: 2018-03-05
+----
+visible: true

@@ -9,3 +9,8 @@ text: Need to clean up some of the boundaries between things.
 ----
 tags:
   - todo
+
+----
+date: 2018-03-05
+----
+visible: true

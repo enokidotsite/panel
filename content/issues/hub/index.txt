@@ -10,3 +10,7 @@ text: The hub contains the Network, Guides, Docs, and Log.
 
 - [ ] Sticky header (scroll)
 - [ ] Network coming soon splash
+----
+date: 2018-03-05
+----
+visible: true

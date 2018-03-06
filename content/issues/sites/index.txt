@@ -19,3 +19,7 @@ text: ## Todo
 
 - Some sort of p2p stats, such as how many peers, etc…
 - A simple way of deploying to a service like Hashbase
+----
+date: 2018-03-05
+----
+visible: true

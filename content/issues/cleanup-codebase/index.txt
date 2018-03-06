@@ -19,3 +19,7 @@ text: Gotta refactor a little bit, it’s getting messy in here.
 ----
 tags:
   - todo
+----
+date: 2018-03-05
+----
+visible: true

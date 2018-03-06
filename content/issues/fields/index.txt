@@ -27,3 +27,8 @@ Currently, fields are a bit sloppy. Some immediate improvements.
 tags:
   - 1.0.0
   - todo
+
+----
+date: 2018-03-05
+----
+visible: true

@@ -1,14 +1,4 @@
 {
-  "/community": {
-    "title": "Community",
-    "view": "community",
-    "text": "Coming soon",
-    "name": "community",
-    "path": "/content/community",
-    "url": "/community",
-    "files": {},
-    "pages": {}
-  },
   "/docs": {
     "title": "Docs",
     "view": "docs",
@@ -25,6 +15,16 @@
         "source": "/content/docs/fields"
       }
     }
+  },
+  "/community": {
+    "title": "Community",
+    "view": "community",
+    "text": "Coming soon",
+    "name": "community",
+    "path": "/content/community",
+    "url": "/community",
+    "files": {},
+    "pages": {}
   },
   "/faq": {
     "title": "FAQ",
@@ -93,6 +93,12 @@
         "url": "/issues/page-functionality",
         "source": "/content/issues/page-functionality"
       },
+      "panel-layouts": {
+        "name": "panel-layouts",
+        "path": "/content/issues/panel-layouts",
+        "url": "/issues/panel-layouts",
+        "source": "/content/issues/panel-layouts"
+      },
       "saving": {
         "name": "saving",
         "path": "/content/issues/saving",
@@ -141,23 +147,11 @@
     "tags": [
       "todo"
     ],
+    "date": "2018-03-05",
+    "visible": true,
     "name": "cleanup-codebase",
     "path": "/content/issues/cleanup-codebase",
     "url": "/issues/cleanup-codebase",
-    "files": {},
-    "pages": {}
-  },
-  "/issues/designs": {
-    "title": "Designs",
-    "view": "issue",
-    "tags": [
-      "1.0.0",
-      "todo"
-    ],
-    "text": "Create some fresh designs.\n\n## Todo\n\n- [ ] Update dependencies before release\n\n## Things to keep in mind\n\n- Super simple document / plain CSS\n\n## Streamer\n\n- [ ] A design for streams\n- [ ] Vlog style?\n\n## Ripple\n\n- SVG warping sort of thing, text input to outlined shapes",
-    "name": "designs",
-    "path": "/content/issues/designs",
-    "url": "/issues/designs",
     "files": {},
     "pages": {}
   },
@@ -169,22 +163,11 @@
       "1.0.0",
       "todo"
     ],
+    "date": "2018-03-05",
+    "visible": true,
     "name": "fields",
     "path": "/content/issues/fields",
     "url": "/issues/fields",
-    "files": {},
-    "pages": {}
-  },
-  "/issues/hub": {
-    "title": "Hub",
-    "view": "issue",
-    "tags": [
-      "todo"
-    ],
-    "text": "The hub contains the Network, Guides, Docs, and Log.\n\n- [ ] Sticky header (scroll)\n- [ ] Network coming soon splash",
-    "name": "hub",
-    "path": "/content/issues/hub",
-    "url": "/issues/hub",
     "files": {},
     "pages": {}
   },
@@ -196,9 +179,42 @@
       "1.0.1"
     ],
     "text": "## Todo\n\n- [ ] Meta data support (api/panel)\n- [ ] Video preview\n- [ ] Audio preview\n- [ ] Image zooming",
+    "date": "2018-03-05",
+    "visible": true,
     "name": "files",
     "path": "/content/issues/files",
     "url": "/issues/files",
+    "files": {},
+    "pages": {}
+  },
+  "/issues/designs": {
+    "title": "Designs",
+    "view": "issue",
+    "tags": [
+      "1.0.0",
+      "todo"
+    ],
+    "text": "Create some fresh designs.\n\n## Todo\n\n- [ ] Update dependencies before release\n\n## Things to keep in mind\n\n- Super simple document / plain CSS\n\n## Streamer\n\n- [ ] A design for streams\n- [ ] Vlog style?\n\n## Ripple\n\n- SVG warping sort of thing, text input to outlined shapes",
+    "date": "2018-03-05",
+    "visible": true,
+    "name": "designs",
+    "path": "/content/issues/designs",
+    "url": "/issues/designs",
+    "files": {},
+    "pages": {}
+  },
+  "/issues/hub": {
+    "title": "Hub",
+    "view": "issue",
+    "tags": [
+      "todo"
+    ],
+    "text": "The hub contains the Network, Guides, Docs, and Log.\n\n- [ ] Sticky header (scroll)\n- [ ] Network coming soon splash",
+    "date": "2018-03-05",
+    "visible": true,
+    "name": "hub",
+    "path": "/content/issues/hub",
+    "url": "/issues/hub",
     "files": {},
     "pages": {}
   },
@@ -209,6 +225,8 @@
       "idea"
     ],
     "text": "Explore implimentation of inline-editing in a design.\n\n- Web API `isOwner` to enable `contenteditable`",
+    "date": "2018-03-05",
+    "visible": true,
     "name": "inline-editing",
     "path": "/content/issues/inline-editing",
     "url": "/issues/inline-editing",
@@ -222,6 +240,8 @@
     "tags": [
       "todo"
     ],
+    "date": "2018-03-05",
+    "visible": true,
     "name": "library",
     "path": "/content/issues/library",
     "url": "/issues/library",
@@ -235,9 +255,24 @@
     "tags": [
       "todo"
     ],
+    "date": "2018-03-05",
+    "visible": true,
     "name": "page-functionality",
     "path": "/content/issues/page-functionality",
     "url": "/issues/page-functionality",
+    "files": {},
+    "pages": {}
+  },
+  "/issues/panel-layouts": {
+    "title": "Panel layouts",
+    "view": "issue",
+    "text": "Fields will be both **input** and **display**. An example of an input field is `text` and `textarea`. An an example of a display field is `pages` or `files` in the existing sidebar.\n\nNothing is needed to make display fields possible, however it should be possible to not only place custom fields in the sidebar, but be able to define custom columns an layouts from within blueprints.\n\nFor instance:\n\n```\n{\n  \"title\": \"hi\",\n\t\"layout\": {\n\t\t\"navigation\": {\n\t\t\t\"fields\": ['pages', 'files'],\n\t\t\t\"width\": \"1/3\"\n\t\t},\n\t\t\"fieldset\": {\n\t\t\t\"fields\": ['title', 'text'],\n\t\t\t\"width\": \"2/3\"\n\t\t}\n  },\n\t\"fields\": {\n\t\t\"pages\": {\n\t\t\t\"type\": \"pages\"\n\t\t},\n\t\t\"files\": {\n\t\t\t\"type\": \"files\"\n\t\t},\n\t\t\"title\": {\n\t\t\t\"label\": \"Title\",\n\t\t\t\"type\": \"text\"\n\t\t},\n\t\t\"text\": {\n\t\t\t\"label\": \"Text\",\n\t\t\t\"type\": \"textarea\"\n\t\t}\n\t}\n}\n```\n\n## Features\n\n- `sticky` option for columns to replicate sidebar functionality",
+    "tags": [
+      "todo"
+    ],
+    "name": "panel-layouts",
+    "path": "/content/issues/panel-layouts",
+    "url": "/issues/panel-layouts",
     "files": {},
     "pages": {}
   },
@@ -328,7 +363,7 @@
         "name": "drafts",
         "path": "/content/guides/drafts.txt",
         "url": "/guides/drafts.txt",
-        "source": "dat://e87b59368258cbc0941d85909dd421bcefe1b79b82f8cdffbf6cb187d260ba01/content/guides/drafts.txt",
+        "source": "workspace://striped-appliance/content/guides/drafts.txt",
         "extension": ".txt",
         "filename": "drafts.txt"
       }
@@ -366,6 +401,33 @@
       }
     }
   },
+  "/guides/01-creating-your-first-site": {
+    "title": "Creating Your First Site (or not!)",
+    "view": "guide",
+    "text": "Enoki is currently an *experimental* CMS (content management system) for the peer-to-peer web. It’s intended for those familiar with making websites to gain exposure to the unique affordances of the peer-to-peer web.\n\n1. Platforms should be free, and not treat attention as a resource to be extracted from users and sold to advertisers.\n2. Users should own their data, and grant permission to platforms to read and write locally *by default*. Interfaces are simply *views* for data which exist with the user.\n3. Data should be shared openly; the tools should be fungible. Anyone can create applications with instant access to all public data, avoiding limitations implimented by proprietary APIs.\n4. Our tools should be ultralight and understandable, not heavy and complex!\n\n## Creating a Site\n\n1. Navigate to **Sites** and click *Create a New Site*\n2. Enter your site’s Title, and a quick Description\n3. Browse the design, and select one which looks right for you\n4. Authorize Beaker to **fork** the design\n5. Begin editing your content!\n\nYou might be asking, what is **forking**? Simply put, it’s creating your own unique copy of the site. Unlike other platforms, your site’s files exist on your computer! This means *you* own and control your site. There is no risk of your site dissapearing if Enoki ceases to exist.\n\nThis is a *super critical thing*. Platforms today are designed to make you dependant upon them as a way to sell advertising. By giving you control over your own content and data, you are not bound to Enoki!\n\n## Managing your Content\n\nYou can manage your content in a few different ways.\n\n1. With the Enoki Panel\n2. By editing the files directly using whatever tool you’d like\n3. Using any application which can read your content\n\nUnlike platforms, your data is human readable. Enoki just creates folders and text files! You can edit your site with any application which can edit text files. Not only that, you can easily use other applications (or create your own) to manage your site.\n\nThis is possible because you own your content and data!\n\n## Accessing Your Site\n\nYou’ll notice that URLs look funny in Beaker. Remember torrents? You’ve probably downloaded music or movies this way. Beaker Browser is an experiment built on the entire internet working like that. You don’t have to pay any one for your site to appear online! This is *truely free*, and not dependant upon advertising.\n\nThis is called peer-to-peer networking. When using a tool like SquareSpace, your site exists on a server they own. Anyone visiting your site must connect through SquareSpace. Now, imagine them instead connected directly to you, and not only that, but any one else who happens to be visiting your site. Crazy, right?!\n\nBecause there is no central provider, like SquareSpace, someone (either you or someone else) must be providing your site for others to access it. Fortunately, you can simply enter your site’s `dat` URL somewhere like [Hashbase](https://hashbase.com) which ensure your site will always be accessible! Not only that, you can also access your site over `http` in a normal browser like Chrome or Firefox!\n\nYou might be thinking, *Shit! This makes a lot of sense!* Yeah, it does! If not, don’t worry—it’s still early and the tools will get there.\n\n## Cutomizing Your Site\n\nEnoki builds *real websites*. Not only do you get all the files for the site, you also get the entire source. You can take this source and choose to never use Enoki again, if you’d like. Remember; you are learning how to *actually program*, and not just use proprietary tools.",
+    "excerpt": "Ok, you’ve stumbled across Enoki. What are you getting yourself into? Let’s look at how is this different from existing platforms, and expand upon both the pros and cons. Is Enoki right for you? Maybe, but hopefully you can take the knowledge with you regardless of it’s a match.",
+    "color": true,
+    "featured": true,
+    "tags": [
+      "beginner"
+    ],
+    "background": "#045bc1",
+    "name": "01-creating-your-first-site",
+    "path": "/content/guides/01-creating-your-first-site",
+    "url": "/guides/01-creating-your-first-site",
+    "files": {
+      "image.svg": {
+        "name": "image",
+        "path": "/content/guides/01-creating-your-first-site/image.svg",
+        "url": "/guides/01-creating-your-first-site/image.svg",
+        "source": "workspace://striped-appliance/content/guides/01-creating-your-first-site/image.svg",
+        "extension": ".svg",
+        "filename": "image.svg",
+        "type": "image"
+      }
+    },
+    "pages": {}
+  },
   "/guides/03-creating-pages": {
     "title": "Creating Custom Pages",
     "view": "guide",
@@ -385,7 +447,7 @@
         "name": "image",
         "path": "/content/guides/03-creating-pages/image.svg",
         "url": "/guides/03-creating-pages/image.svg",
-        "source": "dat://e87b59368258cbc0941d85909dd421bcefe1b79b82f8cdffbf6cb187d260ba01/content/guides/03-creating-pages/image.svg",
+        "source": "workspace://striped-appliance/content/guides/03-creating-pages/image.svg",
         "extension": ".svg",
         "filename": "image.svg",
         "type": "image"
@@ -412,7 +474,7 @@
         "name": "image",
         "path": "/content/guides/02-customizing-your-site/image.svg",
         "url": "/guides/02-customizing-your-site/image.svg",
-        "source": "dat://e87b59368258cbc0941d85909dd421bcefe1b79b82f8cdffbf6cb187d260ba01/content/guides/02-customizing-your-site/image.svg",
+        "source": "workspace://striped-appliance/content/guides/02-customizing-your-site/image.svg",
         "extension": ".svg",
         "filename": "image.svg",
         "type": "image"
@@ -439,7 +501,7 @@
         "name": "image",
         "path": "/content/guides/04-how-to-leave-enoki/image.svg",
         "url": "/guides/04-how-to-leave-enoki/image.svg",
-        "source": "dat://e87b59368258cbc0941d85909dd421bcefe1b79b82f8cdffbf6cb187d260ba01/content/guides/04-how-to-leave-enoki/image.svg",
+        "source": "workspace://striped-appliance/content/guides/04-how-to-leave-enoki/image.svg",
         "extension": ".svg",
         "filename": "image.svg",
         "type": "image"
@@ -462,34 +524,7 @@
         "name": "image",
         "path": "/content/guides/05-starting-from-scratch/image.svg",
         "url": "/guides/05-starting-from-scratch/image.svg",
-        "source": "dat://e87b59368258cbc0941d85909dd421bcefe1b79b82f8cdffbf6cb187d260ba01/content/guides/05-starting-from-scratch/image.svg",
-        "extension": ".svg",
-        "filename": "image.svg",
-        "type": "image"
-      }
-    },
-    "pages": {}
-  },
-  "/guides/01-creating-your-first-site": {
-    "title": "Creating Your First Site (or not!)",
-    "view": "guide",
-    "text": "Enoki is currently an *experimental* CMS (content management system) for the peer-to-peer web. It’s intended for those familiar with making websites to gain exposure to the unique affordances of the peer-to-peer web.\n\n1. Platforms should be free, and not treat attention as a resource to be extracted from users and sold to advertisers.\n2. Users should own their data, and grant permission to platforms to read and write locally *by default*. Interfaces are simply *views* for data which exist with the user.\n3. Data should be shared openly; the tools should be fungible. Anyone can create applications with instant access to all public data, avoiding limitations implimented by proprietary APIs.\n4. Our tools should be ultralight and understandable, not heavy and complex!\n\n## Creating a Site\n\n1. Navigate to **Sites** and click *Create a New Site*\n2. Enter your site’s Title, and a quick Description\n3. Browse the design, and select one which looks right for you\n4. Authorize Beaker to **fork** the design\n5. Begin editing your content!\n\nYou might be asking, what is **forking**? Simply put, it’s creating your own unique copy of the site. Unlike other platforms, your site’s files exist on your computer! This means *you* own and control your site. There is no risk of your site dissapearing if Enoki ceases to exist.\n\nThis is a *super critical thing*. Platforms today are designed to make you dependant upon them as a way to sell advertising. By giving you control over your own content and data, you are not bound to Enoki!\n\n## Managing your Content\n\nYou can manage your content in a few different ways.\n\n1. With the Enoki Panel\n2. By editing the files directly using whatever tool you’d like\n3. Using any application which can read your content\n\nUnlike platforms, your data is human readable. Enoki just creates folders and text files! You can edit your site with any application which can edit text files. Not only that, you can easily use other applications (or create your own) to manage your site.\n\nThis is possible because you own your content and data!\n\n## Accessing Your Site\n\nYou’ll notice that URLs look funny in Beaker. Remember torrents? You’ve probably downloaded music or movies this way. Beaker Browser is an experiment built on the entire internet working like that. You don’t have to pay any one for your site to appear online! This is *truely free*, and not dependant upon advertising.\n\nThis is called peer-to-peer networking. When using a tool like SquareSpace, your site exists on a server they own. Anyone visiting your site must connect through SquareSpace. Now, imagine them instead connected directly to you, and not only that, but any one else who happens to be visiting your site. Crazy, right?!\n\nBecause there is no central provider, like SquareSpace, someone (either you or someone else) must be providing your site for others to access it. Fortunately, you can simply enter your site’s `dat` URL somewhere like [Hashbase](https://hashbase.com) which ensure your site will always be accessible! Not only that, you can also access your site over `http` in a normal browser like Chrome or Firefox!\n\nYou might be thinking, *Shit! This makes a lot of sense!* Yeah, it does! If not, don’t worry—it’s still early and the tools will get there.\n\n## Cutomizing Your Site\n\nEnoki builds *real websites*. Not only do you get all the files for the site, you also get the entire source. You can take this source and choose to never use Enoki again, if you’d like. Remember; you are learning how to *actually program*, and not just use proprietary tools.",
-    "excerpt": "Ok, you’ve stumbled across Enoki. What are you getting yourself into? Let’s look at how is this different from existing platforms, and expand upon both the pros and cons. Is Enoki right for you? Maybe, but hopefully you can take the knowledge with you regardless of it’s a match.",
-    "color": true,
-    "featured": true,
-    "tags": [
-      "beginner"
-    ],
-    "background": "#045bc1",
-    "name": "01-creating-your-first-site",
-    "path": "/content/guides/01-creating-your-first-site",
-    "url": "/guides/01-creating-your-first-site",
-    "files": {
-      "image.svg": {
-        "name": "image",
-        "path": "/content/guides/01-creating-your-first-site/image.svg",
-        "url": "/guides/01-creating-your-first-site/image.svg",
-        "source": "dat://e87b59368258cbc0941d85909dd421bcefe1b79b82f8cdffbf6cb187d260ba01/content/guides/01-creating-your-first-site/image.svg",
+        "source": "workspace://striped-appliance/content/guides/05-starting-from-scratch/image.svg",
         "extension": ".svg",
         "filename": "image.svg",
         "type": "image"
