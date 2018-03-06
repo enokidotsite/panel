@@ -63,12 +63,6 @@ function renderSites (props) {
           Sites
         </div>
         <div class="x">
-          <div class="p1 ${props.isOwner ? 'db' : 'dn'}">
-            <div
-              class="b2-currentColor bgc-bg fc-bg25 fch-fg fc-bg button-medium"
-              onclick=${handleEditPanel}
-            >Edit Panel</div>
-          </div>
           <div class="p1">
             <div
               class="b2-currentColor bgc-bg fc-bg25 fch-fg fc-bg button-medium"
@@ -83,18 +77,28 @@ function renderSites (props) {
           </div>
         </div>
       </div>
-      <div>
-        ${props.sites.map(function (site) {
-          return renderSite(xtend(site, {
-            selected: props.selected === site.url,
-            active: props.active === site.url,
-            handleLoad: props.handleLoad,
-            handleRemove: props.handleRemove
-          }))
-        })}
-      </div>
+      ${props.sites.map(function (site) {
+        return renderSite(xtend(site, {
+          selected: props.selected === site.url,
+          active: props.active === site.url,
+          handleLoad: props.handleLoad,
+          handleRemove: props.handleRemove
+        }))
+      })}
+      ${props.isOwner ? renderEditPanel() : ''}
     </div>
   `
+
+  function renderEditPanel () {
+    return html`
+      <div class="p2 x xjc w100">
+        <div
+          class="fc-bg25 fch-fg curp"
+          onclick=${handleEditPanel}
+        >Edit Panel</div>
+      </div>
+    `
+  }
 
   function handleEditPanel () {
     props.handleLoad({ url: window.location.origin, redirect: true })
