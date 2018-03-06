@@ -1,7 +1,7 @@
 var Nanocomponent = require('nanocomponent')
 var SimpleMDE = require('simplemde')
-var xtend = require('xtend')
 var html = require('choo/html')
+var xtend = require('xtend')
 
 var toolbarDefaults = {
   condensed: [

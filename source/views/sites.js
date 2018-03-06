@@ -65,6 +65,12 @@ function renderSites (props) {
           <div class="p1">
             <div
               class="b2-currentColor bgc-bg fc-bg25 fch-fg fc-bg button-medium"
+              onclick=${handleEditPanel}
+            >Edit Panel</div>
+          </div>
+          <div class="p1">
+            <div
+              class="b2-currentColor bgc-bg fc-bg25 fch-fg fc-bg button-medium"
               onclick=${props.handleAdd}
             >Load an Existing Site</div>
           </div>
@@ -88,6 +94,10 @@ function renderSites (props) {
       </div>
     </div>
   `
+
+  function handleEditPanel () {
+    props.handleLoad({ url: window.location.origin, redirect: true })
+  }
 }
 
 function renderEmpty (state, emit) {

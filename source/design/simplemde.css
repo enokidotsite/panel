@@ -374,7 +374,7 @@ span.CodeMirror-selectedtext {
 .CodeMirror {
   height: auto;
   min-height: 10rem;
-  padding: 1rem 1.5rem;
+  padding: 1.5rem;
   font: inherit;
   z-index: 1
 }

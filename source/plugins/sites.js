@@ -131,7 +131,7 @@ function sites (state, emitter, app) {
       var info = await archives.site.getInfo()
 
       if (!info.isOwner) throw new Error('You must be the owner of the site')
-
+        
       state.sites.archives[info.url] = info
       state.sites.active = info.url
       storage.setItem('archives', JSON.stringify(state.sites.archives))
