@@ -29,9 +29,11 @@ var styles = css`
 module.exports = wrapper(view)
 
 function view (state, emit) {
+  var issues = state.docs.content['/issues'] || { }
   var log = state.docs.content['/log']
-  var issues = objectValues(state.docs.content['/issues'].pages || { })
+  var issuesActive = objectValues(issues.pages || { })
     .map(page => state.docs.content[page.url])
+    .filter(page => page.visible === true)
 
   return html`
     <div class="xx fc-bg70 ${styles}">
@@ -43,7 +45,7 @@ function view (state, emit) {
       <div class="lh1-5">
         <h2 class="fs2 mb1 fc-fg fwb">Issues</h2>
         <ul class="myc1">
-          ${issues.map(renderIssue)}
+          ${issuesActive.map(renderIssue)}
         </ul>
       </div>
     </div>

@@ -30,7 +30,11 @@ function wrapper (view) {
       // async load content
       if (!state.docs.loaded) {
         emit(state.events.DOCS_LOAD)
-        return html`<div class="bgc-bg xx"></div>`
+        return html`
+          <div class="bgc-bg xx x xjc xac">
+            <div class="loader"></div>
+          </div>
+        `
       } else {
         return view(state, emit)
       }
