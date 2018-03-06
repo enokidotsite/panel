@@ -33,6 +33,7 @@ function view (state, emit) {
   } else {
     return renderSites({
       selected: state.site.info ? state.site.info.url : '',
+      isOwner: state.ui.info.isOwner,
       handleRemove: handleRemove,
       handleLoad: handleLoad,
       handleAdd: handleAdd,
@@ -62,7 +63,7 @@ function renderSites (props) {
           Sites
         </div>
         <div class="x">
-          <div class="p1">
+          <div class="p1 ${props.isOwner ? 'db' : 'dn'}">
             <div
               class="b2-currentColor bgc-bg fc-bg25 fch-fg fc-bg button-medium"
               onclick=${handleEditPanel}
