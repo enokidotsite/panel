@@ -2,12 +2,15 @@ var draggableCount = 0
 var renderTimeout
 var dragTimeout
 
+var _package = require('../package.json')
+
 module.exports = ui
 
 async function ui (state, emitter) {
   state.ui = {
-    dragActive: false,
     history: getHistoryDefaults(),
+    version: _package.version,
+    dragActive: false,
     info: { }
   }
 

@@ -109,7 +109,7 @@ function File (state, emit) {
     //   file: file.filename + '.txt',
     //   path: state.page.path,
     //   url: file.url,
-    //   page: objectKeys(blueprint.fields).reduce(function (result, field) {
+    //   data: objectKeys(blueprint.fields).reduce(function (result, field) {
     //     result[field] = draftFile[field] === undefined ? file[field] : draftFile[field]
     //     return result
     //   }, { })

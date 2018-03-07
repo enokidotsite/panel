@@ -78,10 +78,12 @@ function sites (state, emitter, app) {
       // one time commit those changes
       emitter.once(state.events.SITE_LOADED, async function () {
         var archiveNew = await archiveCreate.getInfo()
+
+        // update the title
         emitter.emit(state.events.ENOKI_SAVE, {
           path: state.content['/'].path,
           url: '/',
-          page: { title: archiveNew.title }
+          data: { title: archiveNew.title }
         })
 
         // reset sites history
@@ -137,7 +139,7 @@ function sites (state, emitter, app) {
       storage.setItem('archives', JSON.stringify(state.sites.archives))
       storage.setItem('active', info.url)
 
-      emitter.emit(state.events.ENOKI_LOAD_SITE, {
+      emitter.emit(state.events.ENOKI_SITE_LOAD, {
         archive: archives.content,
         content: content,
         site: site,
@@ -160,14 +162,19 @@ function sites (state, emitter, app) {
       }
     } catch (err) {
       var archiveInfo = state.sites.archives[props.url]
+
       if (typeof archiveInfo === 'object') {
         archiveInfo.error = err.message
       }
+
       state.sites.error = err.message
       state.sites.loaded = true
+
       emitter.emit(state.events.ENOKI_LOADING, { loading: false })
       emitter.emit(state.events.RENDER)
-      throw err
+
+      alert(err.message)
+      console.warn(err)
     }
   }
 

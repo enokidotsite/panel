@@ -11,7 +11,7 @@ function wrapper (view) {
   return function (state, emit) {
     var href = state.query.url || '/'
     var page = state.content[href] || { }
-    
+
     return html`
       <body class="fs1 ff-sans x xdc vhmn100" style="padding-left: 7rem">
         ${view(xtend(state, { page: page }), emit)}

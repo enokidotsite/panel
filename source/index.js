@@ -1,21 +1,21 @@
-require('./design')
-
-// dependencies
 var wrapper = require('./containers/wrapper-site')
 var choo = require('choo')
+require('./design')
 
 // create app
 var app = choo()
 
-// plugins / stores
+// external
+app.use(require('enoki/choo-panel')())
+app.use(require('choo-tts')())
+
+// plugins
 app.use(require('./plugins/interface'))
 app.use(require('./plugins/designs'))
 app.use(require('./plugins/scroll'))
 app.use(require('./plugins/sites'))
-app.use(require('./plugins/panel')())
 app.use(require('./plugins/docs'))
 app.use(require('./plugins/hub'))
-app.use(require('choo-tts')())
 
 // routes
 app.route('*', wrapper(require('./views/default')))

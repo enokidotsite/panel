@@ -7,7 +7,7 @@ var xtend = require('xtend')
 var path = require('path')
 var xhr = require('xhr')
 
-var _package = require('../package.json')
+var reservedKeys = ['files', 'pages', 'url', 'name', 'path']
 
 module.exports = panel
 
@@ -25,13 +25,12 @@ function panel () {
     }
 
     state.enoki = {
-      version: _package.version,
       changes: { },
       loading: false
     }
 
     state.events.ENOKI_FILES_ADD = 'enoki:files:add'
-    state.events.ENOKI_LOAD_SITE = 'enoki:load:site'
+    state.events.ENOKI_SITE_LOAD = 'enoki:site:load'
     state.events.ENOKI_PAGE_ADD = 'enoki:page:add'
     state.events.ENOKI_LOADING = 'enoki:loading'
     state.events.ENOKI_UPDATED = 'enoki:updated'
@@ -41,84 +40,57 @@ function panel () {
     state.events.ENOKI_MOVE = 'enoki:move'
     state.events.ENOKI_SAVE = 'enoki:save'
     
-    emitter.on(state.events.ENOKI_FILES_ADD, onFilesAdd)
-    emitter.on(state.events.ENOKI_LOAD_SITE, onLoadSite)
-    emitter.on(state.events.ENOKI_PAGE_ADD, onPageAdd)
-    emitter.on(state.events.ENOKI_LOADING, onLoading)
-    emitter.on(state.events.ENOKI_UPDATE, onUpdate)
-    emitter.on(state.events.ENOKI_CANCEL, onCancel)
-    emitter.on(state.events.ENOKI_REMOVE, onRemove)
-    emitter.on(state.events.ENOKI_SAVE, onSave)
+    emitter.on(state.events.ENOKI_FILES_ADD, handleFilesAdd)
+    emitter.on(state.events.ENOKI_SITE_LOAD, handleSiteLoad)
+    emitter.on(state.events.ENOKI_PAGE_ADD, handlePageAdd)
+    emitter.on(state.events.ENOKI_LOADING, handleLoading)
+    emitter.on(state.events.ENOKI_UPDATE, handleUpdate)
+    emitter.on(state.events.ENOKI_CANCEL, handleCancel)
+    emitter.on(state.events.ENOKI_REMOVE, handleRemove)
+    emitter.on(state.events.ENOKI_SAVE, handleSave)
 
-    function onLoad () {
-
-    }
-
-    function onUpdate (data) {
+    function handleUpdate (data) {
       assert.equal(typeof data, 'object', 'enoki: data must be type object')
       assert.equal(typeof data.url, 'string', 'enoki: data.url must be type string')
+      assert.equal(typeof data.data, 'object', 'enoki: data.data must be type string')
 
+      // get the changes and merge them
       var changes = state.enoki.changes[data.url]
-      var shouldUpdate = data.render !== false
-
       state.enoki.changes[data.url] = xtend(changes, data.data)
 
+      // trigger updated and render
       emitter.emit(state.events.ENOKI_UPDATED)
-      if (shouldUpdate) emitter.emit(state.events.RENDER)
+      if (data.render !== false) emitter.emit(state.events.RENDER)
     }
 
-    async function onSave (data) {
-      assert.equal(typeof data, 'object', 'enoki: data must be type object')
-      assert.equal(typeof data.path, 'string', 'enoki: data.path must be type string')
-      assert.equal(typeof data.url, 'string', 'enoki: data.url must be type string')
-      assert.equal(typeof data.page, 'object', 'enoki: data.page must be type object')
+    async function handleSave (data) {
+      assert.equal(typeof data, 'object', 'enoki: arg1 must be type object')
+      assert.equal(typeof data.path, 'string', 'enoki: arg1.path must be type string')
+      assert.equal(typeof data.url, 'string', 'enoki: arg1.url must be type string')
+      assert.equal(typeof data.data, 'object', 'enoki: arg1.data must be type object')
 
       emitter.emit(state.events.ENOKI_LOADING, { loading: true })
       emitter.emit(state.events.RENDER)
 
-      // todo: cleanup
       try {
         var contentPage = state.content[data.url]
-        var shouldMove = contentPage.name !== data.page.name
-        var page = xtend(state.content[data.url], data.page)
-        var file = data.file || state.site.config.file
+        var content = xtend(state.content[data.url], data.data)
+        var file = data.file || state.site.config.file || 'index.txt'
+        var pathFile = path.join(data.path, file)
 
-        // TODO: create reserved keys
-        delete page.files
-        delete page.pages
-        delete page.url
-        delete page.name
-        delete page.path
+        // delete reserved keys
+        reservedKeys.forEach(key => delete content[key])
 
-        // create the file
-        await archive.writeFile(
-          path.join(data.path, file),
-          smarkt.stringify(page)
-        )
-
-        // save
+        // create the file and save
+        await archive.writeFile(pathFile, smarkt.stringify(content))
         await archive.commit()
 
-        // very messy
+        // add to state and remove from changes
         state.content[data.url] = xtend(state.content[data.url], state.enoki.changes[data.url])
         delete state.enoki.changes[data.url]
 
-        emitter.once(state.events.SITE_REFRESHED, async function () {
-          // bundles directory
-          try { await archive.readdir('/bundles') }
-          catch (err) { await archive.mkdir('/bundles') }
-
-          try {
-            await archive.writeFile(
-              '/bundles/content.json',
-              JSON.stringify(state.content, { }, 2)
-            )
-            await archive.commit()
-          } catch (err) {
-            console.warn(err)
-          }
-        })
-
+        // refresh and create the content json
+        emitter.once(state.events.SITE_REFRESHED, writeContentJson)
         emitter.emit(state.events.SITE_REFRESH)
       } catch (err) {
         alert(err.message)
@@ -129,15 +101,16 @@ function panel () {
       emitter.emit(state.events.RENDER)
     }
 
-    function onCancel (data) {
+    function handleCancel (data) {
       assert.equal(typeof data, 'object', 'enoki: data must be type object')
       assert.equal(typeof data.url, 'string', 'enoki: data.url must be type string')
 
+      // discard our changes
       delete state.enoki.changes[data.url]
       emitter.emit(state.events.RENDER)
     }
 
-    function onLoading (data) {
+    function handleLoading (data) {
       if (data && data.loading !== undefined) {
         state.enoki.loading = data.loading
       } else {
@@ -147,7 +120,7 @@ function panel () {
       if (data.render !== false) emitter.emit(state.events.RENDER)
     }
 
-    async function onPageAdd (data) {
+    async function handlePageAdd (data) {
       assert.equal(typeof data, 'object', 'enoki: data must be type object')
       assert.equal(typeof data.path, 'string', 'enoki: data.path must be type string')
       assert.equal(typeof data.url, 'string', 'enoki: data.url must be type string')
@@ -159,13 +132,11 @@ function panel () {
       try {
         var content = { title: data.title, view: data.view }
         var file = data.file || state.site.config.file
+        var pathFile = path.join(data.path, file)
 
+        // create the directory and file
         await archive.mkdir(data.path)
-        await archive.writeFile(
-          path.join(data.path, file),
-          smarkt.stringify(content)
-        )
-
+        await archive.writeFile(pathFile, smarkt.stringify(content))
         emitter.emit(state.events.SITE_REFRESH)
       } catch (err) {
         alert(err.message)
@@ -173,10 +144,10 @@ function panel () {
       }
 
       emitter.emit(state.events.ENOKI_LOADING, { loading: false, render: false })
-      emitter.emit(state.events.REPLACESTATE, '?url=' + data.url)
+      if (data.redirect !== false) emitter.emit(state.events.REPLACESTATE, '?url=' + data.url)
     }
 
-    async function onRemove (data) {
+    async function handleRemove (data) {
       assert.equal(typeof data, 'object', 'enoki: data must be type object')
       assert.equal(typeof data.url, 'string', 'enoki: data.url must be type string')
       assert.equal(typeof data.path, 'string', 'enoki: data.path must be type string')
@@ -212,7 +183,7 @@ function panel () {
       emitter.emit(state.events.ENOKI_LOADING, { loading: false })
     }
 
-    async function onFilesAdd (data) {
+    async function handleFilesAdd (data) {
       assert.equal(typeof data, 'object', 'enoki: data must be type object')
       assert.equal(typeof data.url, 'string', 'enoki: data.url must be type string')
       assert.equal(typeof data.path, 'string', 'enoki: data.path must be type string')
@@ -236,11 +207,26 @@ function panel () {
       }
     }
 
-    function onLoadSite (data) {
+    function handleSiteLoad (data) {
       if (data.content) state.content = data.content
       if (data.site) state.site = data.site
       if (data.archive) archive = data.archive
       if (data.render !== false) emitter.emit(state.events.RENDER)
+    }
+
+    async function writeContentJson () {
+      try { await archive.readdir('/bundles') }
+      catch (err) { await archive.mkdir('/bundles') }
+
+      try {
+        await archive.writeFile(
+          '/bundles/content.json',
+          JSON.stringify(state.content, { }, 2)
+        )
+        await archive.commit()
+      } catch (err) {
+        console.warn(err)
+      }
     }
   }
 }

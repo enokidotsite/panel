@@ -167,7 +167,7 @@ function view (state, emit) {
       file: state.page.file,
       path: state.page.path,
       url: state.page.url,
-      page: xtend(state.page, draftPage)
+      data: xtend(state.page, draftPage)
     })
   }
 
