@@ -14,7 +14,7 @@
   "dependencies": {
     "choo": "^6.6.1",
     "choo-tts": "^1.0.0",
-    "enoki": "^2.0.4",
+    "enoki": "^2.0.4-beta2",
     "gr8": "^3.1.4",
     "markdown-it": "^8.4.0",
     "markdown-it-task-lists": "^2.1.0",
