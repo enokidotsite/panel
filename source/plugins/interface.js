@@ -10,8 +10,7 @@ async function ui (state, emitter) {
   state.ui = {
     history: getHistoryDefaults(),
     version: _package.version,
-    dragActive: false,
-    info: { }
+    dragActive: false
   }
 
   state.events.UI_HISTORY = 'ui:history'
@@ -20,13 +19,6 @@ async function ui (state, emitter) {
   emitter.on(state.events.UI_HISTORY_RESET, handleHistoryReset)
   emitter.on(state.events.UI_HISTORY, handleHistory)
   // emitter.on(state.events.DOMCONTENTLOADED, handleLoad)
-
-  try {
-    var archive = new DatArchive(window.location.origin)
-    var info = await archive.getInfo()
-    state.ui.info = info
-    emitter.emit(state.events.RENDER)
-  } catch (err) { }
 
   function handleHistory (data) {
     if (!data.route || !data.path) return

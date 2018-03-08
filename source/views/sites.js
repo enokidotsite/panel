@@ -33,7 +33,6 @@ function view (state, emit) {
   } else {
     return renderSites({
       selected: state.site.info ? state.site.info.url : '',
-      isOwner: state.ui.info.isOwner,
       handleRemove: handleRemove,
       handleLoad: handleLoad,
       handleAdd: handleAdd,
@@ -85,24 +84,8 @@ function renderSites (props) {
           handleRemove: props.handleRemove
         }))
       })}
-      ${props.isOwner ? renderEditPanel() : ''}
     </div>
   `
-
-  function renderEditPanel () {
-    return html`
-      <div class="p2 x xjc w100">
-        <div
-          class="fc-bg25 fch-fg curp"
-          onclick=${handleEditPanel}
-        >Edit Panel</div>
-      </div>
-    `
-  }
-
-  function handleEditPanel () {
-    props.handleLoad({ url: window.location.origin, redirect: true })
-  }
 }
 
 function renderEmpty (state, emit) {
