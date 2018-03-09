@@ -12,7 +12,7 @@ featured: false
 ----
 excerpt: Creating websites can be fun! Updating websites can be a major drag. Like, a really major drag. Enoki is interested in trying to solve these issues around *updating websites* as a foundation for creating fresh and exciting ways of *creating websites*.
 ----
-text: Creating websites can be fun! Updating websites can be a major drag. Like, a really major drag. Enoki is interested in trying to solve these issues around *updating websites* as a foundation for creating fresh and exciting ways of *creating websites*. There are a few primary interfaces for managing websites these days.
+text: Creating websites can be fun! Updating websites can be a major drag. Like, a really major drag. Enoki is interested in solving these issues around *updating websites* as a foundation for exploring exciting new ways of *creating websites*. There are a few primary interfaces for managing websites these days.
 
 1. Through a maze of fields for data entry.
 2. With a WYSIWYG (what you see is what you get)
@@ -20,7 +20,7 @@ text: Creating websites can be fun! Updating websites can be a major drag. Like,
 
 If you’ve ever used one of these WYSIWYG solutions to create a client site, you’ll know the dangers of handing over the keys.
 
-Let’s take that third option and make it *significantly* less broken, and get there by first implimenting the pro functionality you’d expect in a more (capital letters) CMS solution constructed with collections of fields.
+Let’s take that third option and make it *significantly* less broken, and get there by first implimenting the pro functionality you’d expect in a (capital letters) CMS solution centered around fieldsets.
 
 Of course, this is all a little boring now, but intended to create a truly robust foundation for building the next generation of interfaces for connecting and sharing both online *and offline*—and have fun while doing it.
 

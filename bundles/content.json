@@ -1,4 +1,14 @@
 {
+  "/community": {
+    "title": "Community",
+    "view": "community",
+    "text": "Coming soon",
+    "name": "community",
+    "path": "/content/community",
+    "url": "/community",
+    "files": {},
+    "pages": {}
+  },
   "/docs": {
     "title": "Docs",
     "view": "docs",
@@ -15,16 +25,6 @@
         "source": "/content/docs/fields"
       }
     }
-  },
-  "/community": {
-    "title": "Community",
-    "view": "community",
-    "text": "Coming soon",
-    "name": "community",
-    "path": "/content/community",
-    "url": "/community",
-    "files": {},
-    "pages": {}
   },
   "/faq": {
     "title": "FAQ",
@@ -155,6 +155,22 @@
     "files": {},
     "pages": {}
   },
+  "/issues/designs": {
+    "title": "Designs",
+    "view": "issue",
+    "tags": [
+      "1.0.0",
+      "todo"
+    ],
+    "text": "Create some fresh designs.\n\n## Todo\n\n- [ ] Update dependencies before release\n\n## Things to keep in mind\n\n- Super simple document / plain CSS\n\n## Streamer\n\n- [ ] A design for streams\n- [ ] Vlog style?\n\n## Ripple\n\n- SVG warping sort of thing, text input to outlined shapes",
+    "date": "2018-03-05",
+    "visible": true,
+    "name": "designs",
+    "path": "/content/issues/designs",
+    "url": "/issues/designs",
+    "files": {},
+    "pages": {}
+  },
   "/issues/fields": {
     "title": "Fields",
     "view": "issue",
@@ -178,7 +194,7 @@
       "todo",
       "1.0.1"
     ],
-    "text": "## Todo\n\n- [ ] Meta data support (api/panel)\n- [ ] Video preview\n- [ ] Audio preview\n- [ ] Image zooming",
+    "text": "## Todo\n\n- [ ] Meta data support (api/panel)\n- [x] Video preview\n- [x] Audio preview\n- [ ] Image zooming",
     "date": "2018-03-05",
     "visible": true,
     "name": "files",
@@ -187,19 +203,18 @@
     "files": {},
     "pages": {}
   },
-  "/issues/designs": {
-    "title": "Designs",
+  "/issues/library": {
+    "title": "Library",
     "view": "issue",
+    "text": "Need to clean up some of the boundaries between things.\n\n- [ ] Localization support\n- [ ] `require('enoki/tools')` for handy methods",
     "tags": [
-      "1.0.0",
       "todo"
     ],
-    "text": "Create some fresh designs.\n\n## Todo\n\n- [ ] Update dependencies before release\n\n## Things to keep in mind\n\n- Super simple document / plain CSS\n\n## Streamer\n\n- [ ] A design for streams\n- [ ] Vlog style?\n\n## Ripple\n\n- SVG warping sort of thing, text input to outlined shapes",
     "date": "2018-03-05",
     "visible": true,
-    "name": "designs",
-    "path": "/content/issues/designs",
-    "url": "/issues/designs",
+    "name": "library",
+    "path": "/content/issues/library",
+    "url": "/issues/library",
     "files": {},
     "pages": {}
   },
@@ -233,21 +248,6 @@
     "files": {},
     "pages": {}
   },
-  "/issues/library": {
-    "title": "Library",
-    "view": "issue",
-    "text": "Need to clean up some of the boundaries between things.\n\n- [ ] Localization support\n- [ ] `require('enoki/tools')` for handy methods",
-    "tags": [
-      "todo"
-    ],
-    "date": "2018-03-05",
-    "visible": true,
-    "name": "library",
-    "path": "/content/issues/library",
-    "url": "/issues/library",
-    "files": {},
-    "pages": {}
-  },
   "/issues/page-functionality": {
     "title": "Page functionality",
     "view": "issue",
@@ -263,19 +263,6 @@
     "files": {},
     "pages": {}
   },
-  "/issues/panel-layouts": {
-    "title": "Panel layouts",
-    "view": "issue",
-    "text": "Fields will be both **input** and **display**. An example of an input field is `text` and `textarea`. An an example of a display field is `pages` or `files` in the existing sidebar.\n\nNothing is needed to make display fields possible, however it should be possible to not only place custom fields in the sidebar, but be able to define custom columns an layouts from within blueprints.\n\nFor instance:\n\n```\n{\n  \"title\": \"hi\",\n\t\"layout\": {\n\t\t\"navigation\": {\n\t\t\t\"fields\": ['pages', 'files'],\n\t\t\t\"width\": \"1/3\"\n\t\t},\n\t\t\"fieldset\": {\n\t\t\t\"fields\": ['title', 'text'],\n\t\t\t\"width\": \"2/3\"\n\t\t}\n  },\n\t\"fields\": {\n\t\t\"pages\": {\n\t\t\t\"type\": \"pages\"\n\t\t},\n\t\t\"files\": {\n\t\t\t\"type\": \"files\"\n\t\t},\n\t\t\"title\": {\n\t\t\t\"label\": \"Title\",\n\t\t\t\"type\": \"text\"\n\t\t},\n\t\t\"text\": {\n\t\t\t\"label\": \"Text\",\n\t\t\t\"type\": \"textarea\"\n\t\t}\n\t}\n}\n```\n\n## Features\n\n- `sticky` option for columns to replicate sidebar functionality",
-    "tags": [
-      "todo"
-    ],
-    "name": "panel-layouts",
-    "path": "/content/issues/panel-layouts",
-    "url": "/issues/panel-layouts",
-    "files": {},
-    "pages": {}
-  },
   "/issues/saving": {
     "title": "Saving",
     "view": "issue",
@@ -284,23 +271,26 @@
       "todo"
     ],
     "text": "How to handle static output?\n\n- [ ] Local storage for changes?\n- [ ] Saving title change saves to index.html, too\n- [ ] Meta tags in index.html\n- [ ] How to speed things up (static output / reload all state)\n- [ ] Dont’t worry about static HTML output as the affordances of the p2p web mean initialization is less of an issue",
+    "date": "2018-03-05",
+    "visible": true,
     "name": "saving",
     "path": "/content/issues/saving",
     "url": "/issues/saving",
     "files": {},
     "pages": {}
   },
-  "/issues/sites": {
-    "title": "Sites",
+  "/issues/panel-layouts": {
+    "title": "Panel layouts",
     "view": "issue",
+    "text": "Fields will be both **input** and **display**. An example of an input field is `text` and `textarea`. An an example of a display field is `pages` or `files` in the existing sidebar.\n\nNothing is needed to make display fields possible, however it should be possible to not only place custom fields in the sidebar, but be able to define custom columns an layouts from within blueprints.\n\nFor instance:\n\n```\n{\n  \"title\": \"hi\",\n\t\"layout\": {\n\t\t\"navigation\": {\n\t\t\t\"fields\": ['pages', 'files'],\n\t\t\t\"width\": \"1/3\"\n\t\t},\n\t\t\"fieldset\": {\n\t\t\t\"fields\": ['title', 'text'],\n\t\t\t\"width\": \"2/3\"\n\t\t}\n  },\n\t\"fields\": {\n\t\t\"pages\": {\n\t\t\t\"type\": \"pages\"\n\t\t},\n\t\t\"files\": {\n\t\t\t\"type\": \"files\"\n\t\t},\n\t\t\"title\": {\n\t\t\t\"label\": \"Title\",\n\t\t\t\"type\": \"text\"\n\t\t},\n\t\t\"text\": {\n\t\t\t\"label\": \"Text\",\n\t\t\t\"type\": \"textarea\"\n\t\t}\n\t}\n}\n```\n\n## Features\n\n- `sticky` option for columns to replicate sidebar functionality",
     "tags": [
-      "todo",
-      "1.0.1"
+      "todo"
     ],
-    "text": "## Todo\n\n- [x] Settings → Remove\n- [ ] Settings → HTTP fallback\n- [ ] Reordering\n- [ ] Persist across domains (ditch localstorage?)\n- [ ] Store references to designs inside of `/content` instead of the `designs.js` plugin\n\n## Ideas\n\n- Some sort of p2p stats, such as how many peers, etc…\n- A simple way of deploying to a service like Hashbase",
-    "name": "sites",
-    "path": "/content/issues/sites",
-    "url": "/issues/sites",
+    "date": "2018-03-05",
+    "visible": true,
+    "name": "panel-layouts",
+    "path": "/content/issues/panel-layouts",
+    "url": "/issues/panel-layouts",
     "files": {},
     "pages": {}
   },
@@ -351,6 +341,22 @@
       }
     }
   },
+  "/issues/sites": {
+    "title": "Sites",
+    "view": "issue",
+    "tags": [
+      "todo",
+      "1.0.1"
+    ],
+    "text": "## Todo\n\n- [x] Settings → Remove\n- [ ] Settings → HTTP fallback\n- [ ] Reordering\n- [ ] Persist across domains (ditch localstorage?)\n- [ ] Store references to designs inside of `/content` instead of the `designs.js` plugin\n\n## Ideas\n\n- Some sort of p2p stats, such as how many peers, etc…\n- A simple way of deploying to a service like Hashbase",
+    "date": "2018-03-05",
+    "visible": true,
+    "name": "sites",
+    "path": "/content/issues/sites",
+    "url": "/issues/sites",
+    "files": {},
+    "pages": {}
+  },
   "/guides": {
     "title": "Guides",
     "view": "guides",
@@ -363,7 +369,7 @@
         "name": "drafts",
         "path": "/content/guides/drafts.txt",
         "url": "/guides/drafts.txt",
-        "source": "workspace://striped-appliance/content/guides/drafts.txt",
+        "source": "workspace://tasteless-toe/content/guides/drafts.txt",
         "extension": ".txt",
         "filename": "drafts.txt"
       }
@@ -401,60 +407,6 @@
       }
     }
   },
-  "/guides/01-creating-your-first-site": {
-    "title": "Creating Your First Site (or not!)",
-    "view": "guide",
-    "text": "Enoki is currently an *experimental* CMS (content management system) for the peer-to-peer web. It’s intended for those familiar with making websites to gain exposure to the unique affordances of the peer-to-peer web.\n\n1. Platforms should be free, and not treat attention as a resource to be extracted from users and sold to advertisers.\n2. Users should own their data, and grant permission to platforms to read and write locally *by default*. Interfaces are simply *views* for data which exist with the user.\n3. Data should be shared openly; the tools should be fungible. Anyone can create applications with instant access to all public data, avoiding limitations implimented by proprietary APIs.\n4. Our tools should be ultralight and understandable, not heavy and complex!\n\n## Creating a Site\n\n1. Navigate to **Sites** and click *Create a New Site*\n2. Enter your site’s Title, and a quick Description\n3. Browse the design, and select one which looks right for you\n4. Authorize Beaker to **fork** the design\n5. Begin editing your content!\n\nYou might be asking, what is **forking**? Simply put, it’s creating your own unique copy of the site. Unlike other platforms, your site’s files exist on your computer! This means *you* own and control your site. There is no risk of your site dissapearing if Enoki ceases to exist.\n\nThis is a *super critical thing*. Platforms today are designed to make you dependant upon them as a way to sell advertising. By giving you control over your own content and data, you are not bound to Enoki!\n\n## Managing your Content\n\nYou can manage your content in a few different ways.\n\n1. With the Enoki Panel\n2. By editing the files directly using whatever tool you’d like\n3. Using any application which can read your content\n\nUnlike platforms, your data is human readable. Enoki just creates folders and text files! You can edit your site with any application which can edit text files. Not only that, you can easily use other applications (or create your own) to manage your site.\n\nThis is possible because you own your content and data!\n\n## Accessing Your Site\n\nYou’ll notice that URLs look funny in Beaker. Remember torrents? You’ve probably downloaded music or movies this way. Beaker Browser is an experiment built on the entire internet working like that. You don’t have to pay any one for your site to appear online! This is *truely free*, and not dependant upon advertising.\n\nThis is called peer-to-peer networking. When using a tool like SquareSpace, your site exists on a server they own. Anyone visiting your site must connect through SquareSpace. Now, imagine them instead connected directly to you, and not only that, but any one else who happens to be visiting your site. Crazy, right?!\n\nBecause there is no central provider, like SquareSpace, someone (either you or someone else) must be providing your site for others to access it. Fortunately, you can simply enter your site’s `dat` URL somewhere like [Hashbase](https://hashbase.com) which ensure your site will always be accessible! Not only that, you can also access your site over `http` in a normal browser like Chrome or Firefox!\n\nYou might be thinking, *Shit! This makes a lot of sense!* Yeah, it does! If not, don’t worry—it’s still early and the tools will get there.\n\n## Cutomizing Your Site\n\nEnoki builds *real websites*. Not only do you get all the files for the site, you also get the entire source. You can take this source and choose to never use Enoki again, if you’d like. Remember; you are learning how to *actually program*, and not just use proprietary tools.",
-    "excerpt": "Ok, you’ve stumbled across Enoki. What are you getting yourself into? Let’s look at how is this different from existing platforms, and expand upon both the pros and cons. Is Enoki right for you? Maybe, but hopefully you can take the knowledge with you regardless of it’s a match.",
-    "color": true,
-    "featured": true,
-    "tags": [
-      "beginner"
-    ],
-    "background": "#045bc1",
-    "name": "01-creating-your-first-site",
-    "path": "/content/guides/01-creating-your-first-site",
-    "url": "/guides/01-creating-your-first-site",
-    "files": {
-      "image.svg": {
-        "name": "image",
-        "path": "/content/guides/01-creating-your-first-site/image.svg",
-        "url": "/guides/01-creating-your-first-site/image.svg",
-        "source": "workspace://striped-appliance/content/guides/01-creating-your-first-site/image.svg",
-        "extension": ".svg",
-        "filename": "image.svg",
-        "type": "image"
-      }
-    },
-    "pages": {}
-  },
-  "/guides/03-creating-pages": {
-    "title": "Creating Custom Pages",
-    "view": "guide",
-    "tags": [
-      "beginner"
-    ],
-    "color": true,
-    "featured": false,
-    "excerpt": "Creating websites can be fun! Updating websites can be a major drag. Like, a really major drag. Enoki is interested in trying to solve these issues around *updating websites* as a foundation for creating fresh and exciting ways of *creating websites*.",
-    "text": "Creating websites can be fun! Updating websites can be a major drag. Like, a really major drag. Enoki is interested in trying to solve these issues around *updating websites* as a foundation for creating fresh and exciting ways of *creating websites*. There are a few primary interfaces for managing websites these days.\n\n1. Through a maze of fields for data entry.\n2. With a WYSIWYG (what you see is what you get)\n3. Some sort of broken thing between those two.\n\nIf you’ve ever used one of these WYSIWYG solutions to create a client site, you’ll know the dangers of handing over the keys.\n\nLet’s take that third option and make it *significantly* less broken, and get there by first implimenting the pro functionality you’d expect in a more (capital letters) CMS solution constructed with collections of fields.\n\nOf course, this is all a little boring now, but intended to create a truly robust foundation for building the next generation of interfaces for connecting and sharing both online *and offline*—and have fun while doing it.\n\n## Views\n\nWhen creating a new Page in the Panel you select a *view*. For instance, there could be `blog` or `about` views. When visiting your site, this let’s you say, “I’d like my about page to be formatted a certain way.” Inside the Panel, this let’s you say, “I’d like to see certain fields to let me easily input exactly the type of content I want on my about page.”\n\nThis sort of specificity ensures your page doesn’t get super messy when updating content, as each type of content is defined seperately. This same cleanliness clearly implies a limitation in the *mesiness*, arguably the most critical part of any creative endevour. For now, this mesiness takes place during the creative process of determining what the site *should be*, not in when you are trying to simply update it. These lines are blurry, but for now let’s go with that.\n\n## Pages\n\nThe interface of the *editor* in the Panel is always the same; a set of fields representing the data associated with that page. We define what sort of data is associated with a page by creating a *blueprint* located in `/blueprints`.\n\nThere are all sorts of options associated with blueprints, but these guides are being written hastily as there is a lot to do, and this will be expanded on in the future!\n\nFor now, just look around the example designs `/blueprints` directories to see what’s up. As an example, here is the default blueprint:\n\n```\n{\n  \"title\": \"Default\",\n  \"fields\": {\n    \"title\": {\n      \"label\": \"Title\",\n      \"type\": \"text\"\n    },\n    \"text\": {\n      \"label\": \"Text\",\n      \"type\": \"textarea\"\n    }\n  }\n}\n```\n\n## Getting messy\n\nAs mentioned above, this somewhat strict field-based composition is a near-term strategy for creating a truly flexible future for Enoki. Certain sites feature inline-editable interface only visible to the site’s owner. This is endearingly called `self-mutation`, and will be rolling out in surprising ways across various designs soon!",
-    "background": "#f21006",
-    "name": "03-creating-pages",
-    "path": "/content/guides/03-creating-pages",
-    "url": "/guides/03-creating-pages",
-    "files": {
-      "image.svg": {
-        "name": "image",
-        "path": "/content/guides/03-creating-pages/image.svg",
-        "url": "/guides/03-creating-pages/image.svg",
-        "source": "workspace://striped-appliance/content/guides/03-creating-pages/image.svg",
-        "extension": ".svg",
-        "filename": "image.svg",
-        "type": "image"
-      }
-    },
-    "pages": {}
-  },
   "/guides/02-customizing-your-site": {
     "title": "Customizing Your Sites",
     "view": "guide",
@@ -474,7 +426,61 @@
         "name": "image",
         "path": "/content/guides/02-customizing-your-site/image.svg",
         "url": "/guides/02-customizing-your-site/image.svg",
-        "source": "workspace://striped-appliance/content/guides/02-customizing-your-site/image.svg",
+        "source": "workspace://tasteless-toe/content/guides/02-customizing-your-site/image.svg",
+        "extension": ".svg",
+        "filename": "image.svg",
+        "type": "image"
+      }
+    },
+    "pages": {}
+  },
+  "/guides/01-creating-your-first-site": {
+    "title": "Creating Your First Site (or not!)",
+    "view": "guide",
+    "text": "Enoki is currently an *experimental* CMS (content management system) for the peer-to-peer web. It’s intended for those familiar with making websites to gain exposure to the unique affordances of the peer-to-peer web.\n\n1. Platforms should be free, and not treat attention as a resource to be extracted from users and sold to advertisers.\n2. Users should own their data, and grant permission to platforms to read and write locally *by default*. Interfaces are simply *views* for data which exist with the user.\n3. Data should be shared openly; the tools should be fungible. Anyone can create applications with instant access to all public data, avoiding limitations implimented by proprietary APIs.\n4. Our tools should be ultralight and understandable, not heavy and complex!\n\n## Creating a Site\n\n1. Navigate to **Sites** and click *Create a New Site*\n2. Enter your site’s Title, and a quick Description\n3. Browse the design, and select one which looks right for you\n4. Authorize Beaker to **fork** the design\n5. Begin editing your content!\n\nYou might be asking, what is **forking**? Simply put, it’s creating your own unique copy of the site. Unlike other platforms, your site’s files exist on your computer! This means *you* own and control your site. There is no risk of your site dissapearing if Enoki ceases to exist.\n\nThis is a *super critical thing*. Platforms today are designed to make you dependant upon them as a way to sell advertising. By giving you control over your own content and data, you are not bound to Enoki!\n\n## Managing your Content\n\nYou can manage your content in a few different ways.\n\n1. With the Enoki Panel\n2. By editing the files directly using whatever tool you’d like\n3. Using any application which can read your content\n\nUnlike platforms, your data is human readable. Enoki just creates folders and text files! You can edit your site with any application which can edit text files. Not only that, you can easily use other applications (or create your own) to manage your site.\n\nThis is possible because you own your content and data!\n\n## Accessing Your Site\n\nYou’ll notice that URLs look funny in Beaker. Remember torrents? You’ve probably downloaded music or movies this way. Beaker Browser is an experiment built on the entire internet working like that. You don’t have to pay any one for your site to appear online! This is *truely free*, and not dependant upon advertising.\n\nThis is called peer-to-peer networking. When using a tool like SquareSpace, your site exists on a server they own. Anyone visiting your site must connect through SquareSpace. Now, imagine them instead connected directly to you, and not only that, but any one else who happens to be visiting your site. Crazy, right?!\n\nBecause there is no central provider, like SquareSpace, someone (either you or someone else) must be providing your site for others to access it. Fortunately, you can simply enter your site’s `dat` URL somewhere like [Hashbase](https://hashbase.com) which ensure your site will always be accessible! Not only that, you can also access your site over `http` in a normal browser like Chrome or Firefox!\n\nYou might be thinking, *Shit! This makes a lot of sense!* Yeah, it does! If not, don’t worry—it’s still early and the tools will get there.\n\n## Cutomizing Your Site\n\nEnoki builds *real websites*. Not only do you get all the files for the site, you also get the entire source. You can take this source and choose to never use Enoki again, if you’d like. Remember; you are learning how to *actually program*, and not just use proprietary tools.",
+    "excerpt": "Ok, you’ve stumbled across Enoki. What are you getting yourself into? Let’s look at how is this different from existing platforms, and expand upon both the pros and cons. Is Enoki right for you? Maybe, but hopefully you can take the knowledge with you regardless of it’s a match.",
+    "color": true,
+    "featured": true,
+    "tags": [
+      "beginner"
+    ],
+    "background": "#045bc1",
+    "name": "01-creating-your-first-site",
+    "path": "/content/guides/01-creating-your-first-site",
+    "url": "/guides/01-creating-your-first-site",
+    "files": {
+      "image.svg": {
+        "name": "image",
+        "path": "/content/guides/01-creating-your-first-site/image.svg",
+        "url": "/guides/01-creating-your-first-site/image.svg",
+        "source": "workspace://tasteless-toe/content/guides/01-creating-your-first-site/image.svg",
+        "extension": ".svg",
+        "filename": "image.svg",
+        "type": "image"
+      }
+    },
+    "pages": {}
+  },
+  "/guides/03-creating-pages": {
+    "title": "Creating Custom Pages",
+    "view": "guide",
+    "tags": [
+      "beginner"
+    ],
+    "color": true,
+    "featured": false,
+    "excerpt": "Creating websites can be fun! Updating websites can be a major drag. Like, a really major drag. Enoki is interested in trying to solve these issues around *updating websites* as a foundation for creating fresh and exciting ways of *creating websites*.",
+    "text": "Creating websites can be fun! Updating websites can be a major drag. Like, a really major drag. Enoki is interested in solving these issues around *updating websites* as a foundation for exploring exciting new ways of *creating websites*. There are a few primary interfaces for managing websites these days.\n\n1. Through a maze of fields for data entry.\n2. With a WYSIWYG (what you see is what you get)\n3. Some sort of broken thing between those two.\n\nIf you’ve ever used one of these WYSIWYG solutions to create a client site, you’ll know the dangers of handing over the keys.\n\nLet’s take that third option and make it *significantly* less broken, and get there by first implimenting the pro functionality you’d expect in a (capital letters) CMS solution centered around fieldsets.\n\nOf course, this is all a little boring now, but intended to create a truly robust foundation for building the next generation of interfaces for connecting and sharing both online *and offline*—and have fun while doing it.\n\n## Views\n\nWhen creating a new Page in the Panel you select a *view*. For instance, there could be `blog` or `about` views. When visiting your site, this let’s you say, “I’d like my about page to be formatted a certain way.” Inside the Panel, this let’s you say, “I’d like to see certain fields to let me easily input exactly the type of content I want on my about page.”\n\nThis sort of specificity ensures your page doesn’t get super messy when updating content, as each type of content is defined seperately. This same cleanliness clearly implies a limitation in the *mesiness*, arguably the most critical part of any creative endevour. For now, this mesiness takes place during the creative process of determining what the site *should be*, not in when you are trying to simply update it. These lines are blurry, but for now let’s go with that.\n\n## Pages\n\nThe interface of the *editor* in the Panel is always the same; a set of fields representing the data associated with that page. We define what sort of data is associated with a page by creating a *blueprint* located in `/blueprints`.\n\nThere are all sorts of options associated with blueprints, but these guides are being written hastily as there is a lot to do, and this will be expanded on in the future!\n\nFor now, just look around the example designs `/blueprints` directories to see what’s up. As an example, here is the default blueprint:\n\n```\n{\n  \"title\": \"Default\",\n  \"fields\": {\n    \"title\": {\n      \"label\": \"Title\",\n      \"type\": \"text\"\n    },\n    \"text\": {\n      \"label\": \"Text\",\n      \"type\": \"textarea\"\n    }\n  }\n}\n```\n\n## Getting messy\n\nAs mentioned above, this somewhat strict field-based composition is a near-term strategy for creating a truly flexible future for Enoki. Certain sites feature inline-editable interface only visible to the site’s owner. This is endearingly called `self-mutation`, and will be rolling out in surprising ways across various designs soon!",
+    "background": "#f21006",
+    "name": "03-creating-pages",
+    "path": "/content/guides/03-creating-pages",
+    "url": "/guides/03-creating-pages",
+    "files": {
+      "image.svg": {
+        "name": "image",
+        "path": "/content/guides/03-creating-pages/image.svg",
+        "url": "/guides/03-creating-pages/image.svg",
+        "source": "workspace://tasteless-toe/content/guides/03-creating-pages/image.svg",
         "extension": ".svg",
         "filename": "image.svg",
         "type": "image"
@@ -501,7 +507,7 @@
         "name": "image",
         "path": "/content/guides/04-how-to-leave-enoki/image.svg",
         "url": "/guides/04-how-to-leave-enoki/image.svg",
-        "source": "workspace://striped-appliance/content/guides/04-how-to-leave-enoki/image.svg",
+        "source": "workspace://tasteless-toe/content/guides/04-how-to-leave-enoki/image.svg",
         "extension": ".svg",
         "filename": "image.svg",
         "type": "image"
@@ -524,7 +530,7 @@
         "name": "image",
         "path": "/content/guides/05-starting-from-scratch/image.svg",
         "url": "/guides/05-starting-from-scratch/image.svg",
-        "source": "workspace://striped-appliance/content/guides/05-starting-from-scratch/image.svg",
+        "source": "workspace://tasteless-toe/content/guides/05-starting-from-scratch/image.svg",
         "extension": ".svg",
         "filename": "image.svg",
         "type": "image"
