@@ -24,13 +24,14 @@ class PageNew extends Nanocomponent {
 
     }
 
+    this.handleCancel = this.handleCancel.bind(this)
     this.handleTitle = this.handleTitle.bind(this)
     this.handleView = this.handleView.bind(this)
+    this.handleSave = this.handleSave.bind(this)
     this.handleUri = this.handleUri.bind(this)
   }
 
   createElement (state, emit) {
-    var self = this
     this.key = state.key
     this.views = state.views || { }
     this.value = state.value || { }
@@ -39,7 +40,7 @@ class PageNew extends Nanocomponent {
 
     return html`
       <div class="bgc-bg br1">
-        <form onsubmit={this.handleSave}>
+        <form onsubmit=${this.handleSave}>
           <div class="p1">
             ${this.elTitle()}
             ${this.elUri()}
@@ -115,20 +116,19 @@ class PageNew extends Nanocomponent {
   }
 
   elActions () {
-    var self = this
     return html`
       <div class="x xje c12 fs1 usn fs1 p1 bgc-bg2-5">
         <div class="p1">
           <button
             class="db button-medium b2-currentColor bgc-bg fc-bg25 fch-fg"
-            onclick=${this.handleCancel.bind(self)}
+            onclick=${this.handleCancel}
           >Cancel</button>
         </div>
         <div class="p1">
           <button
             type="submit"
             class="xx button-medium fc-bg bgc-blue bgch-fg fwb"
-            onclick=${this.handleSave.bind(self)}
+            onclick=${this.handleSave}
           >Create</button>
         </div>
       </div>
@@ -158,12 +158,18 @@ class PageNew extends Nanocomponent {
 
   handleSave (event) {
     this.emit({ key: this.key, event: 'save', value: this.value })
-    if (event) event.preventDefault()
+    if (event) {
+      event.stopPropagation()
+      event.preventDefault()
+    }
   }
 
   handleCancel (event) {
     this.emit({ event: 'cancel' })
-    if (event) event.preventDefault()
+    if (event) {
+      event.stopPropagation()
+      event.preventDefault()
+    }
   }
 
   update (props) {
