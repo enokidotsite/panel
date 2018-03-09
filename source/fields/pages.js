@@ -75,23 +75,36 @@ module.exports = class Pages extends Nanocomponent {
       .map(function (child) {
         if (!child.url) return
         return html`
-          <li id="page-${child.url}" class="m0">
+          <li id="page-${child.url}" class="x xjb m0 ophc100">
             <a
               href="?url=${child.url}"
-              class="x xjb py1 truncate"
-              ondragstart=${handleDragStart}
+              class="x xx xjb py1 truncate"
             >
               <span>${child.title || child.name}</span>
-              ${self.state.pathnames
-                ? html`<span class="fc-bg25">/${child.name}</span>`
-                : ''
-              }
+              ${renderMeta()}
             </a>
+            ${self.state.delete ? renderDelete() : ''}
           </li>
         `
 
-      function handleDragStart (event) {
-        event.dataTransfer.setData('text/plain', `[${child.title}](${child.url})`)
+      function renderMeta () {
+        return html`
+          <div>
+            ${self.state.pathnames ? renderName() : ''}
+          </div>
+        `
+      }
+
+      function renderName () {
+        return html`<span class="fc-bg25">/${child.name}</span>`
+      }
+
+      function renderDelete () {
+        return html`
+          <div class="tom op0 oph">
+            <span class="ttu fc-red fs0-8">D</span>
+          </div>
+        `
       }
     })
   }

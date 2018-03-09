@@ -36,6 +36,8 @@ function File (state, emit) {
         class="psst t0 l0 r0 p1 file-preview"
       >
         ${file.type === 'image' ? image() : ''}
+        ${file.type === 'video' ? video() : ''}
+        ${file.type === 'audio' ? audio() : ''}
       </div>
     `
   }
@@ -85,6 +87,25 @@ function File (state, emit) {
 
   function image () {
     return html`<img src="${file.source}" class="ofc" />`
+  }
+
+  function audio () {
+    return html`
+      <div class="psa t0 l0 r0 b0 x xjc xac">
+        <audio
+          src="${file.source}"
+          controls
+        />
+      </div>
+      `
+  }
+
+  function video () {
+    return html`
+      <div class="psa t0 l0 r0 b0 x xjc xac">
+        <video src="${file.source}" controls />
+      </div>
+    `
   }
 
   function notFound () {
