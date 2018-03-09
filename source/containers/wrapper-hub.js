@@ -88,7 +88,7 @@ function renderFooter (state, emit) {
       </div>
       <div class="p1 x">
         <div class="p1 fwb">enoki</div>
-        <div class="p1 ff-mono">v${state.enoki.version}</div>
+        <div class="p1 ff-mono">v${state.interface.version}</div>
       </div>
     </div>
   `
