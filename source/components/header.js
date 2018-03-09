@@ -49,7 +49,8 @@ function header (state, emit) {
     !linksState.sites.active &&
     !linksState.hub.active
   ) {
-    linksState.editor.active = true
+    if (state.sites.active) linksState.editor.active = true
+    else linksState.sites.active = true
   }
 
   // non p2p
