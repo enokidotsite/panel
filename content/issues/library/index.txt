@@ -5,7 +5,7 @@ view: issue
 text: Need to clean up some of the boundaries between things.
 
 - [ ] Localization support
-- [ ] `require('enoki/tools')` for handy methods
+
 ----
 tags:
   - todo

@@ -12,6 +12,9 @@ text: Create some fresh designs.
 ## Todo
 
 - [ ] Update dependencies before release
+- [ ] Load design info from an array of `dat://` urls
+- [ ] Readme / info
+- [ ] Compare package.json of the site to the design
 
 ## Things to keep in mind
 

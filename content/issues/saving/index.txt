@@ -7,13 +7,12 @@ tags:
   - todo
 
 ----
-text: How to handle static output?
+text:  ### Quick ones
 
 - [ ] Local storage for changes?
 - [ ] Saving title change saves to index.html, too
 - [ ] Meta tags in index.html
-- [ ] How to speed things up (static output / reload all state)
-- [ ] Dont’t worry about static HTML output as the affordances of the p2p web mean initialization is less of an issue
+- [ ] How to speed things up (reload all state)
 ----
 date: 2018-03-05
 ----
