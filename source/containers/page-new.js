@@ -40,7 +40,7 @@ class PageNew extends Nanocomponent {
 
     return html`
       <div class="bgc-bg br1">
-        <form onsubmit=${this.handleSave}>
+        <form>
           <div class="p1">
             ${this.elTitle()}
             ${this.elUri()}
@@ -120,6 +120,7 @@ class PageNew extends Nanocomponent {
       <div class="x xje c12 fs1 usn fs1 p1 bgc-bg2-5">
         <div class="p1">
           <button
+            type="button"
             class="db button-medium b2-currentColor bgc-bg fc-bg25 fch-fg"
             onclick=${this.handleCancel}
           >Cancel</button>
@@ -158,18 +159,12 @@ class PageNew extends Nanocomponent {
 
   handleSave (event) {
     this.emit({ key: this.key, event: 'save', value: this.value })
-    if (event) {
-      event.stopPropagation()
-      event.preventDefault()
-    }
+    if (event) event.preventDefault()
   }
 
   handleCancel (event) {
     this.emit({ event: 'cancel' })
-    if (event) {
-      event.stopPropagation()
-      event.preventDefault()
-    }
+    if (event) event.preventDefault()
   }
 
   update (props) {
