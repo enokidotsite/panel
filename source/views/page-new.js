@@ -4,7 +4,7 @@ var path = require('path')
 
 var Modal = require('../components/modal')
 var PageNew = require('../containers/page-new')
-var methodsPage = require('../methods/page')
+var methodsPage = require('../lib/page')
 
 var modal = Modal()
 var pageNew = PageNew()

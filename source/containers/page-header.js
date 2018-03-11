@@ -6,7 +6,7 @@ var path = require('path')
 
 var blueprintSettings = require('../blueprints/page-header.json')
 var blueprintDefault = require('../blueprints/default')
-var methodsPage = require('../methods/page')
+var methodsPage = require('../lib/page')
 var fields = require('./fields')
 
 module.exports = pageHeader

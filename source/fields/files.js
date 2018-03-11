@@ -5,7 +5,7 @@ var html = require('choo/html')
 var xtend = require('xtend')
 
 var Uploader = require('../components/uploader')
-var methodsFile = require('../methods/file')
+var methodsFile = require('../lib/file')
 
 module.exports = class Files extends Nanocomponent {
   constructor () {

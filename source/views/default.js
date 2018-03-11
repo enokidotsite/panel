@@ -24,9 +24,9 @@ var Sites = require('./sites')
 var File = require('./file')
 
 // methods
-var methodsFile = require('../methods/file')
-var methodsPage = require('../methods/page')
-var methodsSite = require('../methods/site')
+var methodsFile = require('../lib/file')
+var methodsPage = require('../lib/page')
+var methodsSite = require('../lib/site')
 
 // misc
 var blueprintDefault = require('../blueprints/default')

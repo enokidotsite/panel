@@ -1,7 +1,7 @@
 var Nanocomponent = require('nanocomponent')
 var html = require('choo/html')
 
-var methodsFile = require('../methods/file')
+var methodsFile = require('../lib/file')
 var fields = require('../fields')
 
 var Title = new fields.text()

@@ -2,7 +2,7 @@ var queryString = require('query-string')
 var objectKeys = require('object-keys')
 var html = require('choo/html')
 
-var methodsFile = require('../methods/file')
+var methodsFile = require('../lib/file')
 
 module.exports = container
 

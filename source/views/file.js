@@ -3,8 +3,8 @@ var objectKeys = require('object-keys')
 var html = require('choo/html')
 var path = require('path')
 
-var methodsFile = require('../methods/file')
-var methodsSite = require('../methods/site')
+var methodsFile = require('../lib/file')
+var methodsSite = require('../lib/site')
 
 var ActionBar = require('../components/actionbar')
 var Split = require('../components/split')

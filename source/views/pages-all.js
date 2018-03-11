@@ -3,7 +3,7 @@ var objectValues = require('object-values')
 var queryString = require('query-string')
 var xtend = require('xtend')
 
-var methodsFile = require('../methods/file')
+var methodsFile = require('../lib/file')
 
 module.exports = pagesAll
 

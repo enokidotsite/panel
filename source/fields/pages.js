@@ -10,7 +10,6 @@ module.exports = class Pages extends Nanocomponent {
     this.label = false
     this.state = {
       pathnames: false,
-      sort: '',
       label: 'Pages',
       limit: 6,
       value: ''
