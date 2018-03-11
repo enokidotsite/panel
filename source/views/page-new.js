@@ -33,7 +33,6 @@ function PageNewView (state, emit) {
   })
 
   function handleView (data) {
-    console.log('hi', data)
     switch (data.event) {
       case 'save':
         if (!data.value.title || !data.value.uri || !data.value.view) {
