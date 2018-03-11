@@ -4,25 +4,18 @@ view: issue
 ----
 text: ## Cleanup
 
-Currently, fields are a bit sloppy. Some immediate improvements.
-
-- [x] Store everything within an internal `state` object
-- [x] Output a single object to `emit` containing `.value`
+- [ ] Create `form` and `field` components
+- [ ] Pass full state, emit, and options to `form`
+- [ ] Use the `enoki/page` api for most things
 - [ ] Autoscroll textarea when at bottom
-- [ ] Wrap fieldset in `<form>`
-- [x] Convert change to `button[type="submit"]`
 - [ ] Add html5 validation
 
 ## New fields
 
-- [X] Checkbox
-- [X] Range
-- [ ] Date
+- [ ] Universal `list` which can display pages or files based on option. Include delete, etc.
 - [ ] Radio selector
 - [ ] Structured data
 - [ ] Font (copy font files to site?)
-- [x] Color
-- [ ] Help (description sort of thing)
 ----
 tags:
   - 1.0.0

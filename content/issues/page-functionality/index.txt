@@ -4,9 +4,10 @@ view: issue
 ----
 text: Need to improve some management issues with Pages.
 
-- [ ] Field for `hidden` toggle
-- [ ] Field for adjusting `view` in Settings.
-- [ ] Field for adjusting `pathname` in Settings.
+- [ ] If no `view` key is available, fallback to parent page blueprint’s setting
+- [x] Field for `hidden` toggle
+- [x] Field for adjusting `view` in Settings.
+- [x] Field for adjusting `pathname` in Settings.
 ----
 tags:
   - todo
