@@ -3,6 +3,7 @@ var objectValues = require('object-values')
 var objectKeys = require('object-keys')
 var html = require('choo/html')
 var xtend = require('xtend')
+var path = require('path')
 
 module.exports = class Dropdown extends Nanocomponent {
   constructor () {
