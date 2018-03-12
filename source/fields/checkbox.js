@@ -61,7 +61,8 @@ module.exports = class Checkbox extends Nanocomponent {
   }
 
   onChange (event) {
-    this.oninput({ value: !this.state.value })
+    var value = !this.state.value
+    this.oninput({ value: value })
   }
 
   update (props) {

@@ -4,7 +4,6 @@ var html = require('choo/html')
 var path = require('path')
 
 var methodsFile = require('../lib/file')
-var methodsSite = require('../lib/site')
 
 var ActionBar = require('../components/actionbar')
 var Split = require('../components/split')
@@ -17,7 +16,7 @@ function File (state, emit) {
   var filename = methodsFile.decodeFilename(search.file)
   var file = state.page.files ? state.page.files[filename] : false
   if (!file) return notFound()
-  var blueprint = getBlueprint()
+  var blueprint = methodsFile.getBlueprint(state)
   var draftFile = state.enoki.changes[file.url]
 
   // blueprint layout fix
@@ -54,11 +53,10 @@ function File (state, emit) {
               ${filename}
             </div>
           </div>
-          ${Fields({
+          ${Fields(state, emit, {
+            oninput: handleFieldUpdate,
             blueprint: blueprint,
-            draft: draftFile,
-            values: file,
-            oninput: handleFieldUpdate
+            value: file
           })}
           <div class="p1">
             <span
@@ -119,7 +117,6 @@ function File (state, emit) {
   function handleFieldUpdate (event, data) {
     emit(state.events.ENOKI_UPDATE, {
       url: file.url,
-      path: file.path,
       data: { [event]: data }
     })
   }
@@ -150,19 +147,4 @@ function File (state, emit) {
       url: file.url
     })
   } 
-
-  function getBlueprint () {
-    if (
-      state.page &&
-      state.page.view &&
-      state.site &&
-      state.site.blueprints &&
-      state.site.blueprints[state.page.view] &&
-      state.site.blueprints[state.page.view].files
-    ) {
-      return state.site.blueprints[state.page.view].files
-    } else {
-      return { }
-    }
-  }
 }

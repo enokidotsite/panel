@@ -50,16 +50,10 @@ function pageHeader (state, emit) {
         <div class="px1 w100">
           <div style="border-top: 1px dashed #ddd"></div>
         </div>
-        ${fields({
+        ${fields(state, emit, {
           oninput: handleFieldUpdate,
-          content: state.content,
           blueprint: blueprintSettings,
-          events: state.events,
-          query: state.query,
           values: state.page,
-          draft: draftPage,
-          site: state.site,
-          page: state.page
         })}
         <div class="p1 c3">
           <div class="c12 py1 fwb usn fs0-8 ttu fc-bg25">

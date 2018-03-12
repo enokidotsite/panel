@@ -37,7 +37,7 @@ function changes (state, emit) {
 }
 
 function renderRouteChanges (props) {
-  if (!props.state.url) return
+  if (!props.state || !props.state.url) return
   return html`
     <li class="bt1-bg10">
       <a href="/?url=${props.state.url}" class="py1 px2 x">

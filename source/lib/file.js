@@ -1,7 +1,16 @@
 module.exports = {
-  encodeFilename: encodeFilename,
-  decodeFilename: decodeFilename,
-  sanitizeName: sanitizeName
+  getBlueprint,
+  encodeFilename,
+  decodeFilename,
+  sanitizeName
+}
+
+function getBlueprint (state) {
+  try {
+    return state.site.blueprints[state.page.view].files || { }
+  } catch (err) {
+    return { }
+  }
 }
 
 function encodeFilename (str) {

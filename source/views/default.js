@@ -26,17 +26,14 @@ var File = require('./file')
 // methods
 var methodsFile = require('../lib/file')
 var methodsPage = require('../lib/page')
-var methodsSite = require('../lib/site')
 
 // misc
-var blueprintDefault = require('../blueprints/default')
 
 module.exports = view
 
 function view (state, emit) {
   var search = queryString.parse(location.search)
-  var draftPage = getDraftPage()
-  var blueprint = getBlueprint()
+  var changes = state.enoki.changes[search.url]
 
   return [
     Header(state, emit),
@@ -45,18 +42,18 @@ function view (state, emit) {
 
   // TODO: clean this up
   function content () {
+    // non p2p
     if (!state.sites.p2p && state.sites.loaded) {
-      // non p2p
       return nonDat(state, emit)
     }
 
+    // sites
     if (search.sites || !state.sites.active) {
-      // sites
       return Sites(state, emit)
     }
 
+    // changes
     if (search.changes) {
-      // files
       return [
         PageHeader(state, emit),
         Page(),
@@ -65,8 +62,8 @@ function view (state, emit) {
       ]
     }
 
+    // files
     if (search.file === 'new') {
-      // files
       return [
         PageHeader(state, emit),
         Page(),
@@ -90,8 +87,8 @@ function view (state, emit) {
       ]
     }
 
+    // create page
     if (search.page === 'new') {
-      // create page
       return [
         PageHeader(state, emit),
         Page(),
@@ -100,8 +97,8 @@ function view (state, emit) {
       ]
     }
 
+    // all files
     if (search.files === 'all') {
-      // all files
       return [
         PageHeader(state, emit),
         FilesAll(state, emit),
@@ -128,20 +125,12 @@ function view (state, emit) {
     return html`
       <div id="content-page" class="x xdc c12" style="padding-bottom: 6rem">
         <form class="x xw p2 x1" onsubmit=${handleSavePage}>
-          ${Fields({
-            oninput: handleFieldUpdate,
-            content: state.content,
-            blueprint: blueprint,
-            events: state.events,
-            query: state.query,
-            values: state.page,
-            draft: draftPage,
-            site: state.site,
-            page: state.page
-          }, emit)}
+          ${Fields(state, emit, {
+            oninput: handleFieldUpdate
+          })}
           <div class="psf b0 r0 py0-5 px3 pen z3">
             ${ActionBar({
-              disabled: draftPage === undefined || search.page,
+              disabled: changes === undefined,
               saveLarge: true,
               handleCancel: handleCancelPage
             })}
@@ -153,21 +142,20 @@ function view (state, emit) {
 
   function handleFieldUpdate (key, data) {
     emit(state.events.ENOKI_UPDATE, {
-      path: state.page.path,
       url: state.page.url,
       data: { [key]: data }
     })
   }
 
   function handleSavePage (event) {
-    if (!draftPage) return
-    if (typeof event === 'object' && event.preventDefault) event.preventDefault()
+    if (!changes) return
+    if (event) event.preventDefault()
 
     emit(state.events.ENOKI_SAVE, {
       file: state.page.file,
       path: state.page.path,
       url: state.page.url,
-      data: xtend(state.page, draftPage)
+      data: xtend(state.page, changes)
     })
   }
 
@@ -175,22 +163,6 @@ function view (state, emit) {
     emit(state.events.ENOKI_CANCEL, {
       url: state.page.url
     })
-  }
-  
-  function getBlueprint () {
-    if (!state.page || !state.site.loaded) {
-      return { }
-    } else {
-      return (
-        state.site.blueprints[state.page.view] ||
-        state.site.blueprints.default ||
-        blueprintDefault
-      )
-    }
-  }
-
-  function getDraftPage () {
-    return state.enoki && state.page && state.enoki.changes[state.page.url]
   }
 }
 

@@ -1,7 +1,34 @@
 var objectKeys = require('object-keys')
+var Page = require('enoki/page')
+
+var blueprintDefault = require('../blueprints/default')
 
 module.exports = {
+  getChanges: getChanges,
+  getBlueprint: getBlueprint,
   getViews: getViews
+}
+
+function getChanges (state, emit, page) {
+  try {
+    page = page || Page(state)
+    return state.enoki.changes[page.value('url')]
+  } catch (err) {
+    return { }
+  }
+}
+
+function getBlueprint (state, emit, page) {
+  try {
+    page = page || Page(state)
+    return (
+      state.site.blueprints[page().value('view')] ||
+      state.site.blueprints.default ||
+      blueprintDefault
+    )
+  } catch (err) {
+    return blueprintDefault
+  }
 }
 
 function getViews (props) {
