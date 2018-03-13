@@ -17,7 +17,7 @@ If you have any questions please [see the FAQ](/#hub/faq), or feel free to send 
 - **No database**: there is only a filesystem
 - **Data ownership**: your data remains with you
 - **Offline accessible**: manage your site without a connection
-- **Hackable**: fork the panel and sites to customize as you see fit
+- **Hackable**: create editable copies of the panel and sites to customize as you see fit
 - **Extendable**: easily define custom fieldsets with blueprints
 - **Free**: publish to the web for free without any intermediaries
 - **Fun**: uses [Choo](https://choo.io) as a front-end framework
@@ -32,9 +32,9 @@ Enoki is an ultralight set of tools for publishing on the decentralized web. Sim
 
 ## Sites
 
-Creating a site is as simple as navigating to **Sites** → **Create a New Site**. Choose a design, enter some basic information, and authorize Beaker to fork the design. Your site is now loaded into Enoki and will remain accessible in the **Sites** area.
+Creating a site is as simple as navigating to **Sites** → **Create a New Site**. Choose a design, enter some basic information, and authorize Beaker to make an editable copy of the design. Your site is now loaded into Enoki and will remain accessible in the **Sites** area.
 
-Say you manually created an Archive with Beaker, or forked a site some other way. Simply click **Load an Existing Site** and select your Archive. Note that you must be the owner of the Archive, and it must contain a `/content` directory.
+Say you manually created an Archive with Beaker, or copied a site some other way. Simply click **Load an Existing Site** and select your Archive. Note that you must be the owner of the Archive, and it must contain a `/content` directory.
 
 ## Editor
 
@@ -69,7 +69,7 @@ This version of Enoki is highly experimental! Certain things are going to change
 
 ### Front-end
 
-Enoki uses [Choo](https://choo.io) as a front-end framework. It’s like React, but fun. Fork the Panel or any Design, then navigate to `/source` and run `npm install` and `npm start`. Working to document this better, but should give you a starting point.
+Enoki uses [Choo](https://choo.io) as a front-end framework. It’s like React, but fun. Copy the Panel or any Design, then navigate to `/source` and run `npm install` and `npm start`. Working to document this better, but should give you a starting point.
 
 ### Fields
 

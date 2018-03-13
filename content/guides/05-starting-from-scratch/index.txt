@@ -4,6 +4,8 @@ view: guide
 ----
 background: #5a2da8
 ----
+visible: false
+----
 color: true
 ----
 excerpt: Nam elementum augue eu lacus sagittis, eu gravida ligula porta. Vivamus et tincidunt ipsum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean molestie mollis arcu nec sodales. Suspendisse ac lacus turpis. Etiam vulputate ligula at erat laoreet, vel fermentum tortor convallis. Fusce nec accumsan purus. Sed ac mi pharetra, vulputate augue nec, pharetra nibh.

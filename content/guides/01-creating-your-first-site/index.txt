@@ -14,10 +14,10 @@ text: Enoki is currently an *experimental* CMS (content management system) for t
 1. Navigate to **Sites** and click *Create a New Site*
 2. Enter your site’s Title, and a quick Description
 3. Browse the design, and select one which looks right for you
-4. Authorize Beaker to **fork** the design
+4. Authorize Beaker to make an **editable copy** the design
 5. Begin editing your content!
 
-You might be asking, what is **forking**? Simply put, it’s creating your own unique copy of the site. Unlike other platforms, your site’s files exist on your computer! This means *you* own and control your site. There is no risk of your site dissapearing if Enoki ceases to exist.
+You might be asking, what is an **editable copy**? Simply put, it’s creating your own unique copy of the site. Unlike other platforms, your site’s files exist on your computer! This means *you* own and control your site. There is no risk of your site dissapearing if Enoki ceases to exist.
 
 This is a *super critical thing*. Platforms today are designed to make you dependant upon them as a way to sell advertising. By giving you control over your own content and data, you are not bound to Enoki!
 
