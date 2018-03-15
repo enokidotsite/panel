@@ -4,16 +4,14 @@
 
 The Enoki Panel is an ultralight set of tools for creating websites and applications. It’s early in development and runs exclusively in the experimental [Beaker Browser](https://beakerbrowser.com) as some of the primary concerns the project engages are those of data ownership, archival, and platform mutability.
 
+Consider this a modestly functional sketch. A starting point with clear limitations, leaning on existing and familiar convention to form a foundation for spanning the gap between here and there.
+
 ## Features
 
 - **nodb**: only static files and folders
 - **extensible**: easily define custom fieldsets and create your own fields
 - **simple**: built entirely on [choo](https://choo.io), the cutest front-end framework
 - **offline**: create and edit your sites offline, sync when reconnecting
-
-## Philosophy
-
-You’re here early—everything is extremely unstable. Consider this a modestly functional sketch. A starting point with clear limitations, leaning on existing and familiar convention to form a foundation for spanning the gap between here and there.
 
 ## Development
 
