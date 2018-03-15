@@ -1,4 +1,6 @@
-<h1 align="center">Enoki Panel</h1>
+<h1 align="center"><img src="favicon.png" height="22px"> Enoki Panel (beta)</h1>
+
+![](assets/meta.jpg)
 
 Documentation coming soon!
 
