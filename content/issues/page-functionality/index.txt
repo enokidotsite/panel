@@ -1,0 +1,18 @@
+title: Page functionality
+----
+view: issue
+----
+text: Need to improve some management issues with Pages.
+
+- [ ] If no `view` key is available, fallback to parent page blueprint’s setting
+- [x] Field for `hidden` toggle
+- [x] Field for adjusting `view` in Settings.
+- [x] Field for adjusting `pathname` in Settings.
+----
+tags:
+  - todo
+
+----
+date: 2018-03-05
+----
+visible: true

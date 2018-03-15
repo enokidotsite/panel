@@ -1,0 +1,29 @@
+title: How to Leave Enoki
+----
+view: guide
+----
+tags:
+  - beginner
+
+----
+color: false
+----
+featured: false
+----
+excerpt: Technology moves fast. Enoki knows it won’t always be the best tool for you. Rest easy knowing that you own your data and content. It exists on your computer, and not only on a server owned by a platform.
+----
+text: Technology moves fast. Enoki won’t always be the best tool for you. Rest easy knowing that you own your data and content. It exists on your computer, and not only on a server owned by a platform.
+
+There is no option for exporting your content from Enoki because it already exists with you; there is nothing to export from.
+
+Simply, the Enoki Panel creates files in folders on your local machine instead of jumbled data in a database somewhere. Not only this, the methods for reading and writing these files have been abstracted out into discreet open source javascript modules ready for developers to integrate into any other open tool.
+
+Those modules are:
+
+- [**Smarkt**](https://github.com/jondashkyle/smarkt) for reading `.txt` files with `keys: and values` seperated by `----`.
+- [**Hypha**](https://github.com/jondashkyle/hypha) for creating flat JSON out of those files and the folders they’re contained within.
+- [**Enoki**](https://github.com/jondashkyle/enoki) for reading and writing Enoki formatted sites.
+
+It’s hoped that these modules will be useful to anyone who wants to create their own tools!
+----
+background: #fbc200

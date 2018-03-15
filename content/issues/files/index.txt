@@ -1,0 +1,18 @@
+title: Files
+----
+view: issue
+----
+tags:
+  - todo
+  - 1.0.1
+----
+text: ## Todo
+
+- [ ] Meta data support (api/panel)
+- [x] Video preview
+- [x] Audio preview
+- [ ] Image zooming
+----
+date: 2018-03-05
+----
+visible: true

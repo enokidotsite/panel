@@ -1,0 +1,19 @@
+title: Saving
+----
+view: issue
+----
+tags:
+  - 0.1.1
+  - todo
+
+----
+text:  ### Quick ones
+
+- [ ] Local storage for changes?
+- [ ] Saving title change saves to index.html, too
+- [ ] Meta tags in index.html
+- [ ] How to speed things up (reload all state)
+----
+date: 2018-03-05
+----
+visible: true

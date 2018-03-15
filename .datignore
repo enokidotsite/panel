@@ -1,0 +1,6 @@
+.DS_Store
+.dat
+.git
+source/node_modules
+source/node_modules/**
+package-lock.json

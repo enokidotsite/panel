@@ -1,0 +1,25 @@
+{
+  "title": "Issue",
+  "pages": false,
+  "fields": {
+    "title": {
+      "label": "Title",
+      "type": "text"
+    },
+    "date": {
+      "label": "Date",
+      "type": "date",
+      "default": "today",
+      "width": "1/2"
+    },
+    "tags": {
+      "label": "Tags",
+      "type": "tags",
+      "width": "1/2"
+    },
+    "text": {
+      "label": "Text",
+      "type": "textarea"
+    }
+  }
+}

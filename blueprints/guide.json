@@ -1,0 +1,41 @@
+{
+  "title": "Guide",
+  "pages": false,
+  "fields": {
+    "title": {
+      "label": "Title",
+      "type": "text"
+    },
+    "tags": {
+      "label": "Tags",
+      "type": "tags",
+      "width": "1/2"
+    },
+    "featured": {
+      "label": "Featured",
+      "type": "checkbox",
+      "text": "Featured guide?",
+      "width": "1/2"
+    },
+    "background": {
+      "label": "Background Color",
+      "type": "color",
+      "width": "1/2"
+    },
+    "color": {
+      "label": "Inverted",
+      "true": "Is inverted",
+      "false": "Is not inverted",
+      "type": "checkbox",
+      "width": "1/2"
+    },
+    "excerpt": {
+      "label": "Excerpt",
+      "type": "textarea"
+    },
+    "text": {
+      "label": "Text",
+      "type": "textarea"
+    }
+  }
+}

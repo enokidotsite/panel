@@ -1,0 +1,17 @@
+{
+  "title": "Create Site",
+  "layout": false,
+  "fields": {
+    "title": {
+      "label": "Title",
+      "type":  "text",
+      "required": true
+    },
+    "description": {
+      "label": "Description",
+      "type":  "textarea",
+      "toolbar": false,
+      "required": true
+    }
+  }
+}

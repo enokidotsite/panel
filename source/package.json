@@ -1,0 +1,43 @@
+{
+  "name": "enoki-panel",
+  "version": "1.0.0",
+  "description": "A little javascript static site generator",
+  "main": "index.js",
+  "scripts": {
+    "start": "watchify index.js -o ../bundles/0.1.0/bundle.js -t brfs -t sheetify -p [ css-extract -o ../bundles/0.1.0/bundle.css ] index.js",
+    "build": "browserify index.js -o ../bundles/0.1.0/bundle.js -t brfs -t yo-yoify -t [ sheetify -u sheetify-cssnext ] -g es2040 -p [ css-extract -o ../bundles/0.1.0/bundle.css ]",
+    "publish": "dat sync dist --no-ignoreHidden"
+  },
+  "keywords": [],
+  "author": "Jon-Kyle <contact@jon-kyle.com> (http://jon-kyle.com)",
+  "license": "MIT",
+  "dependencies": {
+    "choo": "^6.6.1",
+    "choo-tts": "^1.0.0",
+    "enoki": "^2.0.5",
+    "gr8": "^3.1.4",
+    "markdown-it": "^8.4.0",
+    "markdown-it-task-lists": "^2.1.0",
+    "nanocomponent": "^6.5.0",
+    "nanoreset": "^1.2.0",
+    "object-keys": "^1.0.11",
+    "object-values": "^1.0.0",
+    "query-string": "^5.0.0",
+    "simple-color-picker": "^0.1.2",
+    "simplemde": "^1.11.2",
+    "tags-input": "^1.1.1",
+    "xhr": "^2.4.0",
+    "xtend": "^4.0.1",
+    "yo-yoify": "^3.7.3"
+  },
+  "devDependencies": {
+    "brfs": "^1.4.3",
+    "browserify": "^15.2.0",
+    "css-extract": "^1.2.0",
+    "es2040": "^1.2.6",
+    "sheetify": "^7.0.0",
+    "sheetify-cssnext": "^1.0.7",
+    "tinyify": "^2.4.0",
+    "watchify": "^3.9.0"
+  }
+}

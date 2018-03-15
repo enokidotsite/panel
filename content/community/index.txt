@@ -1,0 +1,5 @@
+title: Community
+----
+view: community
+----
+text: Coming soon

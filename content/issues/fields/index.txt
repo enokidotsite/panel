@@ -1,0 +1,27 @@
+title: Fields
+----
+view: issue
+----
+text: ## Cleanup
+
+- [ ] Create `form` and `field` components
+- [ ] Pass full state, emit, and options to `form`
+- [ ] Use the `enoki/page` api for most things
+- [ ] Autoscroll textarea when at bottom
+- [ ] Add html5 validation
+
+## New fields
+
+- [ ] Universal `list` which can display pages or files based on option. Include delete, etc.
+- [ ] Radio selector
+- [ ] Structured data
+- [ ] Font (copy font files to site?)
+----
+tags:
+  - 1.0.0
+  - todo
+
+----
+date: 2018-03-05
+----
+visible: true

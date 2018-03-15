@@ -1,6 +1,8 @@
 .DS_Store
-node_modules
+.dat
 
-.log
-public/
-config.yml
+node_modules
+bundle.js
+bundle.css
+dat.json
+package-lock.json

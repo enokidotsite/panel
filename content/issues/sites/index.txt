@@ -1,0 +1,25 @@
+title: Sites
+----
+view: issue
+----
+tags:
+  - todo
+  - 1.0.1
+
+----
+text: ## Todo
+
+- [x] Settings → Remove
+- [ ] Settings → HTTP fallback
+- [ ] Reordering
+- [ ] Persist across domains (ditch localstorage?)
+- [ ] Store references to designs inside of `/content` instead of the `designs.js` plugin
+
+## Ideas
+
+- Some sort of p2p stats, such as how many peers, etc…
+- A simple way of deploying to a service like Hashbase
+----
+date: 2018-03-05
+----
+visible: true

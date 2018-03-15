@@ -1,0 +1,48 @@
+{
+  "title": "Fields",
+  "pages": false,
+  "fields": {
+    "title": {
+      "label": "Title",
+      "type": "text"
+    },
+    "text": {
+      "label": "Text",
+      "type": "textarea"
+    },
+    "checkbox": {
+      "label": "Checkbox",
+      "text": "Descriptive text",
+      "type": "checkbox",
+      "width": "1/2"
+    },
+    "color": {
+      "label": "Color",
+      "text": "Descriptive text",
+      "type": "color",
+      "width": "1/2"
+    },
+    "tags": {
+      "label": "Tags",
+      "type": "tags"
+    },
+    "range": {
+      "label": "Range",
+      "text": "Descriptive text",
+      "type": "range",
+      "start": 20
+    },
+    "dropdown": {
+      "label": "Dropdown",
+      "type": "dropdown",
+      "options": {
+        "one": {
+          "title": "One"
+        },
+        "two": {
+          "title": "Two"
+        }
+      }
+    }
+  }
+}

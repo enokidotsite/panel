@@ -1,0 +1,61 @@
+title: Creating Custom Pages
+----
+view: guide
+----
+tags:
+  - beginner
+
+----
+color: true
+----
+featured: false
+----
+excerpt: Creating websites can be fun! Updating websites can be a major drag. Like, a really major drag. Enoki is interested in trying to solve these issues around *updating websites* as a foundation for creating fresh and exciting ways of *creating websites*.
+----
+text: Creating websites can be fun! Updating websites can be a major drag. Like, a really major drag. Enoki is interested in solving these issues around *updating websites* as a foundation for exploring exciting new ways of *creating websites*. There are a few primary interfaces for managing websites these days.
+
+1. Through a maze of fields for data entry.
+2. With a WYSIWYG (what you see is what you get)
+3. Some sort of broken thing between those two.
+
+If you’ve ever used one of these WYSIWYG solutions to create a client site, you’ll know the dangers of handing over the keys.
+
+Let’s take that third option and make it *significantly* less broken, and get there by first implimenting the pro functionality you’d expect in a (capital letters) CMS solution centered around fieldsets.
+
+Of course, this is all a little boring now, but intended to create a truly robust foundation for building the next generation of interfaces for connecting and sharing both online *and offline*—and have fun while doing it.
+
+## Views
+
+When creating a new Page in the Panel you select a *view*. For instance, there could be `blog` or `about` views. When visiting your site, this let’s you say, “I’d like my about page to be formatted a certain way.” Inside the Panel, this let’s you say, “I’d like to see certain fields to let me easily input exactly the type of content I want on my about page.”
+
+This sort of specificity ensures your page doesn’t get super messy when updating content, as each type of content is defined seperately. This same cleanliness clearly implies a limitation in the *mesiness*, arguably the most critical part of any creative endevour. For now, this mesiness takes place during the creative process of determining what the site *should be*, not in when you are trying to simply update it. These lines are blurry, but for now let’s go with that.
+
+## Pages
+
+The interface of the *editor* in the Panel is always the same; a set of fields representing the data associated with that page. We define what sort of data is associated with a page by creating a *blueprint* located in `/blueprints`.
+
+There are all sorts of options associated with blueprints, but these guides are being written hastily as there is a lot to do, and this will be expanded on in the future!
+
+For now, just look around the example designs `/blueprints` directories to see what’s up. As an example, here is the default blueprint:
+
+```
+{
+  "title": "Default",
+  "fields": {
+    "title": {
+      "label": "Title",
+      "type": "text"
+    },
+    "text": {
+      "label": "Text",
+      "type": "textarea"
+    }
+  }
+}
+```
+
+## Getting messy
+
+As mentioned above, this somewhat strict field-based composition is a near-term strategy for creating a truly flexible future for Enoki. Certain sites feature inline-editable interface only visible to the site’s owner. This is endearingly called `self-mutation`, and will be rolling out in surprising ways across various designs soon!
+----
+background: #f21006

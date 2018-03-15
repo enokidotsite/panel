@@ -1,0 +1,25 @@
+title: Cleanup codebase
+----
+view: issue
+----
+text: Gotta refactor a little bit, it’s getting messy in here.
+
+## Structure
+
+- [ ] Try to make the DOM as representational as possible.
+- [ ] Support imports/require/window
+- [ ] Create a bundle.js which exposes over window
+- [ ] Create a super simple demo using no build system
+
+## Styles
+
+- [ ] Switch from gr8 for layout to CSS grid/variables.
+- [ ] Create `.copy` styles for dark/light
+- [ ] Simple `sheetify` css-in-js for most things.
+----
+tags:
+  - todo
+----
+date: 2018-03-05
+----
+visible: true

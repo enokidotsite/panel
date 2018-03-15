@@ -1,0 +1,7 @@
+title: Issues
+----
+view: issues
+----
+text: ## Contributing
+
+Feel free to fork the panel repository, create whatever changes you’d like by following the pattern here (or using the panel itself to manage issues), then creating a pull request. Wanting to consolidate things outside of Github Issues to make things offline accessibile.

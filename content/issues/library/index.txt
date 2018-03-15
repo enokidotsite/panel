@@ -1,0 +1,16 @@
+title: Library
+----
+view: issue
+----
+text: Need to clean up some of the boundaries between things.
+
+- [ ] Localization support
+
+----
+tags:
+  - todo
+
+----
+date: 2018-03-05
+----
+visible: true

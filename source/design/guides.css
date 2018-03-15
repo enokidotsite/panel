@@ -1,0 +1,62 @@
+.guides-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+  grid-auto-rows: auto;
+  grid-column-gap: 2px;
+  grid-row-gap: 2px;
+  padding: 2px;
+}
+
+.grid-column {
+  grid-column-end: span 1;
+  width: 100%;
+}
+
+.guides-grid h2 { font-size: 2.5rem }
+
+.guides-grid .copy {
+  font-size: 1.4rem;
+  height: 9.75rem;
+  max-width: 40rem;
+}
+
+.guides-grid .guide-border {
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: opacity 150ms ease-out;
+  border: 2px solid var(--active);
+  z-index: 3;
+}
+
+.guides-grid a:hover .guide-border {
+  opacity: 1;
+}
+
+.guides-grid a .guide-meta {
+  transition: 250ms ease-out transform;
+  overflow: hidden;
+  margin-bottom: -1rem;
+}
+
+.guides-grid a:hover .guide-meta {
+  transform: translateY(-0.3rem);
+}
+
+.guides-grid a:active .guide-meta {
+  transform: translateY(0rem);
+  transition: 50ms ease-out transform;
+}
+
+@media (max-width: 38rem) {
+  .grid-featured {
+    grid-column-end: span 1;
+  }
+
+  .guides-grid h2 { font-size: 3.6rem }
+  .guides-grid .copy { font-size: 1.8rem }
+}
