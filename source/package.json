@@ -6,7 +6,7 @@
   "scripts": {
     "start": "watchify index.js -o ../bundles/0.1.0/bundle.js -t brfs -t sheetify -p [ css-extract -o ../bundles/0.1.0/bundle.css ] index.js",
     "build": "browserify index.js -o ../bundles/0.1.0/bundle.js -t brfs -t yo-yoify -t [ sheetify -u sheetify-cssnext ] -g es2040 -p [ css-extract -o ../bundles/0.1.0/bundle.css ]",
-    "publish": "dat sync dist --no-ignoreHidden"
+    "publish": "dat sync ../ --no-ignoreHidden"
   },
   "keywords": [],
   "author": "Jon-Kyle <contact@jon-kyle.com> (http://jon-kyle.com)",
