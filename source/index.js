@@ -7,7 +7,6 @@ var app = choo()
 
 // external
 app.use(require('enoki/choo-panel')())
-app.use(require('choo-tts')())
 
 // plugins
 app.use(require('./plugins/interface'))
