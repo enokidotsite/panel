@@ -1,6 +1,6 @@
 {
   "name": "enoki-panel",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "A little javascript static site generator",
   "main": "index.js",
   "scripts": {
@@ -14,7 +14,7 @@
   "dependencies": {
     "choo": "^6.6.1",
     "choo-tts": "^1.0.0",
-    "enoki": "^2.0.4-beta2",
+    "enoki": "^2.0.5",
     "gr8": "^3.1.4",
     "markdown-it": "^8.4.0",
     "markdown-it-task-lists": "^2.1.0",
